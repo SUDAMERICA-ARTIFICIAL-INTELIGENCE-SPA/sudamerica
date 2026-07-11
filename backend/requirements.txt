@@ -1,0 +1,6 @@
+-r api_execute/requirements.txt
+-r AI_dialer/requirements.txt
+-r callback_manual/requirements.txt
+-r tasks/requirements.txt
+-r canales_service/requirements.txt
+-r open_agent/requirements.txt

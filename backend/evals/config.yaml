@@ -1,0 +1,6 @@
+# Configuración del juez y umbral de regresión (E3/E4)
+judge_model: deepseek/deepseek-chat
+dimensiones: [exactitud_precios, tono, respeto_fsm, leak_rubro, fidelidad_catalogo]
+umbral:
+  promedio_min: 4.0    # promedio global por arquetipo
+  dimension_min: 3.0   # ninguna dimensión promedio puede caer bajo esto

@@ -1,0 +1,39 @@
+{
+  "name": "sudamerica-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
+  },
+  "dependencies": {
+    "@mantine/core": "^7.17.0",
+    "@mantine/dates": "^7.17.0",
+    "@mantine/form": "^7.17.0",
+    "@mantine/hooks": "^7.17.0",
+    "@mantine/modals": "^7.17.0",
+    "@mantine/notifications": "^7.17.0",
+    "@tabler/icons-react": "^3.31.0",
+    "@tanstack/react-query": "^5.74.4",
+    "dayjs": "^1.11.13",
+    "firebase": "^12.10.0",
+    "next": "15.5.12",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "postcss": "^8.5.3",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "project": {
+    "language": "fullstack",
+    "languages": [
+      "javascript",
+      "python",
+      "typescript"
+    ],
+    "stacks": [
+      {
+        "name": "backend",
+        "language": "python",
+        "srcDir": "backend",
+        "testDir": "backend/tests"
+      },
+      {
+        "name": "frontend",
+        "language": "typescript",
+        "srcDir": "frontend",
+        "testDir": "frontend"
+      },
+      {
+        "name": "api_execute",
+        "language": "python",
+        "srcDir": "backend/api_execute",
+        "testDir": "backend/api_execute/tests"
+      },
+      {
+        "name": "callback_manual",
+        "language": "python",
+        "srcDir": "backend/callback_manual",
+        "testDir": "backend/callback_manual/tests"
+      },
+      {
+        "name": "canales_service",
+        "language": "python",
+        "srcDir": "backend/canales_service",
+        "testDir": "backend/canales_service/tests"
+      },
+      {
+        "name": "open_agent",
+        "language": "python",
+        "srcDir": "backend/open_agent",
+        "testDir": "backend/open_agent/tests"
+      },
+      {
+        "name": "shared",
+        "language": "python",
+        "srcDir": "backend/shared",
+        "testDir": "backend/shared"
+      },
+      {
+        "name": "tasks",
+        "language": "python",
+        "srcDir": "backend/tasks",
+        "testDir": "backend/tasks/tests"
+      }
+    ],
+    "srcDir": ".",
+    "testDir": "."
+  },
+  "exclude": [
+    "**/Lib/**",
+    "**/site-packages/**",
+    "**/.venv/**",
+    "**/node_modules/**",
+    "**/__pycache__/**",
+    "**/alembic/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/build/**"
+  ],
+  "quality": {
+    "thresholds": {
+      "max_duplication_pct": 8.0,
+      "max_cc": 12,
+      "max_lines": 30,
+      "max_nesting": 3
+    }
+  },
+  "score": {
+    "weights": {
+      "tests": 0.20,
+      "complexity": 0.20,
+      "duplication": 0.10,
+      "security": 0.25,
+      "performance": 0.25
+    },
+    "fail_penalty": 10
+  }
+}

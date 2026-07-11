@@ -1,0 +1,19 @@
+{
+  "threshold": 8,
+  "reporters": ["console"],
+  "ignore": [
+    "**/Lib/**",
+    "**/site-packages/**",
+    "**/.venv/**",
+    "**/venv/**",
+    "**/node_modules/**",
+    "**/__pycache__/**",
+    "**/alembic/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.pyc"
+  ],
+  "format": ["python"],
+  "absolute": true
+}

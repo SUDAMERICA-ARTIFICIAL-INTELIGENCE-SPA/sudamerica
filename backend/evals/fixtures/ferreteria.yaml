@@ -1,0 +1,37 @@
+# Arquetipo 3 — retail-con-stock (INVENTARIO+DELIVERY, sin agenda ni cocina)
+arquetipo: ferreteria
+tenant: {nombre: "Ferretería El Tornillo", rubro: ferreteria}
+agente_config:
+  system_prompt: "Eres el asistente virtual de Ferretería El Tornillo. Responde en español."
+  umbral_confianza: 0.85
+  instrucciones_disponibilidad: ""
+knowledge: ""
+has_mesas: false
+delivery_config: "COSTO DE DELIVERY: $3000 para Casa Matriz."
+delivery_costo: 3000
+productos:
+  - {id: "bbbbbbbb-0000-0000-0000-000000000001", nombre: "Martillo Carpintero", precio: 8900,
+     descripcion: "mango de fibra", disponible: true, imagen_url: null, unidad_venta: "unidad"}
+  - {id: "bbbbbbbb-0000-0000-0000-000000000002", nombre: "Caja Tornillos 6x1", precio: 2500,
+     descripcion: null, disponible: false, imagen_url: null, unidad_venta: "unidad"}
+casos:
+  - nombre: precio_martillo
+    historial: []
+    mensaje: "¿Tienen martillos? ¿a cuánto?"
+    asserts:
+      regex: ['8[.,]?900']
+      must_not_contain: ["plato", "mesa", "cocina", "Comer aquí", "algo para tomar"]
+      precios_validos: true
+  - nombre: sin_stock
+    historial: []
+    mensaje: "Necesito una caja de tornillos 6x1"
+    asserts:
+      regex: ['(?i)(no.{0,40}disponible|sin stock)']
+      must_not_contain: ["plato"]
+      precios_validos: true
+  - nombre: costo_despacho
+    historial: []
+    mensaje: "¿Cuánto cobran el despacho?"
+    asserts:
+      regex: ['3[.,]?000']
+      precios_validos: true

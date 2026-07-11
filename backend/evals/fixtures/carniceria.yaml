@@ -1,0 +1,37 @@
+# Arquetipo 4 — retail-por-peso (PRECIO_MEDIDA: $/kg, cantidades fraccionales)
+arquetipo: carniceria
+tenant: {nombre: "Carnicería Don Pedro", rubro: carniceria}
+agente_config:
+  system_prompt: "Eres el asistente virtual de Carnicería Don Pedro. Responde en español."
+  umbral_confianza: 0.85
+  instrucciones_disponibilidad: ""
+knowledge: ""
+has_mesas: false
+delivery_config: "COSTO DE DELIVERY: $2000 para Casa Matriz."
+delivery_costo: 2000
+productos:
+  - {id: "cccccccc-0000-0000-0000-000000000001", nombre: "Carne Molida", precio: 12500,
+     descripcion: "vacuno 5% grasa", disponible: true, imagen_url: null, unidad_venta: "kg"}
+  - {id: "cccccccc-0000-0000-0000-000000000002", nombre: "Pechuga de Pollo", precio: 9800,
+     descripcion: null, disponible: true, imagen_url: null, unidad_venta: "kg"}
+casos:
+  - nombre: precio_por_kilo
+    historial: []
+    mensaje: "¿A cuánto está la carne molida?"
+    asserts:
+      regex: ['12[.,]?500', '(?i)(kg|kilo)']
+      must_not_contain: ["plato", "mesa"]
+      precios_validos: true
+  - nombre: cantidad_fraccional
+    historial: []
+    mensaje: "Quiero 1,5 kg de carne molida, ¿cuánto sería?"
+    asserts:
+      regex: ['18[.,]?750']
+      precios_validos: true
+      precios_extra: [18750]
+  - nombre: unidad_siempre
+    historial: []
+    mensaje: "¿Qué precios tienen?"
+    asserts:
+      regex: ['(?i)(kg|kilo)']
+      precios_validos: true

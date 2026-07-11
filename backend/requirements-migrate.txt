@@ -1,0 +1,8 @@
+# Dependencies for running Alembic migrations (sync driver).
+# Used by Cloud Build migration step and migrate.py.
+# Must cover any package imported transitively by alembic/env.py when it
+# loads ALL service models (AI_dialer, api_execute, etc.).
+alembic>=1.13,<2.0
+psycopg2-binary>=2.9,<3.0
+sqlalchemy>=2.0,<3.0
+pgvector==0.3.6

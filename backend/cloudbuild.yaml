@@ -1,0 +1,65 @@
+steps:
+  # ── Alembic migrate step — ROOT CAUSE FIXED (2026-04-18) ────────
+  # Crash era: postgres role sin BYPASSRLS + tablas con FORCE RLS → introspección
+  # falla silenciosamente. Fix aplicado en backend/migrate.py: wrapping con
+  # ALTER ROLE postgres BYPASSRLS/NOBYPASSRLS.
+  #
+  # Para re-habilitar este step en el pipeline:
+  #   1. Crear secreto en Secret Manager:
+  #        echo -n "SET_VIA_SECRET_MANAGER" | gcloud secrets create db-password \
+  #          --data-file=- --project=sudamerica-prod
+  #   2. Dar acceso al Cloud Build SA:
+  #        gcloud secrets add-iam-policy-binding db-password \
+  #          --member=serviceAccount:456595931835@cloudbuild.gserviceaccount.com \
+  #          --role=roles/secretmanager.secretAccessor --project=sudamerica-prod
+  #   3. Descomentar el bloque de abajo + el availableSecrets al final.
+  #
+  # - name: 'python:3.11-slim'
+  #   id: 'migrate'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       set -euo pipefail
+  #       apt-get update -qq && apt-get install -y -qq wget
+  #       wget -q -O cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.11.0/cloud-sql-proxy.linux.amd64
+  #       chmod +x cloud-sql-proxy
+  #       mkdir -p /cloudsql
+  #       ./cloud-sql-proxy --unix-socket /cloudsql $PROJECT_ID:us-central1:sudamerica-db &
+  #       PROXY_PID=$$!
+  #       sleep 5
+  #       pip install --quiet -r requirements-migrate.txt
+  #       DATABASE_URL="postgresql://postgres:$$DB_PASSWORD@/sudamerica?host=/cloudsql/$PROJECT_ID:us-central1:sudamerica-db" python migrate.py
+  #       kill $$PROXY_PID || true
+  #   secretEnv: ['DB_PASSWORD']
+  #   dir: 'backend'
+
+  # ── Build service images ───────────────────────────────────────
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'api_execute/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/api-execute:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'callback_manual/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/callback-manual:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'tasks/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/tasks:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'canales_service/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/canales-service:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'open_agent/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/open-agent:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'evolution_api/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/evolution-api:latest', '.']
+
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/api-execute:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/callback-manual:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/tasks:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/canales-service:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/open-agent:latest'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/evolution-api:latest'
+
+options:
+  logging: GCS_ONLY

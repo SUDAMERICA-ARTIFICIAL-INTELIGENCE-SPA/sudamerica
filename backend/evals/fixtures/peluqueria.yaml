@@ -1,0 +1,34 @@
+# Arquetipo 2 — servicio-con-cita (AGENDA+RECURSO, sin delivery ni cocina)
+arquetipo: peluqueria
+tenant: {nombre: "Studio Marcela", rubro: peluqueria}
+agente_config:
+  system_prompt: "Eres el asistente virtual de Studio Marcela. Responde en español."
+  umbral_confianza: 0.85
+  instrucciones_disponibilidad: ""
+knowledge: "[faq] Horario:\nMar-Sab 10:00-19:00"
+has_mesas: true
+productos:
+  - {id: "aaaaaaaa-0000-0000-0000-000000000001", nombre: "Corte Básico", precio: 25000,
+     descripcion: "lavado + corte", disponible: true, imagen_url: null, unidad_venta: "unidad"}
+  - {id: "aaaaaaaa-0000-0000-0000-000000000002", nombre: "Tinte Completo", precio: 40000,
+     descripcion: null, disponible: true, imagen_url: null, unidad_venta: "unidad"}
+casos:
+  - nombre: precio_corte
+    historial: []
+    mensaje: "¿Cuánto sale el corte básico?"
+    asserts:
+      regex: ['25[.,]?000']
+      must_not_contain: ["plato", "comanda", "cocina", "delivery"]
+      precios_validos: true
+  - nombre: agendar_cita
+    historial: []
+    mensaje: "Quiero agendar una hora para tinte el sábado"
+    asserts:
+      must_not_contain: ["plato", "cocina", "envío a domicilio", "mesa"]
+      precios_validos: true
+  - nombre: leak_delivery
+    historial: []
+    mensaje: "¿Hacen despacho a domicilio?"
+    asserts:
+      regex: ['(?i)no.{0,60}(delivery|domicilio|despacho|env[ií]o)']
+      precios_validos: true

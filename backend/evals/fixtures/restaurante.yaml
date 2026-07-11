@@ -1,0 +1,50 @@
+# Arquetipo 1 — restaurante delivery+comanda (CANÓNICO: byte-idéntico al snapshot E0)
+arquetipo: restaurante
+tenant: {nombre: "Donde Golo", rubro: restaurante}
+agente_config:
+  system_prompt: "Eres el asistente virtual de Donde Golo. Responde en español."
+  umbral_confianza: 0.85
+  instrucciones_disponibilidad: ""
+knowledge: "[faq] Horario:\nLun-Dom 12:00-23:00"
+has_mesas: true
+delivery_config: "COSTO DE DELIVERY: $2500 para Casa Matriz."
+delivery_costo: 2500
+productos:
+  - {id: "11111111-1111-1111-1111-111111111111", nombre: "Churrasco Italiano", precio: 8900,
+     descripcion: "posta, tomate, palta y mayo", disponible: true,
+     imagen_url: "https://x/churrasco.jpg", unidad_venta: "unidad"}
+  - {id: "22222222-2222-2222-2222-222222222222", nombre: "Bebida 350cc", precio: 1500,
+     descripcion: null, disponible: false, imagen_url: null, unidad_venta: null}
+modifiers:
+  "11111111-1111-1111-1111-111111111111":
+    - {group_id: g1, group_nombre: Agregados, tipo: MULTI_SELECT, obligatorio: false,
+       mod_id: m1, mod_nombre: "Extra queso", precio_delta: 800,
+       producto_id: "11111111-1111-1111-1111-111111111111"}
+casos:
+  - nombre: saludo_inicial
+    historial: []
+    mensaje: "Hola"
+    asserts:
+      must_contain: ["[ENVIAR_POLL:"]
+      precios_validos: true
+  - nombre: precio_churrasco
+    historial:
+      - {role: user, content: "Hola"}
+      - {role: assistant, content: "¡Bienvenido a Donde Golo! ¿En qué te puedo ayudar?"}
+    mensaje: "¿Cuánto cuesta el churrasco italiano?"
+    asserts:
+      regex: ['8[.,]?900']
+      must_not_contain: ["no está disponible"]
+      precios_validos: true
+  - nombre: producto_inexistente
+    historial: []
+    mensaje: "Quiero una lasaña boloñesa"
+    asserts:
+      must_not_contain: ["lasaña: $"]
+      precios_validos: true
+  - nombre: producto_sin_stock
+    historial: []
+    mensaje: "Dame una bebida 350cc"
+    asserts:
+      regex: ['(?i)no.{0,40}disponible']
+      precios_validos: true

@@ -1,0 +1,367 @@
+FLUJO SISTEMA MESAS + QR + WHATSAPP + IA
+
+OBJETIVO
+Cuando en la plataforma se cree una mesa, el sistema debe generar automáticamente un código QR único.
+Ese QR será escaneado por el cliente sentado en esa mesa.
+El escaneo redirigirá a un chat de WhatsApp con un mensaje predefinido que identificará la mesa.
+La IA atenderá al cliente en función de la mesa detectada desde el QR.
+
+--------------------------------------------------
+1. CREACIÓN DE MESA
+--------------------------------------------------
+
+Evento:
+- El operador crea una nueva mesa desde la plataforma.
+
+Datos mínimos de la mesa:
+- id_mesa
+- numero_mesa
+- sucursal_id
+- nombre_sucursal
+- estado_mesa = disponible
+- qr_token_unico
+- qr_url
+- fecha_creacion
+
+Regla:
+- Cada mesa debe tener un token único e irrepetible.
+- Ese token NO debe ser el número visible de la mesa solamente.
+- Recomendado:
+  qr_token_unico = UUID o hash seguro.
+
+Ejemplo:
+- id_mesa: 15
+- numero_mesa: M12
+- sucursal_id: 3
+- qr_token_unico: 9c5d2c9e-a2f1-4f24-8df9-1130a8f12345
+
+--------------------------------------------------
+2. GENERACIÓN DEL QR
+--------------------------------------------------
+
+Al crear la mesa:
+1. El sistema genera un enlace único.
+2. El sistema convierte ese enlace en un código QR.
+3. El QR queda asociado a la mesa.
+4. El QR puede imprimirse o mostrarse en pantalla.
+
+Opción recomendada de enlace:
+- El QR NO debería apuntar directamente al wa.me final con datos fijos visibles.
+- Mejor práctica:
+  El QR apunta primero a una URL del sistema.
+- Ejemplo:
+  https://midominio.cl/qr/9c5d2c9e-a2f1-4f24-8df9-1130a8f12345
+
+Ventaja:
+- Permite validar si la mesa existe.
+- Permite registrar el escaneo.
+- Permite saber sucursal, mesa y horario.
+- Permite cambiar el flujo después sin reimprimir todos los QR.
+
+--------------------------------------------------
+3. RESOLUCIÓN DEL QR
+--------------------------------------------------
+
+Cuando el cliente escanea el QR:
+1. Se abre la URL única del sistema.
+2. El backend busca el qr_token_unico.
+3. Valida que la mesa exista y esté activa.
+4. Registra evento de escaneo.
+5. Construye el mensaje predefinido.
+6. Redirige al enlace de WhatsApp.
+
+Datos a registrar en el evento:
+- fecha_hora_escaneo
+- qr_token_unico
+- id_mesa
+- numero_mesa
+- sucursal_id
+- user_agent
+- ip
+- dispositivo_tipo (si aplica)
+
+--------------------------------------------------
+4. MENSAJE PREDEFINIDO PARA WHATSAPP
+--------------------------------------------------
+
+Formato recomendado del mensaje:
+"Hola, estoy en la mesa M12 de la sucursal Rancagua y quiero hacer un pedido."
+
+Formato técnico URL:
+https://wa.me/569XXXXXXXX?text=Hola%2C%20estoy%20en%20la%20mesa%20M12%20de%20la%20sucursal%20Rancagua%20y%20quiero%20hacer%20un%20pedido.
+
+Variables dinámicas:
+- numero_mesa
+- nombre_sucursal
+- codigo_interno_mesa opcional
+- idioma opcional
+
+Mensaje recomendado para IA:
+"Hola, estoy en la mesa M12 de la sucursal Rancagua. Quiero ver el menú y hacer un pedido."
+
+Versión más técnica:
+"INICIO_PEDIDO | sucursal=Rancagua | mesa=M12 | token=9c5d2c9e-a2f1-4f24-8df9-1130a8f12345"
+
+Recomendación:
+- Para el cliente mostrar un mensaje natural.
+- Internamente también conviene enviar un identificador estructurado.
+- Ejemplo mixto:
+  "Hola, estoy en la mesa M12 de la sucursal Rancagua. INICIO_PEDIDO mesa=M12 token=9c5d2c9e-a2f1-4f24-8df9-1130a8f12345"
+
+--------------------------------------------------
+5. RECEPCIÓN EN WHATSAPP / AGENTE IA
+--------------------------------------------------
+
+Cuando el cliente llega a WhatsApp:
+1. El agente IA recibe el primer mensaje.
+2. El sistema detecta en el texto:
+   - mesa
+   - sucursal
+   - token
+3. Se crea una sesión de atención asociada a esa mesa.
+4. La IA responde contextualizada.
+
+Contexto mínimo que debe cargar la IA:
+- sucursal
+- mesa
+- menú disponible en esa sucursal
+- promociones activas
+- estado de la mesa
+- historial de pedido abierto (si existe)
+- horario de atención
+
+Respuesta inicial sugerida de la IA:
+"Hola. Ya identifiqué que estás en la mesa M12 de la sucursal Rancagua. Te ayudo con tu pedido. ¿Quieres ver hamburguesas, churrascos, costilla BBQ, chorrillanadas o bebestibles?"
+
+--------------------------------------------------
+6. TOMA DE PEDIDO
+--------------------------------------------------
+
+Flujo de la IA:
+1. Identifica mesa y sucursal.
+2. Muestra menú o categorías.
+3. Recibe selección del cliente.
+4. Confirma productos, cantidades y observaciones.
+5. Calcula total.
+6. Confirma pedido.
+7. Envía pedido al sistema POS / cocina / panel interno.
+8. Marca el pedido como asociado a la mesa.
+
+Datos del pedido:
+- pedido_id
+- id_mesa
+- numero_mesa
+- sucursal_id
+- canal = whatsapp_qr
+- estado = pendiente / confirmado / en_preparacion / entregado / cobrado
+- detalle_items
+- subtotal
+- total
+- fecha_hora
+
+--------------------------------------------------
+7. PANEL INTERNO / OPERACIÓN
+--------------------------------------------------
+
+El sistema interno debe permitir:
+- Ver qué mesa inició conversación.
+- Ver pedido activo por mesa.
+- Ver estado del pedido.
+- Reenviar conversación a humano.
+- Cerrar mesa.
+- Reimprimir QR si es necesario.
+- Invalidar QR comprometido y generar uno nuevo.
+
+Estados recomendados de mesa:
+- disponible
+- ocupada
+- pedido_en_curso
+- esperando_pago
+- cerrada
+- inactiva
+
+--------------------------------------------------
+8. REGLAS DE NEGOCIO
+--------------------------------------------------
+
+Regla 1:
+- Un QR pertenece a una sola mesa.
+
+Regla 2:
+- Una mesa puede tener renovación de QR si el anterior fue comprometido.
+
+Regla 3:
+- El token del QR debe ser único, largo y no predecible.
+
+Regla 4:
+- Si la mesa está inactiva o eliminada, el QR no debe redirigir a un pedido válido.
+
+Regla 5:
+- Si el cliente escanea varias veces, se puede reutilizar la misma sesión activa de mesa o crear un nuevo intento controlado.
+
+Regla 6:
+- Si la sucursal tiene menú distinto, la IA debe cargar el menú correcto según la sucursal.
+
+--------------------------------------------------
+9. VALIDACIONES IMPORTANTES
+--------------------------------------------------
+
+Validar:
+- mesa existente
+- token válido
+- mesa activa
+- sucursal activa
+- número WhatsApp configurado
+- menú publicado para esa sucursal
+- horarios de atención
+
+Si falla la validación:
+Respuesta de contingencia:
+"Esta mesa no está disponible en este momento. Por favor solicita ayuda al personal."
+
+--------------------------------------------------
+10. SEGURIDAD Y TRAZABILIDAD
+--------------------------------------------------
+
+Buenas prácticas:
+- No usar solo "mesa=12" en el QR como identificador principal.
+- Usar token seguro.
+- Registrar todos los escaneos.
+- Registrar pedidos creados desde QR.
+- Poder auditar qué QR originó cada conversación y cada pedido.
+
+Recomendación adicional:
+- Firmar o cifrar el token si se desea mayor seguridad.
+- Aplicar expiración lógica solo si el negocio lo necesita.
+- Mantener histórico de reasignaciones de QR.
+
+--------------------------------------------------
+11. ESTRUCTURA TÉCNICA RECOMENDADA
+--------------------------------------------------
+
+TABLA: mesas
+- id
+- numero_mesa
+- sucursal_id
+- estado
+- qr_token
+- qr_url
+- created_at
+- updated_at
+
+TABLA: qr_scans
+- id
+- mesa_id
+- qr_token
+- scanned_at
+- ip
+- user_agent
+- device_info
+
+TABLA: sesiones_whatsapp
+- id
+- telefono_cliente
+- mesa_id
+- sucursal_id
+- token_origen
+- conversacion_id
+- estado
+- created_at
+
+TABLA: pedidos
+- id
+- mesa_id
+- sucursal_id
+- canal
+- estado
+- total
+- created_at
+
+--------------------------------------------------
+12. ENDPOINTS SUGERIDOS
+--------------------------------------------------
+
+POST /mesas
+- crea mesa
+- genera token
+- genera qr_url
+- devuelve datos de mesa + QR
+
+GET /qr/{token}
+- valida token
+- registra escaneo
+- construye mensaje
+- redirige a WhatsApp
+
+POST /webhook/whatsapp
+- recibe mensajes entrantes
+- detecta token/mesa
+- crea o actualiza sesión
+- responde con IA
+
+POST /pedidos
+- crea pedido asociado a mesa y sesión
+
+PATCH /mesas/{id}/cerrar
+- cierra la mesa
+- finaliza pedido y sesión si aplica
+
+--------------------------------------------------
+13. FLUJO RESUMIDO
+--------------------------------------------------
+
+1. Operador crea mesa en plataforma.
+2. Sistema genera token único.
+3. Sistema genera QR asociado a la mesa.
+4. Cliente escanea QR en la mesa.
+5. QR abre URL intermedia del sistema.
+6. Sistema valida mesa y registra escaneo.
+7. Sistema redirige a WhatsApp con mensaje predefinido.
+8. IA recibe mensaje con mesa identificada.
+9. IA muestra menú y toma pedido.
+10. Pedido queda asociado a la mesa.
+11. Cocina / caja / panel interno procesa el pedido.
+12. Al cierre, la mesa cambia de estado.
+
+--------------------------------------------------
+14. EJEMPLO DE FLUJO COMPLETO
+--------------------------------------------------
+
+Caso:
+- Se crea mesa M12 en sucursal Rancagua.
+- El sistema genera token abc123xyz789.
+- El sistema crea URL:
+  https://midominio.cl/qr/abc123xyz789
+- El QR impreso apunta a esa URL.
+
+Cliente escanea:
+- El backend detecta que abc123xyz789 = mesa M12, sucursal Rancagua.
+- Registra el escaneo.
+- Redirige a:
+  https://wa.me/569XXXXXXXX?text=Hola%2C%20estoy%20en%20la%20mesa%20M12%20de%20la%20sucursal%20Rancagua%20y%20quiero%20hacer%20un%20pedido.%20INICIO_PEDIDO%20mesa%3DM12%20token%3Dabc123xyz789
+
+La IA recibe:
+- mesa = M12
+- sucursal = Rancagua
+- token = abc123xyz789
+
+La IA responde:
+- "Hola. Ya identifiqué tu mesa M12. ¿Qué te gustaría pedir?"
+
+--------------------------------------------------
+15. RECOMENDACIÓN FINAL
+--------------------------------------------------
+
+Implementar SIEMPRE una URL intermedia del sistema antes de WhatsApp.
+No generar QR directos a wa.me fijos, porque eso limita:
+- trazabilidad
+- validación
+- analítica
+- cambio de reglas
+- reasignación de QR
+- seguridad
+
+La arquitectura correcta es:
+MESA CREADA -> TOKEN ÚNICO -> QR -> URL DEL SISTEMA -> VALIDACIÓN -> REDIRECCIÓN A WHATSAPP -> IA TOMA PEDIDO
+
+FIN

@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'open_agent/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/open-agent:latest', '.']
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/open-agent:latest'
+options:
+  logging: GCS_ONLY

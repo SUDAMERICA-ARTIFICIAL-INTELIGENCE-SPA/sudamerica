@@ -1,0 +1,30 @@
+[project]
+name = "sudamerica-backend"
+version = "0.1.0"
+description = "Sudamérica AI Backend — 4 FastAPI Microservices"
+requires-python = ">=3.11"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+select = ["E", "F", "W", "I", "C901", "B", "UP"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --tb=short --import-mode=importlib"
+
+[tool.coverage.run]
+source = ["api_execute", "callback_manual", "tasks", "shared"]
+omit = ["*/tests/*", "*/alembic/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+
+[tool.bandit]
+exclude_dirs = ["tests", "alembic"]
+skips = ["B101"]

@@ -1,0 +1,23 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_EXECUTE=https://api-execute-552598955895.us-central1.run.app'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_DIALER=https://ai-dialer-552598955895.us-central1.run.app'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_WS_DIALER=wss://ai-dialer-552598955895.us-central1.run.app'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_CALLBACK=https://callback-manual-552598955895.us-central1.run.app'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_CANALES=https://canales-service-552598955895.us-central1.run.app'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_TASKS=https://tasks-552598955895.us-central1.run.app'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/melodic-nature-484617-e6/sudamerica/frontend:latest'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/melodic-nature-484617-e6/sudamerica/frontend:latest']
+images:
+  - 'us-central1-docker.pkg.dev/melodic-nature-484617-e6/sudamerica/frontend:latest'

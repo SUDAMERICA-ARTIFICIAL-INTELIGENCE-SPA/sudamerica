@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environment
+/Lib/
+/Scripts/
+/Include/
+pyvenv.cfg
+venv/
+.venv/
+
+# Node
+node_modules/
+.next/
+out/
+
+# Environment files (contain secrets)
+API_KEYS.txt
+*.env.yaml
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# SQLite test artifacts
+test_*.db
+*.sqlite3
+
+# Argus runtime data
+.fw-data/
+.agent-results/
+
+# Coverage
+htmlcov/
+.coverage
+coverage.xml
+
+# Docker
+pgdata/
+
+# MCP config (contains credentials)
+.mcp.json
+
+# Large binaries
+*.pdf
+
+# Playwright
+.playwright-mcp/
+
+# Generated standalone repos
+split-repos/
+
+# Temp/debug files
+tmp_*
+temp_*
+investigate.py
+oferta_text.txt
+
+# Debug artifacts
+Debug/
+
+# Pip artifacts (leaked from venvs)
+share/
+backend/share/
+backend/src/
+
+# Root-level test screenshots
+/*.png

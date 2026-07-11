@@ -1,0 +1,28 @@
+# Arquetipo 5 — sub-entidad (SUB_ENTIDAD: Mascota) + servicio con cita
+arquetipo: veterinaria
+tenant: {nombre: "Veterinaria Patitas", rubro: veterinaria}
+agente_config:
+  system_prompt: "Eres el asistente virtual de Veterinaria Patitas. Responde en español."
+  umbral_confianza: 0.85
+  instrucciones_disponibilidad: ""
+knowledge: "[faq] Urgencias:\nSolo con cita previa"
+has_mesas: true
+productos:
+  - {id: "dddddddd-0000-0000-0000-000000000001", nombre: "Consulta General", precio: 20000,
+     descripcion: "examen clínico", disponible: true, imagen_url: null, unidad_venta: "unidad"}
+  - {id: "dddddddd-0000-0000-0000-000000000002", nombre: "Vacuna Antirrábica", precio: 15000,
+     descripcion: null, disponible: true, imagen_url: null, unidad_venta: "unidad"}
+casos:
+  - nombre: cita_para_mascota
+    historial: []
+    mensaje: "Hola, necesito una hora para mi perro Rocky"
+    asserts:
+      must_not_contain: ["plato", "cocina", "comanda"]
+      precios_validos: true
+  - nombre: precio_vacuna
+    historial: []
+    mensaje: "¿Cuánto vale la vacuna antirrábica?"
+    asserts:
+      regex: ['15[.,]?000']
+      must_not_contain: ["plato"]
+      precios_validos: true

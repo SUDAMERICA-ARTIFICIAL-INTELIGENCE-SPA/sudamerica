@@ -1,0 +1,867 @@
+- generic [active] [ref=e2]:
+  - alert [ref=e1]
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - img "Sudamérica AI" [ref=e6]
+        - generic [ref=e7]:
+          - paragraph [ref=e8]: Sudamérica AI
+          - paragraph [ref=e9]: Gastronomia IA
+      - generic [ref=e10]:
+        - button "Buscar — Ctrl+K" [ref=e11] [cursor=pointer]:
+          - img [ref=e13]
+        - button "Cambiar a modo claro" [ref=e16] [cursor=pointer]:
+          - img [ref=e18]
+        - button "Sin notificaciones nuevas" [ref=e22] [cursor=pointer]:
+          - img [ref=e24]
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - paragraph [ref=e32]: Sudamérica AI
+          - link "Navegar a Copiloto Admin" [ref=e33] [cursor=pointer]:
+            - /url: /sudamerica-ia
+            - img [ref=e35]
+            - generic [ref=e37]: Copiloto Admin
+        - generic [ref=e38]:
+          - paragraph [ref=e41]: El Recepcionista
+          - link "Navegar a Conversaciones IA" [ref=e42] [cursor=pointer]:
+            - /url: /prospectos
+            - img [ref=e44]
+            - generic [ref=e47]: Conversaciones IA
+          - link "Navegar a IA" [ref=e48] [cursor=pointer]:
+            - /url: /ia
+            - img [ref=e50]
+            - generic [ref=e54]: IA
+          - link "Navegar a Configuración IA" [ref=e55] [cursor=pointer]:
+            - /url: /entrenar-ia
+            - img [ref=e57]
+            - generic [ref=e60]: Configuración IA
+        - generic [ref=e61]:
+          - paragraph [ref=e64]: Centro de Control
+          - link "Navegar a Comandas / KDS" [ref=e65] [cursor=pointer]:
+            - /url: /comandas
+            - img [ref=e67]
+            - generic [ref=e70]: Comandas / KDS
+          - link "Navegar a Ordenes del Dia" [ref=e71] [cursor=pointer]:
+            - /url: /ventas
+            - img [ref=e73]
+            - generic [ref=e75]: Ordenes del Dia
+        - generic [ref=e76]:
+          - paragraph [ref=e79]: La Despensa
+          - link "Navegar a Carta & Menu" [ref=e80] [cursor=pointer]:
+            - /url: /carta
+            - img [ref=e82]
+            - generic [ref=e84]: Carta & Menu
+        - generic [ref=e85]:
+          - paragraph [ref=e88]: El Contador
+          - link "Navegar a Resumen del Dia" [ref=e89] [cursor=pointer]:
+            - /url: /dashboard
+            - img [ref=e91]
+            - generic [ref=e96]: Resumen del Dia
+          - link "Navegar a Clientes" [ref=e97] [cursor=pointer]:
+            - /url: /leads
+            - img [ref=e99]
+            - generic [ref=e104]: Clientes
+          - link "Navegar a Reportes" [ref=e105] [cursor=pointer]:
+            - /url: /reportes
+            - img [ref=e107]
+            - generic [ref=e111]: Reportes
+          - link "Navegar a Equipo" [ref=e112] [cursor=pointer]:
+            - /url: /equipo
+            - img [ref=e114]
+            - generic [ref=e121]: Equipo
+      - separator [ref=e122]
+      - link "Navegar a Configuracion" [ref=e123] [cursor=pointer]:
+        - /url: /configuracion
+        - img [ref=e125]
+        - generic [ref=e128]: Configuracion
+      - separator [ref=e129]
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic "Avatar de Benjamin" [ref=e133]:
+            - generic [ref=e134]: B
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: Benjamin
+            - generic [ref=e138]: Super Admin
+        - button "Cerrar sesion" [ref=e139] [cursor=pointer]:
+          - img [ref=e140]
+    - main [ref=e144]:
+      - generic [ref=e145]:
+        - heading "Carta & Menú" [level=2] [ref=e146]
+        - generic [ref=e147]:
+          - tablist [ref=e148]:
+            - tab "Platos" [selected] [ref=e149] [cursor=pointer]:
+              - img [ref=e151]
+              - generic [ref=e156]: Platos
+            - tab "Modificadores" [ref=e157] [cursor=pointer]:
+              - img [ref=e159]
+              - generic [ref=e161]: Modificadores
+          - tabpanel "Platos" [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - heading "Platos & Items" [level=3] [ref=e165]
+                - generic [ref=e166]:
+                  - button "Importar menú" [ref=e167] [cursor=pointer]:
+                    - generic [ref=e168]:
+                      - img [ref=e170]
+                      - generic [ref=e174]: Importar Menú
+                  - button "Agregar plato" [ref=e175] [cursor=pointer]:
+                    - generic [ref=e176]:
+                      - img [ref=e178]
+                      - generic [ref=e179]: Nuevo Plato
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - button "Pizzas 50" [expanded] [ref=e182] [cursor=pointer]:
+                    - img [ref=e184]
+                    - generic [ref=e187]:
+                      - img [ref=e188]
+                      - paragraph [ref=e193]: Pizzas
+                      - generic [ref=e195]: "50"
+                  - region "Pizzas 50" [ref=e196]:
+                    - generic [ref=e198]:
+                      - generic [ref=e200]:
+                        - paragraph [ref=e201]: HAWAIANA
+                        - paragraph [ref=e202]: Jamón, piña.
+                        - table [ref=e203]:
+                          - rowgroup [ref=e204]:
+                            - row "Disponibilidad HAWAIANA - Mediana Mediana $130 Editar HAWAIANA - Mediana" [ref=e205]:
+                              - cell "Disponibilidad HAWAIANA - Mediana Mediana" [ref=e206]:
+                                - generic [ref=e207]:
+                                  - generic [ref=e209]:
+                                    - switch "Disponibilidad HAWAIANA - Mediana" [checked]
+                                  - paragraph [ref=e213]: Mediana
+                              - cell "$130" [ref=e214]:
+                                - generic [ref=e216]: $130
+                              - cell "Editar HAWAIANA - Mediana" [ref=e217]:
+                                - button "Editar HAWAIANA - Mediana" [ref=e218] [cursor=pointer]:
+                                  - img [ref=e221]
+                            - row "Disponibilidad HAWAIANA - Grande Grande $180 Editar HAWAIANA - Grande" [ref=e225]:
+                              - cell "Disponibilidad HAWAIANA - Grande Grande" [ref=e226]:
+                                - generic [ref=e227]:
+                                  - generic [ref=e229]:
+                                    - switch "Disponibilidad HAWAIANA - Grande" [checked]
+                                  - paragraph [ref=e233]: Grande
+                              - cell "$180" [ref=e234]:
+                                - generic [ref=e236]: $180
+                              - cell "Editar HAWAIANA - Grande" [ref=e237]:
+                                - button "Editar HAWAIANA - Grande" [ref=e238] [cursor=pointer]:
+                                  - img [ref=e241]
+                            - row "Disponibilidad HAWAIANA - Familiar Familiar $299 Editar HAWAIANA - Familiar" [ref=e245]:
+                              - cell "Disponibilidad HAWAIANA - Familiar Familiar" [ref=e246]:
+                                - generic [ref=e247]:
+                                  - generic [ref=e249]:
+                                    - switch "Disponibilidad HAWAIANA - Familiar" [checked]
+                                  - paragraph [ref=e253]: Familiar
+                              - cell "$299" [ref=e254]:
+                                - generic [ref=e256]: $299
+                              - cell "Editar HAWAIANA - Familiar" [ref=e257]:
+                                - button "Editar HAWAIANA - Familiar" [ref=e258] [cursor=pointer]:
+                                  - img [ref=e261]
+                            - row "Disponibilidad HAWAIANA - Magna Magna $399 Editar HAWAIANA - Magna" [ref=e265]:
+                              - cell "Disponibilidad HAWAIANA - Magna Magna" [ref=e266]:
+                                - generic [ref=e267]:
+                                  - generic [ref=e269]:
+                                    - switch "Disponibilidad HAWAIANA - Magna" [checked]
+                                  - paragraph [ref=e273]: Magna
+                              - cell "$399" [ref=e274]:
+                                - generic [ref=e276]: $399
+                              - cell "Editar HAWAIANA - Magna" [ref=e277]:
+                                - button "Editar HAWAIANA - Magna" [ref=e278] [cursor=pointer]:
+                                  - img [ref=e281]
+                            - row "Disponibilidad HAWAIANA - Chica HAWAIANA - Chica Chica $85 Editar HAWAIANA - Chica" [ref=e285]:
+                              - cell "Disponibilidad HAWAIANA - Chica HAWAIANA - Chica Chica" [ref=e286]:
+                                - generic [ref=e287]:
+                                  - generic [ref=e289]:
+                                    - switch "Disponibilidad HAWAIANA - Chica" [checked]
+                                  - img "HAWAIANA - Chica" [ref=e293]
+                                  - paragraph [ref=e294]: Chica
+                              - cell "$85" [ref=e295]:
+                                - generic [ref=e297]: $85
+                              - cell "Editar HAWAIANA - Chica" [ref=e298]:
+                                - button "Editar HAWAIANA - Chica" [ref=e299] [cursor=pointer]:
+                                  - img [ref=e302]
+                      - generic [ref=e307]:
+                        - paragraph [ref=e308]: AL ALAMBRE
+                        - paragraph [ref=e309]: Carne al pastor, tocino, jamón, pimiento verde, cebolla y champiñones.
+                        - table [ref=e310]:
+                          - rowgroup [ref=e311]:
+                            - row "Disponibilidad AL ALAMBRE - Chica Chica $85 Editar AL ALAMBRE - Chica" [ref=e312]:
+                              - cell "Disponibilidad AL ALAMBRE - Chica Chica" [ref=e313]:
+                                - generic [ref=e314]:
+                                  - generic [ref=e316]:
+                                    - switch "Disponibilidad AL ALAMBRE - Chica" [checked]
+                                  - paragraph [ref=e320]: Chica
+                              - cell "$85" [ref=e321]:
+                                - generic [ref=e323]: $85
+                              - cell "Editar AL ALAMBRE - Chica" [ref=e324]:
+                                - button "Editar AL ALAMBRE - Chica" [ref=e325] [cursor=pointer]:
+                                  - img [ref=e328]
+                            - row "Disponibilidad AL ALAMBRE - Mediana Mediana $130 Editar AL ALAMBRE - Mediana" [ref=e332]:
+                              - cell "Disponibilidad AL ALAMBRE - Mediana Mediana" [ref=e333]:
+                                - generic [ref=e334]:
+                                  - generic [ref=e336]:
+                                    - switch "Disponibilidad AL ALAMBRE - Mediana" [checked]
+                                  - paragraph [ref=e340]: Mediana
+                              - cell "$130" [ref=e341]:
+                                - generic [ref=e343]: $130
+                              - cell "Editar AL ALAMBRE - Mediana" [ref=e344]:
+                                - button "Editar AL ALAMBRE - Mediana" [ref=e345] [cursor=pointer]:
+                                  - img [ref=e348]
+                            - row "Disponibilidad AL ALAMBRE - Grande Grande $180 Editar AL ALAMBRE - Grande" [ref=e352]:
+                              - cell "Disponibilidad AL ALAMBRE - Grande Grande" [ref=e353]:
+                                - generic [ref=e354]:
+                                  - generic [ref=e356]:
+                                    - switch "Disponibilidad AL ALAMBRE - Grande" [checked]
+                                  - paragraph [ref=e360]: Grande
+                              - cell "$180" [ref=e361]:
+                                - generic [ref=e363]: $180
+                              - cell "Editar AL ALAMBRE - Grande" [ref=e364]:
+                                - button "Editar AL ALAMBRE - Grande" [ref=e365] [cursor=pointer]:
+                                  - img [ref=e368]
+                            - row "Disponibilidad AL ALAMBRE - Familiar Familiar $299 Editar AL ALAMBRE - Familiar" [ref=e372]:
+                              - cell "Disponibilidad AL ALAMBRE - Familiar Familiar" [ref=e373]:
+                                - generic [ref=e374]:
+                                  - generic [ref=e376]:
+                                    - switch "Disponibilidad AL ALAMBRE - Familiar" [checked]
+                                  - paragraph [ref=e380]: Familiar
+                              - cell "$299" [ref=e381]:
+                                - generic [ref=e383]: $299
+                              - cell "Editar AL ALAMBRE - Familiar" [ref=e384]:
+                                - button "Editar AL ALAMBRE - Familiar" [ref=e385] [cursor=pointer]:
+                                  - img [ref=e388]
+                            - row "Disponibilidad AL ALAMBRE - Magna Magna $399 Editar AL ALAMBRE - Magna" [ref=e392]:
+                              - cell "Disponibilidad AL ALAMBRE - Magna Magna" [ref=e393]:
+                                - generic [ref=e394]:
+                                  - generic [ref=e396]:
+                                    - switch "Disponibilidad AL ALAMBRE - Magna" [checked]
+                                  - paragraph [ref=e400]: Magna
+                              - cell "$399" [ref=e401]:
+                                - generic [ref=e403]: $399
+                              - cell "Editar AL ALAMBRE - Magna" [ref=e404]:
+                                - button "Editar AL ALAMBRE - Magna" [ref=e405] [cursor=pointer]:
+                                  - img [ref=e408]
+                      - generic [ref=e413]:
+                        - paragraph [ref=e414]: MEXICANA
+                        - paragraph [ref=e415]: Chorizo, Carne Molida, Cebolla y Jalapeño.
+                        - table [ref=e416]:
+                          - rowgroup [ref=e417]:
+                            - row "Disponibilidad MEXICANA - Chica Chica $85 Editar MEXICANA - Chica" [ref=e418]:
+                              - cell "Disponibilidad MEXICANA - Chica Chica" [ref=e419]:
+                                - generic [ref=e420]:
+                                  - generic [ref=e422]:
+                                    - switch "Disponibilidad MEXICANA - Chica" [checked]
+                                  - paragraph [ref=e426]: Chica
+                              - cell "$85" [ref=e427]:
+                                - generic [ref=e429]: $85
+                              - cell "Editar MEXICANA - Chica" [ref=e430]:
+                                - button "Editar MEXICANA - Chica" [ref=e431] [cursor=pointer]:
+                                  - img [ref=e434]
+                            - row "Disponibilidad MEXICANA - Mediana Mediana $130 Editar MEXICANA - Mediana" [ref=e438]:
+                              - cell "Disponibilidad MEXICANA - Mediana Mediana" [ref=e439]:
+                                - generic [ref=e440]:
+                                  - generic [ref=e442]:
+                                    - switch "Disponibilidad MEXICANA - Mediana" [checked]
+                                  - paragraph [ref=e446]: Mediana
+                              - cell "$130" [ref=e447]:
+                                - generic [ref=e449]: $130
+                              - cell "Editar MEXICANA - Mediana" [ref=e450]:
+                                - button "Editar MEXICANA - Mediana" [ref=e451] [cursor=pointer]:
+                                  - img [ref=e454]
+                            - row "Disponibilidad MEXICANA - Grande Grande $180 Editar MEXICANA - Grande" [ref=e458]:
+                              - cell "Disponibilidad MEXICANA - Grande Grande" [ref=e459]:
+                                - generic [ref=e460]:
+                                  - generic [ref=e462]:
+                                    - switch "Disponibilidad MEXICANA - Grande" [checked]
+                                  - paragraph [ref=e466]: Grande
+                              - cell "$180" [ref=e467]:
+                                - generic [ref=e469]: $180
+                              - cell "Editar MEXICANA - Grande" [ref=e470]:
+                                - button "Editar MEXICANA - Grande" [ref=e471] [cursor=pointer]:
+                                  - img [ref=e474]
+                            - row "Disponibilidad MEXICANA - Familiar Familiar $299 Editar MEXICANA - Familiar" [ref=e478]:
+                              - cell "Disponibilidad MEXICANA - Familiar Familiar" [ref=e479]:
+                                - generic [ref=e480]:
+                                  - generic [ref=e482]:
+                                    - switch "Disponibilidad MEXICANA - Familiar" [checked]
+                                  - paragraph [ref=e486]: Familiar
+                              - cell "$299" [ref=e487]:
+                                - generic [ref=e489]: $299
+                              - cell "Editar MEXICANA - Familiar" [ref=e490]:
+                                - button "Editar MEXICANA - Familiar" [ref=e491] [cursor=pointer]:
+                                  - img [ref=e494]
+                            - row "Disponibilidad MEXICANA - Magna Magna $399 Editar MEXICANA - Magna" [ref=e498]:
+                              - cell "Disponibilidad MEXICANA - Magna Magna" [ref=e499]:
+                                - generic [ref=e500]:
+                                  - generic [ref=e502]:
+                                    - switch "Disponibilidad MEXICANA - Magna" [checked]
+                                  - paragraph [ref=e506]: Magna
+                              - cell "$399" [ref=e507]:
+                                - generic [ref=e509]: $399
+                              - cell "Editar MEXICANA - Magna" [ref=e510]:
+                                - button "Editar MEXICANA - Magna" [ref=e511] [cursor=pointer]:
+                                  - img [ref=e514]
+                      - generic [ref=e519]:
+                        - paragraph [ref=e520]: CUATRO QUESOS
+                        - paragraph [ref=e521]: Queso Crema, Mozzarella, Parmesano y Cheddar
+                        - table [ref=e522]:
+                          - rowgroup [ref=e523]:
+                            - row "Disponibilidad CUATRO QUESOS - Chica Chica $85 Editar CUATRO QUESOS - Chica" [ref=e524]:
+                              - cell "Disponibilidad CUATRO QUESOS - Chica Chica" [ref=e525]:
+                                - generic [ref=e526]:
+                                  - generic [ref=e528]:
+                                    - switch "Disponibilidad CUATRO QUESOS - Chica" [checked]
+                                  - paragraph [ref=e532]: Chica
+                              - cell "$85" [ref=e533]:
+                                - generic [ref=e535]: $85
+                              - cell "Editar CUATRO QUESOS - Chica" [ref=e536]:
+                                - button "Editar CUATRO QUESOS - Chica" [ref=e537] [cursor=pointer]:
+                                  - img [ref=e540]
+                            - row "Disponibilidad CUATRO QUESOS - Mediana Mediana $130 Editar CUATRO QUESOS - Mediana" [ref=e544]:
+                              - cell "Disponibilidad CUATRO QUESOS - Mediana Mediana" [ref=e545]:
+                                - generic [ref=e546]:
+                                  - generic [ref=e548]:
+                                    - switch "Disponibilidad CUATRO QUESOS - Mediana" [checked]
+                                  - paragraph [ref=e552]: Mediana
+                              - cell "$130" [ref=e553]:
+                                - generic [ref=e555]: $130
+                              - cell "Editar CUATRO QUESOS - Mediana" [ref=e556]:
+                                - button "Editar CUATRO QUESOS - Mediana" [ref=e557] [cursor=pointer]:
+                                  - img [ref=e560]
+                            - row "Disponibilidad CUATRO QUESOS - Grande Grande $180 Editar CUATRO QUESOS - Grande" [ref=e564]:
+                              - cell "Disponibilidad CUATRO QUESOS - Grande Grande" [ref=e565]:
+                                - generic [ref=e566]:
+                                  - generic [ref=e568]:
+                                    - switch "Disponibilidad CUATRO QUESOS - Grande" [checked]
+                                  - paragraph [ref=e572]: Grande
+                              - cell "$180" [ref=e573]:
+                                - generic [ref=e575]: $180
+                              - cell "Editar CUATRO QUESOS - Grande" [ref=e576]:
+                                - button "Editar CUATRO QUESOS - Grande" [ref=e577] [cursor=pointer]:
+                                  - img [ref=e580]
+                            - row "Disponibilidad CUATRO QUESOS - Familiar Familiar $299 Editar CUATRO QUESOS - Familiar" [ref=e584]:
+                              - cell "Disponibilidad CUATRO QUESOS - Familiar Familiar" [ref=e585]:
+                                - generic [ref=e586]:
+                                  - generic [ref=e588]:
+                                    - switch "Disponibilidad CUATRO QUESOS - Familiar" [checked]
+                                  - paragraph [ref=e592]: Familiar
+                              - cell "$299" [ref=e593]:
+                                - generic [ref=e595]: $299
+                              - cell "Editar CUATRO QUESOS - Familiar" [ref=e596]:
+                                - button "Editar CUATRO QUESOS - Familiar" [ref=e597] [cursor=pointer]:
+                                  - img [ref=e600]
+                            - row "Disponibilidad CUATRO QUESOS - Magna Magna $399 Editar CUATRO QUESOS - Magna" [ref=e604]:
+                              - cell "Disponibilidad CUATRO QUESOS - Magna Magna" [ref=e605]:
+                                - generic [ref=e606]:
+                                  - generic [ref=e608]:
+                                    - switch "Disponibilidad CUATRO QUESOS - Magna" [checked]
+                                  - paragraph [ref=e612]: Magna
+                              - cell "$399" [ref=e613]:
+                                - generic [ref=e615]: $399
+                              - cell "Editar CUATRO QUESOS - Magna" [ref=e616]:
+                                - button "Editar CUATRO QUESOS - Magna" [ref=e617] [cursor=pointer]:
+                                  - img [ref=e620]
+                      - generic [ref=e625]:
+                        - paragraph [ref=e626]: VEGANA
+                        - paragraph [ref=e627]: Pimiento, Cebolla, Champiñones Frescos y Aceitunas
+                        - table [ref=e628]:
+                          - rowgroup [ref=e629]:
+                            - row "Disponibilidad VEGANA - Chica Chica $85 Editar VEGANA - Chica" [ref=e630]:
+                              - cell "Disponibilidad VEGANA - Chica Chica" [ref=e631]:
+                                - generic [ref=e632]:
+                                  - generic [ref=e634]:
+                                    - switch "Disponibilidad VEGANA - Chica" [checked]
+                                  - paragraph [ref=e638]: Chica
+                              - cell "$85" [ref=e639]:
+                                - generic [ref=e641]: $85
+                              - cell "Editar VEGANA - Chica" [ref=e642]:
+                                - button "Editar VEGANA - Chica" [ref=e643] [cursor=pointer]:
+                                  - img [ref=e646]
+                            - row "Disponibilidad VEGANA - Mediana Mediana $130 Editar VEGANA - Mediana" [ref=e650]:
+                              - cell "Disponibilidad VEGANA - Mediana Mediana" [ref=e651]:
+                                - generic [ref=e652]:
+                                  - generic [ref=e654]:
+                                    - switch "Disponibilidad VEGANA - Mediana" [checked]
+                                  - paragraph [ref=e658]: Mediana
+                              - cell "$130" [ref=e659]:
+                                - generic [ref=e661]: $130
+                              - cell "Editar VEGANA - Mediana" [ref=e662]:
+                                - button "Editar VEGANA - Mediana" [ref=e663] [cursor=pointer]:
+                                  - img [ref=e666]
+                            - row "Disponibilidad VEGANA - Grande Grande $180 Editar VEGANA - Grande" [ref=e670]:
+                              - cell "Disponibilidad VEGANA - Grande Grande" [ref=e671]:
+                                - generic [ref=e672]:
+                                  - generic [ref=e674]:
+                                    - switch "Disponibilidad VEGANA - Grande" [checked]
+                                  - paragraph [ref=e678]: Grande
+                              - cell "$180" [ref=e679]:
+                                - generic [ref=e681]: $180
+                              - cell "Editar VEGANA - Grande" [ref=e682]:
+                                - button "Editar VEGANA - Grande" [ref=e683] [cursor=pointer]:
+                                  - img [ref=e686]
+                            - row "Disponibilidad VEGANA - Familiar Familiar $299 Editar VEGANA - Familiar" [ref=e690]:
+                              - cell "Disponibilidad VEGANA - Familiar Familiar" [ref=e691]:
+                                - generic [ref=e692]:
+                                  - generic [ref=e694]:
+                                    - switch "Disponibilidad VEGANA - Familiar" [checked]
+                                  - paragraph [ref=e698]: Familiar
+                              - cell "$299" [ref=e699]:
+                                - generic [ref=e701]: $299
+                              - cell "Editar VEGANA - Familiar" [ref=e702]:
+                                - button "Editar VEGANA - Familiar" [ref=e703] [cursor=pointer]:
+                                  - img [ref=e706]
+                            - row "Disponibilidad VEGANA - Magna Magna $399 Editar VEGANA - Magna" [ref=e710]:
+                              - cell "Disponibilidad VEGANA - Magna Magna" [ref=e711]:
+                                - generic [ref=e712]:
+                                  - generic [ref=e714]:
+                                    - switch "Disponibilidad VEGANA - Magna" [checked]
+                                  - paragraph [ref=e718]: Magna
+                              - cell "$399" [ref=e719]:
+                                - generic [ref=e721]: $399
+                              - cell "Editar VEGANA - Magna" [ref=e722]:
+                                - button "Editar VEGANA - Magna" [ref=e723] [cursor=pointer]:
+                                  - img [ref=e726]
+                      - generic [ref=e731]:
+                        - paragraph [ref=e732]: COSTEÑA
+                        - paragraph [ref=e733]: Camarones, piña, chipotle.
+                        - table [ref=e734]:
+                          - rowgroup [ref=e735]:
+                            - row "Disponibilidad COSTEÑA - Chica Chica $85 Editar COSTEÑA - Chica" [ref=e736]:
+                              - cell "Disponibilidad COSTEÑA - Chica Chica" [ref=e737]:
+                                - generic [ref=e738]:
+                                  - generic [ref=e740]:
+                                    - switch "Disponibilidad COSTEÑA - Chica" [checked]
+                                  - paragraph [ref=e744]: Chica
+                              - cell "$85" [ref=e745]:
+                                - generic [ref=e747]: $85
+                              - cell "Editar COSTEÑA - Chica" [ref=e748]:
+                                - button "Editar COSTEÑA - Chica" [ref=e749] [cursor=pointer]:
+                                  - img [ref=e752]
+                            - row "Disponibilidad COSTEÑA - Mediana Mediana $130 Editar COSTEÑA - Mediana" [ref=e756]:
+                              - cell "Disponibilidad COSTEÑA - Mediana Mediana" [ref=e757]:
+                                - generic [ref=e758]:
+                                  - generic [ref=e760]:
+                                    - switch "Disponibilidad COSTEÑA - Mediana" [checked]
+                                  - paragraph [ref=e764]: Mediana
+                              - cell "$130" [ref=e765]:
+                                - generic [ref=e767]: $130
+                              - cell "Editar COSTEÑA - Mediana" [ref=e768]:
+                                - button "Editar COSTEÑA - Mediana" [ref=e769] [cursor=pointer]:
+                                  - img [ref=e772]
+                            - row "Disponibilidad COSTEÑA - Grande Grande $180 Editar COSTEÑA - Grande" [ref=e776]:
+                              - cell "Disponibilidad COSTEÑA - Grande Grande" [ref=e777]:
+                                - generic [ref=e778]:
+                                  - generic [ref=e780]:
+                                    - switch "Disponibilidad COSTEÑA - Grande" [checked]
+                                  - paragraph [ref=e784]: Grande
+                              - cell "$180" [ref=e785]:
+                                - generic [ref=e787]: $180
+                              - cell "Editar COSTEÑA - Grande" [ref=e788]:
+                                - button "Editar COSTEÑA - Grande" [ref=e789] [cursor=pointer]:
+                                  - img [ref=e792]
+                            - row "Disponibilidad COSTEÑA - Familiar Familiar $299 Editar COSTEÑA - Familiar" [ref=e796]:
+                              - cell "Disponibilidad COSTEÑA - Familiar Familiar" [ref=e797]:
+                                - generic [ref=e798]:
+                                  - generic [ref=e800]:
+                                    - switch "Disponibilidad COSTEÑA - Familiar" [checked]
+                                  - paragraph [ref=e804]: Familiar
+                              - cell "$299" [ref=e805]:
+                                - generic [ref=e807]: $299
+                              - cell "Editar COSTEÑA - Familiar" [ref=e808]:
+                                - button "Editar COSTEÑA - Familiar" [ref=e809] [cursor=pointer]:
+                                  - img [ref=e812]
+                            - row "Disponibilidad COSTEÑA - Magna Magna $399 Editar COSTEÑA - Magna" [ref=e816]:
+                              - cell "Disponibilidad COSTEÑA - Magna Magna" [ref=e817]:
+                                - generic [ref=e818]:
+                                  - generic [ref=e820]:
+                                    - switch "Disponibilidad COSTEÑA - Magna" [checked]
+                                  - paragraph [ref=e824]: Magna
+                              - cell "$399" [ref=e825]:
+                                - generic [ref=e827]: $399
+                              - cell "Editar COSTEÑA - Magna" [ref=e828]:
+                                - button "Editar COSTEÑA - Magna" [ref=e829] [cursor=pointer]:
+                                  - img [ref=e832]
+                      - generic [ref=e837]:
+                        - paragraph [ref=e838]: CUBANA
+                        - paragraph [ref=e839]: Pierna, tocino, atún, cebolla, champiñón, pimiento verde. champiñones.
+                        - table [ref=e840]:
+                          - rowgroup [ref=e841]:
+                            - row "Disponibilidad CUBANA - Chica Chica $85 Editar CUBANA - Chica" [ref=e842]:
+                              - cell "Disponibilidad CUBANA - Chica Chica" [ref=e843]:
+                                - generic [ref=e844]:
+                                  - generic [ref=e846]:
+                                    - switch "Disponibilidad CUBANA - Chica" [checked]
+                                  - paragraph [ref=e850]: Chica
+                              - cell "$85" [ref=e851]:
+                                - generic [ref=e853]: $85
+                              - cell "Editar CUBANA - Chica" [ref=e854]:
+                                - button "Editar CUBANA - Chica" [ref=e855] [cursor=pointer]:
+                                  - img [ref=e858]
+                            - row "Disponibilidad CUBANA - Mediana Mediana $130 Editar CUBANA - Mediana" [ref=e862]:
+                              - cell "Disponibilidad CUBANA - Mediana Mediana" [ref=e863]:
+                                - generic [ref=e864]:
+                                  - generic [ref=e866]:
+                                    - switch "Disponibilidad CUBANA - Mediana" [checked]
+                                  - paragraph [ref=e870]: Mediana
+                              - cell "$130" [ref=e871]:
+                                - generic [ref=e873]: $130
+                              - cell "Editar CUBANA - Mediana" [ref=e874]:
+                                - button "Editar CUBANA - Mediana" [ref=e875] [cursor=pointer]:
+                                  - img [ref=e878]
+                            - row "Disponibilidad CUBANA - Grande Grande $180 Editar CUBANA - Grande" [ref=e882]:
+                              - cell "Disponibilidad CUBANA - Grande Grande" [ref=e883]:
+                                - generic [ref=e884]:
+                                  - generic [ref=e886]:
+                                    - switch "Disponibilidad CUBANA - Grande" [checked]
+                                  - paragraph [ref=e890]: Grande
+                              - cell "$180" [ref=e891]:
+                                - generic [ref=e893]: $180
+                              - cell "Editar CUBANA - Grande" [ref=e894]:
+                                - button "Editar CUBANA - Grande" [ref=e895] [cursor=pointer]:
+                                  - img [ref=e898]
+                            - row "Disponibilidad CUBANA - Familiar Familiar $299 Editar CUBANA - Familiar" [ref=e902]:
+                              - cell "Disponibilidad CUBANA - Familiar Familiar" [ref=e903]:
+                                - generic [ref=e904]:
+                                  - generic [ref=e906]:
+                                    - switch "Disponibilidad CUBANA - Familiar" [checked]
+                                  - paragraph [ref=e910]: Familiar
+                              - cell "$299" [ref=e911]:
+                                - generic [ref=e913]: $299
+                              - cell "Editar CUBANA - Familiar" [ref=e914]:
+                                - button "Editar CUBANA - Familiar" [ref=e915] [cursor=pointer]:
+                                  - img [ref=e918]
+                            - row "Disponibilidad CUBANA - Magna Magna $399 Editar CUBANA - Magna" [ref=e922]:
+                              - cell "Disponibilidad CUBANA - Magna Magna" [ref=e923]:
+                                - generic [ref=e924]:
+                                  - generic [ref=e926]:
+                                    - switch "Disponibilidad CUBANA - Magna" [checked]
+                                  - paragraph [ref=e930]: Magna
+                              - cell "$399" [ref=e931]:
+                                - generic [ref=e933]: $399
+                              - cell "Editar CUBANA - Magna" [ref=e934]:
+                                - button "Editar CUBANA - Magna" [ref=e935] [cursor=pointer]:
+                                  - img [ref=e938]
+                      - generic [ref=e943]:
+                        - paragraph [ref=e944]: ÁRABE
+                        - paragraph [ref=e945]: Carne al pastor, chipotle duraznos.
+                        - table [ref=e946]:
+                          - rowgroup [ref=e947]:
+                            - row "Disponibilidad ÁRABE - Chica Chica $85 Editar ÁRABE - Chica" [ref=e948]:
+                              - cell "Disponibilidad ÁRABE - Chica Chica" [ref=e949]:
+                                - generic [ref=e950]:
+                                  - generic [ref=e952]:
+                                    - switch "Disponibilidad ÁRABE - Chica" [checked]
+                                  - paragraph [ref=e956]: Chica
+                              - cell "$85" [ref=e957]:
+                                - generic [ref=e959]: $85
+                              - cell "Editar ÁRABE - Chica" [ref=e960]:
+                                - button "Editar ÁRABE - Chica" [ref=e961] [cursor=pointer]:
+                                  - img [ref=e964]
+                            - row "Disponibilidad ÁRABE - Mediana Mediana $130 Editar ÁRABE - Mediana" [ref=e968]:
+                              - cell "Disponibilidad ÁRABE - Mediana Mediana" [ref=e969]:
+                                - generic [ref=e970]:
+                                  - generic [ref=e972]:
+                                    - switch "Disponibilidad ÁRABE - Mediana" [checked]
+                                  - paragraph [ref=e976]: Mediana
+                              - cell "$130" [ref=e977]:
+                                - generic [ref=e979]: $130
+                              - cell "Editar ÁRABE - Mediana" [ref=e980]:
+                                - button "Editar ÁRABE - Mediana" [ref=e981] [cursor=pointer]:
+                                  - img [ref=e984]
+                            - row "Disponibilidad ÁRABE - Grande Grande $180 Editar ÁRABE - Grande" [ref=e988]:
+                              - cell "Disponibilidad ÁRABE - Grande Grande" [ref=e989]:
+                                - generic [ref=e990]:
+                                  - generic [ref=e992]:
+                                    - switch "Disponibilidad ÁRABE - Grande" [checked]
+                                  - paragraph [ref=e996]: Grande
+                              - cell "$180" [ref=e997]:
+                                - generic [ref=e999]: $180
+                              - cell "Editar ÁRABE - Grande" [ref=e1000]:
+                                - button "Editar ÁRABE - Grande" [ref=e1001] [cursor=pointer]:
+                                  - img [ref=e1004]
+                            - row "Disponibilidad ÁRABE - Familiar Familiar $299 Editar ÁRABE - Familiar" [ref=e1008]:
+                              - cell "Disponibilidad ÁRABE - Familiar Familiar" [ref=e1009]:
+                                - generic [ref=e1010]:
+                                  - generic [ref=e1012]:
+                                    - switch "Disponibilidad ÁRABE - Familiar" [checked]
+                                  - paragraph [ref=e1016]: Familiar
+                              - cell "$299" [ref=e1017]:
+                                - generic [ref=e1019]: $299
+                              - cell "Editar ÁRABE - Familiar" [ref=e1020]:
+                                - button "Editar ÁRABE - Familiar" [ref=e1021] [cursor=pointer]:
+                                  - img [ref=e1024]
+                            - row "Disponibilidad ÁRABE - Magna Magna $399 Editar ÁRABE - Magna" [ref=e1028]:
+                              - cell "Disponibilidad ÁRABE - Magna Magna" [ref=e1029]:
+                                - generic [ref=e1030]:
+                                  - generic [ref=e1032]:
+                                    - switch "Disponibilidad ÁRABE - Magna" [checked]
+                                  - paragraph [ref=e1036]: Magna
+                              - cell "$399" [ref=e1037]:
+                                - generic [ref=e1039]: $399
+                              - cell "Editar ÁRABE - Magna" [ref=e1040]:
+                                - button "Editar ÁRABE - Magna" [ref=e1041] [cursor=pointer]:
+                                  - img [ref=e1044]
+                      - generic [ref=e1049]:
+                        - paragraph [ref=e1050]: CANADIENSE
+                        - paragraph [ref=e1051]: Lomo canadiense, salami y peperoni.
+                        - table [ref=e1052]:
+                          - rowgroup [ref=e1053]:
+                            - row "Disponibilidad CANADIENSE - Chica Chica $85 Editar CANADIENSE - Chica" [ref=e1054]:
+                              - cell "Disponibilidad CANADIENSE - Chica Chica" [ref=e1055]:
+                                - generic [ref=e1056]:
+                                  - generic [ref=e1058]:
+                                    - switch "Disponibilidad CANADIENSE - Chica" [checked]
+                                  - paragraph [ref=e1062]: Chica
+                              - cell "$85" [ref=e1063]:
+                                - generic [ref=e1065]: $85
+                              - cell "Editar CANADIENSE - Chica" [ref=e1066]:
+                                - button "Editar CANADIENSE - Chica" [ref=e1067] [cursor=pointer]:
+                                  - img [ref=e1070]
+                            - row "Disponibilidad CANADIENSE - Mediana Mediana $130 Editar CANADIENSE - Mediana" [ref=e1074]:
+                              - cell "Disponibilidad CANADIENSE - Mediana Mediana" [ref=e1075]:
+                                - generic [ref=e1076]:
+                                  - generic [ref=e1078]:
+                                    - switch "Disponibilidad CANADIENSE - Mediana" [checked]
+                                  - paragraph [ref=e1082]: Mediana
+                              - cell "$130" [ref=e1083]:
+                                - generic [ref=e1085]: $130
+                              - cell "Editar CANADIENSE - Mediana" [ref=e1086]:
+                                - button "Editar CANADIENSE - Mediana" [ref=e1087] [cursor=pointer]:
+                                  - img [ref=e1090]
+                            - row "Disponibilidad CANADIENSE - Grande Grande $180 Editar CANADIENSE - Grande" [ref=e1094]:
+                              - cell "Disponibilidad CANADIENSE - Grande Grande" [ref=e1095]:
+                                - generic [ref=e1096]:
+                                  - generic [ref=e1098]:
+                                    - switch "Disponibilidad CANADIENSE - Grande" [checked]
+                                  - paragraph [ref=e1102]: Grande
+                              - cell "$180" [ref=e1103]:
+                                - generic [ref=e1105]: $180
+                              - cell "Editar CANADIENSE - Grande" [ref=e1106]:
+                                - button "Editar CANADIENSE - Grande" [ref=e1107] [cursor=pointer]:
+                                  - img [ref=e1110]
+                            - row "Disponibilidad CANADIENSE - Familiar Familiar $299 Editar CANADIENSE - Familiar" [ref=e1114]:
+                              - cell "Disponibilidad CANADIENSE - Familiar Familiar" [ref=e1115]:
+                                - generic [ref=e1116]:
+                                  - generic [ref=e1118]:
+                                    - switch "Disponibilidad CANADIENSE - Familiar" [checked]
+                                  - paragraph [ref=e1122]: Familiar
+                              - cell "$299" [ref=e1123]:
+                                - generic [ref=e1125]: $299
+                              - cell "Editar CANADIENSE - Familiar" [ref=e1126]:
+                                - button "Editar CANADIENSE - Familiar" [ref=e1127] [cursor=pointer]:
+                                  - img [ref=e1130]
+                            - row "Disponibilidad CANADIENSE - Magna Magna $399 Editar CANADIENSE - Magna" [ref=e1134]:
+                              - cell "Disponibilidad CANADIENSE - Magna Magna" [ref=e1135]:
+                                - generic [ref=e1136]:
+                                  - generic [ref=e1138]:
+                                    - switch "Disponibilidad CANADIENSE - Magna" [checked]
+                                  - paragraph [ref=e1142]: Magna
+                              - cell "$399" [ref=e1143]:
+                                - generic [ref=e1145]: $399
+                              - cell "Editar CANADIENSE - Magna" [ref=e1146]:
+                                - button "Editar CANADIENSE - Magna" [ref=e1147] [cursor=pointer]:
+                                  - img [ref=e1150]
+                      - generic [ref=e1155]:
+                        - paragraph [ref=e1156]: MARINERA
+                        - paragraph [ref=e1157]: Pulpo, atún, camarón, cebolla y jalapeño.
+                        - table [ref=e1158]:
+                          - rowgroup [ref=e1159]:
+                            - row "Disponibilidad MARINERA - Chica Chica $85 Editar MARINERA - Chica" [ref=e1160]:
+                              - cell "Disponibilidad MARINERA - Chica Chica" [ref=e1161]:
+                                - generic [ref=e1162]:
+                                  - generic [ref=e1164]:
+                                    - switch "Disponibilidad MARINERA - Chica" [checked]
+                                  - paragraph [ref=e1168]: Chica
+                              - cell "$85" [ref=e1169]:
+                                - generic [ref=e1171]: $85
+                              - cell "Editar MARINERA - Chica" [ref=e1172]:
+                                - button "Editar MARINERA - Chica" [ref=e1173] [cursor=pointer]:
+                                  - img [ref=e1176]
+                            - row "Disponibilidad MARINERA - Mediana Mediana $130 Editar MARINERA - Mediana" [ref=e1180]:
+                              - cell "Disponibilidad MARINERA - Mediana Mediana" [ref=e1181]:
+                                - generic [ref=e1182]:
+                                  - generic [ref=e1184]:
+                                    - switch "Disponibilidad MARINERA - Mediana" [checked]
+                                  - paragraph [ref=e1188]: Mediana
+                              - cell "$130" [ref=e1189]:
+                                - generic [ref=e1191]: $130
+                              - cell "Editar MARINERA - Mediana" [ref=e1192]:
+                                - button "Editar MARINERA - Mediana" [ref=e1193] [cursor=pointer]:
+                                  - img [ref=e1196]
+                            - row "Disponibilidad MARINERA - Grande Grande $180 Editar MARINERA - Grande" [ref=e1200]:
+                              - cell "Disponibilidad MARINERA - Grande Grande" [ref=e1201]:
+                                - generic [ref=e1202]:
+                                  - generic [ref=e1204]:
+                                    - switch "Disponibilidad MARINERA - Grande" [checked]
+                                  - paragraph [ref=e1208]: Grande
+                              - cell "$180" [ref=e1209]:
+                                - generic [ref=e1211]: $180
+                              - cell "Editar MARINERA - Grande" [ref=e1212]:
+                                - button "Editar MARINERA - Grande" [ref=e1213] [cursor=pointer]:
+                                  - img [ref=e1216]
+                            - row "Disponibilidad MARINERA - Familiar Familiar $299 Editar MARINERA - Familiar" [ref=e1220]:
+                              - cell "Disponibilidad MARINERA - Familiar Familiar" [ref=e1221]:
+                                - generic [ref=e1222]:
+                                  - generic [ref=e1224]:
+                                    - switch "Disponibilidad MARINERA - Familiar" [checked]
+                                  - paragraph [ref=e1228]: Familiar
+                              - cell "$299" [ref=e1229]:
+                                - generic [ref=e1231]: $299
+                              - cell "Editar MARINERA - Familiar" [ref=e1232]:
+                                - button "Editar MARINERA - Familiar" [ref=e1233] [cursor=pointer]:
+                                  - img [ref=e1236]
+                            - row "Disponibilidad MARINERA - Magna Magna $399 Editar MARINERA - Magna" [ref=e1240]:
+                              - cell "Disponibilidad MARINERA - Magna Magna" [ref=e1241]:
+                                - generic [ref=e1242]:
+                                  - generic [ref=e1244]:
+                                    - switch "Disponibilidad MARINERA - Magna" [checked]
+                                  - paragraph [ref=e1248]: Magna
+                              - cell "$399" [ref=e1249]:
+                                - generic [ref=e1251]: $399
+                              - cell "Editar MARINERA - Magna" [ref=e1252]:
+                                - button "Editar MARINERA - Magna" [ref=e1253] [cursor=pointer]:
+                                  - img [ref=e1256]
+                - generic [ref=e1260]:
+                  - button "Pizzas Familiares 10" [expanded] [ref=e1261] [cursor=pointer]:
+                    - img [ref=e1263]
+                    - generic [ref=e1266]:
+                      - img [ref=e1267]
+                      - paragraph [ref=e1272]: Pizzas Familiares
+                      - generic [ref=e1274]: "10"
+                  - region "Pizzas Familiares 10" [ref=e1275]:
+                    - generic [ref=e1277]:
+                      - generic [ref=e1279]:
+                        - generic [ref=e1280]:
+                          - paragraph [ref=e1282]: HAWAIANA Familiar
+                          - paragraph [ref=e1283]: Jamón y piña
+                        - generic [ref=e1284]:
+                          - generic [ref=e1286]:
+                            - switch "Disponibilidad HAWAIANA Familiar" [checked]
+                          - generic [ref=e1291]: $299
+                          - button "Editar HAWAIANA Familiar" [ref=e1292] [cursor=pointer]:
+                            - img [ref=e1295]
+                      - generic [ref=e1300]:
+                        - generic [ref=e1301]:
+                          - paragraph [ref=e1303]: AL ALAMBRE Familiar
+                          - paragraph [ref=e1304]: Carne al pastor, tocino, jamón, pimiento verde, cebolla y champiñones
+                        - generic [ref=e1305]:
+                          - generic [ref=e1307]:
+                            - switch "Disponibilidad AL ALAMBRE Familiar" [checked]
+                          - generic [ref=e1312]: $299
+                          - button "Editar AL ALAMBRE Familiar" [ref=e1313] [cursor=pointer]:
+                            - img [ref=e1316]
+                      - generic [ref=e1321]:
+                        - generic [ref=e1322]:
+                          - paragraph [ref=e1324]: MEXICANA Familiar
+                          - paragraph [ref=e1325]: Chorizo, carne molida, cebolla y jalapeño
+                        - generic [ref=e1326]:
+                          - generic [ref=e1328]:
+                            - switch "Disponibilidad MEXICANA Familiar" [checked]
+                          - generic [ref=e1333]: $299
+                          - button "Editar MEXICANA Familiar" [ref=e1334] [cursor=pointer]:
+                            - img [ref=e1337]
+                      - generic [ref=e1342]:
+                        - generic [ref=e1343]:
+                          - paragraph [ref=e1345]: CUATRO QUESOS Familiar
+                          - paragraph [ref=e1346]: Queso crema, mozzarella, parmesano y cheddar
+                        - generic [ref=e1347]:
+                          - generic [ref=e1349]:
+                            - switch "Disponibilidad CUATRO QUESOS Familiar" [checked]
+                          - generic [ref=e1354]: $299
+                          - button "Editar CUATRO QUESOS Familiar" [ref=e1355] [cursor=pointer]:
+                            - img [ref=e1358]
+                      - generic [ref=e1363]:
+                        - generic [ref=e1364]:
+                          - paragraph [ref=e1366]: VEGANA Familiar
+                          - paragraph [ref=e1367]: Pimiento, cebolla, champiñones frescos y aceitunas
+                        - generic [ref=e1368]:
+                          - generic [ref=e1370]:
+                            - switch "Disponibilidad VEGANA Familiar" [checked]
+                          - generic [ref=e1375]: $299
+                          - button "Editar VEGANA Familiar" [ref=e1376] [cursor=pointer]:
+                            - img [ref=e1379]
+                      - generic [ref=e1384]:
+                        - generic [ref=e1385]:
+                          - paragraph [ref=e1387]: COSTEÑA Familiar
+                          - paragraph [ref=e1388]: Camarones, piña y chipotle
+                        - generic [ref=e1389]:
+                          - generic [ref=e1391]:
+                            - switch "Disponibilidad COSTEÑA Familiar" [checked]
+                          - generic [ref=e1396]: $299
+                          - button "Editar COSTEÑA Familiar" [ref=e1397] [cursor=pointer]:
+                            - img [ref=e1400]
+                      - generic [ref=e1405]:
+                        - generic [ref=e1406]:
+                          - paragraph [ref=e1408]: CUBANA Familiar
+                          - paragraph [ref=e1409]: Pierna, tocino, atún, cebolla, champiñón y pimiento verde
+                        - generic [ref=e1410]:
+                          - generic [ref=e1412]:
+                            - switch "Disponibilidad CUBANA Familiar" [checked]
+                          - generic [ref=e1417]: $299
+                          - button "Editar CUBANA Familiar" [ref=e1418] [cursor=pointer]:
+                            - img [ref=e1421]
+                      - generic [ref=e1426]:
+                        - generic [ref=e1427]:
+                          - paragraph [ref=e1429]: ÁRABE Familiar
+                          - paragraph [ref=e1430]: Carne al pastor, chipotle y duraznos
+                        - generic [ref=e1431]:
+                          - generic [ref=e1433]:
+                            - switch "Disponibilidad ÁRABE Familiar" [checked]
+                          - generic [ref=e1438]: $299
+                          - button "Editar ÁRABE Familiar" [ref=e1439] [cursor=pointer]:
+                            - img [ref=e1442]
+                      - generic [ref=e1447]:
+                        - generic [ref=e1448]:
+                          - paragraph [ref=e1450]: CANADIENSE Familiar
+                          - paragraph [ref=e1451]: Lomo canadiense, salami y peperoni
+                        - generic [ref=e1452]:
+                          - generic [ref=e1454]:
+                            - switch "Disponibilidad CANADIENSE Familiar" [checked]
+                          - generic [ref=e1459]: $299
+                          - button "Editar CANADIENSE Familiar" [ref=e1460] [cursor=pointer]:
+                            - img [ref=e1463]
+                      - generic [ref=e1468]:
+                        - generic [ref=e1469]:
+                          - paragraph [ref=e1471]: MARINERA Familiar
+                          - paragraph [ref=e1472]: Pulpo, atún, camarón, cebolla y jalapeño
+                        - generic [ref=e1473]:
+                          - generic [ref=e1475]:
+                            - switch "Disponibilidad MARINERA Familiar" [checked]
+                          - generic [ref=e1480]: $299
+                          - button "Editar MARINERA Familiar" [ref=e1481] [cursor=pointer]:
+                            - img [ref=e1484]
+                - generic [ref=e1488]:
+                  - button "Test Seccion 1" [expanded] [ref=e1489] [cursor=pointer]:
+                    - img [ref=e1491]
+                    - generic [ref=e1494]:
+                      - img [ref=e1495]
+                      - paragraph [ref=e1500]: Test Seccion
+                      - generic [ref=e1502]: "1"
+                  - region "Test Seccion 1" [ref=e1503]:
+                    - generic [ref=e1507]:
+                      - paragraph [ref=e1510]: Test Plato
+                      - generic [ref=e1511]:
+                        - generic [ref=e1513]:
+                          - switch "Disponibilidad Test Plato" [checked]
+                        - generic [ref=e1518]: $9,990
+                        - button "Editar Test Plato" [ref=e1519] [cursor=pointer]:
+                          - img [ref=e1522]
+                - generic [ref=e1526]:
+                  - button "Extras 1" [expanded] [ref=e1527] [cursor=pointer]:
+                    - img [ref=e1529]
+                    - generic [ref=e1532]:
+                      - img [ref=e1533]
+                      - paragraph [ref=e1538]: Extras
+                      - generic [ref=e1540]: "1"
+                  - region "Extras 1" [ref=e1541]:
+                    - generic [ref=e1545]:
+                      - generic [ref=e1547]:
+                        - paragraph [ref=e1548]: Orilla de queso extra
+                        - generic [ref=e1550]: No disponible
+                      - generic [ref=e1551]:
+                        - generic [ref=e1553]:
+                          - switch "Disponibilidad Orilla de queso extra"
+                        - generic [ref=e1558]: $29
+                        - button "Editar Orilla de queso extra" [ref=e1559] [cursor=pointer]:
+                          - img [ref=e1562]
+  - generic:
+    - generic:
+      - generic "Paleta de comandos"

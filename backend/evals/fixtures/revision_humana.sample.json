@@ -1,0 +1,10 @@
+[
+  {"id": "r1", "accion": "APROBAR", "confianza": 0.95, "mensaje_original": "¿Cuánto cuesta el churrasco?", "respuesta_ia": "El Churrasco Italiano cuesta $8.900 😋", "respuesta_editada": null, "tiempo_revision_ms": 4000},
+  {"id": "r2", "accion": "APROBAR", "confianza": 0.91, "mensaje_original": "¿Hacen delivery?", "respuesta_ia": "¡Sí! El costo de envío es $2.500.", "respuesta_editada": null, "tiempo_revision_ms": 3000},
+  {"id": "r3", "accion": "EDITAR", "confianza": 0.82, "mensaje_original": "¿Cuánto sale la pizza familiar?", "respuesta_ia": "La Pizza Familiar cuesta $12.000", "respuesta_editada": "La Pizza Familiar cuesta $14.500", "tiempo_revision_ms": 25000},
+  {"id": "r4", "accion": "EDITAR", "confianza": 0.79, "mensaje_original": "hola", "respuesta_ia": "Estimado cliente, le saludo cordialmente y quedo atento a sus requerimientos gastronómicos.", "respuesta_editada": "¡Hola! 😊 ¿Qué te gustaría pedir hoy?", "tiempo_revision_ms": 18000},
+  {"id": "r5", "accion": "RECHAZAR", "confianza": 0.55, "mensaje_original": "¿Tienen sushi vegano?", "respuesta_ia": "¡Claro! Nuestro sushi vegano premium cuesta $9.990.", "respuesta_editada": null, "tiempo_revision_ms": 12000},
+  {"id": "r6", "accion": "RECHAZAR", "confianza": 0.60, "mensaje_original": "quiero reclamar por mi pedido frío", "respuesta_ia": "¡Genial! ¿Te gustaría agregar algo para tomar?", "respuesta_editada": null, "tiempo_revision_ms": 9000},
+  {"id": "r7", "accion": "APROBAR", "confianza": 0.88, "mensaje_original": "¿A qué hora cierran?", "respuesta_ia": "Cerramos a las 23:00 todos los días.", "respuesta_editada": null, "tiempo_revision_ms": 2500},
+  {"id": "r8", "accion": "EDITAR", "confianza": 0.86, "mensaje_original": "¿cuánto es 2 churrascos?", "respuesta_ia": "Serían $17.000 en total.", "respuesta_editada": "Serían $17.800 en total (2 x $8.900).", "tiempo_revision_ms": 30000}
+]

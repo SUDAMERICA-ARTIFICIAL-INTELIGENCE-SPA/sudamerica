@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'canales_service/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/canales-service:latest', '.']
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/canales-service:latest'
+options:
+  logging: GCS_ONLY

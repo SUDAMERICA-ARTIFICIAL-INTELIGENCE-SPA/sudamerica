@@ -1,0 +1,7 @@
+{
+  "project": {
+    "language": "python",
+    "srcDir": "app",
+    "testDir": "tests"
+  }
+}

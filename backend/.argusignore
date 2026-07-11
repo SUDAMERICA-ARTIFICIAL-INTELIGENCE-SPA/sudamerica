@@ -1,0 +1,6 @@
+Lib/
+site-packages/
+.venv/
+__pycache__/
+alembic/
+*.pyc

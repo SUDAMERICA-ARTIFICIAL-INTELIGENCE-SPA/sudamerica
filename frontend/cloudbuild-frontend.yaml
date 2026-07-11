@@ -1,0 +1,30 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "build"
+      # Single gateway URL — Load Balancer routes by path prefix.
+      # To enable: run infra/setup-gateway-lb.sh, point DNS, then uncomment:
+      # - "--build-arg"
+      # - "NEXT_PUBLIC_API_GATEWAY=https://api.sudamerica.com"
+      # Legacy per-service URLs (used until LB is provisioned):
+      - "--build-arg"
+      - "NEXT_PUBLIC_API_EXECUTE=https://api-execute-456595931835.us-central1.run.app"
+      - "--build-arg"
+      - "NEXT_PUBLIC_API_DIALER=https://ai-dialer-456595931835.us-central1.run.app"
+      - "--build-arg"
+      - "NEXT_PUBLIC_API_CALLBACK=https://callback-manual-456595931835.us-central1.run.app"
+      - "--build-arg"
+      - "NEXT_PUBLIC_API_CANALES=https://canales-service-456595931835.us-central1.run.app"
+      - "--build-arg"
+      - "NEXT_PUBLIC_API_TASKS=https://tasks-456595931835.us-central1.run.app"
+      - "--build-arg"
+      - "NEXT_PUBLIC_WS_DIALER=wss://ai-dialer-456595931835.us-central1.run.app"
+      - "-t"
+      - "us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/frontend:latest"
+      - "."
+
+images:
+  - "us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/frontend:latest"
+
+options:
+  logging: CLOUD_LOGGING_ONLY

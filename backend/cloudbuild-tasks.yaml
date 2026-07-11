@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'tasks/Dockerfile', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/tasks:latest', '.']
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/sudamerica/tasks:latest'
+options:
+  logging: GCS_ONLY

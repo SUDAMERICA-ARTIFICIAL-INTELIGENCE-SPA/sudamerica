@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+*.md
+tests
+scripts
+vitest.config.ts
+vitest.setup.ts
+.claude

@@ -1,0 +1,35 @@
+{
+  "project": {
+    "language": "python",
+    "srcDir": ".",
+    "testDir": "."
+  },
+  "exclude": [
+    "**/Lib/**",
+    "**/site-packages/**",
+    "**/.venv/**",
+    "**/venv/**",
+    "**/__pycache__/**",
+    "**/node_modules/**",
+    "**/share/**",
+    "**/src/**"
+  ],
+  "quality": {
+    "thresholds": {
+      "max_duplication_pct": 8.0,
+      "max_cc": 12,
+      "max_lines": 30,
+      "max_nesting": 3
+    }
+  },
+  "score": {
+    "weights": {
+      "tests": 0.10,
+      "complexity": 0.25,
+      "duplication": 0.10,
+      "security": 0.15,
+      "performance": 0.40
+    },
+    "fail_penalty": 10
+  }
+}

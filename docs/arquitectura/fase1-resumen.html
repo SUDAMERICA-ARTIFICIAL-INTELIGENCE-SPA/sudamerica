@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Sudamérica AI — Diagnóstico Fase 1 · Resumen ejecutivo</title>
+<style>
+  :root{
+    --page:#f9f9f7; --surface:#fcfcfb;
+    --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --baseline:#c3c2b7; --ring:rgba(11,11,11,.10);
+    --accent:#2a78d6; --accent-deep:#1c5cab; --accent-wash:#cde2fb;
+    --crit:#d03b3b; --serious:#ec835a; --warn:#fab219; --good:#0ca30c; --good-text:#006300;
+    --violet:#4a3aa7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--page); color:var(--ink);
+    line-height:1.55; font-size:16px;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ── header ─────────────────────────────── */
+  header{padding:56px 0 8px}
+  .kicker{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep)}
+  h1{font-size:34px;line-height:1.15;font-weight:750;margin:10px 0 8px;letter-spacing:-.01em}
+  .sub{color:var(--ink-2);font-size:17px;max-width:760px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{font-size:12.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--ring);
+        border-radius:999px;padding:4px 12px}
+  .chip b{color:var(--ink);font-weight:600}
+
+  /* ── section scaffolding ────────────────── */
+  section{margin-top:52px}
+  h2{font-size:22px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+  h2 .n{font-size:12px;font-weight:700;color:var(--accent-deep);background:var(--accent-wash);
+        border-radius:6px;padding:2px 8px;letter-spacing:.02em}
+  .lede{color:var(--ink-2);margin:8px 0 22px;max-width:820px}
+  .card{background:var(--surface);border:1px solid var(--ring);border-radius:14px;padding:22px 24px}
+
+  /* ── KPI tiles ──────────────────────────── */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin-top:26px}
+  .tile{background:var(--surface);border:1px solid var(--ring);border-radius:14px;padding:16px 18px 14px}
+  .tile .v{font-size:32px;font-weight:750;letter-spacing:-.02em;line-height:1.1}
+  .tile .l{font-size:12.5px;color:var(--ink-2);margin-top:4px;line-height:1.35}
+  .tile.bad .v{color:var(--crit)} .tile.warn .v{color:#b25a00} .tile.ok .v{color:var(--good-text)}
+  .tile.acc .v{color:var(--accent-deep)}
+
+  /* ── flow diagram ───────────────────────── */
+  .flow{display:flex;flex-direction:column;gap:0;margin-top:6px}
+  .fnode{display:flex;align-items:flex-start;gap:14px;background:var(--surface);
+         border:1px solid var(--ring);border-radius:12px;padding:14px 18px;position:relative}
+  .fnode .ico{font-size:20px;line-height:1.3;width:28px;text-align:center;flex:none}
+  .fnode h4{font-size:15px;font-weight:650}
+  .fnode p{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+  .fnode code{font-size:12px;background:var(--page);border:1px solid var(--grid);border-radius:5px;padding:1px 6px;color:var(--ink-2)}
+  .farrow{width:2px;height:22px;background:var(--baseline);margin-left:41px;position:relative}
+  .farrow::after{content:"";position:absolute;bottom:-1px;left:-4px;border:5px solid transparent;border-top-color:var(--baseline)}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:650;border-radius:999px;
+         padding:2px 9px;margin:6px 6px 0 0;border:1px solid transparent}
+  .b-risk{color:#8c1d1d;background:#fbe9e9;border-color:#f3cdcd}
+  .b-rubro{color:var(--accent-deep);background:var(--accent-wash)}
+  .b-state{color:#4a3aa7;background:#eae7fb}
+  .b-ok{color:var(--good-text);background:#e3f4e3}
+
+  /* ── severity bars ──────────────────────── */
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:2px 0 16px;font-size:13px;color:var(--ink-2)}
+  .legend .sw{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .bars{display:flex;flex-direction:column;gap:13px}
+  .brow{display:grid;grid-template-columns:250px 1fr 44px;gap:14px;align-items:center}
+  .brow .bl{font-size:13.5px;color:var(--ink);line-height:1.3}
+  .brow .bl small{display:block;color:var(--muted);font-size:11.5px}
+  .btrack{display:flex;gap:2px;height:18px}
+  .bseg{height:100%;border-radius:2px;min-width:6px;transition:opacity .15s}
+  .bseg:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}
+  .bseg:last-child{border-top-right-radius:4px;border-bottom-right-radius:4px}
+  .btrack:hover .bseg{opacity:.55}
+  .btrack .bseg:hover{opacity:1}
+  .bv{font-size:13px;font-weight:650;color:var(--ink-2);font-variant-numeric:tabular-nums;text-align:right}
+  .s-alta{background:var(--crit)} .s-media{background:var(--serious)} .s-baja{background:var(--warn)}
+
+  /* ── K/P/E/D ────────────────────────────── */
+  .kped{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .kped .card{padding:18px 20px}
+  .kped .tag{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+             border-radius:9px;font-weight:750;font-size:16px;color:#fff;margin-bottom:10px}
+  .kped h4{font-size:15px;font-weight:650;margin-bottom:4px}
+  .kped p{font-size:13px;color:var(--ink-2)}
+  .kped .cnt{float:right;font-size:24px;font-weight:750;color:var(--ink);font-variant-numeric:tabular-nums}
+  .k-k{background:var(--ink)} .k-p{background:var(--accent)} .k-e{background:var(--violet)} .k-d{background:var(--serious)}
+
+  /* ── feynman cards ──────────────────────── */
+  .fey{display:flex;flex-direction:column;gap:16px}
+  .fey .card{border-left:4px solid var(--accent);padding:20px 24px}
+  .fey .card.urgent{border-left-color:var(--crit)}
+  .fey .qid{font-size:11.5px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+  .fey h3{font-size:17px;font-weight:700;margin:4px 0 10px}
+  .fey .story{font-size:14.5px;color:var(--ink);background:var(--page);border:1px solid var(--grid);
+              border-radius:10px;padding:12px 16px;margin-bottom:12px}
+  .fey .story::before{content:"🧠 En simple: ";font-weight:650;color:var(--accent-deep)}
+  .fey .real{font-size:13.5px;color:var(--ink-2);margin-bottom:10px}
+  .fey .real b{color:var(--ink)}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{font-size:12.5px;border:1px solid var(--grid);background:var(--surface);border-radius:8px;padding:6px 11px;color:var(--ink-2)}
+  .opt.rec{border-color:var(--good);background:#e3f4e3;color:var(--good-text);font-weight:600}
+  .opt.rec::before{content:"✓ recomendado · ";font-weight:700}
+
+  /* ── fase 2 ─────────────────────────────── */
+  .f2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .f2 .card{padding:18px 20px}
+  .f2 .step{font-size:11.5px;font-weight:700;color:var(--accent-deep);letter-spacing:.05em}
+  .f2 h4{font-size:15.5px;font-weight:650;margin:4px 0 6px}
+  .f2 p{font-size:13px;color:var(--ink-2)}
+  .principles{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .pr{display:flex;gap:10px;font-size:13.5px;color:var(--ink-2);align-items:baseline}
+  .pr b{color:var(--ink)}
+  .pr .pico{flex:none;width:20px;text-align:center}
+
+  .callout{border:1px solid #f3cdcd;background:#fdf3f3;border-radius:12px;padding:16px 20px;margin-top:18px;
+           font-size:14px;color:#6d1a1a}
+  .callout b{color:#8c1d1d}
+  .callout.blue{border-color:#c5dcf6;background:#eef5fd;color:#173e66}
+  .callout.blue b{color:var(--accent-deep)}
+
+  footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--grid);
+         font-size:12.5px;color:var(--muted)}
+  footer code{background:var(--surface);border:1px solid var(--grid);border-radius:5px;padding:1px 6px}
+  @media (max-width:720px){ .brow{grid-template-columns:1fr}.brow .bv{text-align:left} h1{font-size:27px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Diagnóstico de arquitectura · Fase 1 · Solo lectura</div>
+  <h1>Sudamérica AI: dónde vive el "restaurante" dentro del motor<br>y qué falta para el SaaS 100-rubros</h1>
+  <p class="sub">Resumen visual de <code>fase1-diagnostico.md</code>. Cuatro barridos de evidencia sobre el monorepo
+  <b>MVP/</b> + verificación contra los repos de producción. Cada afirmación del informe completo cita <i>archivo:línea</i>.</p>
+  <div class="meta">
+    <span class="chip">📅 <b>2026-07-11</b></span>
+    <span class="chip">rama <b>main</b> · HEAD <b>0fedeb6</b></span>
+    <span class="chip">rubro atípico elegido: <b>inmobiliaria</b></span>
+    <span class="chip">estado: <b>⛔ STOP GATE 1 — esperando tu aprobación</b></span>
+  </div>
+
+  <div class="tiles">
+    <div class="tile acc"><div class="v">101</div><div class="l">rubros definidos… <b>en código</b>, no en datos (deploy doble para añadir uno)</div></div>
+    <div class="tile bad"><div class="v">28</div><div class="l">fugas de acoplamiento accionables (14 de severidad alta)</div></div>
+    <div class="tile bad"><div class="v">0</div><div class="l">referencias a "rubro" en AI_dialer y open_agent — dos cerebros ciegos</div></div>
+    <div class="tile bad"><div class="v">3</div><div class="l">policies RLS <b>públicas</b> (mesas, sucursales, evolution_instances)</div></div>
+    <div class="tile warn"><div class="v">22</div><div class="l">reglas de negocio clasificadas K/P/E/D con evidencia</div></div>
+    <div class="tile ok"><div class="v">O(1)</div><div class="l">alta de tenant: milisegundos, sin migraciones — la base del Test 60s ya existe</div></div>
+  </div>
+</header>
+
+<!-- ══════════════ 1. La idea ══════════════ -->
+<section>
+  <h2><span class="n">01</span> La idea en 60 segundos (versión Feynman)</h2>
+  <div class="card" style="font-size:15px">
+    <p>Imagina que tu sistema es un <b>actor que nació siendo mesero</b>. Con el tiempo le cosieron un
+    armario de 101 disfraces (peluquero, veterinario, hotelero…). El problema tiene tres capas:</p>
+    <p style="margin-top:10px">① <b>Los disfraces están cosidos al cuerpo del actor</b> — viven dentro del código
+    (un diccionario Python de 3.304 líneas y su copia manual en TypeScript de 3.662). Para añadir el disfraz 102
+    hay que operar al actor (deploy doble). Tu meta — "un rubro nuevo en 60 segundos, sin deploy" — exige que los
+    disfraces sean <b>ropa de verdad</b>: archivos de datos (manifiestos) que el actor lee al vestirse.</p>
+    <p style="margin-top:10px">② <b>Dos de sus cuatro cerebros nunca supieron que hay otros oficios.</b> El orquestador
+    (<code>api_execute</code>) y el panel web ya cambian de vocabulario según el rubro. Pero el motor conversacional
+    (<code>AI_dialer</code>) y el copiloto administrativo (<code>open_agent</code>) siguen pensando en platos, mesas y meseros
+    — a veces dormidos, a veces en mensajes reales al cliente (la bienvenida de WhatsApp ofrece "Ver el menú | Reservar mesa"
+    a <i>cualquier</i> negocio).</p>
+    <p style="margin-top:10px">③ <b>El teatro tiene grietas propias</b> que no son de disfraces pero hay que arreglar antes de la
+    reforma: mensajes que pueden responderse dos veces (idempotencia rota en un camino), tres puertas sin cerradura
+    (RLS público), cambios de reglas a mitad de función (sin anclaje de versión) y silencios totales cuando algo falla.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 2. El flujo ══════════════ -->
+<section>
+  <h2><span class="n">02</span> El camino de un mensaje de WhatsApp</h2>
+  <p class="lede">Descubrimiento clave: <b>open_agent no atiende clientes</b> (es el copiloto del dueño).
+  El flujo real es este — y el rubro entra en un único punto:</p>
+
+  <div class="flow">
+    <div class="fnode"><div class="ico">📱</div><div>
+      <h4>Cliente → Evolution API (gateway WhatsApp)</h4>
+      <p>El mensaje llega como webhook con token estático (no firma de cuerpo). <code>whatsapp.py:415-429</code></p>
+    </div></div>
+    <div class="farrow"></div>
+    <div class="fnode"><div class="ico">🚪</div><div>
+      <h4>canales_service — la puerta</h4>
+      <p>Único punto de deduplicación: un dict <b>en memoria</b>, TTL 60 s, por réplica. <code>whatsapp.py:53-70</code></p>
+      <span class="badge b-risk">⚠️ reentrada desde la cola SIN dedup → doble respuesta posible</span>
+      <span class="badge b-risk">⚠️ debounce en memoria: se pierde al reiniciar</span>
+      <span class="badge b-ok">✓ 0 lógica de rubro: capa de canal ya agnóstica</span>
+    </div></div>
+    <div class="farrow"></div>
+    <div class="fnode"><div class="ico">🧭</div><div>
+      <h4>api_execute — el orquestador (decide el QUÉ)</h4>
+      <p>Lee el rubro del tenant <b>fresco en cada mensaje</b> (<code>tenant_rubro.py:19-32</code>) y arma el system prompt:
+      base + capacidades + glosario del rubro + reglas de bienvenida.</p>
+      <span class="badge b-rubro">🎯 ÚNICO punto donde entra el rubro en todo el flujo</span>
+      <span class="badge b-risk">⚠️ bienvenida hardcodeada de restaurante, sin gate</span>
+      <span class="badge b-risk">⚠️ sin anclaje de versión: cambio de config afecta conversaciones en vuelo</span>
+    </div></div>
+    <div class="farrow"></div>
+    <div class="fnode"><div class="ico">🤖</div><div>
+      <h4>AI_dialer — el motor LLM (ejecuta el CÓMO)</h4>
+      <p>Persiste sesión e historial (últimos 10 mensajes) y llama al LLM (20 s/intento, con fallback).</p>
+      <span class="badge b-state">💾 Session + AIConversation (TTL lazy 30 min)</span>
+      <span class="badge b-risk">⚠️ sub-agentes de restaurante dormidos pero vivos (cotizador, reservador…)</span>
+    </div></div>
+    <div class="farrow"></div>
+    <div class="fnode"><div class="ico">📤</div><div>
+      <h4>Vuelta al cliente</h4>
+      <p>Formateo WhatsApp, 3 reintentos de envío, rate-limit 30 msg/60 s por instancia.</p>
+      <span class="badge b-risk">⚠️ si la IA o el envío fallan: SILENCIO total — el cliente no recibe ni un "lo siento"</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- ══════════════ 3. Hallazgos ══════════════ -->
+<section>
+  <h2><span class="n">03</span> Las 28 fugas, por categoría y severidad</h2>
+  <p class="lede">Severidad <b>alta</b> = bloquea el Test de los 60 Segundos o toca al cliente final en producción.
+  Detalle completo con <i>archivo:línea</i> en la matriz del informe.</p>
+  <div class="card">
+    <div class="legend">
+      <span><span class="sw s-alta"></span>Alta (14)</span>
+      <span><span class="sw s-media"></span>Media (10)</span>
+      <span><span class="sw s-baja"></span>Baja (4)</span>
+    </div>
+    <div class="bars">
+      <!-- escala: 1 unidad = 1 hallazgo; ancho proporcional sobre max=9 -->
+      <div class="brow">
+        <div class="bl">Prompts sin gate de rubro<small>bienvenida WhatsApp, Sudamerica, loyalty, notificaciones</small></div>
+        <div class="btrack" style="width:100%">
+          <div class="bseg s-alta" style="flex:5" title="5 hallazgos de severidad alta"></div>
+          <div class="bseg s-media" style="flex:2" title="2 media"></div>
+          <div class="bseg s-baja" style="flex:2" title="2 baja"></div>
+        </div><div class="bv">9</div>
+      </div>
+      <div class="brow">
+        <div class="bl">AI_dialer ciego al rubro<small>clasificador + 3 sub-agentes 100% restaurante (latente)</small></div>
+        <div class="btrack" style="width:55.5%">
+          <div class="bseg s-alta" style="flex:5" title="5 alta (latente)"></div>
+        </div><div class="bv">5</div>
+      </div>
+      <div class="brow">
+        <div class="bl">Esquema BD / RLS<small>naming mesas·comandas + 3 policies públicas</small></div>
+        <div class="btrack" style="width:55.5%">
+          <div class="bseg s-alta" style="flex:1" title="1 alta (RLS pública — seguridad)"></div>
+          <div class="bseg s-media" style="flex:2" title="2 media"></div>
+          <div class="bseg s-baja" style="flex:2" title="2 baja"></div>
+        </div><div class="bv">5</div>
+      </div>
+      <div class="brow">
+        <div class="bl">Duplicación estructural<small>doble SSOT py↔ts sin CI, config JSONB sin schema</small></div>
+        <div class="btrack" style="width:44.4%">
+          <div class="bseg s-alta" style="flex:2" title="2 alta (raíz del fallo del Test 60s)"></div>
+          <div class="bseg s-media" style="flex:2" title="2 media"></div>
+        </div><div class="bv">4</div>
+      </div>
+      <div class="brow">
+        <div class="bl">Tools del copiloto admin<small>27 tools sin filtro por capacidad</small></div>
+        <div class="btrack" style="width:22.2%">
+          <div class="bseg s-alta" style="flex:1" title="1 alta"></div>
+          <div class="bseg s-media" style="flex:1" title="1 media"></div>
+        </div><div class="bv">2</div>
+      </div>
+      <div class="brow">
+        <div class="bl">Supuestos implícitos<small>moneda CLP global, español hardcodeado</small></div>
+        <div class="btrack" style="width:22.2%">
+          <div class="bseg s-media" style="flex:2" title="2 media"></div>
+        </div><div class="bv">2</div>
+      </div>
+      <div class="brow">
+        <div class="bl">Frontend<small>entrenar-ia habla de "platos" sin relabel</small></div>
+        <div class="btrack" style="width:11.1%">
+          <div class="bseg s-media" style="flex:1" title="1 media"></div>
+        </div><div class="bv">1</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>Y además, 4 grietas de kernel</b> (no son de rubro, pero condicionan todo el plan): idempotencia bypasseada
+    en el camino Cloud Tasks (doble respuesta al cliente) · sin anclaje de versión por conversación · 3 policies RLS
+    con lectura pública cross-tenant · mutación de <code>Tenant.config</code> inconsistente (merge vs reemplazo total).
+  </div>
+  <div class="callout blue" style="margin-top:10px">
+    <b>Lo que ya está sano ✓</b> — sin imports invertidos (el core nunca importa un rubro concreto) · microservicios
+    limpios vía HTTP+JWT · sin timezone hardcodeada · navegación y labels del dashboard ya gateados por capacidad ·
+    alta de tenant O(1) con semillas por rubro.
+  </div>
+</section>
+
+<!-- ══════════════ 4. K/P/E/D ══════════════ -->
+<section>
+  <h2><span class="n">04</span> Las 22 reglas, clasificadas (Prueba de los Dos Inquilinos)</h2>
+  <p class="lede">¿Pueden dos tenants con comportamientos opuestos convivir en el mismo runtime sin redeploy?
+  Toda regla que falla la prueba <i>y depende del rubro</i> es acoplamiento a extraer.</p>
+  <div class="kped">
+    <div class="card"><span class="tag k-k">K</span><span class="cnt">7</span>
+      <h4>Invariantes del Kernel</h4>
+      <p>Intocables por rubro: aislamiento RLS, auth inter-servicio, idempotencia, sesión, facturación, rate-limit,
+      jerarquía del prompt. <b>Dos están hoy violadas o incompletas</b> (RLS pública, dedup).</p></div>
+    <div class="card"><span class="tag k-p">P</span><span class="cnt">9</span>
+      <h4>Políticas parametrizables</h4>
+      <p>Mismo algoritmo, valores por rubro: labels, 22 capacidades, semillas, FSM, bienvenidas, plantillas,
+      timeouts, moneda. <b>Van directo al manifiesto.</b></p></div>
+    <div class="card"><span class="tag k-e">E</span><span class="cnt">3</span>
+      <h4>Puntos de extensión</h4>
+      <p>Algoritmos genuinamente distintos por rubro: sub-agentes conversacionales, tools nuevas del copiloto,
+      ingesta de catálogo. <b>Necesitan hooks/slots del orquestador.</b></p></div>
+    <div class="card"><span class="tag k-d">D</span><span class="cnt">4</span>
+      <h4>Deuda / Ambiguo</h4>
+      <p>No determinable desde el código — <b>prohibido adivinar</b>: fail-open vs fail-closed, idioma,
+      anclaje de versión, API muerta. Son tus preguntas de abajo.</p></div>
+  </div>
+</section>
+
+<!-- ══════════════ 5. Prod ══════════════ -->
+<section>
+  <h2><span class="n">05</span> El hallazgo incómodo: producción no corre este código</h2>
+  <div class="card" style="font-size:14.5px">
+    <p>🏭 <b>En simple:</b> tienes un <b>taller</b> (monorepo <code>MVP/</code>, donde se inventa) y <b>coches en la calle</b>
+    (repos <code>sudamerica-*</code>, lo que usan tus tenants reales). Desde el ~1 de julio ningún invento salió del taller:
+    los deploys están congelados a propósito y <b>toda la épica multi-rubro no existe en producción</b>
+    (los repos de prod ni siquiera tienen el módulo <code>shared/rubros/</code>).</p>
+    <p style="margin-top:10px">Además, el botón "enviar a la calle" del taller (<code>MVP/deploy.sh</code>) apunta a una
+    dirección que ya no existe: el proyecto GCP <b>melodic-nature-484617-e6</b>, marcado como <b>suspendido</b> en tu propia
+    documentación. Prod real = <b>sudamerica-prod</b>; y tu máquina apunta hoy a un tercero (<b>sudamerica-prod</b>).</p>
+    <p style="margin-top:10px">➡️ Consecuencia práctica: los <b>golden transcripts</b> (el oráculo de "no rompí nada" de la
+    Fase 3) deben grabarse contra <b>prod</b>, no contra el monorepo — o validaríamos un comportamiento que ningún cliente ve.</p>
+  </div>
+</section>
+
+<!-- ══════════════ 6. Bloqueantes Feynman ══════════════ -->
+<section>
+  <h2><span class="n">06</span> Las preguntas que bloquean avanzar — explicadas en simple</h2>
+  <p class="lede">Son decisiones de producto/negocio que no puedo (ni debo) tomar por ti. Las 13 completas están en el
+  informe; estas 6 bloquean el diseño de la Fase 2.</p>
+
+  <div class="fey">
+    <div class="card urgent">
+      <div class="qid">H-4 · Seguridad · la más urgente</div>
+      <h3>Tres puertas sin cerradura (RLS público)</h3>
+      <div class="story">Tu edificio de datos tiene un piso con llave por cada cliente (RLS). Para que cualquiera pudiera
+      escanear un QR de mesa sin registrarse, alguien quitó la cerradura de <b>tres puertas completas</b> en vez de abrir
+      solo la mirilla. Hoy, cualquier conexión anónima puede leer las mesas, las sucursales y las instancias de WhatsApp
+      de <b>todos</b> los tenants.</div>
+      <p class="real"><b>Evidencia:</b> <code>infra/013_mesa_qr.sql:22-24</code> — policies <code>USING (true)</code> sobre
+      <code>sucursales</code> y <code>evolution_instances</code>, y lookup público sobre <code>mesas</code>.</p>
+      <div class="opts">
+        <span class="opt rec">tratarlo como hotfix inmediato, fuera de este plan</span>
+        <span class="opt">aceptarlo conscientemente y documentarlo</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qid">H-5 · Diseño · la que más cambia la Fase 2</div>
+      <h3>¿Qué hacemos con el segundo cerebro? (AI_dialer)</h3>
+      <div class="story">Tu sistema tiene dos cerebros. El nuevo (<code>api_execute</code>) escribe la instrucción completa y
+      se la pasa al viejo (<code>AI_dialer</code>), que hoy solo obedece y llama al LLM. Pero el viejo conserva sus propias
+      rutinas de mesero (clasificador de intención, cotizador, reservador, seguimiento) — <b>dormidas, no muertas</b>.
+      Si alguien las despierta por la puerta lateral, tu peluquería atiende como restaurante.</div>
+      <p class="real"><b>Por qué bloquea:</b> el diseño del orquestador cambia radicalmente según el destino:
+      amputar (menos superficie), reconvertir en sistema de sub-agentes por rubro (más potencia, más trabajo),
+      o aislar para otros canales.</p>
+      <div class="opts">
+        <span class="opt">a) retirarlo (dead code)</span>
+        <span class="opt">b) revivirlo como sub-agentes declarados por manifiesto (tipo E)</span>
+        <span class="opt">c) dejarlo solo para canales no-WhatsApp</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qid">H-6 · Producto</div>
+      <h3>Cuando el rubro está mal escrito: ¿error visible o disfraz equivocado?</h3>
+      <div class="story">Hoy, si un tenant queda configurado con un rubro con typo ("peluqeria"), el sistema no protesta:
+      <b>silenciosamente atiende como restaurante</b>. Es un traductor que, cuando no conoce el idioma, responde en francés
+      sin avisarte. Nunca se cae — pero se equivoca delante del cliente.</div>
+      <p class="real"><b>Evidencia:</b> fail-safe en <code>diccionario.py:3282-3299</code> y <code>tenant_rubro.py:30-32</code>.
+      Tu propio principio de Fase 2 dice: "un manifiesto inválido falla en publicación, nunca frente a un cliente".</p>
+      <div class="opts">
+        <span class="opt rec">fail-closed: el error explota al publicar/configurar; runtime jamás ve un rubro inválido</span>
+        <span class="opt">mantener fail-open a restaurante (status quo)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qid">H-8 · Producto / Kernel</div>
+      <h3>¿Cambiar las reglas a mitad de partida?</h3>
+      <div class="story">Si cambias las reglas de un juego de mesa a mitad de la partida, ¿los jugadores terminan con las
+      reglas viejas o las nuevas? Hoy tu sistema elige <b>siempre las nuevas, incluso a mitad de frase</b>: cada mensaje
+      relee la config. Cambias el rubro a las 15:00 y el cliente que estaba pidiendo hora de peluquería a las 14:59 recibe
+      el siguiente mensaje hablando de platos.</div>
+      <p class="real"><b>Anclaje de versión</b> = cada conversación termina con el manifiesto con el que empezó; los cambios
+      aplican a conversaciones nuevas. Tu super-prompt lo pide (§4.1); el código actual hace lo contrario por diseño.</p>
+      <div class="opts">
+        <span class="opt rec">confirmar anclaje como requisito del kernel en el diseño</span>
+        <span class="opt">mantener "última versión siempre" y documentarlo como decisión</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qid">H-1 · H-2 · Operación</div>
+      <h3>¿Cuál es el camino oficial del taller a la calle?</h3>
+      <div class="story">Antes de reformar el motor necesito saber dos cosas del garaje: ① ¿cómo saldrán los cambios a
+      producción — re-extrayendo los repos <code>sudamerica-*</code> desde el monorepo, o desplegando el monorepo directo? ②
+      ¿cuál es el proyecto GCP canónico (sudamerica-prod, sudamerica-prod…)? Hoy el botón de deploy apunta a uno suspendido.</div>
+      <p class="real"><b>Por qué bloquea:</b> define contra qué código se graban los golden transcripts y dónde se
+      verificará cada etapa del strangler fig de la Fase 3.</p>
+      <div class="opts">
+        <span class="opt">a) re-extraer sudamerica-* al terminar</span>
+        <span class="opt">b) desplegar monorepo directamente</span>
+        <span class="opt">c) otro (cuéntame)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="qid">H-13 · Proceso (tu regla №2)</div>
+      <h3>Firma de los permisos de lectura</h3>
+      <div class="story">Tus reglas decían: "lee solo los archivos core + 2 saltos; para ir más allá, pide permiso".
+      Al seguir el cable del teléfono hasta el final, los exploradores tuvieron que pisar habitaciones fuera del mapa —
+      porque el mapa inicial tenía un error (open_agent no era el agente de WhatsApp). Cada habitación pisada quedó
+      anotada con su motivo.</div>
+      <p class="real"><b>Necesito:</b> ① ratificar ex-post las lecturas hechas en <code>api_execute</code>/<code>AI_dialer</code>
+      (lista completa en §5 del informe) y ② autorizar las pendientes para Fase 2: <code>agente_config.py</code>,
+      <code>evolution_api/**</code>, cuerpos de los 4 sub-agentes.</p>
+      <div class="opts">
+        <span class="opt rec">ratificar + autorizar pendientes</span>
+        <span class="opt">revisar la lista primero</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 7. Fase 2 ══════════════ -->
+<section>
+  <h2><span class="n">07</span> Qué hará la Fase 2 (solo diseño — ni una línea de código)</h2>
+  <p class="lede">La Fase 1 fue el <b>diagnóstico del paciente</b>. La Fase 2 dibuja los <b>planos de la cirugía</b>:
+  convierte "el rubro es código" en "el rubro es un documento de datos que el motor interpreta". Termina en el
+  STOP GATE 2 — nada se toca sin tu aprobación del plan.</p>
+
+  <div class="f2">
+    <div class="card"><div class="step">ENTREGABLE 1</div>
+      <h4>El contrato: JSON Schema del manifiesto</h4>
+      <p>El "formulario oficial del disfraz": metadata con versión semver, catálogo, <b>flujos conversacionales declarativos</b>
+      (estados, slots, validaciones — hoy el techo de expresividad), prompts con jerarquía que <b>no puede pisar los guardrails
+      del kernel</b>, políticas (los P), y hooks sandboxeados (los E). + 2 manifiestos reales migrados como prueba.</p></div>
+    <div class="card"><div class="step">ENTREGABLE 2</div>
+      <h4>El motor: orquestador agnóstico</h4>
+      <p>Un intérprete que <b>no conoce ningún rubro por nombre</b> (cero condicionales por rubro en el core). Precedencia
+      explícita: Kernel &gt; overrides de tenant &gt; módulo de rubro &gt; defaults. Ciclo de vida del manifiesto:
+      borrador → validado → publicado → versionado → deprecado.</p></div>
+    <div class="card"><div class="step">ENTREGABLE 3</div>
+      <h4>El plan de obra: strangler fig</h4>
+      <p>Desacoplamiento por etapas, un rubro a la vez, sin big-bang: cada etapa con archivos exactos, riesgo, método de
+      verificación (tests + golden transcripts + validación de manifiestos) y <b>criterio de rollback automático</b>.</p></div>
+    <div class="card"><div class="step">ENTREGABLE 4</div>
+      <h4>La prueba de fuego: stress test + presupuesto 60s</h4>
+      <p>Modelar <b>100% declarativamente</b> tus 5 rubros (restaurante, peluquería, ferretería, veterinaria, hotel) +
+      inmobiliaria + <b>un rubro extremo que tú me darás</b>. Todo lo que no quepa en el DSL es decisión explícita.
+      Y el desglose segundo a segundo del onboarding.</p></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <b style="font-size:14.5px">Principios que gobiernan el diseño</b>
+    <div class="principles">
+      <div class="pr"><span class="pico">📄</span><span><b>Un rubro = datos, no código.</b> Manifiesto declarativo versionado. Si requiere compilar/desplegar/migrar → descartado.</span></div>
+      <div class="pr"><span class="pico">🚦</span><span><b>Validación en publicación, no en runtime.</b> Un manifiesto inválido nunca llega frente a un cliente (arregla H-6).</span></div>
+      <div class="pr"><span class="pico">⚓</span><span><b>Anclaje de versión.</b> Cada conversación termina con el manifiesto con el que empezó (arregla H-8).</span></div>
+      <div class="pr"><span class="pico">💥</span><span><b>Blast radius contenido.</b> Un módulo roto degrada solo a sus tenants, jamás al orquestador.</span></div>
+      <div class="pr"><span class="pico">🛡️</span><span><b>Guardrails no pisables.</b> Jerarquía dura de prompts: lo que declara el rubro jamás sobreescribe al kernel (arregla la pregunta crítica №9).</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Generado en la sesión de diagnóstico Fase 1 · 2026-07-11 · Informe completo con evidencia archivo:línea en
+  <code>MVP/docs/arquitectura/fase1-diagnostico.md</code> · Metodología: 4 subagentes Explore de solo lectura +
+  verificación puntual por el modelo principal · ⛔ STOP GATE 1 vigente: nada avanza sin aprobación explícita.
+</footer>
+
+</div>
+</body>
+</html>
