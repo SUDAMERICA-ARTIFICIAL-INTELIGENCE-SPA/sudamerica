@@ -2,8 +2,7 @@
 
 import { useRubroLabels } from "@/hooks/useRubroLabels";
 import { useSsrColorScheme } from "@/hooks/useSsrColorScheme";
-import { type VisibleNavItemFlat, getVisibleNavItemsFlat } from "@/lib/nav-config";
-import { NAV_P2_ENABLED, esSubCanonica, getVisibleNavItemsFlatP2 } from "@/lib/nav-p2";
+import { navItemsFlatCanonico } from "@/lib/nav-canonico";
 import { GLASS } from "@/lib/theme-tokens";
 import { useUiStore } from "@/stores/ui-store";
 import {
@@ -20,20 +19,14 @@ import {
 import {
   IconBrain,
   IconCalculator,
-  IconChartBar,
-  IconCreditCard,
-  IconCurrencyDollar,
   IconHome,
   IconLayoutGrid,
   IconLayoutKanban,
   IconMoon,
   IconSearch,
-  IconSettings,
   IconSparkles,
   IconStar,
   IconSun,
-  IconUsers,
-  IconUsersGroup,
 } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useRef, useState } from "react";
@@ -57,13 +50,14 @@ interface LegacyCommandDef {
 }
 
 /**
- * Vistas que aún no viven en lib/nav-config.ts (no están en el Sidebar hoy).
- * Se dedupean contra los ítems de navegación por `href` para no duplicar entradas.
+ * Huérfanos vivos: rutas reales fuera del sidebar canónico (decisión Paso 7 §D). Se
+ * mantienen accesibles por Cmd+K. Se dedupean contra los ítems de nav por `href` (p.ej.
+ * "Panel" /dashboard coincide con la sub "Resumen" → aparece una sola vez).
  */
 const LEGACY_COMMANDS: LegacyCommandDef[] = [
   {
-    // En modo P2 el Copiloto sale del sidebar (vive en TopBar) — esta entrada lo
-    // mantiene en Cmd+K; en modo OFF se dedupea por href (sigue en el nav viejo).
+    // El Copiloto es una acción global del shell (no una sub del nav) — esta entrada lo
+    // mantiene en Cmd+K.
     id: "sudamerica-ia",
     label: "Copiloto Admin",
     description: "Copiloto administrativo con IA",
@@ -88,60 +82,12 @@ const LEGACY_COMMANDS: LegacyCommandDef[] = [
     color: "blue",
   },
   {
-    id: "leads",
-    label: "Prospectos",
-    description: "Gestión de prospectos",
-    icon: <IconUsers size={15} />,
-    href: "/leads",
-    color: "teal",
-  },
-  {
-    id: "ventas",
-    label: "Ventas",
-    description: "Historial de ventas cerradas",
-    icon: <IconCurrencyDollar size={15} />,
-    href: "/ventas",
-    color: "green",
-  },
-  {
     id: "ia",
     label: "Rendimiento IA",
     description: "Métricas de inteligencia artificial",
     icon: <IconBrain size={15} />,
     href: "/ia",
     color: "violet",
-  },
-  {
-    id: "reportes",
-    label: "Reportes",
-    description: "Informes diarios, semanales y mensuales",
-    icon: <IconChartBar size={15} />,
-    href: "/reportes",
-    color: "orange",
-  },
-  {
-    id: "billing",
-    label: "Planes y Billing",
-    description: "Gestiona upgrades y suscripción con Stripe",
-    icon: <IconCreditCard size={15} />,
-    href: "/billing",
-    color: "grape",
-  },
-  {
-    id: "equipo",
-    label: "Equipo",
-    description: "Clasificación y metas del equipo",
-    icon: <IconUsersGroup size={15} />,
-    href: "/equipo",
-    color: "cyan",
-  },
-  {
-    id: "configuracion",
-    label: "Configuración",
-    description: "Negocio, agentes IA y sub-agentes",
-    icon: <IconSettings size={15} />,
-    href: "/configuracion",
-    color: "gray",
   },
   {
     id: "roi",
@@ -175,24 +121,19 @@ export function CommandPalette() {
     setCommandPaletteOpen(false);
   }
 
-  // Ítems de nav visibles para el rubro activo (respeta el gating por capacidad y rubroLabel).
-  // Fuente P2 tras NEXT_PUBLIC_NAV_P2 (misma forma estructural); nav-config si OFF.
-  // En P2 solo la sub canónica de cada ruta compartida (no 3 entradas → /carta) y sin
-  // "accesos-rapidos" (ese comando ES abrir esta paleta).
-  const navItems: VisibleNavItemFlat[] = NAV_P2_ENABLED
-    ? getVisibleNavItemsFlatP2(rubro).filter(
-        ({ item }) => item.id !== "accesos-rapidos" && esSubCanonica(item),
-      )
-    : getVisibleNavItemsFlat(rubro);
-  const navHrefs = new Set(navItems.map(({ item }) => item.href));
+  // Ítems de nav visibles para el rubro activo (respeta gating por capacidad y label por rubro).
+  // Fuente única: nav canónico. Cada href es único ⇒ sin dedup por href; se excluye
+  // "inicio-accesos" (ese ítem ES abrir esta paleta).
+  const navItems = navItemsFlatCanonico(rubro).filter(({ sub }) => sub.id !== "inicio-accesos");
+  const navHrefs = new Set(navItems.map(({ sub }) => sub.href));
 
-  const navCommands: CommandItem[] = navItems.map(({ item, label, groupLabel }) => ({
-    id: `nav-${item.id}`,
+  const navCommands: CommandItem[] = navItems.map(({ sub, label, catLabel }) => ({
+    id: `nav-${sub.id}`,
     label,
-    description: groupLabel,
-    icon: <item.icon size={15} />,
+    description: catLabel,
+    icon: <sub.icon size={15} />,
     color: "gray",
-    execute: () => navigate(item.href),
+    execute: () => navigate(sub.href),
   }));
 
   const legacyCommands: CommandItem[] = LEGACY_COMMANDS.filter(

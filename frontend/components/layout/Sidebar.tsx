@@ -7,14 +7,13 @@ import { useSmartAlerts } from "@/hooks/useSmartAlerts";
 import { useSsrColorScheme } from "@/hooks/useSsrColorScheme";
 import { useAuth } from "@/lib/auth";
 import { USER_ROLE_COLORS, USER_ROLE_LABELS, type UserRole } from "@/lib/enums";
-import { type VisibleNavItem, getVisibleNavGroups, getVisibleNavItemsFlat } from "@/lib/nav-config";
 import {
-  NAV_P2_ENABLED,
-  esSubActivaP2,
-  getVisibleNavGroupsP2,
-  getVisibleNavItemsFlatP2,
-  remapLegacyFavoriteIds,
-} from "@/lib/nav-p2";
+  type NavSubC,
+  construirSidebarCanonico,
+  navItemsFlatCanonico,
+  navLabelCanonico,
+  remapFavoritosCanonico,
+} from "@/lib/nav-canonico";
 import { RUBRO_DEFAULT, RUBRO_OPTIONS } from "@/lib/rubros";
 import { HEADER_HEIGHT, MOTION, RADIUS } from "@/lib/theme-tokens";
 import { useUiStore } from "@/stores/ui-store";
@@ -57,16 +56,8 @@ import { useEffect, useState } from "react";
 const HAIRLINE = "1px solid var(--mantine-color-default-border)";
 
 /**
- * Paleta de marca del logo (coral · amber · ocean · teal), espejo de las vars
- * `--sudamerica-*` de `globals.css`. El sidebar de prod pintaba un punto con glow por
- * sección; allí eran 5 secciones fijas, aquí el nav P2 tiene N grupos → se cicla
- * la paleta por índice de grupo. Ningún hex inventado.
- */
-const SECTION_COLORS = ["#FF4757", "#FFB800", "#0099FF", "#00B894"] as const;
-
-/**
  * Tipografía de encabezado de categoría. El sidebar de prod usaba 10px; se sube a
- * 14px porque el nav P2 tiene 11 categorías y a 12px las subcategorías (15px)
+ * 14px porque el nav canónico tiene 17 categorías y a 12px las subcategorías (15px)
  * pesaban más que su propia categoría — jerarquía invertida.
  */
 const SECTION_LABEL = {
@@ -96,22 +87,22 @@ function getInitials(nombre: string): string {
 }
 
 interface NavItemRowProps {
-  visible: VisibleNavItem;
+  sub: NavSubC;
+  label: string;
   isActive: boolean;
   isFavorite: boolean;
   onToggleFavorite: (id: string) => void;
 }
 
 /** Fila de ítem: NavLink + botón de fijar, como hermanos (nunca anidar botón dentro de <a>). */
-function NavItemRow({ visible, isActive, isFavorite, onToggleFavorite }: NavItemRowProps) {
-  const { item, label } = visible;
+function NavItemRow({ sub, label, isActive, isFavorite, onToggleFavorite }: NavItemRowProps) {
   return (
     <Group gap={2} wrap="nowrap" align="center" className="sidebar-nav-row">
       <NavLink
         component={Link}
-        href={item.href}
+        href={sub.href}
         label={label}
-        leftSection={<item.icon size={18} />}
+        leftSection={<sub.icon size={18} />}
         active={isActive}
         color="appleBlue"
         variant={isActive ? "filled" : "subtle"}
@@ -126,7 +117,7 @@ function NavItemRow({ visible, isActive, isFavorite, onToggleFavorite }: NavItem
         size="sm"
         className={`sidebar-fav-star${isFavorite ? " sidebar-fav-star--active" : ""}`}
         aria-label={isFavorite ? `Quitar ${label} de favoritos` : `Añadir ${label} a favoritos`}
-        onClick={() => onToggleFavorite(item.id)}
+        onClick={() => onToggleFavorite(sub.id)}
       >
         {isFavorite ? <IconStarFilled size={14} /> : <IconStar size={14} />}
       </ActionIcon>
@@ -208,11 +199,11 @@ export function Sidebar() {
     useUiStore.persist.rehydrate();
   }, []);
 
-  // Migración one-shot de favoritos legacy → subIds P2 (decisión Fase 0: LEGACY_FAV_ID_MAP).
-  // Solo en modo P2 y tras hidratar; idempotente (si nada cambia, no escribe).
+  // Migración one-shot de favoritos legacy → sub.id canónico (Paso 7). Tras hidratar;
+  // idempotente (si nada cambia, no escribe).
   useEffect(() => {
-    if (!NAV_P2_ENABLED || !hasHydrated) return;
-    const remapped = remapLegacyFavoriteIds(favoriteNavIds);
+    if (!hasHydrated) return;
+    const remapped = remapFavoritosCanonico(favoriteNavIds);
     if (JSON.stringify(remapped) !== JSON.stringify(favoriteNavIds)) {
       setFavoriteNavIds(remapped);
     }
@@ -222,27 +213,18 @@ export function Sidebar() {
 
   const initials = user ? getInitials(user.nombre) : "?";
   const brandTagline = rubro.key === RUBRO_DEFAULT ? "Gastronomia IA" : "Asistente IA";
-  // Fuente del nav: árbol P2 por rubro→capacidades tras NEXT_PUBLIC_NAV_P2; nav-config si OFF.
-  // Ambas fuentes producen la misma forma estructural — el render de abajo no cambia.
-  const visibleGroups: { key: string; label: string; items: VisibleNavItem[] }[] = NAV_P2_ENABLED
-    ? getVisibleNavGroupsP2(rubro)
-    : getVisibleNavGroups(rubro);
-  const flatItems: (VisibleNavItem & { groupLabel: string })[] = NAV_P2_ENABLED
-    ? getVisibleNavItemsFlatP2(rubro)
-    : getVisibleNavItemsFlat(rubro);
+  // Fuente única del nav: árbol canónico (17 categorías) filtrado por rubro→capacidades.
+  const sidebarCats = construirSidebarCanonico(rubro);
+  const flatItems = navItemsFlatCanonico(rubro);
   // Antes de hidratar, favoriteNavIds es el default ([]) — no mostrar el bloque
   // "Favoritos" hasta confirmar que se leyó el valor persistido real (evita parpadeo/mismatch).
   const favoriteItems = hasHydrated
-    ? flatItems.filter(({ item }) => favoriteNavIds.includes(item.id))
+    ? flatItems.filter(({ sub }) => favoriteNavIds.includes(sub.id))
     : [];
 
+  // Rutas canónicas anidadas y únicas ⇒ active-state por prefijo simple, sin dedup.
   function isActiveHref(href: string): boolean {
     return pathname === href || pathname.startsWith(`${href}/`);
-  }
-
-  // En modo P2 el active-state aplica la regla de sub canónica (rutas compartidas).
-  function isRowActive(item: { id: string; href: string }): boolean {
-    return NAV_P2_ENABLED ? esSubActivaP2(pathname, item) : isActiveHref(item.href);
   }
 
   return (
@@ -294,23 +276,21 @@ export function Sidebar() {
           {/* Acciones globales del shell. Vivían en el TopBar de Apple v2; al no
               haber barra superior vuelven aquí, como en el sidebar de prod. */}
           <Group gap={4} px="sm" pb="xs" justify="center">
-            {/* La IA es transversal en P2 (sin pilar "Inteligencia"): el Copiloto es
-                una acción global del shell, no un ítem del nav (decisión Fase 0). */}
-            {NAV_P2_ENABLED && (
-              <Tooltip label="Copiloto Admin" position="bottom" withArrow>
-                <ActionIcon
-                  component={Link}
-                  href="/sudamerica-ia"
-                  variant="subtle"
-                  color="gray"
-                  size="md"
-                  radius="md"
-                  aria-label="Abrir Copiloto Admin"
-                >
-                  <IconSparkles size={16} />
-                </ActionIcon>
-              </Tooltip>
-            )}
+            {/* La IA es transversal (sin pilar "Inteligencia" en el nav canónico): el
+                Copiloto es una acción global del shell, no un ítem del nav. */}
+            <Tooltip label="Copiloto Admin" position="bottom" withArrow>
+              <ActionIcon
+                component={Link}
+                href="/sudamerica-ia"
+                variant="subtle"
+                color="gray"
+                size="md"
+                radius="md"
+                aria-label="Abrir Copiloto Admin"
+              >
+                <IconSparkles size={16} />
+              </ActionIcon>
+            </Tooltip>
 
             <Tooltip label="Buscar (Ctrl+K)" position="bottom" withArrow>
               <ActionIcon
@@ -436,7 +416,7 @@ export function Sidebar() {
           <SucursalSelector />
         </Box>
 
-        {/* Main nav — taxonomía neutra por grupos, agnóstica de rubro (100+ rubros) */}
+        {/* Main nav — taxonomía neutra por categorías, agnóstica de rubro (100+ rubros) */}
         {/* `minHeight: 0` es obligatorio: el min-height por defecto de un flex item es
             `auto`, así que sin esto el Stack crece con su contenido, `overflowY` nunca
             se dispara y el bloque de usuario queda empujado fuera del viewport. */}
@@ -449,11 +429,12 @@ export function Sidebar() {
                   Favoritos
                 </Text>
               </Group>
-              {favoriteItems.map((visible) => (
+              {favoriteItems.map(({ sub, label }) => (
                 <NavItemRow
-                  key={`fav-${visible.item.id}`}
-                  visible={visible}
-                  isActive={isRowActive(visible.item)}
+                  key={`fav-${sub.id}`}
+                  sub={sub}
+                  label={label}
+                  isActive={isActiveHref(sub.href)}
                   isFavorite
                   onToggleFavorite={toggleFavoriteNavId}
                 />
@@ -461,43 +442,45 @@ export function Sidebar() {
             </Box>
           )}
 
-          {visibleGroups.map((group, groupIndex) => {
-            // Default false hasta hidratar — todos los grupos abiertos en el primer render
+          {sidebarCats.map((cat) => {
+            // Default false hasta hidratar — todas las categorías abiertas en el primer render
             // de cliente, igual que en SSR (evita hydration mismatch).
-            const collapsed = hasHydrated ? (collapsedNavGroups[group.key] ?? false) : false;
+            const collapsed = hasHydrated ? (collapsedNavGroups[cat.id] ?? false) : false;
             return (
-              <Box key={group.key}>
+              <Box key={cat.id}>
                 <NavGroupHeader
-                  groupKey={group.key}
-                  label={group.label}
-                  color={SECTION_COLORS[groupIndex % SECTION_COLORS.length] as string}
+                  groupKey={cat.id}
+                  label={cat.label}
+                  color={cat.color}
                   collapsed={collapsed}
-                  onToggle={() => toggleNavGroupCollapsed(group.key)}
+                  onToggle={() => toggleNavGroupCollapsed(cat.id)}
                 />
-                <Collapse in={!collapsed} id={`nav-group-${group.key}`}>
-                  {group.items.map((visible) =>
-                    // "Accesos rápidos" (P2) abre Cmd+K, no navega (crosswalk §0.1).
-                    NAV_P2_ENABLED && visible.item.id === "accesos-rapidos" ? (
+                <Collapse in={!collapsed} id={`nav-group-${cat.id}`}>
+                  {cat.subs.map((sub) => {
+                    const label = navLabelCanonico(sub, rubro);
+                    // "Accesos rápidos" abre Cmd+K, no navega (no tiene página propia).
+                    return sub.id === "inicio-accesos" ? (
                       <NavLink
-                        key={visible.item.id}
+                        key={sub.id}
                         component="button"
-                        label={visible.label}
-                        leftSection={<visible.item.icon size={18} />}
+                        label={label}
+                        leftSection={<sub.icon size={18} />}
                         onClick={() => setCommandPaletteOpen(true)}
                         styles={NAV_LINK_STYLES}
                         style={{ borderRadius: RADIUS.sm, width: "100%" }}
-                        aria-label={`Abrir ${visible.label} (Ctrl+K)`}
+                        aria-label={`Abrir ${label} (Ctrl+K)`}
                       />
                     ) : (
                       <NavItemRow
-                        key={visible.item.id}
-                        visible={visible}
-                        isActive={isRowActive(visible.item)}
-                        isFavorite={favoriteNavIds.includes(visible.item.id)}
+                        key={sub.id}
+                        sub={sub}
+                        label={label}
+                        isActive={isActiveHref(sub.href)}
+                        isFavorite={favoriteNavIds.includes(sub.id)}
                         onToggleFavorite={toggleFavoriteNavId}
                       />
-                    ),
-                  )}
+                    );
+                  })}
                 </Collapse>
               </Box>
             );

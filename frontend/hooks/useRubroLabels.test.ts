@@ -1,4 +1,4 @@
-import { getVisibleNavItemsFlatP2 } from "@/lib/nav-p2";
+import { navItemsFlatCanonico } from "@/lib/nav-canonico";
 import { getRubroDef } from "@/lib/rubros";
 import { renderHook, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -79,12 +79,12 @@ describe("useRubroLabels con override dev", () => {
   });
 });
 
-describe("el label del nav P2 sigue al rubro activo (lo que verifica el switcher)", () => {
+describe("el label del nav canónico sigue al rubro activo (lo que verifica el switcher)", () => {
   const labelDe = (rubroKey: string, id: string) =>
-    getVisibleNavItemsFlatP2(getRubroDef(rubroKey)).find((f) => f.item.id === id)?.label;
+    navItemsFlatCanonico(getRubroDef(rubroKey)).find((f) => f.sub.id === id)?.label;
 
   it("catálogo se llama 'Carta & Menu' en restaurante y 'Productos' en peluquería", () => {
-    expect(labelDe("restaurante", "productos")).toBe("Carta & Menu");
-    expect(labelDe("peluqueria", "productos")).toBe("Productos");
+    expect(labelDe("restaurante", "cat-productos")).toBe("Carta & Menu");
+    expect(labelDe("peluqueria", "cat-productos")).toBe("Productos");
   });
 });

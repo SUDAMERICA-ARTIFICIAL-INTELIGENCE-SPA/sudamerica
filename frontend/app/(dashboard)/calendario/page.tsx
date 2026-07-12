@@ -1,16 +1,9 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { CalendarView } from "@/components/calendario/CalendarView";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Paper, Stack } from "@mantine/core";
-
-export default function CalendarioPage() {
-  return (
-    <Stack gap="lg">
-      <PageHeader title="Calendario" />
-      <Paper p="md" radius="md" shadow="sm">
-        <CalendarView />
-      </Paper>
-    </Stack>
-  );
+/**
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/agenda/calendario`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
+ */
+export default function Page() {
+  redirect("/agenda/calendario");
 }

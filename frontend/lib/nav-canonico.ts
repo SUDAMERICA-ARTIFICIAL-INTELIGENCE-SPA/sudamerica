@@ -99,9 +99,12 @@ import {
   IconUsersGroup,
   IconWorld,
 } from "@tabler/icons-react";
+import type { ComponentType } from "react";
 import type { Capacidad } from "./capacidades";
-import type { NavIcon } from "./nav-config";
 import { plural, RUBRO_DEFAULT, type RubroDef, tieneCapacidad } from "./rubros";
+
+/** Icono de navegación — cualquier componente de @tabler/icons-react. */
+export type NavIcon = ComponentType<{ size?: number }>;
 
 export interface NavSubC {
   /** kebab, ÚNICO global (para keys/tests/favoritos). */
@@ -419,4 +422,54 @@ export function navItemsFlatCanonico(
   return construirSidebarCanonico(rubro).flatMap((cat) =>
     cat.subs.map((sub) => ({ sub, label: navLabelCanonico(sub, rubro), catLabel: cat.label })),
   );
+}
+
+/** Todos los `sub.id` canónicos (validación/dedupe de favoritos persistidos). */
+const SUB_IDS_CANONICO = new Set(NAV_CANONICO.flatMap((cat) => cat.subs.map((sub) => sub.id)));
+
+/**
+ * Favoritos persistidos con ids legacy → `sub.id` canónico. Cubre los ids del nav viejo
+ * `nav-config` (el shell corría con NAV_P2 OFF, así que esos son los que tienen los usuarios
+ * reales) y los sub-ids del árbol P2 (por si alguien activó el flag). Los ids ya canónicos
+ * pasan intactos; los huérfanos (ia, sudamerica-ia) y los retirados se descartan.
+ */
+export const LEGACY_FAV_TO_CANONICO: Record<string, string> = {
+  // nav-config (ids = href sin "/")
+  carta: "cat-productos",
+  inventario: "inv-existencias",
+  comandas: "ped-comandas",
+  ventas: "ped-ordenes",
+  mesas: "ped-mesas",
+  reservaciones: "agenda-reservas",
+  "entrenar-ia": "conv-ia",
+  reportes: "din-reportes",
+  leads: "contactos-directorio",
+  billing: "cta-facturacion",
+  equipo: "cta-equipo",
+  configuracion: "cta-perfil",
+  prospectos: "conv-bandeja",
+  // sub-ids del árbol P2
+  productos: "cat-productos",
+  existencias: "inv-existencias",
+  "mesas-salon": "ped-mesas",
+  ordenes: "ped-ordenes",
+  "reservas-citas": "agenda-reservas",
+  "respuestas-ia": "conv-ia",
+  "reportes-financieros": "din-reportes",
+  ingresos: "din-ingresos",
+  directorio: "contactos-directorio",
+  "bandeja-de-entrada": "conv-bandeja",
+  "facturacion-servicio": "cta-facturacion",
+  "equipo-permisos": "cta-equipo",
+  "perfil-negocio": "cta-perfil",
+  "capacidades-modulos": "cta-modulos",
+  integraciones: "cta-integraciones",
+};
+
+/** Migra favoritos legacy→canónico: remapea ids viejos, descarta desconocidos y dedupea. */
+export function remapFavoritosCanonico(ids: readonly string[]): string[] {
+  const remapped = ids
+    .map((id) => LEGACY_FAV_TO_CANONICO[id] ?? id)
+    .filter((id) => SUB_IDS_CANONICO.has(id));
+  return [...new Set(remapped)];
 }
