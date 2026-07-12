@@ -34,6 +34,14 @@ _STATUS_TEMPLATES: dict[tuple[str, str | None], str] = {
         "Tiempo estimado de preparación: ~{prep_time} min.\n\n"
         "Te avisamos apenas esté listo. 🙌"
     ),
+    # EN_PROCESO: fase de preparación genérica de la FSM sin cocina (operativa.py). Sin
+    # esta clave la notificación se perdía en silencio para rubros no gastronómicos.
+    # Texto neutral (sin "cocina"/🍽️) — restaurante usa EN_COCINA, nunca llega aquí.
+    ("EN_PROCESO", None): (
+        "⏳ ¡Hola {nombre}! Estamos preparando tu pedido #{num}.\n"
+        "Tiempo estimado: ~{prep_time} min.\n\n"
+        "Te avisamos apenas esté listo. 🙌"
+    ),
     ("LISTO", "RETIRO"): (
         "✅ ¡Hola {nombre}! Tu pedido #{num} ya está listo para retiro.\n"
         "Te esperamos cuando quieras pasarlo a buscar. 😊"

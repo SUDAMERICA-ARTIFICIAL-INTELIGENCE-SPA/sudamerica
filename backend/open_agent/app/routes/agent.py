@@ -37,6 +37,7 @@ async def agent_chat(
             settings=settings,
             http_client=http_client,
             file=body.file,
+            capabilities=body.capacidades,
         )
     except Exception as exc:
         raise HTTPException(

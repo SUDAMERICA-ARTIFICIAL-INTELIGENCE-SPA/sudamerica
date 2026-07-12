@@ -26,7 +26,16 @@ async def load_tenant_rubro(db: AsyncSession, tenant_id: uuid.UUID) -> str:
         cfg = result.scalar_one_or_none()
         if isinstance(cfg, str):
             cfg = json.loads(cfg or "{}")
-        return resolve_rubro(cfg if isinstance(cfg, dict) else None)
+        cfg = cfg if isinstance(cfg, dict) else None
+        resolved = resolve_rubro(cfg)
+        # Runtime ya NO degrada en silencio: si el config trae un rubro desconocido
+        # (datos legados/corruptos; la publicación es fail-closed) se loggea el fail-safe.
+        raw = cfg.get("rubro") if cfg else None
+        if isinstance(raw, str) and raw != resolved:
+            logger.warning(
+                "Rubro desconocido %r en tenant %s; usando fail-safe %r", raw, tenant_id, resolved,
+            )
+        return resolved
     except Exception:
         logger.warning("Could not resolve rubro for tenant %s", tenant_id, exc_info=True)
         return RUBRO_DEFAULT

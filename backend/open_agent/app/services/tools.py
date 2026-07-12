@@ -510,6 +510,47 @@ TOOL_DEFINITIONS: list[dict] = [
 ]
 
 
+# ── Gating de tools por capacidad del tenant (Fase A, Paso 4) ────────
+# Mapea cada tool que NO es "core" a la capacidad (slug de shared/rubros/capacidades.py)
+# que la habilita. Las tools ausentes de este mapa son CORE y se exponen siempre
+# (ventas, catálogo, clientes, métricas, equipo, modificadores, visión). Restaurante
+# tiene mesas+pedidos+agenda → conserva las 28 tools (byte-idéntico). Una inmobiliaria
+# (sin esas capacidades) no ve crear_mesa / cambiar_estado_comanda / crear_reservacion.
+TOOL_CAPABILITY: dict[str, str] = {
+    # Mesas / sala (capacidad ``mesas``)
+    "consultar_mesas": "mesas",
+    "crear_mesa": "mesas",
+    "modificar_mesa": "mesas",
+    "eliminar_mesa": "mesas",
+    "consultar_disponibilidad_mesas": "mesas",
+    # Comandas / órdenes de preparación (capacidad ``pedidos``)
+    "consultar_comandas": "pedidos",
+    "cambiar_estado_comanda": "pedidos",
+    # Reservaciones / citas (capacidad ``agenda``)
+    "consultar_reservaciones": "agenda",
+    "crear_reservacion": "agenda",
+    "modificar_reservacion": "agenda",
+    "cancelar_reservacion": "agenda",
+}
+
+
+def tools_for_capabilities(capabilities: list[str] | None) -> list[dict]:
+    """Filtra ``TOOL_DEFINITIONS`` por las capacidades del tenant.
+
+    ``capabilities is None`` → devuelve TODAS las tools (compat: caller que no envía
+    capacidades). Con una lista, expone las core + las gateadas cuya capacidad esté
+    presente. No muta ``TOOL_DEFINITIONS``.
+    """
+    if capabilities is None:
+        return TOOL_DEFINITIONS
+    caps = set(capabilities)
+    return [
+        tool
+        for tool in TOOL_DEFINITIONS
+        if TOOL_CAPABILITY.get(tool["function"]["name"]) in (None, *caps)
+    ]
+
+
 # ── Tool execution ───────────────────────────────────────────────────
 
 def _build_headers(

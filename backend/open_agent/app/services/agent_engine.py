@@ -23,7 +23,7 @@ from app.schemas.chat import (
     SudamericaChatResponse,
     ToolUsage,
 )
-from app.services.tools import TOOL_DEFINITIONS, execute_tool
+from app.services.tools import execute_tool, tools_for_capabilities
 
 logger = logging.getLogger(__name__)
 
@@ -159,12 +159,21 @@ async def run_agent(
     settings: OpenAgentSettings,
     http_client: httpx.AsyncClient,
     file: FileAttachment | None = None,
+    capabilities: list[str] | None = None,
 ) -> SudamericaChatResponse:
-    """Run the full agent loop: LLM → tools → LLM → ... → final response."""
+    """Run the full agent loop: LLM → tools → LLM → ... → final response.
+
+    ``capabilities`` (las capacidades del rubro del tenant, enviadas por api_execute)
+    filtra las tools expuestas al LLM: una inmobiliaria no recibe ``crear_mesa``. Si es
+    ``None`` (caller que no las envía) se exponen todas — compat.
+    """
     from uuid import UUID
 
     tenant_uuid = UUID(tenant_id)
     config = settings.provider_config
+
+    # Tools expuestas al LLM, gateadas por capacidad del tenant (restaurante = todas).
+    tools = tools_for_capabilities(capabilities)
 
     # Build initial message list
     messages: list[dict] = [{"role": "system", "content": system_prompt}]
@@ -184,7 +193,7 @@ async def run_agent(
 
         result = await _call_llm(
             messages, config, settings, http_client,
-            tools=TOOL_DEFINITIONS,
+            tools=tools,
         )
 
         choice = result.get("choices", [{}])[0]

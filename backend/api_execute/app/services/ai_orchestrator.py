@@ -16,18 +16,18 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import ApiExecuteSettings
 from app.services.prompt_sections import (
-    WELCOME_RULES_MESA,
-    WELCOME_RULES_WHATSAPP,
     WHATSAPP_FORMAT_RULES,
     _append_prompt_section,
     _format_customer_lines,
     build_catalog_text,
     compose_system_prompt,
+    welcome_rules_mesa,
+    welcome_rules_whatsapp,
 )
 from app.services.tenant_rubro import load_tenant_rubro as _load_tenant_rubro
 from shared.database.session import set_tenant_context
 from shared.middleware import build_service_auth_headers
-from shared.rubros import Capacidad, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad, rubro_def
 from shared.utils.http_client import internal_http
 
 logger = logging.getLogger(__name__)
@@ -360,8 +360,8 @@ async def _load_mesa_context(session: AsyncSession, tenant_id: UUID, qr_token: s
     return dict(row) if row else None
 
 
-def _build_mesa_prompt_section(mesa: dict) -> str:
-    """Build the mesa context section for the system prompt."""
+def _build_mesa_prompt_section(mesa: dict, rubro_key: str = RUBRO_DEFAULT) -> str:
+    """Build the mesa context section for the system prompt (welcome gateado por rubro)."""
     sucursal = mesa.get("sucursal_nombre") or ""
     location = f" de {sucursal}" if sucursal else ""
     return (
@@ -369,7 +369,7 @@ def _build_mesa_prompt_section(mesa: dict) -> str:
         f"- El cliente esta en MESA #{mesa['numero']}{location}.\n"
         f"- Tipo de entrega: MESA (no preguntar).\n"
         f"- Al confirmar pedido, usar tipo_entrega=\"MESA\", numero_mesa={mesa['numero']}.\n\n"
-        + WELCOME_RULES_MESA
+        + welcome_rules_mesa(rubro_key)
     )
 
 
@@ -1349,14 +1349,17 @@ async def orchestrate_chat(
         sucursal_id=sucursal_id,
     )
 
+    # Rubro del tenant para gatear las reglas de bienvenida (restaurante byte-idéntico).
+    rubro_key = await _load_tenant_rubro(session, tenant_id)
+
     # Inject mesa context or WhatsApp welcome rules into system prompt
     if mesa_context:
         system_message = _append_prompt_section(
-            system_message, _build_mesa_prompt_section(mesa_context),
+            system_message, _build_mesa_prompt_section(mesa_context, rubro_key),
         )
     elif canal.upper() == "WHATSAPP":
         system_message = _append_prompt_section(
-            system_message, WELCOME_RULES_WHATSAPP,
+            system_message, welcome_rules_whatsapp(rubro_key),
         )
         # Multi-sucursal: if tenant has >1 sucursal, prompt user to choose
         sucursales = await _load_tenant_sucursales(session, tenant_id)

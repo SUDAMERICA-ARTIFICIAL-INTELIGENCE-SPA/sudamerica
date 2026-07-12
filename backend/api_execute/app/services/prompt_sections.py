@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from app.services.precio_medida import sufijo_unidad
 from app.services.rubro_prompt import build_glosario
-from shared.rubros import RUBRO_DEFAULT, Capacidad, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad, Primitiva, rubro_def
 
 COTIZADOR_RULES = """
 Reglas para pedidos:
@@ -115,6 +115,60 @@ BIENVENIDA DE MESA (cliente escaneo QR en el local):
 - Si el cliente elige "Pedir la cuenta", responde solicitando el metodo de pago y agrega al final: [PEDIR_CUENTA]
 - Si elige "Ver el menu y pedir", muestra el catalogo y actua como mesero virtual.
 """.strip()
+
+
+def welcome_rules_whatsapp(rubro_key: str) -> str:
+    """WELCOME_RULES_WHATSAPP gateado por rubro.
+
+    Restaurante (default) devuelve la constante EXACTA (byte-idéntico). Otros rubros
+    reciben una bienvenida compuesta con los labels de sus primitivas y con las opciones
+    del poll gateadas por capacidad (reserva solo con AGENDA, delivery solo con DELIVERY)
+    — así una peluquería no ofrece "Reservar mesa" ni "Delivery" a su cliente. Fuga §3.A:
+    poll de restaurante inyectado a TODO WhatsApp sin gate.
+    """
+    if rubro_key == RUBRO_DEFAULT:
+        return WELCOME_RULES_WHATSAPP
+    r = rubro_def(rubro_key)
+    lb = r.labels
+    opciones = ["Hacer un pedido", f"Ver {lb[Primitiva.CATALOGO]}"]
+    if r.tiene_capacidad(Capacidad.AGENDA):
+        opciones.append(f"Reservar {lb[Primitiva.AGENDA]}")
+    if r.tiene_capacidad(Capacidad.DELIVERY):
+        opciones.append("Delivery")
+    opciones.append("Consultar estado")
+    poll = "|".join(opciones)
+    return (
+        "BIENVENIDA (primera interaccion del cliente):\n"
+        "- Cuando un cliente te escribe por primera vez (sin contexto de recurso), dale la\n"
+        "  bienvenida y SIEMPRE ofrece opciones con una encuesta interactiva.\n"
+        "- Usa una encuesta con las opciones principales:\n"
+        f"  [ENVIAR_POLL:¿En qué te puedo ayudar?|{poll}]\n"
+        "- NO hagas preguntas abiertas como primer mensaje. Usa la encuesta para guiar al cliente.\n"
+        "- Si el cliente responde con texto libre en vez de la encuesta, entiende su intencion y continua."
+    )
+
+
+def welcome_rules_mesa(rubro_key: str) -> str:
+    """WELCOME_RULES_MESA gateado por rubro.
+
+    Restaurante (default) devuelve la constante EXACTA (byte-idéntico). Un rubro con
+    recurso físico ≠ restaurante (que expone QR en una silla/box) recibe una bienvenida
+    neutral por el label del recurso, sin "mesero"/"Pedir la cuenta"/"buen provecho". Se
+    conserva el marcador [ALERTA_MESERO] (lo consume el post-proceso para avisar al equipo).
+    """
+    if rubro_key == RUBRO_DEFAULT:
+        return WELCOME_RULES_MESA
+    r = rubro_def(rubro_key)
+    recurso = r.labels[Primitiva.RECURSO]
+    catalogo = r.labels[Primitiva.CATALOGO]
+    return (
+        f"BIENVENIDA DE {recurso.upper()} (cliente escaneo QR en el local):\n"
+        f"- El cliente ya esta en su {recurso.lower()}. Dale la bienvenida de forma calida y ofrece opciones:\n"
+        f"  [ENVIAR_POLL:¡Bienvenido! ¿Qué necesitas?|Ver {catalogo} y pedir|Llamar a un encargado]\n"
+        '- Si el cliente elige "Llamar a un encargado", responde: "¡Listo! Un miembro del equipo se acercará '
+        'en un momento." y agrega al final: [ALERTA_MESERO]\n'
+        f'- Si elige "Ver {catalogo} y pedir", muestra el catalogo y ayudalo con su pedido.'
+    )
 
 
 # ── Stop/restart flow control ────────────────────────────────────────

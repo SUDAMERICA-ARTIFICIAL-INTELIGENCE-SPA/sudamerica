@@ -24,6 +24,8 @@ from app.models.usuario import Usuario
 from app.services.tenant_service import generate_slug
 from shared.rubros import RUBRO_DEFAULT, resolve_rubro, rubro_def
 
+from app.schemas.tenant_config import validate_tenant_config
+
 logger = logging.getLogger(__name__)
 
 RESET_TOKEN_TTL_MINUTES = 60
@@ -107,8 +109,10 @@ async def register(
     if existing.scalar_one_or_none():
         raise ConflictError(f"Email '{email}' already registered")
 
-    # Rubro (multi-rubro): fail-safe a restaurante. El sector se deriva del rubro
-    # (restaurante → "gastronomia", idéntico al valor previo).
+    # Rubro (multi-rubro): fail-closed en publicación. Un rubro provisto pero desconocido
+    # se rechaza (422) en vez de degradar en silencio a restaurante. `rubro=None` (no
+    # especificado) sí resuelve a restaurante por defecto. El sector se deriva del rubro.
+    validate_tenant_config({"rubro": rubro})
     rubro_key = resolve_rubro({"rubro": rubro})
     rdef = rubro_def(rubro_key)
 

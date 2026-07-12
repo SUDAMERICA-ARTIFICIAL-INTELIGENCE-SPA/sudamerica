@@ -10,7 +10,7 @@ tupla de secciones base reutilizables.
 from typing import Any
 
 from app.services.rubro_prompt import build_glosario
-from shared.rubros import RUBRO_DEFAULT, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad, Primitiva, Rubro, rubro_def
 
 # ---------------------------------------------------------------------------
 # Secciones base — Registro GASTRONOMIA (restaurantes, locales de comida)
@@ -362,12 +362,132 @@ _SUDAMERICA_EXAMPLES = (
 )
 
 
+def _remove_span(text: str, start: str, end: str) -> str:
+    """Quita ``text[start:end)`` conservando el marcador ``end``. No-op si falta alguno."""
+    i = text.find(start)
+    if i == -1:
+        return text
+    j = text.find(end, i)
+    if j == -1:
+        return text
+    return text[:i] + text[j:]
+
+
+def _sudamerica_capabilities(r: Rubro) -> str:
+    """`_SUDAMERICA_CAPABILITIES` gateado por capacidad + relabelado (no-restaurante).
+
+    Quita los bloques de tools que el rubro no expone (COMANDAS/MESAS/MODIFICADORES/
+    RESERVACIONES según capacidad) — coherente con el filtro de tools de open_agent
+    (bloque D) — y reencuadra "menu/plato/carta" con los labels del rubro.
+    """
+    lb = r.labels
+    item = lb[Primitiva.ITEM].lower()
+    catalogo = lb[Primitiva.CATALOGO].lower()
+    categoria = lb[Primitiva.CATEGORIA].lower()
+    caps = _SUDAMERICA_CAPABILITIES
+    if not r.tiene_capacidad(Capacidad.PEDIDOS):
+        caps = _remove_span(caps, "\n\nCOMANDAS (Ordenes de cocina):", "\n\nMESAS:")
+    if not r.tiene_capacidad(Capacidad.MESAS):
+        caps = _remove_span(caps, "\n\nMESAS:", "\n\nMODIFICADORES")
+    if not r.variantes:
+        caps = _remove_span(caps, "\n\nMODIFICADORES (Opciones de productos):", "\n\nRESERVACIONES:")
+    if not r.tiene_capacidad(Capacidad.AGENDA):
+        caps = _remove_span(caps, "\n\nRESERVACIONES:", "\n\nEQUIPO:")
+    caps = caps.replace("MENU (Productos y Categorias):", f"{lb[Primitiva.CATALOGO].upper()} (items y {categoria}s):")
+    caps = caps.replace("un nuevo plato/producto en el menu", f"un nuevo {item} en el {catalogo}")
+    caps = caps.replace("Ver el menu completo", f"Ver el {catalogo} completo")
+    caps = caps.replace("Desactivar un producto del menu", f"Desactivar un {item} del {catalogo}")
+    caps = caps.replace("Ver todas las secciones del menu", f"Ver todas las {categoria}s")
+    caps = caps.replace("Crear una nueva seccion", f"Crear una nueva {categoria}")
+    caps = caps.replace("Cambiar nombre o descripcion de una seccion", f"Cambiar nombre o descripcion de una {categoria}")
+    caps = caps.replace("Desactivar una seccion del menu", f"Desactivar una {categoria}")
+    caps = caps.replace("imagenes de cartas/menus", f"imagenes del {catalogo}")
+    caps = caps.replace("imagen de un menu", f"imagen de un {catalogo}")
+    caps = caps.replace("listas de productos", f"listas de {item}s")
+    if not r.tiene_capacidad(Capacidad.MESAS):
+        # Sin cocina: neutraliza el vocabulario gastronómico residual en los bloques que
+        # se conservan (COMANDAS si hay PEDIDOS, RESERVACIONES si hay AGENDA). Los nombres
+        # de tool (consultar_comandas…) son identificadores reales y no se renombran.
+        caps = caps.replace("COMANDAS (Ordenes de cocina):", f"{lb[Primitiva.ORDEN].upper()}S:")
+        caps = caps.replace(
+            "PENDIENTE→EN_COCINA→LISTO→ENTREGADO o CANCELADO",
+            "PENDIENTE→EN_PROCESO→LISTO→ENTREGADO o CANCELADO",
+        )
+        # La disponibilidad de mesas es mesa-específica: se retira del bloque de reservas.
+        caps = caps.replace(
+            "\n- consultar_disponibilidad_mesas: Ver que mesas estan libres para una fecha/hora/personas",
+            "",
+        )
+        caps = caps.replace(
+            "Ver reservas con fecha, hora, cliente, personas, mesa y estado",
+            "Ver reservas con fecha, hora, cliente, personas y estado",
+        )
+    return caps
+
+
+def _sudamerica_rules(r: Rubro) -> str:
+    """`_SUDAMERICA_RULES` relabelado (no-restaurante): "platos" → item; ejemplo y
+    estados de la FSM neutrales (EN_PROCESO en vez de EN_COCINA para rubros sin cocina)."""
+    lb = r.labels
+    item = lb[Primitiva.ITEM]
+    rules = _SUDAMERICA_RULES
+    rules = rules.replace("nombres de platos", f"nombres de {item.lower()}s")
+    rules = rules.replace(
+        "Este plato tiene pocas ventas",
+        f"Este {item.lower()} tiene pocas ventas",
+    )
+    rules = rules.replace(
+        "| Pizza Margarita | $8.500 | Disponible |",
+        f"| {item} de ejemplo | $8.500 | Disponible |",
+    )
+    if not r.tiene_capacidad(Capacidad.MESAS):
+        rules = rules.replace("`PENDIENTE`, `EN_COCINA`", "`PENDIENTE`, `EN_PROCESO`")
+    return rules
+
+
+def _sudamerica_examples(r: Rubro) -> str:
+    """`_SUDAMERICA_EXAMPLES` reconstruido con vocabulario del rubro y ejemplos gateados
+    por capacidad (no-restaurante). Restaurante conserva la constante exacta."""
+    lb = r.labels
+    item = lb[Primitiva.ITEM]
+    categoria = lb[Primitiva.CATEGORIA]
+    lines = [
+        "EJEMPLOS de preguntas que puedes responder:",
+        "- 'Como van las ventas hoy?' → consultar_metricas + consultar_ventas",
+        f"- 'Sube el precio de un {item.lower()}' → consultar_productos para encontrarlo, luego modificar_producto",
+        f"- 'Que {item.lower()} se vende mas?' → consultar_ventas y analiza",
+        "- 'Cuantos clientes nuevos tenemos?' → consultar_metricas",
+        f"- 'Elimina la {categoria.lower()} X' → consultar_categorias para obtener ID, luego eliminar_categoria",
+    ]
+    if r.tiene_capacidad(Capacidad.PEDIDOS):
+        lines.append(f"- 'Como van los {lb[Primitiva.ORDEN].lower()}s?' → consultar_comandas")
+    if r.tiene_capacidad(Capacidad.MESAS):
+        lines.append("- 'Cuantas mesas tenemos?' → consultar_mesas")
+    if r.tiene_capacidad(Capacidad.AGENDA):
+        agenda = lb[Primitiva.AGENDA].lower()
+        lines.append(f"- 'Que {agenda}s hay para hoy?' → consultar_reservaciones con fecha de hoy")
+        lines.append(f"- 'Agenda una {agenda} para Juan Perez' → crear_reservacion")
+    lines.append("- 'Registra un cliente Juan, tel 56912345678' → crear_cliente")
+    lines.append("- 'Quienes son los del equipo?' → consultar_equipo")
+    lines.append(
+        f"- (imagen del {lb[Primitiva.CATALOGO].lower()} adjunta) → analiza visualmente, "
+        "extrae items y precios, crea categorias y productos"
+    )
+    return "\n".join(lines)
+
+
 def sudamerica_admin_prompt(
     tenant_name: str,
     user_name: str = "",
     rubro: str | None = None,
 ) -> str:
-    """Construye el system prompt para el copiloto administrativo Sudamérica AI."""
+    """Construye el system prompt para el copiloto administrativo Sudamérica AI.
+
+    Restaurante (default) conserva el prompt EXACTO (byte-idéntico). Otros rubros reciben
+    el glosario del rubro + las secciones de capacidades/reglas/ejemplos gateadas por
+    capacidad y reencuadradas con sus labels — así el copiloto de una inmobiliaria no
+    habla de platos, comandas ni mesas. Fuga §3.A.
+    """
     if rubro is None or rubro == RUBRO_DEFAULT:
         identity = (
             f"Eres Sudamérica AI, el copiloto administrativo de {tenant_name}. "
@@ -376,12 +496,18 @@ def sudamerica_admin_prompt(
         )
         return "\n\n".join([identity, _SUDAMERICA_CAPABILITIES, _SUDAMERICA_RULES, _SUDAMERICA_EXAMPLES])
 
-    negocio = rubro_def(rubro).nombre
+    r = rubro_def(rubro)
     identity = (
         f"Eres Sudamérica AI, el copiloto administrativo de {tenant_name}. "
         f"Tu rol es ayudar a {user_name or 'el dueno/gerente'} a gestionar "
-        f"su {negocio} de forma inteligente y basada en datos."
+        f"su {r.nombre} de forma inteligente y basada en datos."
     )
     return "\n\n".join(
-        [identity, build_glosario(rubro), _SUDAMERICA_CAPABILITIES, _SUDAMERICA_RULES, _SUDAMERICA_EXAMPLES]
+        [
+            identity,
+            build_glosario(rubro),
+            _sudamerica_capabilities(r),
+            _sudamerica_rules(r),
+            _sudamerica_examples(r),
+        ]
     )

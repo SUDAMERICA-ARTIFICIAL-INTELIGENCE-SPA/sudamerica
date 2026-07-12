@@ -24,6 +24,13 @@ class SudamericaChatRequest(BaseModel):
         default=None,
         description="Optional file attachment (image, PDF, CSV)",
     )
+    capacidades: list[str] | None = Field(
+        default=None,
+        description=(
+            "Capacidades del rubro del tenant (slugs de shared/rubros/capacidades). "
+            "Filtran las tools expuestas al LLM; None = todas (compat)."
+        ),
+    )
 
 
 class ToolUsage(BaseModel):

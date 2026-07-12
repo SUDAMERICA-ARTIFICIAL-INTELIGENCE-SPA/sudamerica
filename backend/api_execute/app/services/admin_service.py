@@ -42,6 +42,8 @@ from app.models.api_key_audit import ApiKeyAudit
 from app.models.lead import Lead
 from app.models.platform_config import PlatformConfig
 from app.models.usuario import Usuario
+from app.schemas.tenant_config import validate_tenant_config
+from app.services.tenant_service import _merge_dicts
 
 
 # ── Tenants ──────────────────────────────────────────
@@ -161,7 +163,13 @@ async def update_tenant(
         raise NotFoundError("Tenant", str(tenant_id))
 
     for key, value in data.items():
-        if hasattr(tenant, key):
+        if key == "config" and isinstance(value, dict):
+            # Unifica a MERGE (H-9): antes hacía reemplazo total y podía borrar
+            # rubro/billing por accidente. Fail-closed: rubro inválido → 422.
+            validate_tenant_config(value)
+            base = tenant.config if isinstance(tenant.config, dict) else {}
+            tenant.config = _merge_dicts(base, value)
+        elif hasattr(tenant, key):
             setattr(tenant, key, value)
 
     await db.commit()

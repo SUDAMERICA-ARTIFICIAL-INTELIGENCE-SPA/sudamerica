@@ -9,12 +9,16 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import ApiExecuteSettings
+from app.services.tenant_rubro import load_tenant_rubro
 from shared.middleware import build_service_auth_headers
+from shared.rubros import RUBRO_DEFAULT
 from shared.utils.http_client import internal_http
 
 logger = logging.getLogger(__name__)
 
-# Message templates per loyalty tier
+# Message templates per loyalty tier. `{restaurante}` es solo el nombre del negocio
+# (agnóstico de rubro); la única frase restaurante-céntrica es `favorito_line`, gateada
+# por rubro en `_build_message`.
 _TEMPLATES = {
     "VIP": (
         "¡Hola {nombre}! Te extrañamos en {restaurante}. "
@@ -35,14 +39,21 @@ def _build_message(
     estado_cliente: str,
     plato_favorito: str | None,
     restaurante: str,
+    rubro_key: str = RUBRO_DEFAULT,
 ) -> str:
-    """Build a personalized outreach message."""
+    """Build a personalized outreach message (restaurante byte-idéntico).
+
+    Solo restaurante usa "sigue en la carta"; otros rubros neutralizan esa frase para no
+    hablar de "carta" a una peluquería/inmobiliaria. Fuga §3.A (outreach real saliente).
+    """
     template = _TEMPLATES.get(estado_cliente, _TEMPLATES["FRECUENTE"])
-    favorito_line = (
-        f"Tu favorito, {plato_favorito}, sigue en la carta. "
-        if plato_favorito
-        else ""
-    )
+    if plato_favorito:
+        if rubro_key == RUBRO_DEFAULT:
+            favorito_line = f"Tu favorito, {plato_favorito}, sigue en la carta. "
+        else:
+            favorito_line = f"Tu favorito, {plato_favorito}, te sigue esperando. "
+    else:
+        favorito_line = ""
     return template.format(
         nombre=nombre or "cliente",
         restaurante=restaurante,
@@ -50,13 +61,16 @@ def _build_message(
     )
 
 
-async def _fetch_restaurant_name(db: AsyncSession, tenant_id: UUID) -> str:
-    """Fetch the restaurant/tenant name."""
+async def _fetch_restaurant_name(
+    db: AsyncSession, tenant_id: UUID, rubro_key: str = RUBRO_DEFAULT,
+) -> str:
+    """Fetch the business/tenant name (fallback neutral para rubros no gastronómicos)."""
     tenant_q = await db.execute(
         text("SELECT nombre FROM tenants WHERE id = :tid"),
         {"tid": str(tenant_id)},
     )
-    return tenant_q.scalar() or "nuestro restaurante"
+    fallback = "nuestro restaurante" if rubro_key == RUBRO_DEFAULT else "nuestro negocio"
+    return tenant_q.scalar() or fallback
 
 
 async def _fetch_at_risk_customers(
@@ -94,13 +108,15 @@ def _is_overdue(row, now: datetime) -> tuple[bool, int]:
 
 async def _send_outreach_to_row(
     settings: ApiExecuteSettings, tenant_id: UUID,
-    row, restaurante: str, now: datetime,
+    row, restaurante: str, now: datetime, rubro_key: str = RUBRO_DEFAULT,
 ) -> str:
     """Process a single customer row. Returns 'sent', 'skip', or 'not_overdue'."""
     overdue, days_since = _is_overdue(row, now)
     if not overdue:
         return "not_overdue"
-    message = _build_message(row["nombre"], row["estado_cliente"], row["plato_favorito"], restaurante)
+    message = _build_message(
+        row["nombre"], row["estado_cliente"], row["plato_favorito"], restaurante, rubro_key,
+    )
     ok = await _send_whatsapp(settings, tenant_id, row["telefono"], message)
     if ok:
         logger.info(
@@ -122,7 +138,8 @@ async def trigger_loyalty_outreach(
 
     Targets customers whose days_since_visit > frecuencia_dias * 1.5.
     """
-    restaurante = await _fetch_restaurant_name(db, tenant_id)
+    rubro_key = await load_tenant_rubro(db, tenant_id)
+    restaurante = await _fetch_restaurant_name(db, tenant_id, rubro_key)
     rows = await _fetch_at_risk_customers(db, tenant_id, max_messages * 2)
     now = datetime.now(timezone.utc)
     sent, skipped = 0, 0
@@ -130,7 +147,7 @@ async def trigger_loyalty_outreach(
     for row in rows:
         if sent >= max_messages:
             break
-        outcome = await _send_outreach_to_row(settings, tenant_id, row, restaurante, now)
+        outcome = await _send_outreach_to_row(settings, tenant_id, row, restaurante, now, rubro_key)
         sent += 1 if outcome == "sent" else 0
         skipped += 1 if outcome == "not_overdue" else 0
 
