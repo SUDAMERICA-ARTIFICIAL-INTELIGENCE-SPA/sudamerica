@@ -15,7 +15,8 @@ from app.config import ApiExecuteSettings
 from app.prompts_ai import sudamerica_admin_prompt
 from app.services.tenant_rubro import load_tenant_rubro as _load_tenant_rubro
 from shared.database.session import set_tenant_context
-from shared.rubros import rubro_def
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 from shared.middleware import build_service_auth_headers
 from shared.utils.http_client import internal_http
 

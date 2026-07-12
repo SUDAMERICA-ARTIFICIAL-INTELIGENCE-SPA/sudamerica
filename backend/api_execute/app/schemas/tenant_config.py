@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, ValidationError, field_validator
 
-from shared.rubros import PRIMITIVAS, rubros_disponibles
+from shared.rubros import CAPACIDADES, PRIMITIVAS, rubros_disponibles
 
 
 class RubroManifest(BaseModel):
@@ -45,6 +45,20 @@ class RubroManifest(BaseModel):
         faltantes = [p for p in PRIMITIVAS if p not in v]
         if faltantes:
             raise ValueError(f"labels incompletos: faltan {faltantes}")
+        return v
+
+    @field_validator("capacidades")
+    @classmethod
+    def _capacidades_conocidas(cls, v: list[str]) -> list[str]:
+        # Fase B (Paso 5): la edición en runtime del manifiesto (CRUD admin) valida
+        # fail-closed contra el catálogo canónico. Una capacidad fuera de ``CAPACIDADES``
+        # (los 22 slugs de ``shared/rubros/capacidades.py``) se rechaza (422): la tabla
+        # ``rubros`` nunca queda en un estado que el kernel no sepa gatear. Los 101 rubros
+        # seedeados solo usan capacidades del catálogo, así que la paridad del Paso 4 no
+        # se debilita.
+        desconocidas = [c for c in v if c not in CAPACIDADES]
+        if desconocidas:
+            raise ValueError(f"capacidades desconocidas: {desconocidas}")
         return v
 
 

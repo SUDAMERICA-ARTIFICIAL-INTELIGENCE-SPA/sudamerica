@@ -10,7 +10,8 @@ from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from shared.database import get_db
-from shared.rubros import rubro_def
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 from shared.utils.exceptions import ForbiddenError
 
 from app.routes.deps import AdminWriter, AnyAuthenticated

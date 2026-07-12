@@ -12,7 +12,10 @@ from __future__ import annotations
 
 from app.services.precio_medida import sufijo_unidad
 from app.services.rubro_prompt import build_glosario
-from shared.rubros import RUBRO_DEFAULT, Capacidad, Primitiva, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad, Primitiva
+
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 
 COTIZADOR_RULES = """
 Reglas para pedidos:

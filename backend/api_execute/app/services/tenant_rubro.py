@@ -11,7 +11,12 @@ import uuid
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from shared.rubros import RUBRO_DEFAULT, resolve_rubro
+from shared.rubros import RUBRO_DEFAULT
+
+# Fase B (Paso 5): la resolución de la clave usa el roster del registro DB-backed (fallback puro a
+# diccionario.py). El roster seedeado == el de código → comportamiento idéntico hoy; queda correcto
+# si en Paso 6+ un POST añade rubros nuevos que aún no estén en diccionario.py.
+from app.services.rubro_registry import resolve_rubro
 
 logger = logging.getLogger(__name__)
 

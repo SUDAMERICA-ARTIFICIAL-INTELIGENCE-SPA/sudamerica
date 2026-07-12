@@ -22,7 +22,10 @@ from app.models.password_reset_token import PasswordResetToken
 from app.models.tenant import Tenant
 from app.models.usuario import Usuario
 from app.services.tenant_service import generate_slug
-from shared.rubros import RUBRO_DEFAULT, resolve_rubro, rubro_def
+from shared.rubros import RUBRO_DEFAULT, resolve_rubro
+
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 
 from app.schemas.tenant_config import validate_tenant_config
 

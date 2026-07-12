@@ -9,7 +9,10 @@ ya está escrito en ese vocabulario.
 
 from __future__ import annotations
 
-from shared.rubros import Capacidad, Primitiva, rubro_def
+from shared.rubros import Capacidad, Primitiva
+
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 
 
 def build_glosario(rubro_key: str) -> str:

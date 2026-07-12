@@ -27,7 +27,11 @@ from app.services.prompt_sections import (
 from app.services.tenant_rubro import load_tenant_rubro as _load_tenant_rubro
 from shared.database.session import set_tenant_context
 from shared.middleware import build_service_auth_headers
-from shared.rubros import RUBRO_DEFAULT, Capacidad, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad
+
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py);
+# anchored/current_version para el anclaje de versión del manifiesto por conversación (§5).
+from app.services.rubro_registry import anchored, current_version, rubro_def
 from shared.utils.http_client import internal_http
 
 logger = logging.getLogger(__name__)
@@ -963,19 +967,21 @@ async def _save_customer_message(
     status: str,
     media_url: str | None = None,
     media_type: str | None = None,
+    manifest_version: int | None = None,
 ) -> UUID:
     """Persist one customer conversation message and return its new id.
 
     Persistence for the orchestrated customer chat. The caller must have set the
-    RLS tenant context on `session` beforehand.
+    RLS tenant context on `session` beforehand. ``manifest_version`` estampa el ancla
+    del manifiesto de rubro para la conversación (Fase B, §5); ``None`` ⟺ no anclado.
     """
     result = await session.execute(
         sql_text(
             "INSERT INTO ai_conversations "
             "(tenant_id, lead_id, session_id, role, content, tokens_used, "
-            "modelo, canal, status, media_url, media_type) "
+            "modelo, canal, status, media_url, media_type, manifest_version) "
             "VALUES (:tid, :lid, :sid, :role, :content, :tokens, "
-            ":modelo, :canal, :status, :media_url, :media_type) "
+            ":modelo, :canal, :status, :media_url, :media_type, :manifest_version) "
             "RETURNING id"
         ),
         {
@@ -990,9 +996,46 @@ async def _save_customer_message(
             "status": status,
             "media_url": media_url,
             "media_type": media_type,
+            "manifest_version": manifest_version,
         },
     )
     return result.scalar_one()
+
+
+async def _resolve_manifest_anchor(
+    session: AsyncSession,
+    tenant_id: UUID,
+    lead_id: UUID | None,
+    canal: str,
+) -> int | None:
+    """Versión del manifiesto anclada a esta conversación (Fase B, Paso 5, §5).
+
+    Una conversación ve un manifiesto **estable** durante toda su vida: una edición de admin en
+    vuelo no la altera. El ancla es el ``manifest_version`` del turno más antiguo persistido de la
+    conversación (``lead_id`` + ``canal``, los mismos discriminadores que la historia del cliente):
+
+    - si existe (no es el primer turno) → se reusa ese valor;
+    - si no (primer turno, o sin ``lead_id``) → se ancla a la versión vigente del registro.
+
+    Devuelve ``None`` cuando no hay nada que anclar (registro no cargado / versión ``0``): el
+    registro entonces sirve la versión vigente, sin fijar. El valor devuelto se estampa en cada
+    turno de la conversación, de modo que el primer turno fija el ancla y los siguientes la heredan.
+    """
+    if lead_id is not None:
+        result = await session.execute(
+            sql_text(
+                "SELECT manifest_version FROM ai_conversations "
+                "WHERE tenant_id = :tid AND lead_id = :lid AND canal = :canal "
+                "AND manifest_version IS NOT NULL "
+                "ORDER BY created_at ASC LIMIT 1"
+            ),
+            {"tid": str(tenant_id), "lid": str(lead_id), "canal": canal},
+        )
+        existing = result.scalar_one_or_none()
+        if existing is not None:
+            return int(existing)
+    current = current_version()
+    return current if current > 0 else None
 
 
 async def load_agent_flags(session: AsyncSession, tenant_id: UUID) -> dict:
@@ -1344,36 +1387,43 @@ async def orchestrate_chat(
                 mesa_context["numero"], sucursal_id, tenant_id,
             )
 
-    system_message, config = await build_system_message(
-        session, tenant_id, settings=settings, lead_id=lead_id,
-        sucursal_id=sucursal_id,
-    )
+    # Ancla la versión del manifiesto a esta conversación (Fase B, Paso 5, §5): el primer turno
+    # fija la versión vigente y los siguientes la heredan, de modo que una edición de admin en
+    # vuelo NO cambia el rubro servido a una conversación ya iniciada. Toda la composición del
+    # prompt (build_system_message + reglas de bienvenida) resuelve el rubro con el snapshot anclado.
+    anchor_version = await _resolve_manifest_anchor(session, tenant_id, lead_id, canal)
 
-    # Rubro del tenant para gatear las reglas de bienvenida (restaurante byte-idéntico).
-    rubro_key = await _load_tenant_rubro(session, tenant_id)
-
-    # Inject mesa context or WhatsApp welcome rules into system prompt
-    if mesa_context:
-        system_message = _append_prompt_section(
-            system_message, _build_mesa_prompt_section(mesa_context, rubro_key),
+    with anchored(anchor_version):
+        system_message, config = await build_system_message(
+            session, tenant_id, settings=settings, lead_id=lead_id,
+            sucursal_id=sucursal_id,
         )
-    elif canal.upper() == "WHATSAPP":
-        system_message = _append_prompt_section(
-            system_message, welcome_rules_whatsapp(rubro_key),
-        )
-        # Multi-sucursal: if tenant has >1 sucursal, prompt user to choose
-        sucursales = await _load_tenant_sucursales(session, tenant_id)
-        sucursal_prompt = _build_sucursal_selection_prompt(sucursales)
-        if sucursal_prompt:
-            system_message = _append_prompt_section(system_message, sucursal_prompt)
 
-    # Always inject WhatsApp formatting rules for WhatsApp channel
-    if canal.upper() == "WHATSAPP":
-        system_message = _append_prompt_section(system_message, WHATSAPP_FORMAT_RULES)
+        # Rubro del tenant para gatear las reglas de bienvenida (restaurante byte-idéntico).
+        rubro_key = await _load_tenant_rubro(session, tenant_id)
 
-    # Append the generic behavioral rules to complete the system prompt —
-    # api_execute owns the full prompt build for the orchestrated route.
-    system_prompt = system_message + "\n\n" + BEHAVIORAL_RULES
+        # Inject mesa context or WhatsApp welcome rules into system prompt
+        if mesa_context:
+            system_message = _append_prompt_section(
+                system_message, _build_mesa_prompt_section(mesa_context, rubro_key),
+            )
+        elif canal.upper() == "WHATSAPP":
+            system_message = _append_prompt_section(
+                system_message, welcome_rules_whatsapp(rubro_key),
+            )
+            # Multi-sucursal: if tenant has >1 sucursal, prompt user to choose
+            sucursales = await _load_tenant_sucursales(session, tenant_id)
+            sucursal_prompt = _build_sucursal_selection_prompt(sucursales)
+            if sucursal_prompt:
+                system_message = _append_prompt_section(system_message, sucursal_prompt)
+
+        # Always inject WhatsApp formatting rules for WhatsApp channel
+        if canal.upper() == "WHATSAPP":
+            system_message = _append_prompt_section(system_message, WHATSAPP_FORMAT_RULES)
+
+        # Append the generic behavioral rules to complete the system prompt —
+        # api_execute owns the full prompt build for the orchestrated route.
+        system_prompt = system_message + "\n\n" + BEHAVIORAL_RULES
 
     # Load recent customer history for this lead + canal.
     history = await _load_customer_history(session, tenant_id, lead_id, canal)
@@ -1385,6 +1435,7 @@ async def orchestrate_chat(
         session, tenant_id, lead_id, session_id, canal,
         role="user", content=clean_message, tokens=None, modelo=None,
         status="RECEIVED", media_url=media_url, media_type=media_type,
+        manifest_version=anchor_version,
     )
     await session.commit()
 
@@ -1427,6 +1478,7 @@ async def orchestrate_chat(
         session, tenant_id, lead_id, session_id, canal,
         role="assistant", content=response_text, tokens=tokens_used,
         modelo=model_used, status="SENT",
+        manifest_version=anchor_version,
     )
     await session.commit()
 

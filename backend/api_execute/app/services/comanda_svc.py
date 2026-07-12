@@ -23,7 +23,10 @@ from app.services.rubro_prompt import incluye_capacidad
 from app.services.tenant_rubro import load_tenant_rubro
 from app.services.venta_svc import create_venta
 from shared.models.enums import ComandaEstado
-from shared.rubros import Capacidad, Primitiva, puede_transicionar, rubro_def
+from shared.rubros import Capacidad, Primitiva, puede_transicionar
+
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 from shared.schemas import PaginatedResponse, PaginationParams
 from shared.services import crud
 from shared.utils.exceptions import InvalidTransitionError, NotFoundError

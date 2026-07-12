@@ -10,7 +10,11 @@ tupla de secciones base reutilizables.
 from typing import Any
 
 from app.services.rubro_prompt import build_glosario
-from shared.rubros import RUBRO_DEFAULT, Capacidad, Primitiva, Rubro, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad, Primitiva, Rubro
+
+# Fase B (Paso 5): la definición del rubro se sirve desde el registro DB-backed (con fallback puro
+# a diccionario.py). Firma idéntica; con la tabla seedeada, el Rubro es idéntico al de código.
+from app.services.rubro_registry import rubro_def
 
 # ---------------------------------------------------------------------------
 # Secciones base — Registro GASTRONOMIA (restaurantes, locales de comida)
