@@ -1,6 +1,6 @@
 # Sudamérica AI Backend
 
-Backend FastAPI multi-servicio para `api_execute`, `AI_dialer`, `callback_manual`, `tasks` y `canales_service`.
+Backend FastAPI multi-servicio para `api_execute`, `callback_manual`, `tasks`, `canales_service` y `open_agent`.
 
 ## Canonical tenancy
 
@@ -21,11 +21,11 @@ Backend FastAPI multi-servicio para `api_execute`, `AI_dialer`, `callback_manual
 
 | Servicio | Puerto | Responsabilidad |
 |----------|--------|-----------------|
-| `api_execute` | 8000 | Auth, tenants, usuarios, catalogo, leads, ventas, metricas, Stripe, alertas, sales targets |
-| `AI_dialer` | 8001 | Chat, clasificacion, embeddings, configuracion IA, llm keys |
+| `api_execute` | 8000 | Auth, tenants, usuarios, catalogo, leads, ventas, metricas, Stripe, alertas, sales targets, orquestacion IA (config, conversaciones, knowledge) |
 | `callback_manual` | 8002 | Revision humana de respuestas IA |
 | `tasks` | 8003 | Entrega async y auditoria de envios |
 | `canales_service` | 8004 | Instancias Evolution, WhatsApp, QR y webhooks |
+| `open_agent` | 8005 | Generacion de texto LLM (`POST /api/v1/agent/generate`) |
 
 ## Tables
 
@@ -60,7 +60,7 @@ Todas las tablas tenant-scoped deben tener `tenant_id`, RLS `ENABLE`, RLS `FORCE
 cd backend
 python -m pip install -r requirements.txt
 python run_alembic.py upgrade head
-pytest -q api_execute/tests/test_alertas.py api_execute/tests/test_sales_targets.py AI_dialer/tests/test_config.py AI_dialer/tests/test_llm_keys.py callback_manual/tests/test_revision.py tasks/tests/test_send_response.py canales_service/tests/test_bootstrap.py
+pytest -q api_execute/tests/test_alertas.py api_execute/tests/test_sales_targets.py callback_manual/tests/test_revision.py tasks/tests/test_send_response.py canales_service/tests/test_bootstrap.py
 ```
 
 ## Notes

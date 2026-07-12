@@ -1,6 +1,7 @@
 """AI Orchestrator route — api_execute builds business context and generates
-replies via open_agent. Also owns the tenant agent config and conversation
-history endpoints that canales_service reaches on api_execute."""
+replies via open_agent. Also owns the conversation-history import endpoint that
+canales_service reaches on api_execute. The user-facing agent config, conversation
+viewer and knowledge endpoints live in ``routes/ai_dashboard.py``."""
 
 import logging
 
@@ -11,11 +12,10 @@ from shared.database.dependencies import get_db
 from shared.database.session import set_tenant_context
 from shared.middleware.auth import require_service
 from shared.middleware.rate_limit import require_rate_limit
-from shared.utils.service_access import AGENT_CONFIG_READERS, CONVERSATION_IMPORTERS
+from shared.utils.service_access import CONVERSATION_IMPORTERS
 
 from app.routes.deps import AiChatActor
 from app.schemas.ai_orchestrator import (
-    AgentConfigResponse,
     ConversationImportRequest,
     ConversationImportResponse,
     ProcessMessageRequest,
@@ -23,7 +23,6 @@ from app.schemas.ai_orchestrator import (
 )
 from app.services.ai_orchestrator import (
     import_conversation_messages,
-    load_agent_flags,
     orchestrate_chat,
 )
 
@@ -68,24 +67,6 @@ async def process_message(
         raise HTTPException(status_code=502, detail="AI processing failed")
 
     return ProcessMessageResponse(**result)
-
-
-@router.get("/ai/config", response_model=AgentConfigResponse)
-async def get_agent_config(
-    current_service: dict = Depends(
-        require_service("config:read", callers=AGENT_CONFIG_READERS)
-    ),
-    db: AsyncSession = Depends(get_db),
-) -> AgentConfigResponse:
-    """Return the tenant's auto-response + debounce flags for canales_service.
-
-    api_execute owns ``agente_config`` and serves these flags directly over
-    ``GET /ai/config``; canales_service reads them before auto-replying.
-    """
-    tenant_id = current_service["tenant_id"]
-    await set_tenant_context(db, str(tenant_id))
-    flags = await load_agent_flags(db, tenant_id)
-    return AgentConfigResponse(**flags)
 
 
 @router.post("/ai/conversations/import", response_model=ConversationImportResponse)

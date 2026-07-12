@@ -4,7 +4,7 @@
 Permitir al usuario del sistema conectar su WhatsApp escaneando un QR, y hacer seguimiento en tiempo real de las conversaciones que la IA tiene con sus clientes (prospectos) a través de WhatsApp.
 
 ## Stack
-- **Backend:** FastAPI (tasks :8003 + AI_dialer :8001)
+- **Backend:** FastAPI (canales_service :8004 + api_execute :8000 + open_agent :8005 + tasks :8003)
 - **Frontend:** Next.js 15 + Mantine 7 + TanStack Query v5
 - **WhatsApp:** Evolution API (self-hosted, Baileys lib)
 - **LLM:** OpenRouter (multi-provider)
@@ -21,12 +21,15 @@ Permitir al usuario del sistema conectar su WhatsApp escaneando un QR, y hacer s
   ├─ POST /whatsapp/send        ← envía respuesta IA (con auth)
   ├─ POST /qr/{tenant_id}      ← genera instancia + QR
   └─ GET  /qr/{tenant_id}/status ← estado conexión
-        ↓ forward
-[AI_dialer :8001]
-  ├─ POST /chat                 ← procesa mensaje → classify → sub-agent → LLM
-  ├─ GET  /conversations        ← lista hilos de conversación por tenant (NUEVO)
-  └─ GET  /conversations/{lead_id}/messages ← mensajes de un hilo (NUEVO)
-        ↓ persiste
+        ↓ reenvía al orquestador
+[api_execute :8000] (orquestador IA)
+  ├─ POST /ai/process-message   ← construye contexto de negocio + persiste conversación
+  ├─ GET  /ai/conversations     ← lista hilos de conversación por tenant (NUEVO)
+  └─ GET  /ai/conversations/{lead_id}/messages ← mensajes de un hilo (NUEVO)
+        ↓ genera texto (LLM, sin tools)
+[open_agent :8005]
+  └─ POST /api/v1/agent/generate ← generación de respuesta vía LLM
+        ↓ api_execute persiste la respuesta
 [PostgreSQL] ai_conversations (tenant_id, lead_id, role, content, canal, created_at)
 ```
 
@@ -45,8 +48,8 @@ Permitir al usuario del sistema conectar su WhatsApp escaneando un QR, y hacer s
 2. tasks parsea payload: `sender` (remoteJid), `message` (text), `instance_name`
 3. tasks extrae `tenant_id` del `instance_name` (pattern: `tenant-{uuid}`)
 4. tasks busca/crea lead en api_execute por `telefono=sender`
-5. tasks forward a AI_dialer: `POST /chat` con `{message, lead_id, canal: "WHATSAPP"}`
-6. AI_dialer: classify → sub-agent → LLM → guarda en ai_conversations
+5. tasks reenvía al orquestador (api_execute): `POST /ai/process-message` con `{message, lead_id, canal: "WHATSAPP"}`
+6. api_execute construye el contexto de negocio → open_agent genera la respuesta (LLM) → api_execute persiste en ai_conversations
 7. Si confianza >= 0.85: tasks envía respuesta vía Evolution API `sendText`
 8. Si confianza < 0.85: callback_manual recibe para revisión humana
 
@@ -58,13 +61,13 @@ Permitir al usuario del sistema conectar su WhatsApp escaneando un QR, y hacer s
 
 ## Endpoints Backend (Nuevos)
 
-### AI_dialer — Conversaciones
+### api_execute — Conversaciones
 ```
-GET /api/v1/ai/conversations
+GET /api/v1/core/ai/conversations
   Query: ?page=1&page_size=20&canal=WHATSAPP
   Response: PaginatedResponse<ConversationThread>
 
-GET /api/v1/ai/conversations/{lead_id}/messages
+GET /api/v1/core/ai/conversations/{lead_id}/messages
   Query: ?page=1&page_size=50
   Response: PaginatedResponse<ConversationMessage>
 ```

@@ -12,7 +12,7 @@ export interface UpdateAgenteConfigDto {
   config?: Record<string, unknown>;
 }
 
-/** Raw shape returned by `GET /api/v1/ai/config`. */
+/** Raw shape returned by `GET /api/v1/core/ai/config`. */
 interface BackendAgenteConfig {
   id: string;
   tenant_id: string;

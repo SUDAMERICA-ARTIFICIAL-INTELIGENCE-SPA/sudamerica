@@ -9,9 +9,6 @@ export const BASE_URLS = {
   execute:
     __ENV.API_EXECUTE_URL ||
     'https://api-execute-456595931835.us-central1.run.app',
-  dialer:
-    __ENV.AI_DIALER_URL ||
-    'https://ai-dialer-456595931835.us-central1.run.app',
   callback:
     __ENV.CALLBACK_URL ||
     'https://callback-manual-456595931835.us-central1.run.app',

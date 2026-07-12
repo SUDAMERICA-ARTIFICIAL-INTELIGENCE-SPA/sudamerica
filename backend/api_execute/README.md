@@ -63,7 +63,7 @@ GET    /health/ready                  Readiness probe (verifica DB)
 
 ```
                     ┌──────────────────────┐
-                    │   frontend       │
+                    │   frontend           │
                     │   (Next.js 14)       │
                     └──────────┬───────────┘
                                │ HTTPS
@@ -75,14 +75,14 @@ GET    /health/ready                  Readiness probe (verifica DB)
                   │          │          │
                   ▼          ▼          ▼
            ┌──────────┐ ┌──────────┐ ┌──────────┐
-           │AI_dialer │ │callback  │ │  tasks   │
-           │  :8001   │ │ _manual  │ │  :8003   │
-           │ Chat, IA │ │  :8002   │ │WhatsApp  │
+           │open_agent│ │callback  │ │  tasks   │
+           │  :8005   │ │ _manual  │ │  :8003   │
+           │ LLM gen  │ │  :8002   │ │WhatsApp  │
            └──────────┘ └──────────┘ └──────────┘
 ```
 
 - **Frontend (frontend)**: Todas las llamadas REST del frontend llegan a este servicio. Es el unico punto de entrada HTTP para el cliente.
-- **AI_dialer (:8001)**: api_execute envia mensajes al cerebro IA para clasificacion y chat. URL configurable via `SERVICE_AI_DIALER_URL`.
+- **open_agent (:8005)**: api_execute (orquestador de IA, owner de las tablas `agente_config`, `ai_conversations`, `tenant_knowledge`) llama a open_agent para la generacion de texto LLM via `POST /api/v1/agent/generate`. URL configurable via `SERVICE_OPEN_AGENT_URL`.
 - **callback_manual (:8002)**: Recibe notificaciones cuando una respuesta IA tiene baja confianza. URL configurable via `SERVICE_CALLBACK_URL`.
 - **tasks (:8003)**: Delega envio de email y trabajo asincronico post-callback. URL configurable via `SERVICE_TASKS_URL`.
 - **canales_service (:8004)**: Owner de WhatsApp, QR y webhooks de Evolution API.
@@ -143,7 +143,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 | `STRIPE_SECRET_KEY` | Stripe API key |
 | `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret |
 | `STRIPE_PRICE_PRO` | Stripe Price ID del plan PRO |
-| `SERVICE_AI_DIALER_URL` | URL de AI_dialer (default: http://localhost:8001) |
+| `SERVICE_OPEN_AGENT_URL` | URL de open_agent (default: http://localhost:8005) |
 | `SERVICE_CALLBACK_URL` | URL de callback_manual (default: http://localhost:8002) |
 | `SERVICE_TASKS_URL` | URL de tasks (default: http://localhost:8003) |
 

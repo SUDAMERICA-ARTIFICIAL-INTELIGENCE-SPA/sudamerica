@@ -39,7 +39,7 @@ k6 run backend/loadtest/scenarios/spike.js
 
 ```bash
 k6 run -e API_EXECUTE_URL=http://localhost:8000 \
-       -e AI_DIALER_URL=http://localhost:8001 \
+       -e AGENT_URL=http://localhost:8005 \
        backend/loadtest/scenarios/smoke.js
 ```
 
@@ -104,7 +104,7 @@ named `tenant-{uuid}`. For fresh fixtures create them via api-execute onboarding
 |------|-------------|-------------------|
 | `dashboard.js` | api-execute (4 parallel GETs) | 40% |
 | `lead_crud.js` | api-execute (create, read, update, list) | 30% |
-| `chat_flow.js` | api-execute → ai-dialer (LLM) | 20% |
+| `chat_flow.js` | api-execute → open-agent (LLM) | 20% |
 | `health.js` | all 6 services /health/ready | 10% |
 
 ## Cleanup

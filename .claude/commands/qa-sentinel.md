@@ -16,7 +16,7 @@
 
 ### Gate A — Tests
 ```bash
-cd backend && python -m pytest --cov=api_execute --cov=AI_dialer --cov=callback_manual --cov=tasks --cov-report=term-missing
+cd backend && python -m pytest --cov=api_execute --cov=callback_manual --cov=tasks --cov=canales_service --cov=open_agent --cov-report=term-missing
 ```
 Threshold: >= 70% coverage
 

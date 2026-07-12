@@ -2,7 +2,7 @@
  * Flow: simulate Evolution API -> canales-service webhook for one tenant.
  *
  * Hits the real hot path used in production: WhatsApp message ingress.
- * Triggers the full pipeline canales-service -> ai-dialer -> LLM -> sendText.
+ * Triggers the full pipeline canales-service -> api-execute -> open_agent -> LLM -> sendText.
  *
  * Required env vars:
  *   WEBHOOK_TOKEN    — shared token from canales-service env

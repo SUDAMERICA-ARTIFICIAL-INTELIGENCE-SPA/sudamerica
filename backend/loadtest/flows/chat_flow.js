@@ -1,7 +1,8 @@
 /**
  * Flow: send a message through the AI pipeline.
  *
- * Hits api-execute /ai/process-message which orchestrates ai-dialer.
+ * Hits api-execute /ai/process-message which orchestrates LLM generation
+ * via open_agent (pipeline: api-execute -> open_agent -> LLM).
  * This is the heaviest flow (LLM latency) — expect 3-15s responses.
  */
 

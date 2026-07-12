@@ -13,7 +13,7 @@
 5. Actualizar `Docs/AgentSync.md` con spec y criterios
 
 ## Contexto del Proyecto
-- 4 microservicios FastAPI: api_execute(:8000), AI_dialer(:8001), callback_manual(:8002), tasks(:8003)
+- 5 microservicios FastAPI: api_execute(:8000) — incluye endpoints IA (config, conversaciones, knowledge) y orquestacion, callback_manual(:8002), tasks(:8003), canales_service(:8004), open_agent(:8005) — generacion de texto LLM
 - Frontend Next.js 14 + Mantine
 - Multi-tenant via tenant_id + PostgreSQL RLS
 - Planes: FREE (100 leads/mo, 3 users) / PRO (unlimited, 15 users)

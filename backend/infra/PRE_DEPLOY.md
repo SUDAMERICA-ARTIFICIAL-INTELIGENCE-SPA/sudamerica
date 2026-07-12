@@ -28,4 +28,4 @@ reproducen el comportamiento previo; los módulos nuevos se gatean por rubro en 
   de compatibilidad. Contract diferido a post-piloto.
 - **Revisión humana por confianza en la ruta orquestada** (R6): requiere flag por-tenant
   `revisar_siempre` en `AgenteConfig` (migración) o una señal de confianza real de la generación.
-  Ver `AI_dialer/app/services/chat_service.py` (`_ORCHESTRATED_CONFIANZA`).
+  La lógica de orquestación y confianza vive ahora en api_execute (el orquestador).

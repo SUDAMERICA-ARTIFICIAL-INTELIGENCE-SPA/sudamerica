@@ -30,10 +30,11 @@ backend/{service}/
 ```
 
 ## Servicios
-- **api_execute** (:8000): CRUD, Auth, Stripe, Metricas
-- **AI_dialer** (:8001): LLM chat, clasificacion, sub-agentes, voz, embeddings
+- **api_execute** (:8000): CRUD, Auth, Stripe, Metricas; endpoints IA (config, conversaciones, knowledge/training) y orquestacion de mensajes
 - **callback_manual** (:8002): Revision humana, Whisper transcripcion
 - **tasks** (:8003): WhatsApp, Email, QR onboarding
+- **canales_service** (:8004): Integracion de canales
+- **open_agent** (:8005): Generacion de texto LLM (POST /api/v1/agent/generate)
 
 ## Patrones Obligatorios
 - Multi-tenant: `tenant_id` en todas las queries (TenantBase)

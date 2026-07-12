@@ -22,7 +22,7 @@
 ## Endpoints
 
 ```
-POST   /api/v1/reviews                       Crear item de revision (llamado por AI_dialer)
+POST   /api/v1/reviews                       Crear item de revision (llamado por api_execute)
 GET    /api/v1/reviews/pendientes             Listar revisiones pendientes (ADMIN/ASESOR, paginado)
 GET    /api/v1/reviews/stats                  Estadisticas de revision del dia
 POST   /api/v1/reviews/{id}/aprobar           Aprobar respuesta IA
@@ -39,7 +39,7 @@ GET    /health/ready                           Readiness probe
 ## Flujo de revision humana
 
 ```
-AI_dialer detecta confianza < 0.85
+api_execute detecta confianza < 0.85
             │
             ▼
 POST /api/v1/reviews (crea item pendiente)
@@ -74,8 +74,8 @@ La `precision_ia` se calcula como `aprobadas / (aprobadas + editadas + rechazada
 
 ```
     ┌──────────────┐         ┌──────────────────────────────┐
-    │ AI_dialer    │ ──────> │ >>> callback_manual :8002 <<< │
-    │   :8001      │ confianza│  Revision Humana             │
+    │ api_execute  │ ──────> │ >>> callback_manual :8002 <<< │
+    │   :8000      │ confianza│  Revision Humana             │
     │ (confianza   │ < 0.85  │  Aprobar/Editar/Rechazar     │
     │  baja)       │         └──────────────┬───────────────┘
     └──────────────┘                        │
@@ -88,7 +88,7 @@ La `precision_ia` se calcula como `aprobadas / (aprobadas + editadas + rechazada
                                    └──────────────┘
 ```
 
-- **AI_dialer (:8001)**: Envia respuestas de baja confianza via `POST /api/v1/reviews` usando JWT interno con scope `reviews:create`.
+- **api_execute (:8000)**: Envia respuestas de baja confianza via `POST /api/v1/reviews` usando JWT interno con scope `reviews:create`.
 - **tasks (:8003)**: Tras aprobar/editar, callback_manual notifica a tasks via `POST /api/v1/tasks/send-response` con la respuesta final + lead_id + tenant_id.
 - **api_execute (:8000)**: No se comunica directamente, pero comparte la misma DB y JWT secret.
 - **Frontend (frontend)**: El panel de revision en el frontend consulta los endpoints de pendientes y stats a traves de api_execute.
@@ -172,10 +172,9 @@ uvicorn app.main:app --host 0.0.0.0 --port 8002 --reload
 | `JWT_SECRET_KEY` | Clave JWT para tokens de usuario |
 | `JWT_ALGORITHM` | Algoritmo JWT (default: HS256) |
 | `OPENAI_API_KEY` | API key de OpenAI (para Whisper) |
-| `SERVICE_AI_DIALER_URL` | URL de AI_dialer (default: http://localhost:8001) |
 | `SERVICE_TASKS_URL` | URL de tasks (default: http://localhost:8003) |
 | `CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY` | Clave HMAC propia del emisor `callback_manual` para JWT internos |
-| `API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY`, `AI_DIALER_INTERNAL_SERVICE_SECRET_KEY`, `TASKS_INTERNAL_SERVICE_SECRET_KEY`, `CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY` | Claves confiadas por issuer para verificar JWT internos |
+| `API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY`, `TASKS_INTERNAL_SERVICE_SECRET_KEY`, `CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY` | Claves confiadas por issuer para verificar JWT internos |
 
 ## Tests
 

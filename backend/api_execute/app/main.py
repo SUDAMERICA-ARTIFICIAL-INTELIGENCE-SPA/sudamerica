@@ -13,6 +13,7 @@ from app.routes import (
     admin_users,
     admin_whatsapp,
     ai_conversations,
+    ai_dashboard,
     ai_orchestrator,
     alertas,
     auth,
@@ -111,6 +112,7 @@ def create_app() -> FastAPI:
     app.include_router(sales_targets.router, prefix="/api/v1/core")
     app.include_router(onboarding.router, prefix="/api/v1/core")
     app.include_router(ai_orchestrator.router, prefix="/api/v1/core")
+    app.include_router(ai_dashboard.router, prefix="/api/v1/core")
     app.include_router(menu_import.router, prefix="/api/v1/core")
     app.include_router(stripe.router, prefix="/api/v1/core")
     app.include_router(billing.router, prefix="/api/v1/core")
