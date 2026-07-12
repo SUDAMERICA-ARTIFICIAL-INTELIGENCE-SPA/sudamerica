@@ -26,7 +26,6 @@ async def readiness(request: Request):
     settings = request.app.state.settings
     checks = [
         check_database(request.app.state.session_factory),
-        check_service(settings.SERVICE_AI_DIALER_URL, "ai-dialer"),
         check_service(settings.SERVICE_API_EXECUTE_URL, "api-execute"),
     ]
     if settings.EVOLUTION_API_URL:

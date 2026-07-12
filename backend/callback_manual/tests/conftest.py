@@ -127,11 +127,9 @@ def _configure_mock_settings(mock_instance):
     mock_instance.JWT_SECRET_KEY = JWT_SECRET
     mock_instance.JWT_ALGORITHM = JWT_ALGORITHM
     mock_instance.OPENAI_API_KEY = "test-key"
-    mock_instance.SERVICE_AI_DIALER_URL = "http://localhost:8001"
     mock_instance.SERVICE_TASKS_URL = "http://localhost:8003"
     mock_instance.INTERNAL_SERVICE_SECRET_KEY = INTERNAL_SERVICE_SECRET
     mock_instance.API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY = os.environ["API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY"]
-    mock_instance.AI_DIALER_INTERNAL_SERVICE_SECRET_KEY = os.environ["AI_DIALER_INTERNAL_SERVICE_SECRET_KEY"]
     mock_instance.TASKS_INTERNAL_SERVICE_SECRET_KEY = os.environ["TASKS_INTERNAL_SERVICE_SECRET_KEY"]
     mock_instance.CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY = os.environ["CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY"]
     mock_instance.INTERNAL_SERVICE_TOKEN_TTL_SECONDS = 300
@@ -140,7 +138,6 @@ def _configure_mock_settings(mock_instance):
         signing_key=mock_instance.INTERNAL_SERVICE_SECRET_KEY,
         trusted_keys={
             "api_execute": mock_instance.API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY,
-            "ai_dialer": mock_instance.AI_DIALER_INTERNAL_SERVICE_SECRET_KEY,
             "tasks": mock_instance.TASKS_INTERNAL_SERVICE_SECRET_KEY,
             "canales_service": mock_instance.CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY,
         },

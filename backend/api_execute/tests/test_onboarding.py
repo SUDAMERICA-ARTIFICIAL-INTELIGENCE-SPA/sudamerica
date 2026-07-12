@@ -159,26 +159,25 @@ def test_build_llm_messages_missing_text():
 # ── onboarding_chat route ────────────────────────────────────────────
 
 async def test_onboarding_chat_success(client):
-    """POST /onboarding/chat with mocked AI_dialer."""
+    """POST /onboarding/chat with mocked open_agent /generate."""
     from unittest.mock import MagicMock
     mock_response = MagicMock()
     mock_response.status_code = 200
     mock_response.raise_for_status = MagicMock()
+    # open_agent /generate returns GenerateResponse{response, tokens_used, model_used};
+    # `response` holds the LLM's JSON text.
     mock_response.json.return_value = {
-        "content": json.dumps({
+        "response": json.dumps({
             "reply": "Hola! Soy Sudamérica AI",
             "extractedData": {},
             "complete": False,
         }),
         "tokens_used": 30,
+        "model_used": "test-model",
     }
 
-    with patch("app.routes.onboarding.httpx.AsyncClient") as MockClient:
-        instance = AsyncMock()
-        instance.post.return_value = mock_response
-        instance.__aenter__ = AsyncMock(return_value=instance)
-        instance.__aexit__ = AsyncMock(return_value=False)
-        MockClient.return_value = instance
+    with patch("app.routes.onboarding.internal_http.post", new_callable=AsyncMock) as mock_post:
+        mock_post.return_value = mock_response
 
         body = {
             "messages": [{"role": "user", "text": "Hola"}],
@@ -190,18 +189,21 @@ async def test_onboarding_chat_success(client):
     data = resp.json()
     assert "reply" in data
     assert data["reply"] == "Hola! Soy Sudamérica AI"
+    # Verify we called the open_agent /generate destination with the generate payload.
+    assert mock_post.await_count == 1
+    called_url = mock_post.await_args.args[0] if mock_post.await_args.args else mock_post.await_args.kwargs.get("url", "")
+    assert called_url.endswith("/api/v1/agent/generate")
+    sent = mock_post.await_args.kwargs["json"]
+    assert set(sent) == {"system_prompt", "message", "history"}
+    assert sent["message"] == "Hola"
 
 
 async def test_onboarding_chat_ai_down(client):
-    """When AI_dialer is unreachable, return fallback reply."""
+    """When open_agent is unreachable, return fallback reply."""
     import httpx as httpx_mod
 
-    with patch("app.routes.onboarding.httpx.AsyncClient") as MockClient:
-        instance = AsyncMock()
-        instance.post.side_effect = httpx_mod.ConnectError("Connection refused")
-        instance.__aenter__ = AsyncMock(return_value=instance)
-        instance.__aexit__ = AsyncMock(return_value=False)
-        MockClient.return_value = instance
+    with patch("app.routes.onboarding.internal_http.post", new_callable=AsyncMock) as mock_post:
+        mock_post.side_effect = httpx_mod.ConnectError("Connection refused")
 
         body = {"messages": [{"role": "user", "text": "Hola"}], "currentData": {}}
         resp = await client.post("/api/v1/core/onboarding/chat", json=body)

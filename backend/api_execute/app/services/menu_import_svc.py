@@ -14,7 +14,7 @@ from app.services.image_storage_svc import batch_download_and_upload, download_i
 from app.services.rubro_prompt import extract_prompt_generico
 
 import httpx
-from sqlalchemy import func, select
+from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import ApiExecuteSettings
@@ -594,9 +594,9 @@ async def confirm_import(
     await db.flush()
     await db.commit()
 
-    # 4. If set_as_official, update agente_config.menu_pdf_url via AI_dialer
-    if set_as_official and record.original_pdf_url and settings:
-        await _update_official_menu_pdf(tenant_id, record.original_pdf_url, settings)
+    # 4. If set_as_official, point agente_config.menu_pdf_url at the new PDF.
+    if set_as_official and record.original_pdf_url:
+        await _update_official_menu_pdf(db, tenant_id, record.original_pdf_url)
 
     return {
         "created": create_result["created"],
@@ -608,35 +608,28 @@ async def confirm_import(
 
 
 async def _update_official_menu_pdf(
+    db: AsyncSession,
     tenant_id: UUID,
     pdf_url: str,
-    settings: ApiExecuteSettings,
 ) -> None:
-    """Update agente_config.menu_pdf_url via internal HTTP call to AI_dialer."""
-    from shared.middleware import build_service_auth_headers
-    from shared.utils.http_client import internal_http
+    """Set ``agente_config.menu_pdf_url`` for the tenant.
 
-    headers = build_service_auth_headers(
-        service_name="api_execute",
-        audience="ai_dialer",
-        tenant_id=tenant_id,
-        secret_key=settings.INTERNAL_SERVICE_SECRET_KEY,
-        algorithm=settings.JWT_ALGORITHM,
-        scopes=("config:write",),
-        expires_in_seconds=settings.INTERNAL_SERVICE_TOKEN_TTL_SECONDS,
-    )
-    headers["X-Tenant-ID"] = str(tenant_id)
-
+    api_execute owns ``agente_config``, so this is a direct DB update (no
+    inter-service call). The caller committed just before, which cleared the RLS
+    ``SET LOCAL``, so the tenant context is reapplied before the write.
+    """
     try:
-        resp = await internal_http.patch(
-            f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/config",
-            json={"menu_pdf_url": pdf_url},
-            headers=headers,
-            timeout=15.0,
+        await set_tenant_context(db, str(tenant_id))
+        await db.execute(
+            text(
+                "UPDATE agente_config SET menu_pdf_url = :url "
+                "WHERE tenant_id = :tid AND activo = true"
+            ),
+            {"url": pdf_url, "tid": str(tenant_id)},
         )
-        resp.raise_for_status()
+        await db.commit()
         logger.info("Updated official menu PDF for tenant %s", tenant_id)
-    except (httpx.HTTPError, RuntimeError):
+    except Exception:
         logger.warning(
             "Failed to update official menu PDF for tenant %s", tenant_id, exc_info=True,
         )

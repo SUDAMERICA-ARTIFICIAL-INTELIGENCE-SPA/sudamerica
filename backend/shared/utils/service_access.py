@@ -10,7 +10,7 @@ access to a resource never silently widens another.
 
 # ─── api_execute: carta (menu) ───
 
-CARTA_READERS: tuple[str, ...] = ("ai_dialer", "open_agent")
+CARTA_READERS: tuple[str, ...] = ("open_agent",)
 """Services that may read menu items (categorias, productos) — CartaReader."""
 
 CARTA_WRITERS: tuple[str, ...] = ("open_agent",)
@@ -34,15 +34,15 @@ VENTA_WRITERS: tuple[str, ...] = ("open_agent",)
 
 # ─── api_execute: comandas ───
 
-COMANDA_READERS: tuple[str, ...] = ("ai_dialer", "open_agent")
+COMANDA_READERS: tuple[str, ...] = ("open_agent",)
 """Services that may read comandas — ComandaReader."""
 
-COMANDA_WRITERS: tuple[str, ...] = ("ai_dialer", "open_agent")
+COMANDA_WRITERS: tuple[str, ...] = ("open_agent",)
 """Services that may write comandas — ComandaWriter."""
 
 # ─── api_execute: modifiers ───
 
-MODIFIER_READERS: tuple[str, ...] = ("ai_dialer", "open_agent")
+MODIFIER_READERS: tuple[str, ...] = ("open_agent",)
 """Services that may read modifiers — ModifierReader."""
 
 MODIFIER_WRITERS: tuple[str, ...] = ("open_agent",)
@@ -56,8 +56,11 @@ MESA_READERS: tuple[str, ...] = ("open_agent",)
 MESA_WRITERS: tuple[str, ...] = ("open_agent",)
 """Services that may write mesas — MesaWriter."""
 
-MESA_AVAILABILITY_READERS: tuple[str, ...] = ("ai_dialer",)
-"""Services that may query mesa availability (reservaciones:read) — MesaAvailabilityReader."""
+# Note: GET /mesas/disponibilidad is a users-only endpoint (AnyAuthenticated).
+# No internal service queries it — the admin copilot (open_agent) checks
+# availability via GET /reservaciones/disponibilidad. An empty service_callers
+# allowlist would mean "any trusted issuer", not "no service", so the route uses
+# a plain user guard instead of a service_callers tuple here.
 
 # ─── api_execute: usuarios ───
 
@@ -77,22 +80,12 @@ METRICAS_READERS: tuple[str, ...] = ("open_agent",)
 ORCHESTRATOR_CHAT_CALLERS: tuple[str, ...] = ("canales_service",)
 """Services that may invoke api_execute's AI chat orchestrator — AiChatActor."""
 
-# ─── AI_dialer ───
-
-DIALER_CHAT_CALLERS: tuple[str, ...] = ("canales_service", "api_execute")
-"""Services that may call AI_dialer's /chat endpoint."""
-
 AGENT_CONFIG_READERS: tuple[str, ...] = ("canales_service",)
-"""Services that may read the tenant agent configuration (config:read)."""
-
-STT_TRANSCRIBERS: tuple[str, ...] = ("canales_service", "callback_manual")
-"""Services that may request speech-to-text transcription (stt:transcribe)."""
+"""Services that may read the tenant agent configuration (config:read) — GET /ai/config."""
 
 CONVERSATION_IMPORTERS: tuple[str, ...] = ("canales_service",)
-"""Services that may import historical conversation messages (conversations:import)."""
-
-CONTACT_RESOLVERS: tuple[str, ...] = ("canales_service",)
-"""Services that may find-or-create contacts by phone (contacts:resolve)."""
+"""Services that may import historical conversation messages
+(conversations:import) — POST /ai/conversations/import."""
 
 # ─── canales_service ───
 
@@ -104,8 +97,11 @@ WEBHOOK_PROCESSORS: tuple[str, ...] = ("tasks",)
 
 # ─── callback_manual ───
 
-REVISION_CREATORS: tuple[str, ...] = ("ai_dialer",)
-"""Services that may create human-review items (reviews:create)."""
+# Human-review items (reviews:create) are created only by ADMIN/ASESOR users via
+# the review panel — no internal service produces them (the orchestrated customer
+# chat reports a fixed high confidence, so no low-confidence auto-review is
+# generated). The create endpoint uses a plain user-role guard; there is no
+# service_callers allowlist to grant here.
 
 # ─── tasks ───
 

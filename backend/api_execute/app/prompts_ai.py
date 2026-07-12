@@ -1,7 +1,7 @@
 """Prompts de IA centralizados — api_execute es el dueno de las instrucciones.
 
-AI_dialer (Cerebro IA) recibe estos prompts como system_prompt_override
-cuando api_execute le envia solicitudes de chat.
+api_execute arma estos prompts como system_prompt_override y open_agent los
+recibe al generar las respuestas de chat.
 
 Cada funcion construye un prompt dinamico a partir de parametros y una
 tupla de secciones base reutilizables.

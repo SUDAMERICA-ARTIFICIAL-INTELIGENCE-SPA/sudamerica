@@ -9,7 +9,6 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - api-execute
-      - ai-dialer
       - callback-manual
       - tasks
       - canales-service
@@ -39,23 +38,14 @@ services:
       - "8000:8000"
     environment:
       PORT: 8000
+      SERVICE_OPEN_AGENT_URL: http://open-agent:8005
     env_file:
       - ./api_execute/.env
     depends_on:
       postgres:
         condition: service_healthy
-
-  ai-dialer:
-    build: ./AI_dialer
-    ports:
-      - "8001:8001"
-    environment:
-      PORT: 8001
-    env_file:
-      - ./AI_dialer/.env
-    depends_on:
-      postgres:
-        condition: service_healthy
+      open-agent:
+        condition: service_started
 
   callback-manual:
     build: ./callback_manual
@@ -92,6 +82,15 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  open-agent:
+    build: ./open_agent
+    ports:
+      - "8005:8005"
+    environment:
+      PORT: 8005
+    env_file:
+      - ./open_agent/.env
 
 volumes:
   pgdata:

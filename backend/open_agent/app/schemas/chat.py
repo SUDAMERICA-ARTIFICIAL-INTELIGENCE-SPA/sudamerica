@@ -38,3 +38,30 @@ class SudamericaChatResponse(BaseModel):
     tokens_used: int = 0
     model_used: str = ""
     tools_used: list[ToolUsage] = Field(default_factory=list)
+
+
+class GenerateRequest(BaseModel):
+    """Request from api_execute for pure text generation (NO tools).
+
+    Serves the customer chat (WhatsApp) and the onboarding assistant. Same
+    shape as SudamericaChatRequest, but the handler never exposes admin tools.
+    """
+
+    system_prompt: str = Field(..., description="System prompt built by api_execute")
+    message: str = Field(..., min_length=1, max_length=8000)
+    history: list[dict] = Field(
+        default_factory=list,
+        description="Recent conversation history [{role, content}]",
+    )
+    file: FileAttachment | None = Field(
+        default=None,
+        description="Optional file attachment (image, PDF, CSV)",
+    )
+
+
+class GenerateResponse(BaseModel):
+    """Response for pure text generation (customer chat / onboarding)."""
+
+    response: str
+    tokens_used: int = 0
+    model_used: str = ""

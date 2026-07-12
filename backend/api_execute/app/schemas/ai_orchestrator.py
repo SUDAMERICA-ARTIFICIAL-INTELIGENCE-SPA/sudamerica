@@ -5,6 +5,38 @@ from uuid import UUID
 from pydantic import BaseModel, Field
 
 
+class AgentConfigResponse(BaseModel):
+    """Tenant agent flags consumed by canales_service (auto-response + debounce).
+
+    Served by api_execute (owner of ``agente_config``) over ``GET /ai/config``.
+    Only the two fields canales_service reads are exposed; defaults match the DB
+    column defaults.
+    """
+
+    auto_respuesta_whatsapp: bool = True
+    debounce_seconds: float = 4.0
+
+
+class ConversationImportMessage(BaseModel):
+    role: str
+    content: str
+    created_at: str | None = None
+    media_url: str | None = None
+    media_type: str | None = None
+
+
+class ConversationImportRequest(BaseModel):
+    lead_id: UUID
+    canal: str = "WHATSAPP"
+    messages: list[ConversationImportMessage] = Field(default_factory=list)
+
+
+class ConversationImportResponse(BaseModel):
+    lead_id: UUID
+    imported_count: int = 0
+    skipped_count: int = 0
+
+
 class ProcessMessageRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=8000)
     lead_id: UUID | None = None

@@ -4,9 +4,9 @@ Con un dump local de revision_humana: para cada umbral candidato, si el sistema
 hubiese auto-enviado todo lo con confianza >= umbral, ¿qué precisión (auto-enviadas
 que el humano APROBÓ) y qué cobertura (fracción auto-enviada) habría tenido?
 
-HALLAZGO DOCUMENTADO (investigación 2026-07-02): en la ruta actual con
-system_prompt_override, ai_dialer HARDCODEA confianza = 0.95
-(AI_dialer/app/services/chat_service.py:1225) → el umbral configurable
+HALLAZGO DOCUMENTADO: en la ruta de chat orquestada (api_execute → open_agent
+con system_prompt_override), la confianza está FIJA en 0.95
+(``ai_orchestrator.orchestrate_chat``) → el umbral configurable
 agente_config.umbral_confianza (0.85) nunca gatilla revisión: TODO se auto-envía.
 La calibración solo tendrá efecto real cuando la confianza vuelva a ser una señal.
 """
@@ -63,8 +63,8 @@ def render_md(puntos: list[dict], reco: dict | None, fuente: str) -> str:
 Fuente de datos: `{fuente}` (dump local read-only de revision_humana).
 
 ## ⚠️ Contexto crítico
-En la ruta de chat actual (api_execute → ai_dialer con `system_prompt_override`),
-la confianza está **hardcodeada en 0.95** (`AI_dialer/app/services/chat_service.py:1225`),
+En la ruta de chat orquestada (api_execute → open_agent con `system_prompt_override`),
+la confianza está **fija en 0.95** (`ai_orchestrator.orchestrate_chat`),
 por encima del umbral default 0.85 (`agente_config.umbral_confianza`) → **toda
 respuesta se auto-envía y la revisión humana por confianza nunca se gatilla**.
 Esta calibración aplica al clasificador real (ruta sin override) y como diseño

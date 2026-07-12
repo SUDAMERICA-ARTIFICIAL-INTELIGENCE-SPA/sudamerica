@@ -49,14 +49,7 @@ _MODEL_FILES = [
     ("api_execute.api_key_audit", "api_execute/app/models/api_key_audit.py"),
     ("api_execute.platform_config", "api_execute/app/models/platform_config.py"),
     ("api_execute.reservacion", "api_execute/app/models/reservacion.py"),
-    # AI_dialer
-    ("ai_dialer.agente_config", "AI_dialer/app/models/agente_config.py"),
-    ("ai_dialer.ai_conversation", "AI_dialer/app/models/ai_conversation.py"),
-    ("ai_dialer.ai_embedding", "AI_dialer/app/models/ai_embedding.py"),
-    ("ai_dialer.contact", "AI_dialer/app/models/contact.py"),
-    ("ai_dialer.llm_provider_key", "AI_dialer/app/models/llm_provider_key.py"),
-    ("ai_dialer.session", "AI_dialer/app/models/session.py"),
-    ("ai_dialer.tenant_knowledge", "AI_dialer/app/models/tenant_knowledge.py"),
+    ("api_execute.subentidad", "api_execute/app/models/subentidad.py"),
     # callback_manual
     ("callback_manual.revision_humana", "callback_manual/app/models/revision_humana.py"),
     # tasks
@@ -93,6 +86,16 @@ target_metadata = Base.metadata
 # ignore them (never DROP or ALTER).
 _UNMANAGED_TABLES = frozenset({
     "sucursal_producto_precios",  # raw SQL only, no ORM model
+    # AI chat / knowledge tables — defined in infra/001_schema.sql and accessed
+    # via raw SQL from api_execute (no ORM models). Alembic must never DROP or
+    # ALTER them on autogenerate.
+    "agente_config",
+    "ai_conversations",
+    "ai_embeddings",
+    "contacts",
+    "llm_provider_keys",
+    "sessions",
+    "tenant_knowledge",
 })
 
 

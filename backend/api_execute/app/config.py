@@ -42,7 +42,6 @@ class ApiExecuteSettings(BaseSettings):
     MP_PLAN_AMOUNT_PRO: int = 74990
 
     # Internal service URLs
-    SERVICE_AI_DIALER_URL: str = "http://localhost:8001"
     SERVICE_CALLBACK_URL: str = "http://localhost:8002"
     SERVICE_TASKS_URL: str = "http://localhost:8003"
     SERVICE_CANALES_URL: str = "http://localhost:8004"
@@ -56,7 +55,6 @@ class ApiExecuteSettings(BaseSettings):
 
     # Internal service auth
     INTERNAL_SERVICE_SECRET_KEY: str = Field(validation_alias="API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY")
-    AI_DIALER_INTERNAL_SERVICE_SECRET_KEY: str = ""
     CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY: str = ""
     TASKS_INTERNAL_SERVICE_SECRET_KEY: str = ""
     CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY: str = ""
@@ -100,7 +98,6 @@ class ApiExecuteSettings(BaseSettings):
             service_name="api_execute",
             signing_key=self.INTERNAL_SERVICE_SECRET_KEY,
             trusted_keys={
-                "ai_dialer": self.AI_DIALER_INTERNAL_SERVICE_SECRET_KEY,
                 "callback_manual": self.CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY,
                 "tasks": self.TASKS_INTERNAL_SERVICE_SECRET_KEY,
                 "canales_service": self.CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY,

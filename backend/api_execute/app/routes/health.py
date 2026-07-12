@@ -23,7 +23,6 @@ async def readiness(request: Request):
         service_name="api-execute",
         checks=[
             check_database(request.app.state.session_factory),
-            check_service(settings.SERVICE_AI_DIALER_URL, "ai-dialer"),
             check_service(settings.SERVICE_CALLBACK_URL, "callback-manual"),
             check_service(settings.SERVICE_TASKS_URL, "tasks"),
             check_service(settings.SERVICE_CANALES_URL, "canales-service"),

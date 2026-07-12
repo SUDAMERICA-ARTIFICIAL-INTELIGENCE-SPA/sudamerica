@@ -79,7 +79,7 @@ def test_service_token_bypasses():
         "user_id": None,
         "tenant_id": uuid.uuid4(),
         "role": UserRole.ADMIN,
-        "service_name": "ai_dialer",
+        "service_name": "canales_service",
         "scopes": ("chat:write",),
     }
     require_branch_access(service_ctx, SUC_A)

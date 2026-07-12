@@ -18,7 +18,6 @@ class CanalesSettings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     INTERNAL_SERVICE_SECRET_KEY: str = Field(validation_alias="CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY")
     API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY: str = ""
-    AI_DIALER_INTERNAL_SERVICE_SECRET_KEY: str = ""
     CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY: str = ""
     TASKS_INTERNAL_SERVICE_SECRET_KEY: str = ""
     INTERNAL_SERVICE_TOKEN_TTL_SECONDS: int = 300
@@ -38,7 +37,6 @@ class CanalesSettings(BaseSettings):
     WA_PROXY_USERNAME: str = ""
     WA_PROXY_PASSWORD: str = ""
 
-    SERVICE_AI_DIALER_URL: str = "http://localhost:8001"
     SERVICE_API_EXECUTE_URL: str = "http://localhost:8000"
     SERVICE_TASKS_URL: str = "http://localhost:8003"
     FRONTEND_URL: str = "http://localhost:3000"
@@ -75,7 +73,6 @@ class CanalesSettings(BaseSettings):
             signing_key=self.INTERNAL_SERVICE_SECRET_KEY,
             trusted_keys={
                 "api_execute": self.API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY,
-                "ai_dialer": self.AI_DIALER_INTERNAL_SERVICE_SECRET_KEY,
                 "callback_manual": self.CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY,
                 "tasks": self.TASKS_INTERNAL_SERVICE_SECRET_KEY,
             },

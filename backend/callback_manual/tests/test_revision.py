@@ -9,7 +9,7 @@ import pytest
 from shared.middleware.auth import create_service_token
 
 from app.services import revision_service
-from .conftest import TENANT_ID, USER_ID
+from .conftest import TENANT_ID
 
 
 # ---------------------------------------------------------------------------
@@ -47,12 +47,15 @@ async def test_create_revision_rejects_confianza_out_of_range(client, auth_heade
 
 
 @pytest.mark.asyncio
-async def test_create_revision_accepts_ai_dialer_service_token(client):
+async def test_create_revision_rejects_service_token(client):
+    """Review creation is users-only (ADMIN/ASESOR panel); a well-formed token
+    from a trusted issuer must still be rejected. Guards against the AI_dialer
+    removal silently widening access to any service with reviews:create scope."""
     token = create_service_token(
-        service_name="ai_dialer",
+        service_name="tasks",
         audience="callback_manual",
         tenant_id=TENANT_ID,
-        signing_key=os.environ["AI_DIALER_INTERNAL_SERVICE_SECRET_KEY"],
+        signing_key=os.environ["TASKS_INTERNAL_SERVICE_SECRET_KEY"],
         scopes=("reviews:create",),
         expires_in_seconds=300,
     )
@@ -63,7 +66,7 @@ async def test_create_revision_accepts_ai_dialer_service_token(client):
     payload = _revision_payload()
     payload["lead_id"] = None
     response = await client.post("/api/v1/reviews", json=payload, headers=headers)
-    assert response.status_code == 201
+    assert response.status_code == 403
 
 
 # ---------------------------------------------------------------------------
