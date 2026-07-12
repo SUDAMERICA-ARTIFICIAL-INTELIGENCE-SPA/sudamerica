@@ -761,6 +761,7 @@ export const RUBROS: Record<RubroKey, RubroDef> = {
       "campanas",
       "terreno",
       "consentimientos",
+      "activos_fijos",
     ],
   },
   canchas: {
@@ -2328,6 +2329,8 @@ export const RUBROS: Record<RubroKey, RubroDef> = {
       "inventario",
       "compras",
       "facturacion",
+      "contabilidad",
+      "rrhh",
     ],
   },
   tienda_naturista: {
@@ -3227,6 +3230,7 @@ export const RUBROS: Record<RubroKey, RubroDef> = {
       "produccion",
       "facturacion",
       "terreno",
+      "rrhh",
     ],
   },
   dj_animacion: {
@@ -3447,6 +3451,8 @@ export const RUBROS: Record<RubroKey, RubroDef> = {
       "arriendos",
       "facturacion",
       "terreno",
+      "contabilidad",
+      "activos_fijos",
     ],
   },
   agencia_marketing: {

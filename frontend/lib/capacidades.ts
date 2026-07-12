@@ -1,6 +1,7 @@
 // Catálogo de capacidades (ERP+CRM) — espejo de shared/rubros/capacidades.py (backend).
-// Mantener ambos en sync. 22 capacidades = 20 del artifact "Sidebar · 3 propuestas para
-// 100+ rubros" + 2 nuevas ERP (compras, produccion) decididas en Fase 0.
+// Mantener ambos en sync. 25 capacidades = 20 del artifact "Sidebar · 3 propuestas para
+// 100+ rubros" + 2 ERP (compras, produccion) de Fase 0 + 3 ERP (contabilidad,
+// activos_fijos, rrhh) decididas en Paso 7 para las categorías canónicas nuevas.
 // El campo `capacidades` STORED por rubro (lib/rubros.ts) es el canónico (curado,
 // Fase 2). La derivación §3 se retiró junto con `modulos` en la Etapa B; los modos
 // de dato (recurso/variantes/precioMedida) viven como flags del RubroDef.
@@ -30,6 +31,9 @@ export const CAPACIDADES = [
   "terreno",
   "mesas",
   "consentimientos",
+  "contabilidad",
+  "activos_fijos",
+  "rrhh",
 ] as const;
 
 export type Capacidad = (typeof CAPACIDADES)[number];
@@ -174,5 +178,24 @@ export const CAPACIDADES_META: Record<Capacidad, CapacidadMeta> = {
     label: "Consentimientos",
     descripcion: "Formularios y consentimientos firmados.",
     eje: "salud_legal",
+  },
+  contabilidad: {
+    slug: "contabilidad",
+    label: "Contabilidad",
+    descripcion:
+      "Plan de cuentas, asientos, libro mayor, CxC/CxP, conciliación y estados financieros.",
+    eje: "erp",
+  },
+  activos_fijos: {
+    slug: "activos_fijos",
+    label: "Activos fijos",
+    descripcion: "Registro, depreciación, mantenciones y bajas de activos fijos.",
+    eje: "erp",
+  },
+  rrhh: {
+    slug: "rrhh",
+    label: "Personas (RRHH)",
+    descripcion: "Empleados, contratos, asistencia, vacaciones, liquidaciones y remuneraciones.",
+    eje: "erp",
   },
 };

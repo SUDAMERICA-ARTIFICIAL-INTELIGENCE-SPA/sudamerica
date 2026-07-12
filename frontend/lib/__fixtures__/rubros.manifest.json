@@ -36,7 +36,10 @@
     "campanas",
     "terreno",
     "mesas",
-    "consentimientos"
+    "consentimientos",
+    "contabilidad",
+    "activos_fijos",
+    "rrhh"
   ],
   "rubros": {
     "agencia_marketing": {
@@ -151,7 +154,9 @@
         "contratos",
         "arriendos",
         "facturacion",
-        "terreno"
+        "terreno",
+        "contabilidad",
+        "activos_fijos"
       ],
       "sub_entidad_label": null,
       "recurso": false,
@@ -2042,7 +2047,8 @@
         "facturacion",
         "campanas",
         "terreno",
-        "consentimientos"
+        "consentimientos",
+        "activos_fijos"
       ],
       "sub_entidad_label": "Propiedad",
       "recurso": false,
@@ -2368,7 +2374,9 @@
         "delivery",
         "inventario",
         "compras",
-        "facturacion"
+        "facturacion",
+        "contabilidad",
+        "rrhh"
       ],
       "sub_entidad_label": null,
       "recurso": false,
@@ -3315,7 +3323,8 @@
         "compras",
         "produccion",
         "facturacion",
-        "terreno"
+        "terreno",
+        "rrhh"
       ],
       "sub_entidad_label": null,
       "recurso": false,
