@@ -1,10 +1,10 @@
 """E2 — Harness de eval offline: prompt real + turno LLM + asserts deterministas.
 
 Sin DB: el system prompt sale de ``evals.fixtures`` (mismas funciones puras que
-prod) y ``BEHAVIORAL_RULES`` se extrae por ``ast`` del fuente de ai_dialer (sin
-duplicar texto ni importar módulos DB-bound). El turno replica
-``chat_service._prepare_chat_context`` (override + reglas) y
-``llm_service._build_payload`` (system como primer mensaje).
+prod) y ``BEHAVIORAL_RULES`` se extrae por ``ast`` del fuente de api_execute
+(``ai_orchestrator``), sin duplicar texto ni importar módulos DB-bound. El turno
+replica el armado de contexto de ``ai_orchestrator`` (override + reglas) y el
+payload del LLM (system como primer mensaje).
 
 Guardrails: cap duro de casos (EVAL_MAX_CASES) y costo (EVAL_MAX_USD); la API key
 solo se lee del entorno y JAMÁS se imprime.
@@ -26,12 +26,12 @@ import httpx
 from evals.fixtures import ARQUETIPOS, build_system_prompt, load_fixture, precios_permitidos
 
 BACKEND_DIR = Path(__file__).resolve().parent.parent
-CHAT_SERVICE_PATH = BACKEND_DIR / "AI_dialer" / "app" / "services" / "chat_service.py"
+CHAT_SERVICE_PATH = BACKEND_DIR / "api_execute" / "app" / "services" / "ai_orchestrator.py"
 OUT_DIR = Path(__file__).resolve().parent / "out"
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "deepseek/deepseek-chat"
-# Mismos parámetros que prod (AI_dialer/app/config.py: LLM_TEMPERATURE / LLM_MAX_TOKENS)
+# Mismos parámetros que prod (LLM_TEMPERATURE / LLM_MAX_TOKENS)
 TEMPERATURE = 0.3
 MAX_TOKENS = 1024  # respuestas de eval; prod usa 4096 pero el turno típico es corto
 # Precios conservadores USD/token para el cap (deepseek-chat ≈ $0.3/M in, $1.2/M out)
@@ -45,7 +45,7 @@ _PRECIO_RE = re.compile(r"\$\s?([\d][\d.,]*)")
 
 
 def extract_behavioral_rules(path: Path = CHAT_SERVICE_PATH) -> str:
-    """Extrae BEHAVIORAL_RULES del fuente de ai_dialer sin importarlo (ast)."""
+    """Extrae BEHAVIORAL_RULES del fuente de api_execute sin importarlo (ast)."""
     tree = ast.parse(path.read_text(encoding="utf-8-sig"))
     for node in ast.walk(tree):
         if isinstance(node, ast.Assign) and any(
@@ -66,9 +66,9 @@ def extract_behavioral_rules(path: Path = CHAT_SERVICE_PATH) -> str:
 
 
 def build_full_system_prompt(fx: dict) -> str:
-    """Prompt COMPLETO que ve el LLM: override de api_execute + reglas de ai_dialer.
+    """Prompt COMPLETO que ve el LLM: override de api_execute + BEHAVIORAL_RULES.
 
-    Réplica exacta de ``chat_service.py``: ``system_prompt_override + "\\n\\n" + BEHAVIORAL_RULES``.
+    Réplica de ``ai_orchestrator``: ``system_prompt_override + "\\n\\n" + BEHAVIORAL_RULES``.
     """
     return build_system_prompt(fx) + "\n\n" + extract_behavioral_rules()
 

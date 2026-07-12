@@ -11,6 +11,7 @@ from shared.models.enums import TenantPlan
 from shared.utils.exceptions import NotFoundError
 
 from app.models.tenant import Tenant
+from app.schemas.tenant_config import validate_tenant_config
 
 
 def generate_slug(nombre: str) -> str:
@@ -60,6 +61,7 @@ async def update_tenant(
     for key, value in data.items():
         if value is not None:
             if key == "config" and isinstance(value, Mapping):
+                validate_tenant_config(dict(value))  # fail-closed: rubro inválido → 422
                 tenant.config = _merge_dicts(tenant.config or {}, value)
             else:
                 setattr(tenant, key, value)

@@ -35,9 +35,10 @@ async def system_health(
     settings = request.app.state.settings
     services_to_check = [
         ("api-execute", "http://localhost:8000"),
-        ("ai-dialer", getattr(settings, "SERVICE_AI_DIALER_URL", "http://localhost:8001")),
         ("callback-manual", getattr(settings, "SERVICE_CALLBACK_URL", "http://localhost:8002")),
         ("tasks", getattr(settings, "SERVICE_TASKS_URL", "http://localhost:8003")),
+        ("canales-service", getattr(settings, "SERVICE_CANALES_URL", "http://localhost:8004")),
+        ("open-agent", getattr(settings, "SERVICE_OPEN_AGENT_URL", "http://localhost:8005")),
     ]
 
     results = []

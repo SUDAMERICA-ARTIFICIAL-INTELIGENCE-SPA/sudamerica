@@ -15,7 +15,7 @@
 - **Tests:** Vitest (unit/integration) + Playwright (E2E)
 - **Package Manager:** pnpm
 - **Icons:** @tabler/icons-react
-- **Backend:** 4 FastAPI microservices — api_execute(:8000), AI_dialer(:8001), callback_manual(:8002), tasks(:8003)
+- **Backend:** 5 FastAPI microservices — api_execute(:8000), callback_manual(:8002), tasks(:8003), canales_service(:8004), open_agent(:8005)
 - **Auth:** JWT Bearer — localStorage (access_token + refresh_token)
 - **Multi-tenant:** Todas las API calls usan `tenant_id` del JWT
 

@@ -197,6 +197,17 @@ describe("api.delete", () => {
     const [, options] = firstFetchCall();
     expect(options.method).toBe("DELETE");
   });
+
+  it("resolves to undefined on 204 No Content without parsing the body", async () => {
+    // A 204 (e.g. DELETE /knowledge/{id}) has an empty body — res.json() would throw.
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 204,
+      json: () => Promise.reject(new Error("Unexpected end of JSON input")),
+    });
+
+    await expect(api.delete("/knowledge/abc")).resolves.toBeUndefined();
+  });
 });
 
 describe("error handling", () => {
@@ -290,7 +301,7 @@ describe("error handling", () => {
 });
 
 describe("service routing", () => {
-  it("routes to dialer service", async () => {
+  it("routes dialer alias to api_execute (ai-dialer removed)", async () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       status: 200,
@@ -300,8 +311,8 @@ describe("service routing", () => {
     await api.get("/config", { service: "dialer" });
 
     const [url] = firstFetchCall();
-    expect(url).toContain("localhost:8001");
-    expect(url).toContain("/api/v1/ai/config");
+    expect(url).toContain("localhost:8000");
+    expect(url).toContain("/api/v1/core/ai/config");
   });
 
   it("routes to canales service", async () => {

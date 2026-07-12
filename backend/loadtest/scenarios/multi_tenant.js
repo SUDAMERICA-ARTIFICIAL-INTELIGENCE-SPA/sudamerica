@@ -17,7 +17,7 @@
  * named "tenant-{uuid}". For staging, create fixture tenants first.
  *
  * GOAL: validate capacity for 1000 tenants. Start at 50, ramp to 200, then 500.
- *       Watch for: p95 latency, http_req_failed, Cloud SQL CPU/conns, ai-dialer 429s.
+ *       Watch for: p95 latency, http_req_failed, Cloud SQL CPU/conns, open-agent/api-execute 429s.
  */
 
 import { sleep } from 'k6';

@@ -25,7 +25,10 @@ LB_NAME="sudamerica-gateway"
 DOMAIN="api.sudamerica.com"   # <-- Change to your actual domain
 
 # Cloud Run service names (must match deployed services)
-SERVICES=(api-execute ai-dialer callback-manual tasks canales-service)
+# ai-dialer was removed in the refoundation: its user-facing IA endpoints moved to
+# api_execute (/api/v1/core/ai/*). open-agent stays internal (service-to-service),
+# not fronted by this LB.
+SERVICES=(api-execute callback-manual tasks canales-service)
 
 echo "==> Enabling required APIs..."
 gcloud services enable compute.googleapis.com --project="$PROJECT"
@@ -79,23 +82,6 @@ pathMatchers:
   - name: all-paths
     defaultService: projects/sudamerica-prod/global/backendServices/bs-api-execute
     routeRules:
-      # ai-dialer: /api/v1/ai/*
-      - priority: 10
-        matchRules:
-          - prefixMatch: /api/v1/ai/
-        routeAction:
-          weightedBackendServices:
-            - backendService: projects/sudamerica-prod/global/backendServices/bs-ai-dialer
-              weight: 100
-      # ai-dialer WebSocket: /ws/ (but NOT /ws/kds/)
-      # Note: /ws/kds/ has higher priority (lower number) and routes to api-execute
-      - priority: 30
-        matchRules:
-          - prefixMatch: /ws/
-        routeAction:
-          weightedBackendServices:
-            - backendService: projects/sudamerica-prod/global/backendServices/bs-ai-dialer
-              weight: 100
       # api-execute WebSocket: /ws/kds/
       - priority: 20
         matchRules:
@@ -209,8 +195,6 @@ echo "    /api/v1/core/*    → api-execute"
 echo "    /api/v1/admin/*   → api-execute"
 echo "    /api/v1/public/*  → api-execute"
 echo "    /ws/kds/*         → api-execute"
-echo "    /api/v1/ai/*      → ai-dialer"
-echo "    /ws/*             → ai-dialer"
 echo "    /api/v1/reviews/* → callback-manual"
 echo "    /api/v1/tasks/*   → tasks"
 echo "    /api/v1/canales/* → canales-service"

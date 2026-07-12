@@ -17,11 +17,16 @@ const SERVICE_CONFIG = {
     localOrigin: "http://localhost:8000",
     path: "/api/v1/core",
   },
+  // Legacy alias. The dashboard's AI endpoints (config, conversations, knowledge)
+  // used to live on the now-removed ai-dialer service; they now live on
+  // api_execute under /api/v1/core/ai. This target therefore resolves to
+  // api_execute — kept as a distinct key so the AI hooks keep their relative
+  // paths (`/config`, `/conversations`, `/knowledge/*`) unchanged.
   dialer: {
-    envOrigin: process.env.NEXT_PUBLIC_API_DIALER,
-    cloudRunService: "ai-dialer",
-    localOrigin: "http://localhost:8001",
-    path: "/api/v1/ai",
+    envOrigin: process.env.NEXT_PUBLIC_API_EXECUTE,
+    cloudRunService: "api-execute",
+    localOrigin: "http://localhost:8000",
+    path: "/api/v1/core/ai",
   },
   callback: {
     envOrigin: process.env.NEXT_PUBLIC_API_CALLBACK,
@@ -220,6 +225,12 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
           ? String((errorDetail as Record<string, unknown>).detail)
           : `HTTP ${res.status}`;
       throw new ApiError(res.status, message, errorDetail);
+    }
+
+    // 204 No Content (e.g. DELETE endpoints) has an empty body — res.json() would
+    // throw on it, so resolve to undefined instead of parsing.
+    if (res.status === 204) {
+      return undefined as T;
     }
 
     return res.json() as Promise<T>;

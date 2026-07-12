@@ -5,12 +5,14 @@ import inspect as pyinspect
 import itertools
 import json as _json
 import logging
+import re
 import secrets
 import uuid
 from datetime import UTC, datetime, timedelta
 from enum import Enum
 
 import bcrypt
+from pydantic import ValidationError
 from sqlalchemy import func, inspect, select, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -35,13 +37,16 @@ from shared.models.enums import (
     UserRole,
 )
 from shared.models.tenant import Tenant
+from shared.rubros import RUBRO_DEFAULT
 from shared.schemas.base import PaginatedResponse
-from shared.utils.exceptions import NotFoundError
+from shared.utils.exceptions import ConflictError, NotFoundError, UnprocessableError
 
 from app.models.api_key_audit import ApiKeyAudit
 from app.models.lead import Lead
 from app.models.platform_config import PlatformConfig
 from app.models.usuario import Usuario
+from app.schemas.tenant_config import RubroManifest, validate_tenant_config
+from app.services.tenant_service import _merge_dicts
 
 
 # ── Tenants ──────────────────────────────────────────
@@ -161,7 +166,13 @@ async def update_tenant(
         raise NotFoundError("Tenant", str(tenant_id))
 
     for key, value in data.items():
-        if hasattr(tenant, key):
+        if key == "config" and isinstance(value, dict):
+            # Unifica a MERGE (H-9): antes hacía reemplazo total y podía borrar
+            # rubro/billing por accidente. Fail-closed: rubro inválido → 422.
+            validate_tenant_config(value)
+            base = tenant.config if isinstance(tenant.config, dict) else {}
+            tenant.config = _merge_dicts(base, value)
+        elif hasattr(tenant, key):
             setattr(tenant, key, value)
 
     await db.commit()
@@ -585,6 +596,341 @@ async def upsert_platform_config(
     await db.commit()
     await db.refresh(config)
     return config
+
+
+# ── Rubros (manifiesto global persistido — Fase B, Paso 5) ────────────
+
+# Columnas de la tabla `rubros` (espejo de RubroManifest + metadatos de versión + ciclo de vida).
+_RUBRO_COLS = (
+    "key", "nombre", "emoji", "sector", "labels", "capacidades",
+    "sub_entidad_label", "recurso", "variantes", "precio_medida",
+    "categorias_semilla", "origen", "activo", "version", "updated_at", "updated_by",
+)
+# Forma canónica de una `key` de rubro runtime: slug snake_case, 3–80 chars, empieza por letra.
+_RUBRO_KEY_RE = re.compile(r"^[a-z][a-z0-9_]{2,79}$")
+# Campos que el CRUD admin puede editar en runtime (la `key` es inmutable: es la PK y el
+# identificador del roster; crear rubros nuevos es Paso 6+).
+_RUBRO_EDITABLE = frozenset({
+    "nombre", "emoji", "sector", "labels", "capacidades",
+    "sub_entidad_label", "recurso", "variantes", "precio_medida",
+    "categorias_semilla",
+})
+# Columnas JSONB: el driver puede devolverlas ya deserializadas (dict/list) o como str.
+_RUBRO_JSON_COLS = ("labels", "capacidades", "categorias_semilla")
+
+
+def _rubro_row_to_dict(row) -> dict:
+    """Normaliza una fila de `rubros` a dict, deserializando los JSONB si llegan como str."""
+    data = dict(row)
+    for col in _RUBRO_JSON_COLS:
+        value = data.get(col)
+        if isinstance(value, str):
+            data[col] = _json.loads(value)
+    return data
+
+
+async def list_rubros(db: AsyncSession) -> list[dict]:
+    """Lista todos los rubros de la tabla global (orden por `key`)."""
+    result = await db.execute(
+        text("SELECT " + ", ".join(_RUBRO_COLS) + " FROM rubros ORDER BY key")
+    )
+    return [_rubro_row_to_dict(r) for r in result.mappings().all()]
+
+
+async def get_rubro(db: AsyncSession, key: str) -> dict:
+    """Un rubro por `key` (404 vía NotFoundError si no existe)."""
+    result = await db.execute(
+        text("SELECT " + ", ".join(_RUBRO_COLS) + " FROM rubros WHERE key = :k"),
+        {"k": key},
+    )
+    row = result.mappings().first()
+    if row is None:
+        raise NotFoundError("Rubro", key)
+    return _rubro_row_to_dict(row)
+
+
+def _manifest_from_row(row: dict) -> dict:
+    """Proyección del `RubroManifest` desde una fila (sin metadatos de versión)."""
+    return {
+        "key": row["key"],
+        "nombre": row["nombre"],
+        "emoji": row["emoji"],
+        "sector": row["sector"],
+        "labels": dict(row["labels"]),
+        "capacidades": list(row["capacidades"]),
+        "sub_entidad_label": row["sub_entidad_label"],
+        "recurso": bool(row["recurso"]),
+        "variantes": bool(row["variantes"]),
+        "precio_medida": bool(row["precio_medida"]),
+        "categorias_semilla": list(row["categorias_semilla"]),
+    }
+
+
+async def _bump_manifest_version(db: AsyncSession) -> int:
+    """Incrementa el contador global `rubro_manifest_version` en `platform_config`.
+
+    No commitea: el llamador (``update_rubro``) hace un único commit atómico con la fila.
+    """
+    result = await db.execute(
+        text("SELECT value FROM platform_config WHERE key = 'rubro_manifest_version'")
+    )
+    value = result.scalar_one_or_none()
+    current = 1
+    if value is not None:
+        data = value if isinstance(value, dict) else _json.loads(value)
+        current = int(data.get("version", 1))
+    new_version = current + 1
+    await db.execute(
+        text(
+            "INSERT INTO platform_config (key, value) "
+            "VALUES ('rubro_manifest_version', CAST(:v AS jsonb)) "
+            "ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = NOW()"
+        ),
+        {"v": _json.dumps({"version": new_version})},
+    )
+    return new_version
+
+
+async def update_rubro(
+    db: AsyncSession,
+    key: str,
+    patch: dict,
+    updated_by: uuid.UUID | None = None,
+) -> dict:
+    """Edita un rubro en runtime con validación fail-closed (Fase B, Paso 5).
+
+    Reglas:
+    - ``labels`` se **fusiona** con las existentes (permite editar una primitiva sin reenviar
+      las 12 y seguir pasando el validador de completitud). El resto de campos editables se
+      **reemplazan** si vienen en el patch. La ``key`` es inmutable.
+    - El manifiesto resultante se valida contra ``RubroManifest`` (labels completos +
+      capacidades conocidas): inválido ⇒ ``UnprocessableError`` (**422**) y la tabla no se toca.
+    - Persiste la fila (``version`` +1), **bumpea** el contador global ``rubro_manifest_version``,
+      commitea una sola vez y **refresca** el registro en proceso para servir la nueva definición
+      sin redeploy.
+    """
+    current = await get_rubro(db, key)  # 404 si no existe
+    manifest = _manifest_from_row(current)
+
+    for field, value in patch.items():
+        if field not in _RUBRO_EDITABLE:
+            continue  # ignora campos no editables (p.ej. `key`, `version`) en vez de romper
+        if value is None:
+            continue
+        if field == "labels" and isinstance(value, dict):
+            merged = dict(manifest["labels"])
+            merged.update(value)
+            manifest["labels"] = merged
+        else:
+            manifest[field] = value
+
+    # Fail-closed: valida el manifiesto COMPLETO resultante (reusa el contrato del Paso 4).
+    try:
+        validated = RubroManifest(**manifest)
+    except ValidationError as exc:
+        msg = exc.errors()[0].get("msg", "manifiesto inválido")
+        raise UnprocessableError(f"rubro inválido: {msg}") from exc
+
+    await db.execute(
+        text(
+            "UPDATE rubros SET "
+            "nombre = :nombre, emoji = :emoji, sector = :sector, "
+            "labels = CAST(:labels AS jsonb), capacidades = CAST(:capacidades AS jsonb), "
+            "sub_entidad_label = :sub_entidad_label, recurso = :recurso, "
+            "variantes = :variantes, precio_medida = :precio_medida, "
+            "categorias_semilla = CAST(:categorias_semilla AS jsonb), "
+            "version = version + 1, updated_at = NOW(), updated_by = :updated_by "
+            "WHERE key = :key"
+        ),
+        {
+            "key": key,
+            "nombre": validated.nombre,
+            "emoji": validated.emoji,
+            "sector": validated.sector,
+            "labels": _json.dumps(validated.labels),
+            "capacidades": _json.dumps(validated.capacidades),
+            "sub_entidad_label": validated.sub_entidad_label,
+            "recurso": validated.recurso,
+            "variantes": validated.variantes,
+            "precio_medida": validated.precio_medida,
+            "categorias_semilla": _json.dumps(validated.categorias_semilla),
+            "updated_by": str(updated_by) if updated_by else None,
+        },
+    )
+    await _bump_manifest_version(db)
+    await db.commit()
+
+    # Refresca el caché en proceso: la nueva definición y versión se sirven de inmediato.
+    from app.services import rubro_registry
+
+    await rubro_registry.refresh(db)
+    logger.info("Rubro %s editado por %s; manifest_version bumpeado.", key, updated_by)
+    return await get_rubro(db, key)
+
+
+# ── Rubros runtime: crear + ciclo de vida (Fase C, Paso 6) ────────────
+
+# Namespace RESERVADO del roster de CÓDIGO: las claves autoradas en
+# ``shared/rubros/diccionario.py``. Un rubro runtime NO puede tomar ninguna de estas claves
+# (aunque su fila seed haya sido borrada de la tabla), lo que impide que un runtime *ensombrezca*
+# a un rubro de código — presente o futuro. Regla de key reservada (documentada en la Fase C):
+# se rechaza (409) una key que (a) esté malformada, (b) ya exista en la tabla (seed o runtime), o
+# (c) pertenezca a este namespace de código. El dueño autoritativo de una key de código es
+# siempre ``diccionario.py``; el seed test garantiza seed==código, y este chequeo + la unicidad
+# de la PK evitan la divergencia.
+
+
+def _code_roster() -> frozenset[str]:
+    """Claves del roster de código (``diccionario.py``), namespace reservado para rubros seed."""
+    from shared.rubros import diccionario as _dic
+
+    return frozenset(_dic.rubros_disponibles())
+
+
+async def _tenants_using_rubro(db: AsyncSession, key: str) -> list[str]:
+    """IDs de tenants cuyo ``config['rubro']`` es ``key`` (guardrail de desactivación).
+
+    Usa el operador JSONB ``->>`` (Postgres). En un motor sin JSONB (p.ej. SQLite de tests) la
+    consulta puede no aplicar; el llamador solo la usa en el flujo admin sobre Postgres.
+    """
+    result = await db.execute(
+        text("SELECT id FROM tenants WHERE config->>'rubro' = :k"),
+        {"k": key},
+    )
+    return [str(row[0]) for row in result.all()]
+
+
+async def create_rubro(
+    db: AsyncSession,
+    manifest_in: dict,
+    created_by: uuid.UUID | None = None,
+) -> dict:
+    """Crea un rubro ``origen='runtime'`` validado fail-closed (Fase C, Paso 6).
+
+    Reglas (nunca deja la tabla en estado inválido):
+    - ``key`` bien formada (``_RUBRO_KEY_RE``): inválida ⇒ **422**.
+    - ``key`` no reservada por el namespace de código (``diccionario.py``): colisión ⇒ **409**.
+    - Manifiesto válido contra ``RubroManifest`` (labels completos + capacidades conocidas):
+      inválido ⇒ **422**.
+    - ``key`` única en la tabla (seed o runtime): duplicada ⇒ **409**.
+    Persiste ``origen='runtime'``, ``activo=true``, ``version=1``; **bumpea** el contador global
+    ``rubro_manifest_version``; commitea una sola vez y **refresca** el registro en proceso.
+    """
+    key = manifest_in.get("key")
+    if not isinstance(key, str) or not _RUBRO_KEY_RE.match(key):
+        raise UnprocessableError(
+            "key inválida: usa un slug snake_case [a-z][a-z0-9_], 3–80 caracteres"
+        )
+    if key in _code_roster():
+        raise ConflictError(
+            f"key '{key}' reservada: pertenece al roster de código (rubro seed)"
+        )
+
+    # Fail-closed: valida el manifiesto COMPLETO (reusa el contrato del Paso 4).
+    try:
+        validated = RubroManifest(**manifest_in)
+    except ValidationError as exc:
+        msg = exc.errors()[0].get("msg", "manifiesto inválido")
+        raise UnprocessableError(f"rubro inválido: {msg}") from exc
+
+    existing = await db.execute(
+        text("SELECT 1 FROM rubros WHERE key = :k"), {"k": key}
+    )
+    if existing.first() is not None:
+        raise ConflictError(f"ya existe un rubro con key '{key}'")
+
+    await db.execute(
+        text(
+            "INSERT INTO rubros (key, nombre, emoji, sector, labels, capacidades, "
+            "sub_entidad_label, recurso, variantes, precio_medida, categorias_semilla, "
+            "origen, activo, version, updated_by) VALUES ("
+            ":key, :nombre, :emoji, :sector, CAST(:labels AS jsonb), "
+            "CAST(:capacidades AS jsonb), :sub_entidad_label, :recurso, :variantes, "
+            ":precio_medida, CAST(:categorias_semilla AS jsonb), "
+            "'runtime', TRUE, 1, :updated_by)"
+        ),
+        {
+            "key": key,
+            "nombre": validated.nombre,
+            "emoji": validated.emoji,
+            "sector": validated.sector,
+            "labels": _json.dumps(validated.labels),
+            "capacidades": _json.dumps(validated.capacidades),
+            "sub_entidad_label": validated.sub_entidad_label,
+            "recurso": validated.recurso,
+            "variantes": validated.variantes,
+            "precio_medida": validated.precio_medida,
+            "categorias_semilla": _json.dumps(validated.categorias_semilla),
+            "updated_by": str(created_by) if created_by else None,
+        },
+    )
+    await _bump_manifest_version(db)
+    await db.commit()
+
+    from app.services import rubro_registry
+
+    await rubro_registry.refresh(db)
+    logger.info("Rubro runtime %s creado por %s; manifest_version bumpeado.", key, created_by)
+    return await get_rubro(db, key)
+
+
+async def set_rubro_activo(
+    db: AsyncSession,
+    key: str,
+    activo: bool,
+    updated_by: uuid.UUID | None = None,
+) -> dict:
+    """Activa/desactiva un rubro ``origen='runtime'`` (Fase C, Paso 6).
+
+    Solo los rubros runtime tienen ciclo de vida:
+    - Un rubro ``origen='seed'`` NO puede desactivarse (409): su membresía es la del roster de
+      código, inmutable (se edita por el ``PATCH`` del Paso 5, no se retira).
+    - ``RUBRO_DEFAULT`` nunca se desactiva (409), defensa redundante (es seed).
+    - **Guardrail de uso:** desactivar un rubro asignado a ≥1 tenant se rechaza (409) con la lista
+      de tenants afectados (no se dejan huérfanos; §10.2 default = reject).
+    No-op idempotente si el estado ya es el pedido (no bumpea). Cada cambio efectivo bumpea
+    ``rubro_manifest_version`` y refresca el registro.
+    """
+    current = await get_rubro(db, key)  # 404 si no existe
+    if current["origen"] != "runtime":
+        raise ConflictError(
+            f"el rubro '{key}' es de código (seed): su membresía es inmutable, no se activa/desactiva"
+        )
+    if not activo and key == RUBRO_DEFAULT:
+        raise ConflictError(f"el rubro por defecto '{key}' no puede desactivarse")
+    if bool(current["activo"]) == activo:
+        return current  # idempotente: sin cambio, sin bump
+
+    if not activo:
+        afectados = await _tenants_using_rubro(db, key)
+        if afectados:
+            raise ConflictError(
+                f"rubro '{key}' asignado a {len(afectados)} tenant(s) "
+                f"({', '.join(afectados)}); reasígnalos antes de desactivar"
+            )
+
+    await db.execute(
+        text(
+            "UPDATE rubros SET activo = :activo, version = version + 1, "
+            "updated_at = NOW(), updated_by = :updated_by WHERE key = :key"
+        ),
+        {
+            "activo": activo,
+            "updated_by": str(updated_by) if updated_by else None,
+            "key": key,
+        },
+    )
+    await _bump_manifest_version(db)
+    await db.commit()
+
+    from app.services import rubro_registry
+
+    await rubro_registry.refresh(db)
+    logger.info(
+        "Rubro runtime %s %s por %s; manifest_version bumpeado.",
+        key, "activado" if activo else "desactivado", updated_by,
+    )
+    return await get_rubro(db, key)
 
 
 DATA_MODEL_MODULES = (

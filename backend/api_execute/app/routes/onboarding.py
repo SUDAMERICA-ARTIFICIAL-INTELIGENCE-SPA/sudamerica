@@ -1,5 +1,5 @@
 """Onboarding chat route — api_execute owns the registration prompt,
-AI_dialer provides the LLM brain."""
+open_agent (mode `generate`, no tools) provides the LLM brain."""
 
 import json
 import logging
@@ -14,6 +14,7 @@ from app.routes.deps import get_settings
 from app.schemas.onboarding import OnboardingChatRequest, OnboardingChatResponse
 from shared.middleware import build_service_auth_headers
 from shared.rubros import resolve_rubro
+from shared.utils.http_client import internal_http
 
 logger = logging.getLogger(__name__)
 
@@ -25,9 +26,11 @@ _FALLBACK_REPLY = OnboardingChatResponse(
 
 
 def _parse_ai_response(data: dict) -> OnboardingChatResponse | None:
-    """Parse the AI_dialer response into an OnboardingChatResponse.
+    """Parse the generation response into an OnboardingChatResponse.
 
-    Returns None if parsing fails.
+    Expects the LLM's JSON text under the ``content`` key (the route adapts
+    open_agent's ``response`` field into that shape). Returns None if parsing
+    fails.
     """
     raw_content = data.get("content", "{}")
     tokens = data.get("tokens_used", 0)
@@ -46,7 +49,7 @@ def _parse_ai_response(data: dict) -> OnboardingChatResponse | None:
         input_type = "text"
 
     logger.info(
-        "[onboarding] <- AI_dialer OK | tokens=%d | extracted=%s | complete=%s",
+        "[onboarding] <- open_agent OK | tokens=%d | extracted=%s | complete=%s",
         tokens, list(extracted.keys()) if extracted else "none", complete,
     )
     return OnboardingChatResponse(
@@ -54,19 +57,43 @@ def _parse_ai_response(data: dict) -> OnboardingChatResponse | None:
     )
 
 
-def _build_ai_dialer_request(settings: ApiExecuteSettings, messages: list[dict]) -> dict:
-    """Build the request payload and headers for AI_dialer."""
-    payload = {"messages": messages, "response_format": "json"}
+def _split_conversation(llm_messages: list[dict]) -> tuple[str, list[dict]]:
+    """Split [system, *turns] into (latest_user_message, prior_history).
+
+    open_agent's /generate takes the system prompt separately plus a single
+    `message` and prior `history`. The frontend always appends the user's newest
+    text last, so the final turn is the current message. Falls back to a greeting
+    seed when the conversation is empty (generate requires a non-empty message).
+    """
+    turns = llm_messages[1:]  # drop the system message
+    if not turns:
+        return "Hola", []
+    latest = turns[-1].get("content") or "Hola"
+    return latest, turns[:-1]
+
+
+def _build_generate_request(
+    settings: ApiExecuteSettings,
+    system_prompt: str,
+    message: str,
+    history: list[dict],
+) -> dict:
+    """Build the request payload and headers for open_agent /generate."""
+    payload = {
+        "system_prompt": system_prompt,
+        "message": message,
+        "history": history,
+    }
     headers = build_service_auth_headers(
         service_name="api_execute",
-        audience="ai_dialer",
+        audience="open_agent",
         tenant_id=UUID("00000000-0000-0000-0000-000000000000"),
         secret_key=settings.INTERNAL_SERVICE_SECRET_KEY,
         algorithm=settings.JWT_ALGORITHM,
-        scopes=("onboarding:chat",),
+        scopes=("generate:chat",),
         expires_in_seconds=settings.INTERNAL_SERVICE_TOKEN_TTL_SECONDS,
     )
-    url = f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/onboarding-chat"
+    url = f"{settings.SERVICE_OPEN_AGENT_URL}/api/v1/agent/generate"
     return {"url": url, "payload": payload, "headers": headers}
 
 
@@ -89,8 +116,8 @@ async def onboarding_chat(
     body: OnboardingChatRequest,
     settings: ApiExecuteSettings = Depends(get_settings),
 ):
-    """Onboarding conversacional: api_execute envia el prompt de registro
-    al AI_dialer para que procese con el LLM."""
+    """Onboarding conversacional: api_execute arma el prompt de registro y
+    genera la respuesta vía open_agent."""
     datos = body.currentData or {}
     logger.info(
         "[onboarding] Request | msgs=%d | datos_recopilados=%s",
@@ -104,11 +131,10 @@ async def onboarding_chat(
         system_prompt,
         [m.model_dump() for m in body.messages],
     )
+    latest_message, history = _split_conversation(messages)
 
-    req = _build_ai_dialer_request(settings, messages)
-    logger.info("[onboarding] -> AI_dialer %s | total_msgs=%d", req["url"], len(messages))
-
-    from shared.utils.http_client import internal_http
+    req = _build_generate_request(settings, system_prompt, latest_message, history)
+    logger.info("[onboarding] -> open_agent %s | total_msgs=%d", req["url"], len(messages))
 
     try:
         resp = await internal_http.post(
@@ -116,17 +142,21 @@ async def onboarding_chat(
         )
         resp.raise_for_status()
     except httpx.ConnectError as exc:
-        logger.error("[onboarding] AI_dialer connection failed: %s", exc)
+        logger.error("[onboarding] open_agent connection failed: %s", exc)
         return _FALLBACK_REPLY
     except httpx.HTTPStatusError as exc:
-        logger.error("[onboarding] AI_dialer HTTP %d: %s", exc.response.status_code, exc.response.text[:300])
+        logger.error("[onboarding] open_agent HTTP %d: %s", exc.response.status_code, exc.response.text[:300])
         return _FALLBACK_REPLY
     except httpx.RequestError as exc:
-        logger.error("[onboarding] AI_dialer request error: %s", exc)
+        logger.error("[onboarding] open_agent request error: %s", exc)
         return _FALLBACK_REPLY
 
     try:
-        result = _parse_ai_response(resp.json())
+        gen = resp.json()
+        # Adapt GenerateResponse{response, tokens_used, model_used} into the shape
+        # _parse_ai_response expects: the LLM's JSON text under `content`.
+        adapted = {"content": gen.get("response", "{}"), "tokens_used": gen.get("tokens_used", 0)}
+        result = _parse_ai_response(adapted)
         return result if result else _FALLBACK_REPLY
     except (json.JSONDecodeError, KeyError, TypeError) as exc:
         logger.warning("[onboarding] Parse error: %s", exc)

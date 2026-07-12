@@ -14,7 +14,6 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 $testInternalServiceKeys = [ordered]@{
     "API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY" = "test-api-execute-internal-service-key-0123456789ab"
-    "AI_DIALER_INTERNAL_SERVICE_SECRET_KEY" = "test-ai-dialer-internal-service-key-0123456789abcd"
     "CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY" = "test-callback-manual-internal-service-key-0123456789"
     "TASKS_INTERNAL_SERVICE_SECRET_KEY" = "test-tasks-internal-service-key-0123456789abcdef"
     "CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY" = "test-canales-service-internal-service-key-012345678"
@@ -29,14 +28,6 @@ $serviceMatrix = @(
         HasApp = $true
         HasShared = $true
         IncludeDbAssets = $true
-    },
-    [pscustomobject]@{
-        Id = "AI_dialer"
-        RepoName = "sudamerica-ai-dialer"
-        ImageName = "ai-dialer"
-        HasApp = $true
-        HasShared = $true
-        IncludeDbAssets = $false
     },
     [pscustomobject]@{
         Id = "callback_manual"

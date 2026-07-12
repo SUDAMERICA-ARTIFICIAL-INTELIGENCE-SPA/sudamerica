@@ -36,6 +36,17 @@ class ConflictError(Exception):
         super().__init__(detail)
 
 
+class UnprocessableError(Exception):
+    """Raised when a payload fails domain validation at publication (→ HTTP 422).
+
+    Fail-closed: p.ej. un ``rubro`` desconocido en ``tenant.config`` se rechaza al
+    publicar (onboarding / PATCH) en vez de degradar en silencio en runtime.
+    """
+
+    def __init__(self, detail: str = "Unprocessable entity"):
+        super().__init__(detail)
+
+
 class RateLimitError(Exception):
     """Raised when a tenant exceeds their rate limit."""
 
@@ -63,6 +74,13 @@ def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(ConflictError)
     async def conflict_handler(request: Request, exc: ConflictError):
         return JSONResponse(status_code=409, content={"detail": str(exc), "code": "CONFLICT"})
+
+    @app.exception_handler(UnprocessableError)
+    async def unprocessable_handler(request: Request, exc: UnprocessableError):
+        return JSONResponse(
+            status_code=422,
+            content={"detail": str(exc), "code": "UNPROCESSABLE"},
+        )
 
     @app.exception_handler(RateLimitError)
     async def rate_limit_handler(request: Request, exc: RateLimitError):

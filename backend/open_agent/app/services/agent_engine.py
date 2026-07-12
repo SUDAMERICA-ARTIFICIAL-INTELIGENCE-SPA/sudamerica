@@ -17,8 +17,13 @@ import logging
 import httpx
 
 from app.config import OpenAgentSettings
-from app.schemas.chat import FileAttachment, SudamericaChatResponse, ToolUsage
-from app.services.tools import TOOL_DEFINITIONS, execute_tool
+from app.schemas.chat import (
+    FileAttachment,
+    GenerateResponse,
+    SudamericaChatResponse,
+    ToolUsage,
+)
+from app.services.tools import execute_tool, tools_for_capabilities
 
 logger = logging.getLogger(__name__)
 
@@ -154,12 +159,21 @@ async def run_agent(
     settings: OpenAgentSettings,
     http_client: httpx.AsyncClient,
     file: FileAttachment | None = None,
+    capabilities: list[str] | None = None,
 ) -> SudamericaChatResponse:
-    """Run the full agent loop: LLM → tools → LLM → ... → final response."""
+    """Run the full agent loop: LLM → tools → LLM → ... → final response.
+
+    ``capabilities`` (las capacidades del rubro del tenant, enviadas por api_execute)
+    filtra las tools expuestas al LLM: una inmobiliaria no recibe ``crear_mesa``. Si es
+    ``None`` (caller que no las envía) se exponen todas — compat.
+    """
     from uuid import UUID
 
     tenant_uuid = UUID(tenant_id)
     config = settings.provider_config
+
+    # Tools expuestas al LLM, gateadas por capacidad del tenant (restaurante = todas).
+    tools = tools_for_capabilities(capabilities)
 
     # Build initial message list
     messages: list[dict] = [{"role": "system", "content": system_prompt}]
@@ -179,7 +193,7 @@ async def run_agent(
 
         result = await _call_llm(
             messages, config, settings, http_client,
-            tools=TOOL_DEFINITIONS,
+            tools=tools,
         )
 
         choice = result.get("choices", [{}])[0]
@@ -211,7 +225,45 @@ async def run_agent(
     logger.warning("Max tool call iterations (%d) reached for tenant %s", settings.MAX_TOOL_CALLS, tenant_id)
     return SudamericaChatResponse(
         response="He alcanzado el limite de consultas para esta respuesta. Por favor reformula tu pregunta.",
-        tokens_used=total_tokens,
+        tokens_used=sum(token_counts),
         model_used=config["model"],
         tools_used=tools_used,
+    )
+
+
+async def generate_response(
+    system_prompt: str,
+    message: str,
+    history: list[dict],
+    settings: OpenAgentSettings,
+    http_client: httpx.AsyncClient,
+    file: FileAttachment | None = None,
+) -> GenerateResponse:
+    """Single LLM call WITHOUT tools — for the customer chat and onboarding.
+
+    Unlike run_agent, this NEVER exposes the admin TOOL_DEFINITIONS: it makes
+    exactly one _call_llm with tools=None and returns the generated text.
+    api_execute owns the prompt, history and persistence; open_agent only
+    generates text here. Reuses _build_user_content for vision/file support.
+    """
+    config = settings.provider_config
+
+    messages: list[dict] = [{"role": "system", "content": system_prompt}]
+    if history:
+        messages.extend(history)
+
+    user_content = _build_user_content(message, file)
+    messages.append({"role": "user", "content": user_content})
+
+    result = await _call_llm(messages, config, settings, http_client, tools=None)
+
+    choice = result.get("choices", [{}])[0]
+    usage = result.get("usage", {})
+    assistant_message = choice.get("message", {})
+    response_text = assistant_message.get("content", "") or ""
+
+    return GenerateResponse(
+        response=response_text,
+        tokens_used=usage.get("total_tokens", 0),
+        model_used=config["model"],
     )

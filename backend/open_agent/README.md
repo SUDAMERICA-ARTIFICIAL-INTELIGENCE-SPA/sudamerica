@@ -16,7 +16,7 @@
 
 - **Razonamiento Analitico**: Procesar preguntas del dueño sobre su negocio usando un modelo potente.
 - **Tool-Calling**: Ejecutar herramientas que consultan/modifican datos via api_execute.
-- **Aislamiento de Seguridad**: Las tools administrativas (cambiar precios, ver ingresos) SOLO existen aqui, nunca en AI_dialer.
+- **Aislamiento de Seguridad**: Las tools administrativas (cambiar precios, ver ingresos) SOLO existen aqui, en el camino del copiloto/generacion; ningun otro servicio expone estas herramientas.
 
 ## Pipeline de Ejecucion
 

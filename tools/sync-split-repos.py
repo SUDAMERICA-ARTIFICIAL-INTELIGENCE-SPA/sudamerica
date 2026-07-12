@@ -8,7 +8,7 @@ of existing history.
 Usage:
     python tools/sync-split-repos.py [--services svc1 svc2 ...] [--no-commit] [--push]
 
-Services: api_execute AI_dialer callback_manual tasks canales_service open_agent evolution_api
+Services: api_execute callback_manual tasks canales_service open_agent evolution_api
 """
 
 from __future__ import annotations
@@ -42,7 +42,6 @@ class Service:
 
 MATRIX: list[Service] = [
     Service("api_execute", "sudamerica-api-execute", "api-execute", True, True, True),
-    Service("AI_dialer", "sudamerica-ai-dialer", "ai-dialer", True, True, False),
     Service("callback_manual", "sudamerica-callback-manual", "callback-manual", True, True, False),
     Service("tasks", "sudamerica-tasks", "tasks", True, True, False),
     Service("canales_service", "sudamerica-canales-service", "canales-service", True, True, False),
@@ -52,7 +51,6 @@ MATRIX: list[Service] = [
 
 TEST_INTERNAL_SERVICE_KEYS = {
     "API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY": "test-api-execute-internal-service-key-0123456789ab",
-    "AI_DIALER_INTERNAL_SERVICE_SECRET_KEY": "test-ai-dialer-internal-service-key-0123456789abcd",
     "CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY": "test-callback-manual-internal-service-key-0123456789",
     "TASKS_INTERNAL_SERVICE_SECRET_KEY": "test-tasks-internal-service-key-0123456789abcdef",
     "CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY": "test-canales-service-internal-service-key-012345678",

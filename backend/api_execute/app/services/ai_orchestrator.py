@@ -1,11 +1,13 @@
-"""AI Orchestrator — builds business context (the WHAT) and forwards to ai_dialer (the HOW).
+"""AI Orchestrator — builds business context (the WHAT) and generates via open_agent (the HOW).
 
-api_execute owns: system prompt, knowledge, product catalog, intent → context mapping.
-ai_dialer owns: LLM calls, temperature, conversation history, behavioral rules, RAG.
+api_execute owns: system prompt, knowledge, product catalog, intent → context mapping,
+conversation history and persistence, and all post-processing.
+open_agent (mode `generate`) owns: a single stateless LLM call, without tools.
 """
 
 import json
 import logging
+from datetime import datetime, timezone
 from uuid import UUID
 
 import httpx
@@ -14,20 +16,42 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import ApiExecuteSettings
 from app.services.prompt_sections import (
-    WELCOME_RULES_MESA,
-    WELCOME_RULES_WHATSAPP,
     WHATSAPP_FORMAT_RULES,
     _append_prompt_section,
     _format_customer_lines,
     build_catalog_text,
     compose_system_prompt,
+    welcome_rules_mesa,
+    welcome_rules_whatsapp,
 )
 from app.services.tenant_rubro import load_tenant_rubro as _load_tenant_rubro
+from shared.database.session import set_tenant_context
 from shared.middleware import build_service_auth_headers
-from shared.rubros import Capacidad, rubro_def
+from shared.rubros import RUBRO_DEFAULT, Capacidad
+
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py);
+# anchored/current_version para el anclaje de versión del manifiesto por conversación (§5).
+from app.services.rubro_registry import anchored, current_version, rubro_def
 from shared.utils.http_client import internal_http
 
 logger = logging.getLogger(__name__)
+
+# Generic behavioral rules the customer/onboarding chat always applies. They are
+# appended to `system_prompt_override` to form the final system prompt. The eval
+# harness extracts this exact constant by AST, so offline evals stay in lockstep
+# with production behavior.
+BEHAVIORAL_RULES = """
+REGLAS DE COMPORTAMIENTO (aplicar siempre):
+- Si el historial de conversación muestra mensajes previos, NO saludes de nuevo. Continúa la conversación naturalmente.
+- Nunca repitas la misma frase o estructura en respuestas consecutivas. Varía tus respuestas.
+- No inventes información que no esté en el contexto proporcionado.
+- Sé conciso y directo. Evita respuestas excesivamente largas.
+- Responde en el mismo idioma que el usuario.
+- Si no sabes algo, dilo honestamente en vez de inventar.
+- NUNCA menciones que eres una IA o un modelo de lenguaje a menos que te pregunten directamente.
+- Mantén un tono amigable y profesional.
+- Si el usuario hace una pregunta que no está en tu contexto, ofrece ayudar con lo que sí conoces.
+""".strip()
 
 
 async def _has_mesas(session: AsyncSession, tenant_id: UUID) -> bool:
@@ -340,8 +364,8 @@ async def _load_mesa_context(session: AsyncSession, tenant_id: UUID, qr_token: s
     return dict(row) if row else None
 
 
-def _build_mesa_prompt_section(mesa: dict) -> str:
-    """Build the mesa context section for the system prompt."""
+def _build_mesa_prompt_section(mesa: dict, rubro_key: str = RUBRO_DEFAULT) -> str:
+    """Build the mesa context section for the system prompt (welcome gateado por rubro)."""
     sucursal = mesa.get("sucursal_nombre") or ""
     location = f" de {sucursal}" if sucursal else ""
     return (
@@ -349,7 +373,7 @@ def _build_mesa_prompt_section(mesa: dict) -> str:
         f"- El cliente esta en MESA #{mesa['numero']}{location}.\n"
         f"- Tipo de entrega: MESA (no preguntar).\n"
         f"- Al confirmar pedido, usar tipo_entrega=\"MESA\", numero_mesa={mesa['numero']}.\n\n"
-        + WELCOME_RULES_MESA
+        + welcome_rules_mesa(rubro_key)
     )
 
 
@@ -902,22 +926,231 @@ async def _create_comanda_from_order(
 # ── Orchestrator helpers ─────────────────────────────────────────────
 
 
-def _build_chat_payload(
-    message: str, system_message: str, canal: str,
-    lead_id: UUID | None, contact_id: UUID | None, session_id: UUID | None,
-    media_url: str | None = None, media_type: str | None = None,
-) -> dict:
-    """Build the ai_dialer chat request payload."""
-    payload: dict = {
-        "message": message,
-        "system_prompt_override": system_message,
-        "canal": canal,
+async def _load_customer_history(
+    session: AsyncSession,
+    tenant_id: UUID,
+    lead_id: UUID | None,
+    canal: str,
+    limit: int = 10,
+) -> list[dict[str, str]]:
+    """Load recent customer conversation history for this lead + canal.
+
+    Mirror of `sudamerica_orchestrator._load_sudamerica_history`, but filtered by
+    `lead_id` + `canal` (the customer discriminators) instead of `usuario_id`.
+    """
+    if lead_id is None:
+        return []
+    result = await session.execute(
+        sql_text(
+            "SELECT role, content FROM ai_conversations "
+            "WHERE tenant_id = :tid AND lead_id = :lid AND canal = :canal "
+            "ORDER BY created_at DESC LIMIT :lim"
+        ),
+        {"tid": str(tenant_id), "lid": str(lead_id), "canal": canal, "lim": limit},
+    )
+    rows = [{"role": r["role"], "content": r["content"]} for r in result.mappings().all()]
+    rows.reverse()
+    return rows
+
+
+async def _save_customer_message(
+    session: AsyncSession,
+    tenant_id: UUID,
+    lead_id: UUID | None,
+    session_id: UUID | None,
+    canal: str,
+    *,
+    role: str,
+    content: str,
+    tokens: int | None,
+    modelo: str | None,
+    status: str,
+    media_url: str | None = None,
+    media_type: str | None = None,
+    manifest_version: int | None = None,
+) -> UUID:
+    """Persist one customer conversation message and return its new id.
+
+    Persistence for the orchestrated customer chat. The caller must have set the
+    RLS tenant context on `session` beforehand. ``manifest_version`` estampa el ancla
+    del manifiesto de rubro para la conversación (Fase B, §5); ``None`` ⟺ no anclado.
+    """
+    result = await session.execute(
+        sql_text(
+            "INSERT INTO ai_conversations "
+            "(tenant_id, lead_id, session_id, role, content, tokens_used, "
+            "modelo, canal, status, media_url, media_type, manifest_version) "
+            "VALUES (:tid, :lid, :sid, :role, :content, :tokens, "
+            ":modelo, :canal, :status, :media_url, :media_type, :manifest_version) "
+            "RETURNING id"
+        ),
+        {
+            "tid": str(tenant_id),
+            "lid": str(lead_id) if lead_id else None,
+            "sid": str(session_id) if session_id else None,
+            "role": role,
+            "content": content,
+            "tokens": tokens,
+            "modelo": modelo,
+            "canal": canal,
+            "status": status,
+            "media_url": media_url,
+            "media_type": media_type,
+            "manifest_version": manifest_version,
+        },
+    )
+    return result.scalar_one()
+
+
+async def _resolve_manifest_anchor(
+    session: AsyncSession,
+    tenant_id: UUID,
+    lead_id: UUID | None,
+    canal: str,
+) -> int | None:
+    """Versión del manifiesto anclada a esta conversación (Fase B, Paso 5, §5).
+
+    Una conversación ve un manifiesto **estable** durante toda su vida: una edición de admin en
+    vuelo no la altera. El ancla es el ``manifest_version`` del turno más antiguo persistido de la
+    conversación (``lead_id`` + ``canal``, los mismos discriminadores que la historia del cliente):
+
+    - si existe (no es el primer turno) → se reusa ese valor;
+    - si no (primer turno, o sin ``lead_id``) → se ancla a la versión vigente del registro.
+
+    Devuelve ``None`` cuando no hay nada que anclar (registro no cargado / versión ``0``): el
+    registro entonces sirve la versión vigente, sin fijar. El valor devuelto se estampa en cada
+    turno de la conversación, de modo que el primer turno fija el ancla y los siguientes la heredan.
+    """
+    if lead_id is not None:
+        result = await session.execute(
+            sql_text(
+                "SELECT manifest_version FROM ai_conversations "
+                "WHERE tenant_id = :tid AND lead_id = :lid AND canal = :canal "
+                "AND manifest_version IS NOT NULL "
+                "ORDER BY created_at ASC LIMIT 1"
+            ),
+            {"tid": str(tenant_id), "lid": str(lead_id), "canal": canal},
+        )
+        existing = result.scalar_one_or_none()
+        if existing is not None:
+            return int(existing)
+    current = current_version()
+    return current if current > 0 else None
+
+
+async def load_agent_flags(session: AsyncSession, tenant_id: UUID) -> dict:
+    """Load the tenant's auto-response + debounce flags from agente_config.
+
+    Backs ``GET /ai/config`` for canales_service. Returns the column defaults
+    when no active config row exists, so the caller always gets a usable shape.
+    """
+    result = await session.execute(
+        sql_text(
+            "SELECT auto_respuesta_whatsapp, debounce_seconds "
+            "FROM agente_config WHERE tenant_id = :tid AND activo = true "
+            "ORDER BY created_at LIMIT 1"
+        ),
+        {"tid": str(tenant_id)},
+    )
+    row = result.mappings().first()
+    if row is None:
+        return {"auto_respuesta_whatsapp": True, "debounce_seconds": 4.0}
+    return {
+        "auto_respuesta_whatsapp": bool(row["auto_respuesta_whatsapp"]),
+        "debounce_seconds": float(row["debounce_seconds"]),
     }
-    for key, val in (("lead_id", lead_id), ("contact_id", contact_id), ("session_id", session_id),
-                     ("media_url", media_url), ("media_type", media_type)):
-        if val is not None:
-            payload[key] = str(val)
-    return payload
+
+
+def _import_signature(role: str, content: str, created_at) -> tuple:
+    """Normalize (role, content, created_at) into a dedup signature.
+
+    Normalizes to UTC with whole-second precision and stripped content, so a
+    re-sync of the same WhatsApp history is idempotent.
+    """
+    ts = created_at
+    if isinstance(ts, str):
+        try:
+            ts = datetime.fromisoformat(ts)
+        except ValueError:
+            ts = None
+    if isinstance(ts, datetime):
+        if ts.tzinfo is None:
+            ts = ts.replace(tzinfo=timezone.utc)
+        ts = ts.astimezone(timezone.utc).replace(microsecond=0)
+    return role, content.strip(), ts
+
+
+async def import_conversation_messages(
+    session: AsyncSession,
+    tenant_id: UUID,
+    lead_id: UUID,
+    canal: str,
+    messages: list,
+) -> dict:
+    """Persist historical customer messages idempotently for a lead + canal.
+
+    Backs ``POST /ai/conversations/import``. Deduplicates against rows already
+    stored for the lead + canal (by normalized signature) and preserves original
+    timestamps. The caller must set the RLS tenant context beforehand.
+    """
+    if not messages:
+        return {"lead_id": str(lead_id), "imported_count": 0, "skipped_count": 0}
+
+    lead_ok = await session.execute(
+        sql_text("SELECT 1 FROM leads WHERE tenant_id = :tid AND id = :lid"),
+        {"tid": str(tenant_id), "lid": str(lead_id)},
+    )
+    if lead_ok.scalar_one_or_none() is None:
+        return {"lead_id": str(lead_id), "imported_count": 0, "skipped_count": len(messages)}
+
+    existing = await session.execute(
+        sql_text(
+            "SELECT role, content, created_at FROM ai_conversations "
+            "WHERE tenant_id = :tid AND lead_id = :lid AND canal = :canal"
+        ),
+        {"tid": str(tenant_id), "lid": str(lead_id), "canal": canal},
+    )
+    seen = {
+        _import_signature(r["role"], r["content"], r["created_at"])
+        for r in existing.mappings().all()
+    }
+
+    imported = 0
+    for m in messages:
+        signature = _import_signature(m.role, m.content, m.created_at)
+        if signature in seen:
+            continue
+        await session.execute(
+            sql_text(
+                "INSERT INTO ai_conversations "
+                "(tenant_id, lead_id, role, content, canal, status, "
+                "media_url, media_type, created_at) "
+                "VALUES (:tid, :lid, :role, :content, :canal, :status, "
+                ":media_url, :media_type, "
+                "COALESCE(CAST(:created_at AS timestamptz), now()))"
+            ),
+            {
+                "tid": str(tenant_id),
+                "lid": str(lead_id),
+                "role": m.role,
+                "content": m.content,
+                "canal": canal,
+                "status": "SENT",
+                "media_url": m.media_url,
+                "media_type": m.media_type,
+                "created_at": m.created_at,
+            },
+        )
+        seen.add(signature)
+        imported += 1
+
+    if imported:
+        await session.commit()
+    return {
+        "lead_id": str(lead_id),
+        "imported_count": imported,
+        "skipped_count": len(messages) - imported,
+    }
 
 
 async def _try_create_comanda(
@@ -1128,7 +1361,7 @@ async def orchestrate_chat(
     media_url: str | None = None,
     media_type: str | None = None,
 ) -> dict:
-    """Orchestrate AI chat: build context, forward to ai_dialer, post-process."""
+    """Orchestrate AI chat: build context, generate via open_agent, post-process."""
 
     # ── Location handling: WhatsApp shared location ──
     if media_type == "location" and media_url:
@@ -1154,57 +1387,112 @@ async def orchestrate_chat(
                 mesa_context["numero"], sucursal_id, tenant_id,
             )
 
-    system_message, config = await build_system_message(
-        session, tenant_id, settings=settings, lead_id=lead_id,
-        sucursal_id=sucursal_id,
-    )
+    # Ancla la versión del manifiesto a esta conversación (Fase B, Paso 5, §5): el primer turno
+    # fija la versión vigente y los siguientes la heredan, de modo que una edición de admin en
+    # vuelo NO cambia el rubro servido a una conversación ya iniciada. Toda la composición del
+    # prompt (build_system_message + reglas de bienvenida) resuelve el rubro con el snapshot anclado.
+    anchor_version = await _resolve_manifest_anchor(session, tenant_id, lead_id, canal)
 
-    # Inject mesa context or WhatsApp welcome rules into system prompt
-    if mesa_context:
-        system_message = _append_prompt_section(
-            system_message, _build_mesa_prompt_section(mesa_context),
+    with anchored(anchor_version):
+        system_message, config = await build_system_message(
+            session, tenant_id, settings=settings, lead_id=lead_id,
+            sucursal_id=sucursal_id,
         )
-    elif canal.upper() == "WHATSAPP":
-        system_message = _append_prompt_section(
-            system_message, WELCOME_RULES_WHATSAPP,
-        )
-        # Multi-sucursal: if tenant has >1 sucursal, prompt user to choose
-        sucursales = await _load_tenant_sucursales(session, tenant_id)
-        sucursal_prompt = _build_sucursal_selection_prompt(sucursales)
-        if sucursal_prompt:
-            system_message = _append_prompt_section(system_message, sucursal_prompt)
 
-    # Always inject WhatsApp formatting rules for WhatsApp channel
-    if canal.upper() == "WHATSAPP":
-        system_message = _append_prompt_section(system_message, WHATSAPP_FORMAT_RULES)
+        # Rubro del tenant para gatear las reglas de bienvenida (restaurante byte-idéntico).
+        rubro_key = await _load_tenant_rubro(session, tenant_id)
 
-    payload = _build_chat_payload(
-        clean_message, system_message, canal, lead_id, contact_id, session_id,
-        media_url=media_url, media_type=media_type,
+        # Inject mesa context or WhatsApp welcome rules into system prompt
+        if mesa_context:
+            system_message = _append_prompt_section(
+                system_message, _build_mesa_prompt_section(mesa_context, rubro_key),
+            )
+        elif canal.upper() == "WHATSAPP":
+            system_message = _append_prompt_section(
+                system_message, welcome_rules_whatsapp(rubro_key),
+            )
+            # Multi-sucursal: if tenant has >1 sucursal, prompt user to choose
+            sucursales = await _load_tenant_sucursales(session, tenant_id)
+            sucursal_prompt = _build_sucursal_selection_prompt(sucursales)
+            if sucursal_prompt:
+                system_message = _append_prompt_section(system_message, sucursal_prompt)
+
+        # Always inject WhatsApp formatting rules for WhatsApp channel
+        if canal.upper() == "WHATSAPP":
+            system_message = _append_prompt_section(system_message, WHATSAPP_FORMAT_RULES)
+
+        # Append the generic behavioral rules to complete the system prompt —
+        # api_execute owns the full prompt build for the orchestrated route.
+        system_prompt = system_message + "\n\n" + BEHAVIORAL_RULES
+
+    # Load recent customer history for this lead + canal.
+    history = await _load_customer_history(session, tenant_id, lead_id, canal)
+
+    # Persist the inbound user message before generating. Re-set the RLS tenant
+    # context first: any prior commit on this session drops the SET LOCAL.
+    await set_tenant_context(session, str(tenant_id))
+    await _save_customer_message(
+        session, tenant_id, lead_id, session_id, canal,
+        role="user", content=clean_message, tokens=None, modelo=None,
+        status="RECEIVED", media_url=media_url, media_type=media_type,
+        manifest_version=anchor_version,
     )
+    await session.commit()
+
+    payload: dict = {
+        "system_prompt": system_prompt,
+        "message": clean_message,
+        "history": history,
+    }
     headers = build_service_auth_headers(
         service_name="api_execute",
-        audience="ai_dialer",
+        audience="open_agent",
         tenant_id=tenant_id,
         secret_key=settings.INTERNAL_SERVICE_SECRET_KEY,
         algorithm=settings.JWT_ALGORITHM,
-        scopes=("chat:write",),
+        scopes=("generate:chat",),
         expires_in_seconds=settings.INTERNAL_SERVICE_TOKEN_TTL_SECONDS,
     )
     headers["X-Tenant-ID"] = str(tenant_id)
 
     try:
         response = await internal_http.post(
-            f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/chat",
+            f"{settings.SERVICE_OPEN_AGENT_URL}/api/v1/agent/generate",
             json=payload, headers=headers, timeout=60.0,
         )
         response.raise_for_status()
     except (httpx.HTTPError, RuntimeError):
-        logger.exception("Failed to forward message to ai_dialer")
+        logger.exception("Failed to generate reply via open_agent")
         raise
 
-    ai_response = response.json()
-    response_text = ai_response.get("response", "")
+    generate_result = response.json()
+    response_text = generate_result.get("response", "")
+    tokens_used = generate_result.get("tokens_used", 0)
+    model_used = generate_result.get("model_used", "")
+
+    # Persist the assistant reply (raw, with markers) and capture its id as the
+    # conversation_id. The existing post-processing patches the stored content to
+    # the cleaned version afterwards (see _patch_conversation_content).
+    await set_tenant_context(session, str(tenant_id))
+    assistant_id = await _save_customer_message(
+        session, tenant_id, lead_id, session_id, canal,
+        role="assistant", content=response_text, tokens=tokens_used,
+        modelo=model_used, status="SENT",
+        manifest_version=anchor_version,
+    )
+    await session.commit()
+
+    # Build the response envelope for the caller. confianza is fixed at 0.95 for
+    # the orchestrated route (there is no confidence classifier on this path).
+    ai_response: dict = {
+        "response": response_text,
+        "conversation_id": str(assistant_id),
+        "session_id": str(session_id) if session_id else None,
+        "tokens_used": tokens_used,
+        "confianza": 0.95,
+        "sub_agente_usado": "ORCHESTRATED",
+        "sources": [],
+    }
 
     # Enrich order with mesa context before creating comanda
     order_data = extract_order_json(response_text)

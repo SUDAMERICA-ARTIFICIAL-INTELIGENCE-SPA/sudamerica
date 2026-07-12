@@ -7,10 +7,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import CallbackSettings
 from shared.database import get_db
-from shared.middleware import require_role, require_user_or_service
+from shared.middleware import require_role
 from shared.models.enums import UserRole
 from shared.schemas import PaginatedResponse, PaginationParams
-from shared.utils.service_access import REVISION_CREATORS
 
 from app.schemas.revision import (
     RevisionAccionRequest,
@@ -28,17 +27,11 @@ async def create_revision(
     data: RevisionCreate,
     request: Request,
     current_user: dict = Depends(
-        require_user_or_service(
-            UserRole.SUPERADMIN,
-            UserRole.ADMIN,
-            UserRole.ASESOR,
-            service_scopes=("reviews:create",),
-            service_callers=REVISION_CREATORS,
-        )
+        require_role(UserRole.SUPERADMIN, UserRole.ADMIN, UserRole.ASESOR)
     ),
     session: AsyncSession = Depends(get_db),
 ) -> RevisionResponse:
-    """Create a new review item (called by AI_dialer when confidence < threshold)."""
+    """Create a new review item (admin-created from the human review panel)."""
     settings: CallbackSettings = request.app.state.settings
     tenant_id = current_user["tenant_id"]
     revision = await revision_service.create_revision(session, tenant_id, data, settings)

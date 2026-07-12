@@ -4,8 +4,13 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 
 from shared.middleware.auth import require_service
 
-from app.schemas.chat import SudamericaChatRequest, SudamericaChatResponse
-from app.services.agent_engine import run_agent
+from app.schemas.chat import (
+    GenerateRequest,
+    GenerateResponse,
+    SudamericaChatRequest,
+    SudamericaChatResponse,
+)
+from app.services.agent_engine import generate_response, run_agent
 
 router = APIRouter(tags=["agent"])
 
@@ -32,11 +37,47 @@ async def agent_chat(
             settings=settings,
             http_client=http_client,
             file=body.file,
+            capabilities=body.capacidades,
         )
     except Exception as exc:
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
             detail=f"Error en el copiloto administrativo: {exc}",
+        ) from exc
+
+    return result
+
+
+@router.post("/generate", response_model=GenerateResponse)
+async def agent_generate(
+    body: GenerateRequest,
+    request: Request,
+    current_service: dict = Depends(
+        require_service("generate:chat", callers=("api_execute",))
+    ),
+):
+    """Pure text generation (NO tools) for the customer chat and onboarding.
+
+    api_execute owns the prompt, history and persistence; this endpoint only
+    generates text. The admin TOOL_DEFINITIONS are never exposed here — they
+    stay isolated to the /chat endpoint.
+    """
+    settings = request.app.state.settings
+    http_client = getattr(request.app.state, "http_client", None)
+
+    try:
+        result = await generate_response(
+            system_prompt=body.system_prompt,
+            message=body.message,
+            history=body.history,
+            settings=settings,
+            http_client=http_client,
+            file=body.file,
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"Error en la generacion de texto: {exc}",
         ) from exc
 
     return result

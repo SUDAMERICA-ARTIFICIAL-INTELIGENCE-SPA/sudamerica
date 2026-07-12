@@ -15,6 +15,8 @@ from app.config import ApiExecuteSettings
 from app.prompts_ai import sudamerica_admin_prompt
 from app.services.tenant_rubro import load_tenant_rubro as _load_tenant_rubro
 from shared.database.session import set_tenant_context
+# Fase B (Paso 5): rubro_def desde el registro DB-backed (fallback puro a diccionario.py).
+from app.services.rubro_registry import rubro_def
 from shared.middleware import build_service_auth_headers
 from shared.utils.http_client import internal_http
 
@@ -107,11 +109,14 @@ async def orchestrate_sudamerica_chat(
     await _save_message(session, tenant_id, usuario_id, "user", message, None, None)
     await session.commit()
 
-    # Forward to open_agent
+    # Forward to open_agent. Enviamos las capacidades del rubro para que open_agent
+    # filtre las tools expuestas al LLM (una inmobiliaria no ve crear_mesa). Restaurante
+    # tiene mesas+pedidos+agenda → las 28 tools (comportamiento idéntico).
     payload: dict = {
         "system_prompt": system_prompt,
         "message": message,
         "history": history,
+        "capacidades": list(rubro_def(rubro).capacidades),
     }
     if file_data:
         payload["file"] = file_data

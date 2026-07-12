@@ -9,7 +9,7 @@ regresión previo a tocar prompts (`ai_orchestrator.py`, `prompt_sections.py`,
 
 - El system prompt se construye con `api_execute/app/services/prompt_sections.py`
   (módulo PURO extraído de `ai_orchestrator.py`; prod delega en él → mismo código,
-  mismo prompt) + `BEHAVIORAL_RULES` de ai_dialer extraído por `ast` del fuente.
+  mismo prompt) + `BEHAVIORAL_RULES` de api_execute extraído por `ast` del fuente.
 - Los datos (tenant, catálogo, casos) vienen de fixtures YAML en `evals/fixtures/`.
 - El turno se corre contra OpenRouter (modelo barato) y se validan asserts
   deterministas + LLM-as-judge con rúbrica.

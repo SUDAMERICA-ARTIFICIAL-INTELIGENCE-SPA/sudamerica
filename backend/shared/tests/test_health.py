@@ -27,7 +27,7 @@ async def test_build_health_report_all_healthy():
         return DependencyCheck(name="database", healthy=True, latency_ms=1.2)
 
     async def ok_svc():
-        return DependencyCheck(name="ai-dialer", healthy=True, latency_ms=5.0)
+        return DependencyCheck(name="canales-service", healthy=True, latency_ms=5.0)
 
     report = await build_health_report("test-svc", [ok_db(), ok_svc()])
     assert report.status == "healthy"

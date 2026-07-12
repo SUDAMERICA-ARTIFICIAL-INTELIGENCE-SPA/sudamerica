@@ -3,8 +3,8 @@
 F5 multi-rubro (fase expand): la tabla conserva el nombre ``mesas`` por compat;
 ``tipo`` tipifica el recurso. El contract (rename a ``recursos``) queda diferido.
 
-Lives in shared/ so services that reference it via FK (e.g. ai-dialer's
-Session.mesa_id) can register the Mesa table in Base.metadata at startup
+Lives in shared/ so any service whose models reference it via FK (e.g.
+``reservacion.mesa_id``) can register the Mesa table in Base.metadata at startup
 without crossing service boundaries.
 """
 

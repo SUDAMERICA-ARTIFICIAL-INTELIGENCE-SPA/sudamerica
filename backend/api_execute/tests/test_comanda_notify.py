@@ -59,6 +59,16 @@ class TestBuildStatusMessage:
         assert msg is not None
         assert "mesa" in msg.lower()
 
+    def test_en_proceso_generic_sin_cocina(self):
+        # Rubros sin cocina (FSM genérica): EN_PROCESO ahora notifica (antes se perdía
+        # en silencio). Texto neutral, sin "cocina" ni 🍽️.
+        msg = build_status_message("EN_PROCESO", "RETIRO", uuid4(), "Nora", prep_time_min=20)
+        assert msg is not None
+        assert "cocina" not in msg.lower()
+        assert "🍽️" not in msg
+        assert "20" in msg
+        assert "Nora" in msg
+
     def test_en_ruta_generic(self):
         msg = build_status_message("EN_RUTA", "DELIVERY", uuid4(), "Pedro")
         assert msg is not None

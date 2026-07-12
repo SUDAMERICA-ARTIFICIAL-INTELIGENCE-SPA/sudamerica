@@ -8,7 +8,6 @@ from shared.utils.security import validate_secret_length
 
 SERVICE_ISSUERS = (
     "api_execute",
-    "ai_dialer",
     "callback_manual",
     "tasks",
     "canales_service",

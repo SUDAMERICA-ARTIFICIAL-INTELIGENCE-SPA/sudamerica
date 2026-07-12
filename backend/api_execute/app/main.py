@@ -8,11 +8,13 @@ from app.config import ApiExecuteSettings
 from app.routes import (
     admin_api_keys,
     admin_metrics,
+    admin_rubros,
     admin_system,
     admin_tenants,
     admin_users,
     admin_whatsapp,
     ai_conversations,
+    ai_dashboard,
     ai_orchestrator,
     alertas,
     auth,
@@ -32,6 +34,7 @@ from app.routes import (
     onboarding,
     productos,
     reservaciones,
+    rubros,
     sales_targets,
     stripe,
     subentidades,
@@ -59,6 +62,19 @@ def create_app() -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
+        # Fase B (Paso 5): carga el manifiesto de rubro desde la tabla BD al arranque. Fail-safe:
+        # si la tabla está vacía/indisponible, el registro cae a diccionario.py (loggeado) y la
+        # app arranca igual.
+        from app.services import rubro_registry
+
+        try:
+            async with app.state.session_factory() as _db:
+                await rubro_registry.load(_db)
+        except Exception:
+            logger.warning(
+                "rubro_registry: no se pudo cargar al arranque; fallback a diccionario.py.",
+                exc_info=True,
+            )
         yield
         await aclose_pooled_client()
         await app.state.engine.dispose()
@@ -110,7 +126,9 @@ def create_app() -> FastAPI:
     app.include_router(alertas.router, prefix="/api/v1/core")
     app.include_router(sales_targets.router, prefix="/api/v1/core")
     app.include_router(onboarding.router, prefix="/api/v1/core")
+    app.include_router(rubros.router, prefix="/api/v1/core")
     app.include_router(ai_orchestrator.router, prefix="/api/v1/core")
+    app.include_router(ai_dashboard.router, prefix="/api/v1/core")
     app.include_router(menu_import.router, prefix="/api/v1/core")
     app.include_router(stripe.router, prefix="/api/v1/core")
     app.include_router(billing.router, prefix="/api/v1/core")
@@ -129,6 +147,7 @@ def create_app() -> FastAPI:
     app.include_router(admin_api_keys.router, prefix="/api/v1/admin")
     app.include_router(admin_whatsapp.router, prefix="/api/v1/admin")
     app.include_router(admin_system.router, prefix="/api/v1/admin")
+    app.include_router(admin_rubros.router, prefix="/api/v1/admin")
 
     # WebSocket routes (no prefix — path is defined in the router)
     app.include_router(ws_kds.router)

@@ -116,7 +116,7 @@ async def _persist_reply_history(
 ) -> None:
     """Build and store conversation history entry for a human reply."""
     content = message or caption or f"[{(media_type or 'media').upper()}]"
-    headers = _service_headers(settings, tenant_id, audience="ai_dialer", scopes=("conversations:import",))
+    headers = _service_headers(settings, tenant_id, audience="api_execute", scopes=("conversations:import",))
     await _import_historical_messages(
         tenant_id=tenant_id, lead_id=lead_id,
         messages=[_build_history_msg("assistant", content, media_url, media_type)],
@@ -172,13 +172,12 @@ async def _resolve_outbound_message(
     lead_id: UUID,
     tenant_id: UUID,
     settings: CanalesSettings,
-    ai_chat_headers: dict[str, str],
 ) -> str | None:
     """Determine the final message text, optionally via AI."""
     if use_ai and message:
-        ai_result = await _forward_to_ai(message, lead_id, tenant_id, settings, ai_chat_headers)
+        ai_result = await _forward_to_ai(message, lead_id, tenant_id, settings)
         if ai_result is None:
-            raise RuntimeError("AI_dialer unreachable for outbound message")
+            raise RuntimeError("AI reply generation unreachable for outbound message")
         return ai_result.get("response", message)
     return message
 
@@ -230,11 +229,8 @@ async def send_outbound(
     api_execute_headers = _service_headers(
         settings, tenant_id, audience="api_execute", scopes=("leads:read",),
     )
-    ai_chat_headers = _service_headers(
-        settings, tenant_id, audience="ai_dialer", scopes=("chat:write",),
-    )
     ai_import_headers = _service_headers(
-        settings, tenant_id, audience="ai_dialer", scopes=("conversations:import",),
+        settings, tenant_id, audience="api_execute", scopes=("conversations:import",),
     )
 
     phone = await _get_lead_phone(lead_id, tenant_id, settings, api_execute_headers)
@@ -242,7 +238,7 @@ async def send_outbound(
         raise RuntimeError(f"Could not resolve phone for lead {lead_id}")
 
     final_message = await _resolve_outbound_message(
-        message, use_ai, lead_id, tenant_id, settings, ai_chat_headers,
+        message, use_ai, lead_id, tenant_id, settings,
     )
     message_id = await _send_outbound_content(
         phone, final_message, instance_name, settings,
@@ -266,7 +262,7 @@ async def _fetch_ai_config(
     settings: CanalesSettings,
     auth_headers: dict[str, str],
 ) -> dict:
-    """Fetch the tenant's agente_config once from AI_dialer.
+    """Fetch the tenant's agente_config once from api_execute.
 
     Returns the parsed body, or {} if unavailable so callers fall back to
     defaults. A single GET feeds both the auto-response flag and the debounce
@@ -274,7 +270,7 @@ async def _fetch_ai_config(
     """
     try:
         response = await internal_http.get(
-            f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/config",
+            f"{settings.SERVICE_API_EXECUTE_URL}/api/v1/core/ai/config",
             headers=_tenant_headers(tenant_id, auth_headers),
         )
         if response.status_code == 200:
@@ -300,30 +296,6 @@ def _debounce_seconds(config: dict) -> float:
     return _DEFAULT_DEBOUNCE_SECONDS
 
 
-async def _resolve_contact(
-    phone: str,
-    tenant_id: UUID,
-    settings: CanalesSettings,
-    auth_headers: dict[str, str],
-    name: str | None = None,
-) -> str | None:
-    """Resolve a contact_id via AI_dialer /contacts/resolve. Returns contact_id string or None."""
-    payload: dict = {"phone": phone}
-    if name:
-        payload["name"] = name
-    try:
-        response = await internal_http.post(
-            f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/contacts/resolve",
-            headers=_tenant_headers(tenant_id, auth_headers),
-            json=payload,
-        )
-        if response.status_code == 200:
-            return response.json().get("id")
-    except (httpx.HTTPError, RuntimeError):
-        logger.warning("Failed to resolve contact for phone %s, continuing without contact_id", phone)
-    return None
-
-
 def _build_all_headers(
     settings: CanalesSettings, tenant_id: UUID,
 ) -> dict[str, dict[str, str]]:
@@ -334,10 +306,8 @@ def _build_all_headers(
     return {
         "api_read": _h("api_execute", ("leads:read",)),
         "api_write": _h("api_execute", ("leads:write",)),
-        "ai_config": _h("ai_dialer", ("config:read",)),
-        "ai_contact": _h("ai_dialer", ("contacts:resolve",)),
-        "ai_chat": _h("ai_dialer", ("chat:write",)),
-        "ai_import": _h("ai_dialer", ("conversations:import",)),
+        "ai_config": _h("api_execute", ("config:read",)),
+        "ai_import": _h("api_execute", ("conversations:import",)),
     }
 
 
@@ -492,11 +462,11 @@ async def _forward_and_reply(
     typing = asyncio.ensure_future(_keep_composing(phone, instance_name, settings))
     try:
         ai_result = await _forward_to_ai(
-            message_text, lead_id, tenant_id, settings, headers["ai_chat"],
+            message_text, lead_id, tenant_id, settings,
             contact_id=contact_id, media_url=media_url, media_type=media_type,
         )
         if ai_result is None:
-            return {"status": "error", "reason": "ai_dialer_unreachable"}
+            return {"status": "error", "reason": "ai_orchestrator_unreachable"}
 
         reply_text = (ai_result.get("response") or "").strip()
 
@@ -681,16 +651,16 @@ async def process_incoming(
         logger.warning("Could not resolve lead for phone %s (tenant %s)", phone, tenant_id)
         return {"status": "skipped", "reason": "lead_resolution_failed"}
 
-    # Contact resolution and media/text extraction are independent — run them
-    # concurrently to shave a round-trip off the pre-LLM path.
-    contact_id, (message_text, media_url, media_type) = await asyncio.gather(
-        _resolve_contact(phone, tenant_id, settings, headers["ai_contact"]),
-        _resolve_media_and_text(data, instance, settings, tenant_id, headers),
+    # Contacts are not a separate entity in this deployment (the customer chat
+    # keys off the lead), so no contact resolution round-trip is made.
+    contact_id = None
+    message_text, media_url, media_type = await _resolve_media_and_text(
+        data, instance, settings, tenant_id, headers,
     )
     _ts_gather = time.time()
     # WA_STAGE: per-stage timing of the pre-LLM canales path, to pin which call
     # eats the ~5s stalls seen in WA_LATENCY (set_tenant_context vs headers/jwt
-    # vs /leads HTTP vs contact+media gather). Purely additive, no new branches.
+    # vs /leads HTTP vs media resolution). Purely additive, no new branches.
     logger.info("WA_STAGE %s", json.dumps({
         "tenant": str(tenant_id),
         "phone": phone,
@@ -809,7 +779,8 @@ async def _handle_incoming_audio(
         settings=settings,
     )
 
-    # Transcribe via AI_dialer STT endpoint
+    # No speech-to-text service in this deployment: the audio is stored and the
+    # caller falls back to a placeholder transcription.
     transcription = await _transcribe_audio(
         raw_bytes, actual_mimetype or mimetype, tenant_id, settings, headers,
     )
@@ -824,33 +795,12 @@ async def _transcribe_audio(
     settings: CanalesSettings,
     headers: dict[str, dict[str, str]],
 ) -> str | None:
-    """Send audio bytes to AI_dialer /stt/transcribe for Whisper transcription."""
-    import base64
+    """Speech-to-text is not available in this deployment.
 
-    stt_headers = _service_headers(
-        settings, tenant_id,
-        audience="ai_dialer", scopes=("stt:transcribe",),
-    )
-    payload = {
-        "audio_base64": base64.b64encode(audio_bytes).decode(),
-        "mimetype": mimetype,
-        "language": "es",
-    }
-    try:
-        response = await internal_http.post(
-            f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/stt/transcribe",
-            headers=_tenant_headers(tenant_id, stt_headers),
-            json=payload,
-            timeout=120.0,
-        )
-        if response.status_code == 200:
-            body = response.json()
-            text = body.get("transcription", "").strip()
-            if text:
-                logger.info("Audio transcribed: %d chars for tenant %s", len(text), tenant_id)
-                return text
-    except (httpx.HTTPError, RuntimeError):
-        logger.warning("STT transcription failed for tenant %s", tenant_id, exc_info=True)
+    No STT service exists yet, so voice notes are stored as media and the caller
+    uses a placeholder transcription (see ``_resolve_media_and_text``).
+    TODO: reimplement transcription when an STT service is added.
+    """
     return None
 
 
@@ -902,7 +852,7 @@ def _build_sync_headers(
     return {
         "api_read": _service_headers(settings, tenant_id, audience="api_execute", scopes=("leads:read",)),
         "api_write": _service_headers(settings, tenant_id, audience="api_execute", scopes=("leads:write",)),
-        "ai_import": _service_headers(settings, tenant_id, audience="ai_dialer", scopes=("conversations:import",)),
+        "ai_import": _service_headers(settings, tenant_id, audience="api_execute", scopes=("conversations:import",)),
     }
 
 
@@ -949,7 +899,7 @@ async def sync_historical_conversations(
     max_chats: int | None = None,
     since: datetime | None = None,
 ) -> dict[str, int]:
-    """Import historical WhatsApp chats from Evolution into AI_dialer conversations."""
+    """Import historical WhatsApp chats from Evolution into ai_conversations."""
     if since is not None and since.tzinfo is None:
         since = since.replace(tzinfo=timezone.utc)
 
@@ -1112,7 +1062,7 @@ async def _import_historical_messages(
     auth_headers: dict[str, str],
 ) -> dict[str, Any]:
     response = await internal_http.post(
-        f"{settings.SERVICE_AI_DIALER_URL}/api/v1/ai/conversations/import",
+        f"{settings.SERVICE_API_EXECUTE_URL}/api/v1/core/ai/conversations/import",
         headers=_tenant_headers(tenant_id, auth_headers),
         json={
             "lead_id": str(lead_id),
@@ -1215,17 +1165,15 @@ async def _forward_to_ai(
     lead_id: UUID | None,
     tenant_id: UUID,
     settings: CanalesSettings,
-    auth_headers: dict[str, str],
     contact_id: str | None = None,
     media_url: str | None = None,
     media_type: str | None = None,
 ) -> dict | None:
-    """Forward message to api_execute orchestrator (the WHAT), which calls ai_dialer (the HOW).
+    """Forward the message to the api_execute AI orchestrator.
 
-    api_execute builds the full business context (prompt + knowledge + products)
-    and forwards to ai_dialer for LLM processing.
+    api_execute builds the full business context (prompt + knowledge + products),
+    generates the reply via open_agent and persists the conversation.
     """
-    # Build auth headers for api_execute (not ai_dialer)
     orchestrator_headers = _service_headers(
         settings,
         tenant_id,

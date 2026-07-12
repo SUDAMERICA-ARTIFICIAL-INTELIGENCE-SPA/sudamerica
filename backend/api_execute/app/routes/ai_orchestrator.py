@@ -1,4 +1,7 @@
-"""AI Orchestrator route — api_execute builds business context, ai_dialer processes."""
+"""AI Orchestrator route — api_execute builds business context and generates
+replies via open_agent. Also owns the conversation-history import endpoint that
+canales_service reaches on api_execute. The user-facing agent config, conversation
+viewer and knowledge endpoints live in ``routes/ai_dashboard.py``."""
 
 import logging
 
@@ -7,11 +10,21 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from shared.database.dependencies import get_db
 from shared.database.session import set_tenant_context
+from shared.middleware.auth import require_service
 from shared.middleware.rate_limit import require_rate_limit
+from shared.utils.service_access import CONVERSATION_IMPORTERS
 
 from app.routes.deps import AiChatActor
-from app.schemas.ai_orchestrator import ProcessMessageRequest, ProcessMessageResponse
-from app.services.ai_orchestrator import orchestrate_chat
+from app.schemas.ai_orchestrator import (
+    ConversationImportRequest,
+    ConversationImportResponse,
+    ProcessMessageRequest,
+    ProcessMessageResponse,
+)
+from app.services.ai_orchestrator import (
+    import_conversation_messages,
+    orchestrate_chat,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -28,8 +41,8 @@ async def process_message(
 ) -> ProcessMessageResponse:
     """Process a message through the AI orchestrator.
 
-    api_execute builds the full business context (prompt + knowledge + products)
-    and forwards to ai_dialer for LLM processing.
+    api_execute builds the full business context (prompt + knowledge + products),
+    generates the reply via open_agent, and persists the conversation.
     """
     tenant_id = current_actor["tenant_id"]
     settings = request.app.state.settings
@@ -54,3 +67,25 @@ async def process_message(
         raise HTTPException(status_code=502, detail="AI processing failed")
 
     return ProcessMessageResponse(**result)
+
+
+@router.post("/ai/conversations/import", response_model=ConversationImportResponse)
+async def import_conversations(
+    body: ConversationImportRequest,
+    current_service: dict = Depends(
+        require_service("conversations:import", callers=CONVERSATION_IMPORTERS)
+    ),
+    db: AsyncSession = Depends(get_db),
+) -> ConversationImportResponse:
+    """Persist historical customer messages for a lead (idempotent).
+
+    api_execute owns ``ai_conversations`` and exposes this
+    ``POST /ai/conversations/import`` endpoint for canales_service to store human
+    replies, outbound messages and bulk-synced WhatsApp history.
+    """
+    tenant_id = current_service["tenant_id"]
+    await set_tenant_context(db, str(tenant_id))
+    result = await import_conversation_messages(
+        db, tenant_id, body.lead_id, body.canal, body.messages,
+    )
+    return ConversationImportResponse(**result)

@@ -150,3 +150,38 @@ async def test_run_agent_max_iterations(settings, mock_http_client, llm_tool_cal
     )
 
     assert "limite" in result.response.lower()
+    # Regression: the MAX_TOOL_CALLS path used to reference an undefined
+    # `total_tokens` (NameError). It must now sum the per-call token counts.
+    assert result.tokens_used == 200  # 2 iterations x 100 tokens
+
+
+@pytest.mark.asyncio
+async def test_generate_response_no_tools(settings, mock_http_client, llm_text_response):
+    """generate_response makes exactly ONE LLM call and NEVER offers tools."""
+    from app.schemas.chat import GenerateResponse
+    from app.services.agent_engine import generate_response
+
+    mock_response = AsyncMock()
+    mock_response.json.return_value = llm_text_response
+    mock_response.raise_for_status = MagicMock()
+    mock_http_client.post.return_value = mock_response
+
+    result = await generate_response(
+        system_prompt="Eres el asistente de Sudamérica AI",
+        message="Hola, quiero hacer un pedido",
+        history=[
+            {"role": "user", "content": "hola"},
+            {"role": "assistant", "content": "buenas"},
+        ],
+        settings=settings,
+        http_client=mock_http_client,
+    )
+
+    assert isinstance(result, GenerateResponse)
+    assert result.response
+    assert result.tokens_used == 250
+    assert result.model_used
+    # Exactly one LLM call and NO tools were ever sent in the payload.
+    assert mock_http_client.post.call_count == 1
+    sent_payload = mock_http_client.post.call_args.kwargs["json"]
+    assert "tools" not in sent_payload

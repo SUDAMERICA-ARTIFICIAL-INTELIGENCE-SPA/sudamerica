@@ -7,10 +7,10 @@ import pytest
 ROOT = Path(__file__).resolve().parent.parent
 SUITES = (
     "api_execute/tests",
-    "AI_dialer/tests",
     "callback_manual/tests",
     "canales_service/tests",
     "tasks/tests",
+    "open_agent/tests",
 )
 
 

@@ -7,11 +7,15 @@ from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from shared.database import get_db
-from shared.middleware.auth import require_user_or_service
 from shared.schemas import PaginatedResponse, PaginationParams
-from shared.utils.service_access import MESA_AVAILABILITY_READERS
 
-from app.routes.deps import AdminWriter, MesaReader, MesaWriter, get_user_sucursal_id
+from app.routes.deps import (
+    AdminWriter,
+    AnyAuthenticated,
+    MesaReader,
+    MesaWriter,
+    get_user_sucursal_id,
+)
 from app.schemas.mesa import (
     MesaCreate,
     MesaDisponibilidadItem,
@@ -24,13 +28,6 @@ from app.services import mesa_svc
 
 router = APIRouter(prefix="/mesas", tags=["mesas"])
 availability_router = APIRouter(prefix="/mesas", tags=["mesas"])
-
-MesaAvailabilityReader = Depends(
-    require_user_or_service(
-        service_scopes=("reservaciones:read",),
-        service_callers=MESA_AVAILABILITY_READERS,
-    )
-)
 
 
 def _build_availability_response(
@@ -56,7 +53,7 @@ async def disponibilidad_mesas(
     fecha: date = Query(...),
     hora: time = Query(...),
     personas: int = Query(..., ge=1, le=50),
-    current_user: dict = MesaAvailabilityReader,
+    current_user: dict = AnyAuthenticated,
     db: AsyncSession = Depends(get_db),
 ):
     """List mesas available for a 90-minute reservation slot."""

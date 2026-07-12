@@ -20,7 +20,6 @@ def build_canales_settings(*, webhook_token: str = "test-webhook-secret-12345678
         EVOLUTION_API_URL="http://mock-evolution:8080",
         EVOLUTION_API_KEY="test-evo-key",
         EVOLUTION_WEBHOOK_URL="http://mock-canales:8004/api/v1/canales/webhook/whatsapp",
-        SERVICE_AI_DIALER_URL="http://mock-ai-dialer:8001",
         SERVICE_API_EXECUTE_URL="http://mock-api-execute:8000",
         WEBHOOK_TOKEN=webhook_token,
     )

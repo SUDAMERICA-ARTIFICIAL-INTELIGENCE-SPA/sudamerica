@@ -22,11 +22,9 @@ class CallbackSettings(BaseSettings):
 
     # Internal service URLs
     SERVICE_API_EXECUTE_URL: str = "http://localhost:8000"
-    SERVICE_AI_DIALER_URL: str = "http://localhost:8001"
     SERVICE_TASKS_URL: str = "http://localhost:8003"
     INTERNAL_SERVICE_SECRET_KEY: str = Field(validation_alias="CALLBACK_MANUAL_INTERNAL_SERVICE_SECRET_KEY")
     API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY: str = ""
-    AI_DIALER_INTERNAL_SERVICE_SECRET_KEY: str = ""
     TASKS_INTERNAL_SERVICE_SECRET_KEY: str = ""
     CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY: str = ""
     INTERNAL_SERVICE_TOKEN_TTL_SECONDS: int = 300
@@ -54,7 +52,6 @@ class CallbackSettings(BaseSettings):
             signing_key=self.INTERNAL_SERVICE_SECRET_KEY,
             trusted_keys={
                 "api_execute": self.API_EXECUTE_INTERNAL_SERVICE_SECRET_KEY,
-                "ai_dialer": self.AI_DIALER_INTERNAL_SERVICE_SECRET_KEY,
                 "tasks": self.TASKS_INTERNAL_SERVICE_SECRET_KEY,
                 "canales_service": self.CANALES_SERVICE_INTERNAL_SERVICE_SECRET_KEY,
             },

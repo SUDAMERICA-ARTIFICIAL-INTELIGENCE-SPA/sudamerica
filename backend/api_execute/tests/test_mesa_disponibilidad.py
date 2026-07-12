@@ -2,12 +2,12 @@
 
 import os
 import uuid
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import date, time
 
-import jwt
 import pytest
 from sqlalchemy import delete
 
+from shared.middleware.auth import create_service_token
 from shared.models.mesa import Mesa
 from app.models.reservacion import Reservacion
 
@@ -15,22 +15,19 @@ from .conftest import TENANT_ID
 
 
 def _build_service_headers() -> dict[str, str]:
-    now = datetime.now(timezone.utc)
-    token = jwt.encode(
-        {
-            "iss": "ai_dialer",
-            "sub": "ai_dialer",
-            "aud": "api_execute",
-            "tenant_id": TENANT_ID,
-            "type": "service",
-            "role": "ADMIN",
-            "scopes": ["reservaciones:read"],
-            "iat": int(now.timestamp()),
-            "nbf": int(now.timestamp()),
-            "exp": now + timedelta(hours=1),
-        },
-        os.environ["AI_DIALER_INTERNAL_SERVICE_SECRET_KEY"],
-        algorithm="HS256",
+    """A well-formed service token from a *trusted* issuer (open_agent).
+
+    The endpoint must still reject it: mesa availability is a users-only route
+    with no service_callers allowlist. This guards against the AI_dialer removal
+    silently widening access to any trusted internal service.
+    """
+    token = create_service_token(
+        service_name="open_agent",
+        audience="api_execute",
+        tenant_id=uuid.UUID(TENANT_ID),
+        signing_key=os.environ["OPEN_AGENT_INTERNAL_SERVICE_SECRET_KEY"],
+        scopes=("reservaciones:read",),
+        expires_in_seconds=300,
     )
     return {
         "Authorization": f"Bearer {token}",
@@ -170,9 +167,10 @@ async def test_disponibilidad_returns_empty_list_when_no_matches(client, auth_he
 
 
 @pytest.mark.asyncio
-async def test_disponibilidad_accepts_ai_dialer_service_token(client, db_session):
+async def test_disponibilidad_rejects_service_token(client, db_session):
+    """Availability is users-only; even a trusted-issuer service token gets 403."""
     await _clear_availability_data(db_session)
-    mesa = await _seed_mesa(db_session, numero=104, capacidad=4, nombre="salon")
+    await _seed_mesa(db_session, numero=104, capacidad=4, nombre="salon")
 
     resp = await client.get(
         "/api/v1/mesas/disponibilidad",
@@ -180,5 +178,4 @@ async def test_disponibilidad_accepts_ai_dialer_service_token(client, db_session
         headers=_build_service_headers(),
     )
 
-    assert resp.status_code == 200
-    assert resp.json()["disponibles"][0]["id"] == str(mesa.id)
+    assert resp.status_code == 403

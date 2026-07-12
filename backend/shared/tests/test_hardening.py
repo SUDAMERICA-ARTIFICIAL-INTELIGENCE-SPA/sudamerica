@@ -13,7 +13,7 @@ from starlette.requests import Request
 # ── A. Dockerfile non-root ───────────────────────────────────────────────────
 
 BACKEND_ROOT = Path(__file__).resolve().parent.parent.parent
-SERVICES = ["api_execute", "AI_dialer", "callback_manual", "tasks", "canales_service", "open_agent"]
+SERVICES = ["api_execute", "callback_manual", "tasks", "canales_service", "open_agent"]
 
 
 @pytest.mark.parametrize("service", SERVICES)
