@@ -16,7 +16,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from shared.database import get_db_admin as get_db
 
 from app.routes.deps import SuperAdminOnly
-from app.schemas.admin_rubros import RubroResponse, RubroUpdateRequest
+from app.schemas.admin_rubros import (
+    RubroCreateRequest,
+    RubroResponse,
+    RubroUpdateRequest,
+)
 from app.services import admin_service
 
 logger = logging.getLogger(__name__)
@@ -31,6 +35,19 @@ async def list_rubros(
 ):
     """Lista todos los manifiestos de rubro persistidos (tabla global de referencia)."""
     return await admin_service.list_rubros(db)
+
+
+@router.post("", response_model=RubroResponse, status_code=201)
+async def create_rubro(
+    body: RubroCreateRequest,
+    current_user: dict = SuperAdminOnly,
+    db: AsyncSession = Depends(get_db),
+):
+    """Crea un rubro runtime (``origen='runtime'``): valida fail-closed (422 manifiesto,
+    409 key reservada/duplicada), bumpea versión, refresca registro. Solo admin de plataforma."""
+    return await admin_service.create_rubro(
+        db, body.model_dump(), current_user.get("user_id")
+    )
 
 
 @router.get("/{key}", response_model=RubroResponse)
@@ -54,4 +71,30 @@ async def update_rubro(
     patch = body.model_dump(exclude_unset=True)
     return await admin_service.update_rubro(
         db, key, patch, current_user.get("user_id")
+    )
+
+
+@router.post("/{key}/desactivar", response_model=RubroResponse)
+async def desactivar_rubro(
+    key: str,
+    current_user: dict = SuperAdminOnly,
+    db: AsyncSession = Depends(get_db),
+):
+    """Desactiva un rubro runtime (``activo=false``). Rechaza (409) si es seed, si es
+    ``RUBRO_DEFAULT``, o si está asignado a algún tenant. Bumpea versión y refresca registro."""
+    return await admin_service.set_rubro_activo(
+        db, key, False, current_user.get("user_id")
+    )
+
+
+@router.post("/{key}/activar", response_model=RubroResponse)
+async def activar_rubro(
+    key: str,
+    current_user: dict = SuperAdminOnly,
+    db: AsyncSession = Depends(get_db),
+):
+    """Reactiva un rubro runtime previamente desactivado (``activo=true``). Rechaza (409) si es
+    un rubro seed. Bumpea versión y refresca registro."""
+    return await admin_service.set_rubro_activo(
+        db, key, True, current_user.get("user_id")
     )

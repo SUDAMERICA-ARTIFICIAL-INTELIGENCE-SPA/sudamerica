@@ -101,11 +101,14 @@ async def refresh(db: AsyncSession) -> int:
 
     global _current, _version
     try:
+        # Fase C (Paso 6): carga la UNIÓN de seed+runtime pero SOLO las filas activas. Un rubro
+        # runtime desactivado (activo=false) desaparece del roster vigente; las conversaciones
+        # ancladas a una versión previa siguen viéndolo vía su snapshot en `_snapshots`.
         result = await db.execute(
             text(
                 "SELECT key, nombre, emoji, sector, labels, capacidades, "
                 "sub_entidad_label, recurso, variantes, precio_medida, categorias_semilla "
-                "FROM rubros"
+                "FROM rubros WHERE activo = TRUE"
             )
         )
         rows = result.mappings().all()
@@ -205,8 +208,13 @@ def _active_cache() -> dict[str, Rubro]:
 def rubro_def(key: str | None) -> Rubro:
     """Definición del rubro desde el caché (anclado); fail-safe a ``restaurante``.
 
-    Si el registro no está cargado (tabla vacía/indisponible, o entorno de test sin BD) delega en
-    la función pura ``diccionario.rubro_def`` → comportamiento idéntico a antes de la Fase B.
+    Sirve indistintamente rubros ``seed`` y ``runtime`` activos (Fase C): ambos viven en el mismo
+    caché ``_current`` reconstruido desde la tabla. Si el registro no está cargado (tabla
+    vacía/indisponible, o entorno de test sin BD) delega en la función pura
+    ``diccionario.rubro_def`` → comportamiento idéntico a antes de la Fase B. Nota (§4.4): con BD
+    caída, una ``key`` de un rubro **runtime** (que no existe en ``diccionario.py``) cae al
+    fail-safe ``RUBRO_DEFAULT``; el aviso loggeado de ese fail-safe lo emite el consumidor de
+    tenant (``tenant_rubro.load_tenant_rubro``), no este accesor puro/caliente.
     """
     cache = _active_cache()
     if not cache:
@@ -233,7 +241,12 @@ def resolve_rubro(config: Mapping[str, Any] | None) -> str:
 
 
 def rubros_disponibles() -> tuple[str, ...]:
-    """Claves de rubro conocidas (roster vigente; fallback puro si no está cargado)."""
+    """Claves de rubro del set vivo: unión de seed+runtime **activos** (Fase C).
+
+    El caché ``_current`` ya contiene solo filas ``activo=true`` (ver :func:`refresh`), así que la
+    unión sale directa de sus claves. Fallback puro al roster **solo-seed** de ``diccionario.py``
+    si el registro no está cargado (los rubros runtime no tienen fuente de código).
+    """
     if not _current:
         return _dic.rubros_disponibles()
     return tuple(_current.keys())

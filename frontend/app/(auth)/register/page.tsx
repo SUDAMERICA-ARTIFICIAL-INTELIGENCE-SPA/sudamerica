@@ -4,7 +4,8 @@ export const dynamic = "force-dynamic";
 
 import { useSsrColorScheme } from "@/hooks/useSsrColorScheme";
 import { ApiError, useAuth } from "@/lib/auth";
-import { RUBRO_DEFAULT, RUBRO_OPTIONS } from "@/lib/rubros";
+import { RUBRO_DEFAULT } from "@/lib/rubros";
+import { useRubrosDisponibles } from "@/hooks/useRubrosDisponibles";
 import {
   Alert,
   Anchor,
@@ -59,11 +60,6 @@ const EMPTY_FORM: FormState = {
   password: "",
   confirmPassword: "",
 };
-
-const RUBRO_SELECT_DATA = RUBRO_OPTIONS.map((opt) => ({
-  value: opt.value,
-  label: `${opt.emoji} ${opt.label}`,
-}));
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -237,6 +233,13 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
+
+  // Set vivo de rubros (incluye runtime creados en la Fase C); baseline estático como fallback.
+  const { options: rubroOptions } = useRubrosDisponibles();
+  const rubroSelectData = rubroOptions.map((opt) => ({
+    value: opt.value,
+    label: `${opt.emoji} ${opt.label}`,
+  }));
 
   const setField = useCallback((key: keyof FormState, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -419,7 +422,7 @@ export default function RegisterPage() {
                 placeholder="Elige tu rubro"
                 value={form.rubro}
                 onChange={(value) => setField("rubro", value ?? "")}
-                data={RUBRO_SELECT_DATA}
+                data={rubroSelectData}
                 error={errors.rubro}
                 disabled={submitting}
                 radius="md"

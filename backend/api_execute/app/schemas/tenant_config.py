@@ -14,7 +14,29 @@ from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, ValidationError, field_validator
 
-from shared.rubros import CAPACIDADES, PRIMITIVAS, rubros_disponibles
+from shared.rubros import CAPACIDADES, PRIMITIVAS
+from shared.rubros import rubros_disponibles as _rubros_disponibles_codigo
+
+
+def _rubros_conocidos() -> set[str]:
+    """Set VIVO de rubros para validar en publicación (Fase C, Paso 6).
+
+    Usa el registro DB-backed (``rubro_registry.rubros_disponibles`` — unión de seed+runtime
+    **activos**) para que un tenant pueda asignarse un rubro ``origen='runtime'`` creado en
+    runtime. Fallback al roster de **código** (``diccionario.py``) si el registro no está cargado
+    (arranque, entorno de test sin BD): así los tests del Paso 4/5 —que corren sin registro—
+    siguen validando contra el roster estático sin cambios. Import perezoso: no acopla este
+    módulo (testeable con solo pydantic) a ``app.services`` en tiempo de carga.
+    """
+    try:
+        from app.services.rubro_registry import rubros_disponibles as _live
+
+        vivos = _live()
+        if vivos:
+            return set(vivos)
+    except Exception:
+        pass
+    return set(_rubros_disponibles_codigo())
 
 
 class RubroManifest(BaseModel):
@@ -77,7 +99,7 @@ class TenantConfig(BaseModel):
     @field_validator("rubro")
     @classmethod
     def _rubro_conocido(cls, v: str | None) -> str | None:
-        if v is not None and v not in rubros_disponibles():
+        if v is not None and v not in _rubros_conocidos():
             raise ValueError(f"rubro desconocido: {v!r}")
         return v
 

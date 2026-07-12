@@ -34,6 +34,7 @@ from app.routes import (
     onboarding,
     productos,
     reservaciones,
+    rubros,
     sales_targets,
     stripe,
     subentidades,
@@ -125,6 +126,7 @@ def create_app() -> FastAPI:
     app.include_router(alertas.router, prefix="/api/v1/core")
     app.include_router(sales_targets.router, prefix="/api/v1/core")
     app.include_router(onboarding.router, prefix="/api/v1/core")
+    app.include_router(rubros.router, prefix="/api/v1/core")
     app.include_router(ai_orchestrator.router, prefix="/api/v1/core")
     app.include_router(ai_dashboard.router, prefix="/api/v1/core")
     app.include_router(menu_import.router, prefix="/api/v1/core")
