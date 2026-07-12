@@ -1,7 +1,9 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { KDSBoard } from "@/components/comandas/KDSBoard";
-
-export default function ComandasPage() {
-  return <KDSBoard />;
+/**
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/pedidos/comandas`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
+ */
+export default function Page() {
+  redirect("/pedidos/comandas");
 }

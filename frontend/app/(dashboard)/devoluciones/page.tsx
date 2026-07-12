@@ -1,22 +1,9 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { EmptyState } from "@/components/ui/EmptyState";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { SectionCard } from "@/components/ui/SectionCard";
-import { Stack } from "@mantine/core";
-import { IconArrowBackUp } from "@tabler/icons-react";
-
-export default function DevolucionesPage() {
-  return (
-    <Stack gap="lg">
-      <PageHeader title="Devoluciones" subtitle="Cambios y devoluciones de pedidos." />
-      <SectionCard>
-        <EmptyState
-          icon={<IconArrowBackUp size={40} />}
-          title="En construcción"
-          description="Pronto vas a gestionar cambios y devoluciones desde aquí."
-        />
-      </SectionCard>
-    </Stack>
-  );
+/**
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/pedidos/devoluciones`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
+ */
+export default function Page() {
+  redirect("/pedidos/devoluciones");
 }

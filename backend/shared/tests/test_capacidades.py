@@ -27,7 +27,7 @@ RESTAURANTE_CAPACIDADES = (
 # ── Catálogo ─────────────────────────────────────────────────────────────────
 
 
-def test_catalogo_es_22_unicas_en_cap_order():
+def test_catalogo_es_25_unicas_en_cap_order():
     assert CAPACIDADES == (
         "catalogo",
         "agenda",
@@ -51,8 +51,11 @@ def test_catalogo_es_22_unicas_en_cap_order():
         "terreno",
         "mesas",
         "consentimientos",
+        "contabilidad",
+        "activos_fijos",
+        "rrhh",
     )
-    assert len(set(CAPACIDADES)) == 22
+    assert len(set(CAPACIDADES)) == 25
 
 
 def test_meta_cubre_todo_el_catalogo():

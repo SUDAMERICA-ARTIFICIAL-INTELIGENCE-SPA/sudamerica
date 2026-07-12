@@ -1,25 +1,9 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { EmptyState } from "@/components/ui/EmptyState";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { SectionCard } from "@/components/ui/SectionCard";
-import { Stack } from "@mantine/core";
-import { IconFolders } from "@tabler/icons-react";
-
-export default function ExpedientesPage() {
-  return (
-    <Stack gap="lg">
-      <PageHeader
-        title="Fichas y expedientes"
-        subtitle="Historial, documentos adjuntos y notas de evolución."
-      />
-      <SectionCard>
-        <EmptyState
-          icon={<IconFolders size={40} />}
-          title="En construcción"
-          description="Pronto vas a llevar el expediente completo de cada cliente desde aquí."
-        />
-      </SectionCard>
-    </Stack>
-  );
+/**
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/contactos/expedientes`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
+ */
+export default function Page() {
+  redirect("/contactos/expedientes");
 }

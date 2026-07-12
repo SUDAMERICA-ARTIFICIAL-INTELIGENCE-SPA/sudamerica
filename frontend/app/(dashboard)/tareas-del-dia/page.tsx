@@ -1,22 +1,9 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { EmptyState } from "@/components/ui/EmptyState";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { SectionCard } from "@/components/ui/SectionCard";
-import { Stack } from "@mantine/core";
-import { IconChecklist } from "@tabler/icons-react";
-
-export default function TareasDelDiaPage() {
-  return (
-    <Stack gap="lg">
-      <PageHeader title="Tareas del día" subtitle="Pendientes y seguimientos priorizados de hoy." />
-      <SectionCard>
-        <EmptyState
-          icon={<IconChecklist size={40} />}
-          title="En construcción"
-          description="Pronto vas a organizar los pendientes del día de tu negocio desde aquí."
-        />
-      </SectionCard>
-    </Stack>
-  );
+/**
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/inicio/tareas`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
+ */
+export default function Page() {
+  redirect("/inicio/tareas");
 }

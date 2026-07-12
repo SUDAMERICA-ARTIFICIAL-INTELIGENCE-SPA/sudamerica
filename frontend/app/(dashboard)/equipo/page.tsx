@@ -1,18 +1,9 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { LeaderboardTable } from "@/components/equipo/LeaderboardTable";
-import { TeamTargets } from "@/components/equipo/TeamTargets";
-import { TeamUserManager } from "@/components/equipo/TeamUserManager";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Stack } from "@mantine/core";
-
-export default function EquipoPage() {
-  return (
-    <Stack gap="lg">
-      <PageHeader title="Equipo" />
-      <TeamUserManager />
-      <TeamTargets />
-      <LeaderboardTable />
-    </Stack>
-  );
+/**
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/cuenta/equipo`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
+ */
+export default function Page() {
+  redirect("/cuenta/equipo");
 }

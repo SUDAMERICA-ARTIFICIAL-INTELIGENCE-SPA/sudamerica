@@ -1,10 +1,9 @@
 import { redirect } from "next/navigation";
 
 /**
- * Ruta huérfana DEPRECADA (decisión Fase 0 del cableado P2): duplicaba /carta
- * (mismo catálogo, otra tabla). Redirect permanente — los deep-links viejos siguen
- * funcionando. Los componentes de components/productos/ quedan para reuso desde /carta.
+ * Ruta plana legacy — su contenido vive ahora en la ruta canónica `/catalogo/productos`
+ * (Paso 7, nav canónico). Redirect permanente para no romper deep-links viejos.
  */
-export default function ProductosPage() {
-  redirect("/carta");
+export default function Page() {
+  redirect("/catalogo/productos");
 }

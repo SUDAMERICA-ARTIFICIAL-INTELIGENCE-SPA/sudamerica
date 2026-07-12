@@ -17,7 +17,7 @@ const RESTAURANTE_CAPACIDADES: readonly Capacidad[] = [
 ];
 
 describe("catálogo de capacidades", () => {
-  it("son 22 únicas en CAP_ORDER (idéntico al backend)", () => {
+  it("son 25 únicas en CAP_ORDER (idéntico al backend)", () => {
     expect([...CAPACIDADES]).toEqual([
       "catalogo",
       "agenda",
@@ -41,8 +41,11 @@ describe("catálogo de capacidades", () => {
       "terreno",
       "mesas",
       "consentimientos",
+      "contabilidad",
+      "activos_fijos",
+      "rrhh",
     ]);
-    expect(new Set(CAPACIDADES).size).toBe(22);
+    expect(new Set(CAPACIDADES).size).toBe(25);
   });
 
   it("la metadata cubre todo el catálogo", () => {

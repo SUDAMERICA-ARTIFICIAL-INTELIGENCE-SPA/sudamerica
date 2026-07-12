@@ -28,8 +28,8 @@ interface UiStore {
   commandPaletteOpen: boolean;
   setCommandPaletteOpen: (open: boolean) => void;
 
-  // Favoritos de navegación (ids de NavItemDef — ver lib/nav-config.ts; en modo P2,
-  // subIds del árbol — la migración legacy→P2 vive en Sidebar + lib/nav-p2.ts)
+  // Favoritos de navegación (sub.id del nav canónico — ver lib/nav-canonico.ts; la
+  // migración de ids legacy→canónico vive en Sidebar + remapFavoritosCanonico)
   favoriteNavIds: string[];
   toggleFavoriteNavId: (id: string) => void;
   setFavoriteNavIds: (ids: string[]) => void;

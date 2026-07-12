@@ -45,6 +45,9 @@ class Capacidad:
     TERRENO = "terreno"
     MESAS = "mesas"
     CONSENTIMIENTOS = "consentimientos"
+    CONTABILIDAD = "contabilidad"
+    ACTIVOS_FIJOS = "activos_fijos"
+    RRHH = "rrhh"
 
 
 # Orden canónico (CAP_ORDER): las tuplas `capacidades` de cada rubro se guardan en
@@ -72,6 +75,9 @@ CAPACIDADES: tuple[str, ...] = (
     Capacidad.TERRENO,
     Capacidad.MESAS,
     Capacidad.CONSENTIMIENTOS,
+    Capacidad.CONTABILIDAD,
+    Capacidad.ACTIVOS_FIJOS,
+    Capacidad.RRHH,
 )
 
 
@@ -219,6 +225,24 @@ CAPACIDADES_META: Mapping[str, CapacidadMeta] = MappingProxyType(
             "Consentimientos",
             "Formularios y consentimientos firmados.",
             "salud_legal",
+        ),
+        Capacidad.CONTABILIDAD: CapacidadMeta(
+            Capacidad.CONTABILIDAD,
+            "Contabilidad",
+            "Plan de cuentas, asientos, libro mayor, CxC/CxP, conciliación y estados financieros.",
+            "erp",
+        ),
+        Capacidad.ACTIVOS_FIJOS: CapacidadMeta(
+            Capacidad.ACTIVOS_FIJOS,
+            "Activos fijos",
+            "Registro, depreciación, mantenciones y bajas de activos fijos.",
+            "erp",
+        ),
+        Capacidad.RRHH: CapacidadMeta(
+            Capacidad.RRHH,
+            "Personas (RRHH)",
+            "Empleados, contratos, asistencia, vacaciones, liquidaciones y remuneraciones.",
+            "erp",
         ),
     }
 )

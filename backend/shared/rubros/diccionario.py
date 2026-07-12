@@ -758,6 +758,7 @@ _RUBROS: dict[str, Rubro] = {
             "campanas",
             "terreno",
             "consentimientos",
+            "activos_fijos",
         ),
     ),
     "canchas": _rubro(
@@ -2181,6 +2182,8 @@ _RUBROS: dict[str, Rubro] = {
             "inventario",
             "compras",
             "facturacion",
+            "contabilidad",
+            "rrhh",
         ),
     ),
     "tienda_naturista": _rubro(
@@ -2934,6 +2937,7 @@ _RUBROS: dict[str, Rubro] = {
             "produccion",
             "facturacion",
             "terreno",
+            "rrhh",
         ),
     ),
     "dj_animacion": _rubro(
@@ -3124,6 +3128,8 @@ _RUBROS: dict[str, Rubro] = {
             "arriendos",
             "facturacion",
             "terreno",
+            "contabilidad",
+            "activos_fijos",
         ),
     ),
     "agencia_marketing": _rubro(
