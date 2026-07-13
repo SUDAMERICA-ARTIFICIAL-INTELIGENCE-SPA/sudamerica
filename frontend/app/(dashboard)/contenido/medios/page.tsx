@@ -10,6 +10,14 @@ import { Group, Image, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
 import { IconPhoto, IconPhotoOff } from "@tabler/icons-react";
 import { useMemo } from "react";
 
+// Placeholder local (SVG data-URI) para imágenes rotas. Evita depender de un host
+// externo (placehold.co) — imprescindible en el export estático servido por Pages.
+const FALLBACK_IMG =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="#e9ecef"/><text x="50%" y="50%" fill="#868e96" font-family="sans-serif" font-size="20" text-anchor="middle" dominant-baseline="middle">Sin imagen</text></svg>',
+  );
+
 export default function Page() {
   const { data, isLoading } = useProductos({ page: 1, page_size: 100 });
 
@@ -47,7 +55,7 @@ export default function Page() {
                   radius="md"
                   alt={p.nombre}
                   fit="cover"
-                  fallbackSrc="https://placehold.co/300x300?text=Sin+imagen"
+                  fallbackSrc={FALLBACK_IMG}
                 />
                 <Text size="xs" c="dimmed" lineClamp={2} ta="center">{p.nombre}</Text>
               </Stack>

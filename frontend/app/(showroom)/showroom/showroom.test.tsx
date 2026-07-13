@@ -5,7 +5,7 @@ import { MantineProvider } from "@mantine/core";
 import { render, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
 import { beforeAll, describe, expect, it, vi } from "vitest";
-import ShowroomCatchAll from "./[rubro]/[[...ruta]]/page";
+import { ShowroomCatchAllClient } from "./[rubro]/[[...ruta]]/client";
 import ShowroomPanel from "./page";
 
 // jsdom no trae matchMedia/ResizeObserver (los usa Mantine).
@@ -70,7 +70,7 @@ describe("Showroom navegable (shell real + base-path)", () => {
     render(
       withMantine(
         <AuthProvider>
-          <ShowroomCatchAll />
+          <ShowroomCatchAllClient rubro="restaurante" ruta={[]} />
         </AuthProvider>,
       ),
     );

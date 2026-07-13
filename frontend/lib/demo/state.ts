@@ -31,7 +31,13 @@ export function isDemoActive(): boolean {
   // la app real nunca sirve fixtures. En SSR devolvemos false (los hooks de
   // datos no fetchean en server: `enabled` depende de tenantId de un useEffect).
   if (typeof window === "undefined") return false;
-  return window.location.pathname.startsWith("/showroom");
+  // Bajo el export estático la app vive en el subpath basePath (`/sudamerica`),
+  // así que el pathname real es `<basePath>/showroom/...`. Lo descontamos antes
+  // de comparar (en el build real basePath = "" → sin efecto).
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const p = window.location.pathname;
+  const rel = basePath && p.startsWith(basePath) ? p.slice(basePath.length) : p;
+  return rel.startsWith("/showroom");
 }
 
 export function getDemoRubro(): RubroKey {

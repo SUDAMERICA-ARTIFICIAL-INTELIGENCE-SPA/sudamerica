@@ -185,3 +185,48 @@ montos con clamp ≤400×, manteniéndolos en rangos que el layout real ya manej
 para rubros de alto ticket como inmobiliaria).
 
 **Gates:** `npm run typecheck` 0 errores · `npm run test` **809/809** · registro regenerado a 105 rutas.
+
+## Fase 3 — Export estático de la vitrina (GitHub Pages) — 2026-07-13
+
+La vitrina pública es un **export estático del frontend en modo showroom**, gateado por env para NO tocar
+el build real. `STATIC_EXPORT=1 npm run build` ⇒ `output:"export"`, `basePath:"/sudamerica"`,
+`assetPrefix`, `images.unoptimized`, `trailingSlash`. Sin la env, el default sigue siendo
+`output:"standalone"` (deploy real con backend). Ambos builds quedan verdes.
+
+**Qué se materializa (`generateStaticParams` del catch-all `showroom/[rubro]/[[...ruta]]`):**
+- **101 landings** (una por rubro) → `/showroom/<rubro>/` = dashboard/resumen.
+- **105 subs del héroe** `cosmetica_belleza` → deep-link directo servible como archivo.
+- Total **206 params** + el panel `/showroom` = 207 páginas de showroom en `out/`.
+- Las claves de ruta se emiten aparte en `lib/demo/showroom-routes.keys.ts` (server-safe, SIN `"use client"`):
+  el registro `.generated.tsx` es módulo cliente y sus claves no son legibles desde un server component.
+- La página se dividió en **server** (`page.tsx`, con `generateStaticParams`) + **cliente** (`client.tsx`),
+  porque un `"use client"` no puede exportar `generateStaticParams`.
+
+**Fallback SPA (`app/not-found.tsx` → `404.html`):** las subs de rubros NO-héroe no se pre-renderizan a
+archivo; en hard-load/refresh Pages sirve `404.html`, que lee `window.location`, reactiva el demo + monta
+el shell del showroom en cliente. Así "todos los rubros navegables" aguanta también deep-links directos
+(no solo navegación client-side). Verificado con server local: landings/subs-héroe → 200, deep-link
+no-héroe (`restaurante/pipeline`) → 404-fallback, assets `/sudamerica/_next/…` → 200.
+
+**Arreglos de export:**
+- `isDemoActive()` ahora **descuenta el basePath** antes de comparar con `/showroom` (bajo Pages el
+  pathname real es `/sudamerica/showroom/…`; sin esto el demo quedaba inactivo y la vitrina pegaría al
+  backend inexistente). En el build real basePath="" → sin efecto.
+- `useSearchParams()` sin Suspense en `cuenta/facturacion` → envuelto en `<Suspense>` (bailout a CSR
+  rompía el prerender). `reset-password` ya lo tenía.
+- `contenido/medios`: `fallbackSrc` de `placehold.co` → **SVG data-URI local** (sin host externo).
+- Favicon (`<link>` de HTML crudo, que Next no reescribe con basePath) → prefijado con `NEXT_PUBLIC_BASE_PATH`.
+- `.nojekyll` en `public/` (Pages ignora `_next/` sin él).
+
+**Seguridad del bundle público:** scan de secretos en `out/` limpio; los únicos env inyectados son
+`NEXT_PUBLIC_*` (por diseño públicos) y apuntan solo a localhost — nada interno horneado. Las URLs
+`https://demo.aura.cl/docs/*.pdf` de los snapshots son hrefs de datos del seed (no imágenes ni secretos).
+
+**Confirmación visual en navegador — bloqueada por el entorno (no por el producto):** se reintentó el
+screenshot headless contra el bundle **de producción** (más liviano) y el chromium **igual aborta el
+renderer** en este WSL2 (mismo crash de libc, sin capturar ni una página). Queda para la **URL desplegada**
+(Fase 4), abrible en un navegador real. La correctitud de routing/branding/coherencia sí está verificada
+(HTTP smoke + barrido jsdom); el pendiente es solo overflow pixel-a-pixel, de riesgo acotado.
+
+**Gates Fase 3:** `STATIC_EXPORT=1 npm run build` verde (207 páginas showroom, `out/` 48 MB) ·
+`npm run build` standalone verde (genera `.next/standalone`) · `typecheck` 0 · `test` **809/809**.

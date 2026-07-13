@@ -12,6 +12,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const FE = resolve(__dirname, "../frontend");
 const DASH = resolve(FE, "app/(dashboard)");
 const OUT = resolve(FE, "lib/demo/showroom-routes.generated.tsx");
+// Lista plana de claves, SIN "use client": la consume `generateStaticParams`
+// (server) del catch-all del showroom para pre-renderizar el árbol del héroe.
+// El registro `.generated.tsx` es un módulo cliente → sus claves no son legibles
+// desde un server component (llegan como client-refs).
+const OUT_KEYS = resolve(FE, "lib/demo/showroom-routes.keys.ts");
 
 /**
  * ¿La página es un stub legacy de puro `redirect()` (sin JSX propio)? Esas rutas
@@ -71,4 +76,16 @@ const lines = [
 ];
 
 writeFileSync(OUT, lines.join("\n"), "utf8");
+
+const keyLines = [
+  "// GENERADO por tools/gen_showroom_routes.mjs — NO editar a mano.",
+  "// Claves de ruta del showroom (server-safe, sin \"use client\"): las usa",
+  "// generateStaticParams del catch-all para pre-renderizar el árbol del héroe.",
+  "export const SHOWROOM_ROUTE_KEYS: readonly string[] = [",
+  ...routes.map((r) => `  ${JSON.stringify(r)},`),
+  "];",
+  "",
+];
+writeFileSync(OUT_KEYS, keyLines.join("\n"), "utf8");
 console.log(`✓ ${OUT} (${routes.length} rutas)`);
+console.log(`✓ ${OUT_KEYS} (${routes.length} claves)`);
