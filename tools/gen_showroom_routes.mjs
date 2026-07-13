@@ -4,7 +4,7 @@
 // renderizar la página real de (dashboard) correspondiente dentro del shell demo.
 // Regenerar tras añadir/quitar páginas: `node tools/gen_showroom_routes.mjs`.
 
-import { readdirSync, writeFileSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -13,7 +13,19 @@ const FE = resolve(__dirname, "../frontend");
 const DASH = resolve(FE, "app/(dashboard)");
 const OUT = resolve(FE, "lib/demo/showroom-routes.generated.tsx");
 
-/** Recorre el árbol y devuelve rutas relativas a (dashboard) con page.tsx. */
+/**
+ * ¿La página es un stub legacy de puro `redirect()` (sin JSX propio)? Esas rutas
+ * planas existen solo para no romper deep-links viejos y saltan a su ruta canónica
+ * con una ruta ABSOLUTA (sin el prefijo `/showroom/<rubro>`). En la vitrina eso
+ * navegaría FUERA del showroom → se excluyen del registro (su destino canónico ya
+ * está mapeado). Heurística: llama `redirect(` y no renderiza JSX (`return (`/`<`).
+ */
+function isRedirectStub(file) {
+  const src = readFileSync(file, "utf8");
+  return /\bredirect\s*\(/.test(src) && !/return\s*[(<]/.test(src);
+}
+
+/** Recorre el árbol y devuelve rutas relativas a (dashboard) con page.tsx real. */
 function walk(dir, base = "") {
   const routes = [];
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -21,7 +33,7 @@ function walk(dir, base = "") {
       // Ignora segmentos dinámicos y grupos de ruta (no aplican al showroom).
       if (entry.name.startsWith("[") || entry.name.startsWith("(")) continue;
       routes.push(...walk(resolve(dir, entry.name), base ? `${base}/${entry.name}` : entry.name));
-    } else if (entry.name === "page.tsx" && base) {
+    } else if (entry.name === "page.tsx" && base && !isRedirectStub(resolve(dir, entry.name))) {
       routes.push(base);
     }
   }

@@ -143,3 +143,45 @@ routers `compras`/`inventario`/`olab_crud` + endpoints read-only en `metricas`. 
 > Nota: se verificó el contrato de datos end-to-end (login real → API real → datos coherentes) para las
 > 34 páginas y la confirmación de compilación/servicio (HTTP 200) de cada ruta. La confirmación visual
 > pixel-a-pixel en navegador queda como paso manual (render client-side con token de sesión), igual que OLA A.
+
+---
+
+## QA Vitrina (showroom) — 2026-07-12
+
+QA de la **vitrina navegable** (`/showroom/<rubro>/<ruta>`, modo demo sin backend). Método: barrido
+headless con render real de cada página en jsdom (React Testing Library), fijando el rubro por la URL y
+capturando por página: warnings del resolver (`[demo] sin snapshot…` = hueco de fixture), crashes
+(ErrorBoundary), EmptyState y branding del tenant. Cobertura: **héroe `cosmetica_belleza` en las 105 rutas
+reales + muestra de 6 rubros** (restaurante, inmobiliaria, taller_mecanico, gimnasio, hotel, ferreteria) en
+12 rutas clave.
+
+**Hallazgo corregido — rutas legacy de puro `redirect()` contaminaban el registro del showroom.**
+El generador `tools/gen_showroom_routes.mjs` escaneaba TODA página bajo `(dashboard)`, incluyendo **49
+stubs planos** cuyo único cuerpo es `redirect("/ruta/canonica")` (compat de deep-links viejos, Paso 7). En
+la vitrina esos `redirect()` saltan a una ruta **absoluta sin el prefijo `/showroom/<rubro>`** → navegan
+FUERA del showroom (romperían la navegación / caerían en la app real con auth). Fix: el generador ahora
+**excluye las páginas puro-redirect** (heurística: llaman `redirect(` y no renderizan JSX). El registro pasó
+de **154 → 105 rutas**; los destinos canónicos (p.ej. `/pedidos/ordenes`, `/dinero/reportes`) ya estaban
+mapeados, así que no se pierde ninguna vista.
+
+**Verificado sano:**
+- **0 crashes** y **0 endpoints sin snapshot** en todo el barrido (tras el fix). La cobertura de fixtures
+  del resolver (snapshot héroe + reskin + sintético/vacío) es total para lo que las páginas piden.
+- **Branding por rubro correcto** (determinista): el tenant resuelto trae `config.rubro` propio
+  (héroe `cosmetica_belleza` → "Aura Cosmética & Belleza"; resto vía `buildTenant(rubro)`). El sidebar sigue
+  al rubro de la URL una vez cargado el tenant.
+- **EmptyStates residuales = coherentes, no defectos.** `agenda/reservas` y `pedidos/mesas` muestran vacío
+  porque los snapshots `/reservaciones` y `/mesas` son **0 filas en el seed real** (la cuenta cosmética no
+  usa reservas ni mesas) → fiel al dashboard logueado. `conversaciones/bandeja` muestra "Selecciona una
+  conversación" (panel de detalle de un master-detail antes de elegir hilo; la lista sí está poblada).
+- **51 subs muestran `StubModulo` ("En construcción")** para el héroe: es el comportamiento REAL del
+  dashboard (subs canónicas sin página propia todavía), coherente entre vitrina y app logueada.
+
+**Pendiente de confirmación visual en navegador:** overflow horizontal y fidelidad pixel-a-pixel no se
+verificaron con browser real — el chromium headless aborta el renderer con el bundle **de dev** en este
+entorno WSL2 (crash en libc, no defecto del producto). Se hará contra el **export estático de Fase 3**
+(bundle de producción, mucho más liviano). Riesgo de overflow acotado analíticamente: el reskin escala
+montos con clamp ≤400×, manteniéndolos en rangos que el layout real ya maneja (CLP en millones es normal
+para rubros de alto ticket como inmobiliaria).
+
+**Gates:** `npm run typecheck` 0 errores · `npm run test` **809/809** · registro regenerado a 105 rutas.
