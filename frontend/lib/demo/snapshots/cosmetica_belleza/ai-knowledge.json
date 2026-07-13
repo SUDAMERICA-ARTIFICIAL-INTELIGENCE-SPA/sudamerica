@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "id": "f56070e4-e1b2-45dc-8f4c-cf22bd5bf971",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "type": "politica",
+      "title": "Despachos y retiros",
+      "content": "Despacho en RM 24–48 h ($3.000, gratis sobre $50.000). Retiro gratis en Providencia y Viña del Mar el mismo día.",
+      "priority": 10,
+      "activo": true,
+      "created_at": "2026-07-13T00:47:09.803225Z",
+      "updated_at": "2026-07-13T00:47:09.803225Z"
+    },
+    {
+      "id": "4384dc1b-7693-4e90-b86d-077a67a148bd",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "type": "politica",
+      "title": "Cambios y devoluciones",
+      "content": "Aceptamos cambios dentro de 30 días con boleta, en productos sin abrir por temas sanitarios. Devolución del valor en giftcard.",
+      "priority": 9,
+      "activo": true,
+      "created_at": "2026-07-13T00:47:09.803225Z",
+      "updated_at": "2026-07-13T00:47:09.803225Z"
+    },
+    {
+      "id": "6756fd6a-8979-4c30-ad8c-9fbc3c38581b",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "type": "faq",
+      "title": "Medios de pago",
+      "content": "Aceptamos efectivo, débito, crédito (hasta 3 cuotas sin interés) y transferencia.",
+      "priority": 8,
+      "activo": true,
+      "created_at": "2026-07-13T00:47:09.803225Z",
+      "updated_at": "2026-07-13T00:47:09.803225Z"
+    },
+    {
+      "id": "c9b4202c-eb5a-4c33-a67a-aba73ddc4f0e",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "type": "faq",
+      "title": "Horario de atención",
+      "content": "Providencia: Lun–Sáb 10:00–20:00. Viña del Mar: Lun–Sáb 10:00–19:00.",
+      "priority": 7,
+      "activo": true,
+      "created_at": "2026-07-13T00:47:09.803225Z",
+      "updated_at": "2026-07-13T00:47:09.803225Z"
+    },
+    {
+      "id": "4ca6e89d-1fac-4d32-8f89-81a385994b67",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "type": "producto",
+      "title": "Asesoría de skincare",
+      "content": "Ofrecemos asesoría gratuita de rutina facial según tipo de piel (seca, mixta, grasa, sensible). Agenda por WhatsApp.",
+      "priority": 6,
+      "activo": true,
+      "created_at": "2026-07-13T00:47:09.803225Z",
+      "updated_at": "2026-07-13T00:47:09.803225Z"
+    },
+    {
+      "id": "73bd6fc9-79e8-4e76-9cf9-dbab9ebfa31f",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "type": "general",
+      "title": "Tono de marca",
+      "content": "Aura es cercana, femenina y experta. Trata a la clienta de forma amable y con emojis suaves. Nunca prometas resultados médicos.",
+      "priority": 5,
+      "activo": true,
+      "created_at": "2026-07-13T00:47:09.803225Z",
+      "updated_at": "2026-07-13T00:47:09.803225Z"
+    }
+  ],
+  "meta": {
+    "total": 6,
+    "page": 1,
+    "page_size": 50,
+    "total_pages": 1
+  }
+}

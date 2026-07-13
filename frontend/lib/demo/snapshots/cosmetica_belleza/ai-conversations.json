@@ -1,0 +1,208 @@
+{
+  "data": [
+    {
+      "id": "36b203a4-1ed1-4079-889d-52c1a3c831c6",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "36b203a4-1ed1-4079-889d-52c1a3c831c6",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001236,
+      "duracion_segundos": 1020,
+      "created_at": "2026-07-12T00:57:00Z"
+    },
+    {
+      "id": "c52c4263-572f-464e-a182-757993b3a634",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "c52c4263-572f-464e-a182-757993b3a634",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001488,
+      "duracion_segundos": 600,
+      "created_at": "2026-07-06T16:14:00Z"
+    },
+    {
+      "id": "ca930cad-31f6-49d8-a163-f2aeaf072f71",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "ca930cad-31f6-49d8-a163-f2aeaf072f71",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001428,
+      "duracion_segundos": 600,
+      "created_at": "2026-07-06T15:34:00Z"
+    },
+    {
+      "id": "83add656-ee94-4235-9b64-45dac12a36dc",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "83add656-ee94-4235-9b64-45dac12a36dc",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000546,
+      "duracion_segundos": 360,
+      "created_at": "2026-07-06T14:28:00Z"
+    },
+    {
+      "id": "69470362-d900-4fd6-b411-1a120b57fd61",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "69470362-d900-4fd6-b411-1a120b57fd61",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000576,
+      "duracion_segundos": 720,
+      "created_at": "2026-07-02T21:13:00Z"
+    },
+    {
+      "id": "5d567674-7f0f-4a91-9745-8bc368662bf6",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "5d567674-7f0f-4a91-9745-8bc368662bf6",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000903,
+      "duracion_segundos": 720,
+      "created_at": "2026-07-01T21:57:00Z"
+    },
+    {
+      "id": "296c4511-dd41-48cd-9ccb-a02dbcfc3384",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "296c4511-dd41-48cd-9ccb-a02dbcfc3384",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001158,
+      "duracion_segundos": 600,
+      "created_at": "2026-06-30T20:15:00Z"
+    },
+    {
+      "id": "28663701-36e3-468d-a9d3-b840199e5425",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "28663701-36e3-468d-a9d3-b840199e5425",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000402,
+      "duracion_segundos": 360,
+      "created_at": "2026-06-30T17:40:00Z"
+    },
+    {
+      "id": "c09346d0-5dc9-4ab3-8329-c43527b302a0",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "c09346d0-5dc9-4ab3-8329-c43527b302a0",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000621,
+      "duracion_segundos": 420,
+      "created_at": "2026-06-28T13:12:00Z"
+    },
+    {
+      "id": "115ad69b-d3d4-4134-aaf4-36b246547a77",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "115ad69b-d3d4-4134-aaf4-36b246547a77",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001485,
+      "duracion_segundos": 1080,
+      "created_at": "2026-06-27T15:19:00Z"
+    },
+    {
+      "id": "3c56d66d-21d4-496b-8543-782ab9643345",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "3c56d66d-21d4-496b-8543-782ab9643345",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000957,
+      "duracion_segundos": 960,
+      "created_at": "2026-06-25T22:41:00Z"
+    },
+    {
+      "id": "ac2acc69-b00a-4b6c-b5a8-57adf7db6096",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "ac2acc69-b00a-4b6c-b5a8-57adf7db6096",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.002094,
+      "duracion_segundos": 1440,
+      "created_at": "2026-06-25T14:25:00Z"
+    },
+    {
+      "id": "cf5ace46-2038-4b6d-8a55-776dcb15fe8c",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "cf5ace46-2038-4b6d-8a55-776dcb15fe8c",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000498,
+      "duracion_segundos": 540,
+      "created_at": "2026-06-24T16:43:00Z"
+    },
+    {
+      "id": "639481e9-edbd-4425-b5e4-beddaa20ea9b",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "639481e9-edbd-4425-b5e4-beddaa20ea9b",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001377,
+      "duracion_segundos": 960,
+      "created_at": "2026-06-23T19:37:00Z"
+    },
+    {
+      "id": "016fd618-8fce-4846-aa8c-e0929c5f40c0",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "016fd618-8fce-4846-aa8c-e0929c5f40c0",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001191,
+      "duracion_segundos": 840,
+      "created_at": "2026-06-22T23:26:00Z"
+    },
+    {
+      "id": "4dee7db6-eff8-45cd-b1ab-09b9ad67f428",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "4dee7db6-eff8-45cd-b1ab-09b9ad67f428",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.001149,
+      "duracion_segundos": 780,
+      "created_at": "2026-06-22T19:26:00Z"
+    },
+    {
+      "id": "fc07432c-8216-456a-9852-c1935874d7da",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "fc07432c-8216-456a-9852-c1935874d7da",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000981,
+      "duracion_segundos": 540,
+      "created_at": "2026-06-18T23:41:00Z"
+    },
+    {
+      "id": "0000fffd-0bae-44ee-8bb6-c3f70d4f7652",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "lead_id": "0000fffd-0bae-44ee-8bb6-c3f70d4f7652",
+      "canal": "WHATSAPP",
+      "resuelto_sin_humano": true,
+      "confidence": 0.92,
+      "token_cost": 0.000816,
+      "duracion_segundos": 1080,
+      "created_at": "2026-06-18T15:48:00Z"
+    }
+  ],
+  "meta": {
+    "total": 18,
+    "page": 1,
+    "page_size": 100,
+    "total_pages": 1
+  }
+}

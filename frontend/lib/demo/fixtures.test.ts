@@ -64,16 +64,41 @@ describe("demo fixtures — deterministas y type-correct", () => {
   }
 });
 
-describe("demoResolve — chokepoint determinista", () => {
-  it("mapea path → fixture del rubro activo", async () => {
-    const kpis = await demoResolve("/metricas/dashboard", "restaurante");
-    expect(kpis).toEqual(buildDashboardKpis("restaurante"));
+describe("demoResolve — chokepoint snapshot-first", () => {
+  it("héroe cosmetica_belleza: sirve el snapshot REAL (KPIs del backend seedeado)", async () => {
+    const kpis = await demoResolve<{ ventas_mes: number }>(
+      "/metricas/dashboard",
+      "cosmetica_belleza",
+    );
+    // Valor capturado del backend seedeado (ver metricas-dashboard.json). No es
+    // el builder sintético — es el dato real de aura-demo.
+    expect(kpis.ventas_mes).toBe(557800);
   });
 
-  it("es determinista entre llamadas", async () => {
-    const a = await demoResolve("/metricas/revenue?period=month", "peluqueria");
-    const b = await demoResolve("/metricas/revenue?period=month", "peluqueria");
+  it("otro rubro: reskin determinista del snapshot (no lanza, mismas cifras entre llamadas)", async () => {
+    const a = await demoResolve<{ ventas_mes: number }>("/metricas/dashboard", "restaurante");
+    const b = await demoResolve<{ ventas_mes: number }>("/metricas/dashboard", "restaurante");
     expect(a).toEqual(b);
+    expect(a.ventas_mes).toBeGreaterThan(0);
+  });
+
+  it("cubre endpoints OLA B sin fixture-faltante (compras paginado)", async () => {
+    const ordenes = await demoResolve<{ data: unknown[]; meta: { total: number } }>(
+      "/compras/ordenes?page=1&page_size=10",
+      "cosmetica_belleza",
+    );
+    expect(Array.isArray(ordenes.data)).toBe(true);
+    expect(ordenes.data.length).toBeLessThanOrEqual(10);
+    expect(ordenes.meta.total).toBeGreaterThan(0);
+  });
+
+  it("re-pagina el snapshot según page/page_size", async () => {
+    const p1 = await demoResolve<{ data: unknown[]; meta: { total: number; total_pages: number } }>(
+      "/leads?page=1&page_size=5",
+      "cosmetica_belleza",
+    );
+    expect(p1.data.length).toBe(5);
+    expect(p1.meta.total_pages).toBe(Math.ceil(p1.meta.total / 5));
   });
 
   it("sirve tenant con el rubro en config", async () => {
@@ -81,7 +106,12 @@ describe("demoResolve — chokepoint determinista", () => {
     expect(tenant.config.rubro).toBe("ferreteria");
   });
 
-  it("lanza error en paths no mapeados", async () => {
-    await expect(demoResolve("/no/existe", "restaurante")).rejects.toThrow();
+  it("path desconocido → sobre vacío (la vitrina nunca crashea)", async () => {
+    const res = await demoResolve<{ data: unknown[]; meta: { total: number } }>(
+      "/no/existe",
+      "restaurante",
+    );
+    expect(res.data).toEqual([]);
+    expect(res.meta.total).toBe(0);
   });
 });

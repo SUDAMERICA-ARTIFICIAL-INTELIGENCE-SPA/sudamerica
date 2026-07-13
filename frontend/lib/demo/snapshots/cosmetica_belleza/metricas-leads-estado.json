@@ -1,0 +1,22 @@
+[
+  {
+    "estado": "EN_PROCESO",
+    "cantidad": 11
+  },
+  {
+    "estado": "CONVERTIDO",
+    "cantidad": 118
+  },
+  {
+    "estado": "NUEVO",
+    "cantidad": 7
+  },
+  {
+    "estado": "DESCARTADO",
+    "cantidad": 6
+  },
+  {
+    "estado": "CONTACTADO",
+    "cantidad": 8
+  }
+]

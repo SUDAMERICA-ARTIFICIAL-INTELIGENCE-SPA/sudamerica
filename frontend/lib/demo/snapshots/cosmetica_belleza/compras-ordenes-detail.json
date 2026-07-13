@@ -1,0 +1,34 @@
+{
+  "id": "789b8e6d-b895-4024-a34f-0e0e7b4d1c42",
+  "proveedor_id": "ace3c9be-4105-4df6-a09d-d6a91f377dbb",
+  "proveedor_nombre": "Cosmética Import Andes Ltda.",
+  "numero": "OC-2026-00055",
+  "estado": "ENVIADA",
+  "fecha_emision": "2026-07-13",
+  "fecha_esperada": "2026-07-23",
+  "moneda": "CLP",
+  "neto": "382692.00",
+  "iva": "72711.00",
+  "total": "455403.00",
+  "items_count": 2,
+  "items": [
+    {
+      "id": "fc16088d-8e23-4956-98f9-a9e178167cd3",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "descripcion": "Green Crystal Earring",
+      "cantidad": "16.00",
+      "cantidad_recibida": "0.00",
+      "costo_unitario": "15122.00",
+      "subtotal": "241952.00"
+    },
+    {
+      "id": "d27fae24-d7f4-4517-a82f-d15802798e80",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "descripcion": "Red Nail Polish",
+      "cantidad": "31.00",
+      "cantidad_recibida": "0.00",
+      "costo_unitario": "4540.00",
+      "subtotal": "140740.00"
+    }
+  ]
+}

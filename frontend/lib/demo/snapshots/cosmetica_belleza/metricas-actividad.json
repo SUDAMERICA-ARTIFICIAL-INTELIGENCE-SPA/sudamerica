@@ -1,0 +1,212 @@
+[
+  {
+    "tipo": "VENTA",
+    "titulo": "Essence Mascara Lash Princess",
+    "subtitulo": "Trinidad Soto",
+    "monto": "9500.00",
+    "fecha": "2026-07-13T00:56:08Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Red Nail Polish",
+    "subtitulo": "Josefa Álvarez",
+    "monto": "8500.00",
+    "fecha": "2026-07-12T14:15:29Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Sofía Cortés",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-12T01:10:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Sofía Cortés",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-12T01:06:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Sofía Cortés",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-12T01:02:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Sofía Cortés",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-12T00:57:00Z"
+  },
+  {
+    "tipo": "LEAD",
+    "titulo": "Isidora Valenzuela",
+    "subtitulo": "INSTAGRAM",
+    "monto": null,
+    "fecha": "2026-07-12T00:47:09.740000Z"
+  },
+  {
+    "tipo": "LEAD",
+    "titulo": "Daniela González",
+    "subtitulo": "INSTAGRAM",
+    "monto": null,
+    "fecha": "2026-07-11T00:47:09.740000Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Powder Canister",
+    "subtitulo": "Constanza Gutiérrez",
+    "monto": "14200.00",
+    "fecha": "2026-07-09T21:36:27Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Sunglasses",
+    "subtitulo": "Constanza Gutiérrez",
+    "monto": "21800.00",
+    "fecha": "2026-07-09T21:36:27Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Tropical Earring",
+    "subtitulo": "Sofía Riquelme",
+    "monto": "19000.00",
+    "fecha": "2026-07-07T19:02:32Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Attitude Super Leaves Hand Soap",
+    "subtitulo": "Sofía Riquelme",
+    "monto": "17000.00",
+    "fecha": "2026-07-07T19:02:32Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Olay Ultra Moisture Shea Butter Body Wash",
+    "subtitulo": "Isidora Riquelme",
+    "monto": "12300.00",
+    "fecha": "2026-07-07T13:08:27Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Essence Mascara Lash Princess",
+    "subtitulo": "Isidora Riquelme",
+    "monto": "19000.00",
+    "fecha": "2026-07-07T13:08:27Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Pía Castro",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T16:20:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Pía Castro",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T16:16:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Pía Castro",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T16:14:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Agustina Vega",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T15:41:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Agustina Vega",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T15:37:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Agustina Vega",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T15:34:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Agustina Morales",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T14:33:00Z"
+  },
+  {
+    "tipo": "CONVERSACION",
+    "titulo": "Mensaje de Agustina Morales",
+    "subtitulo": "WHATSAPP",
+    "monto": null,
+    "fecha": "2026-07-06T14:28:00Z"
+  },
+  {
+    "tipo": "LEAD",
+    "titulo": "Carolina Contreras",
+    "subtitulo": "WEB",
+    "monto": null,
+    "fecha": "2026-07-06T00:47:09.740000Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Red Nail Polish",
+    "subtitulo": "Valentina Morales",
+    "monto": "8500.00",
+    "fecha": "2026-07-05T14:22:06Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Red Lipstick",
+    "subtitulo": "Valentina Morales",
+    "monto": "12300.00",
+    "fecha": "2026-07-05T14:22:06Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Calvin Klein CK One",
+    "subtitulo": "Fernanda Díaz",
+    "monto": "47500.00",
+    "fecha": "2026-07-05T13:42:29Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Red Lipstick",
+    "subtitulo": "Fernanda Díaz",
+    "monto": "12300.00",
+    "fecha": "2026-07-05T13:42:29Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Dior J'adore",
+    "subtitulo": "Bárbara Hernández",
+    "monto": "171000.00",
+    "fecha": "2026-07-04T19:43:49Z"
+  },
+  {
+    "tipo": "VENTA",
+    "titulo": "Green Oval Earring",
+    "subtitulo": "Bárbara Hernández",
+    "monto": "71100.00",
+    "fecha": "2026-07-04T19:43:49Z"
+  },
+  {
+    "tipo": "LEAD",
+    "titulo": "Martina Flores",
+    "subtitulo": "INSTAGRAM",
+    "monto": null,
+    "fecha": "2026-07-04T00:47:09.740000Z"
+  }
+]

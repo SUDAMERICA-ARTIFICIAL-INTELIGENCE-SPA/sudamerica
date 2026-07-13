@@ -1,0 +1,5626 @@
+{
+  "data": [
+    {
+      "fecha": "2026-07-13T00:56:08Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-12T14:15:29Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-12T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "12.00",
+      "costo_unitario": "4578.00",
+      "referencia": "REC-2026-00048"
+    },
+    {
+      "fecha": "2026-07-10T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "15.00",
+      "costo_unitario": "9437.00",
+      "referencia": "REC-2026-00049"
+    },
+    {
+      "fecha": "2026-07-09T21:36:27Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-09T21:36:27Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-07T19:02:32Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-07T19:02:32Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-07T13:08:27Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-07T13:08:27Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-05T14:22:06Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-05T14:22:06Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-05T13:42:29Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-05T13:42:29Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-04T19:43:49Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-04T19:43:49Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-04T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "16.00",
+      "costo_unitario": "4540.00",
+      "referencia": "REC-2026-00046"
+    },
+    {
+      "fecha": "2026-07-02T20:28:11Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-02T20:28:11Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-02T19:33:44Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-02T19:33:44Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-07-02T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "3.00",
+      "costo_unitario": "7605.00",
+      "referencia": "REC-2026-00051"
+    },
+    {
+      "fecha": "2026-07-02T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "9.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00051"
+    },
+    {
+      "fecha": "2026-07-01T14:36:46Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-29T15:11:37Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-27T19:43:59Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-27T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "11.00",
+      "costo_unitario": "4578.00",
+      "referencia": "REC-2026-00043"
+    },
+    {
+      "fecha": "2026-06-27T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "12.00",
+      "costo_unitario": "9437.00",
+      "referencia": "REC-2026-00043"
+    },
+    {
+      "fecha": "2026-06-25T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "10.00",
+      "costo_unitario": "13445.00",
+      "referencia": "REC-2026-00050"
+    },
+    {
+      "fecha": "2026-06-25T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "13.00",
+      "costo_unitario": "15122.00",
+      "referencia": "REC-2026-00050"
+    },
+    {
+      "fecha": "2026-06-24T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "9.00",
+      "costo_unitario": "15061.00",
+      "referencia": "REC-2026-00045"
+    },
+    {
+      "fecha": "2026-06-22T21:05:00Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-22T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "15.00",
+      "costo_unitario": "4204.00",
+      "referencia": "REC-2026-00047"
+    },
+    {
+      "fecha": "2026-06-21T21:49:45Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-21T21:49:45Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-21T21:49:45Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-20T13:05:32Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-19T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "19.00",
+      "costo_unitario": "4204.00",
+      "referencia": "REC-2026-00042"
+    },
+    {
+      "fecha": "2026-06-17T20:41:01Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-17T15:44:51Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-17T14:54:24Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-17T13:50:52Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-17T13:50:52Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-16T16:10:32Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-16T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "10.00",
+      "costo_unitario": "8606.00",
+      "referencia": "REC-2026-00044"
+    },
+    {
+      "fecha": "2026-06-16T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "9.00",
+      "costo_unitario": "15122.00",
+      "referencia": "REC-2026-00044"
+    },
+    {
+      "fecha": "2026-06-15T19:54:00Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-15T19:54:00Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-15T19:54:00Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-15T00:38:43Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-14T21:31:23Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-13T23:08:59Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-13T21:21:52Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-13T21:21:52Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-13T21:21:52Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-12T13:41:24Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-11T17:59:37Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-11T17:59:37Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-09T17:50:32Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-09T17:50:32Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-09T13:00:55Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-09T00:04:33Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-09T00:04:33Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-09T00:04:33Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-08T23:06:59Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-08T23:06:59Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-08T16:03:16Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-08T16:03:16Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-08T13:37:42Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-07T21:51:06Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-06T18:13:53Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-05T23:06:28Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-05T23:06:28Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-05T17:00:37Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-02T21:51:27Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-06-02T17:46:04Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-31T20:51:19Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-31T20:51:19Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-31T20:51:19Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-30T21:18:35Z",
+      "tipo": "SALIDA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-30T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "14.00",
+      "costo_unitario": "43434.00",
+      "referencia": "REC-2026-00039"
+    },
+    {
+      "fecha": "2026-05-30T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "11.00",
+      "costo_unitario": "27483.00",
+      "referencia": "REC-2026-00037"
+    },
+    {
+      "fecha": "2026-05-29T21:51:42Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-29T21:51:42Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-29T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "9.00",
+      "costo_unitario": "18446.00",
+      "referencia": "REC-2026-00036"
+    },
+    {
+      "fecha": "2026-05-29T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "12.00",
+      "costo_unitario": "61518.00",
+      "referencia": "REC-2026-00036"
+    },
+    {
+      "fecha": "2026-05-29T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "11.00",
+      "costo_unitario": "14196.00",
+      "referencia": "REC-2026-00036"
+    },
+    {
+      "fecha": "2026-05-27T18:20:57Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-25T21:30:38Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-24T19:26:41Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-24T19:26:41Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-22T18:00:23Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-22T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "6.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00040"
+    },
+    {
+      "fecha": "2026-05-22T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "11.00",
+      "costo_unitario": "7605.00",
+      "referencia": "REC-2026-00040"
+    },
+    {
+      "fecha": "2026-05-21T14:19:11Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-21T14:19:11Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-21T14:19:11Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-21T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "7.00",
+      "costo_unitario": "8606.00",
+      "referencia": "REC-2026-00041"
+    },
+    {
+      "fecha": "2026-05-21T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "12.00",
+      "costo_unitario": "38447.00",
+      "referencia": "REC-2026-00038"
+    },
+    {
+      "fecha": "2026-05-21T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "18.00",
+      "costo_unitario": "66399.00",
+      "referencia": "REC-2026-00038"
+    },
+    {
+      "fecha": "2026-05-20T00:00:49Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-20T00:00:49Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-19T22:40:56Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-19T22:40:56Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-19T22:40:56Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-18T19:24:48Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-18T17:59:27Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-18T17:59:27Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-17T21:05:45Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-17T21:05:45Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-17T21:03:08Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-17T14:42:47Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-17T14:42:47Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-15T22:30:35Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-14T21:41:00Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-14T21:41:00Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-14T21:00:23Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-13T21:11:42Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-13T21:11:42Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-13T21:11:42Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-11T23:02:04Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-11T19:49:50Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-11T19:49:50Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-10T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "17.00",
+      "costo_unitario": "4204.00",
+      "referencia": "REC-2026-00035"
+    },
+    {
+      "fecha": "2026-05-09T20:48:21Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-09T17:57:12Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-09T17:57:12Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-08T20:03:01Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-08T18:19:44Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-08T18:19:44Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-08T00:46:44Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-08T00:46:44Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-08T00:46:44Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-07T15:47:34Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-07T15:47:34Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-06T17:33:01Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-04T00:00:31Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-04T00:00:31Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-04T00:00:31Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-03T18:58:54Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-03T16:37:25Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-03T14:32:23Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-03T14:32:23Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-03T14:32:23Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-05-01T23:55:59Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-29T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "9.00",
+      "costo_unitario": "28618.00",
+      "referencia": "REC-2026-00030"
+    },
+    {
+      "fecha": "2026-04-29T00:08:45Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-27T19:13:13Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-26T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "10.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00034"
+    },
+    {
+      "fecha": "2026-04-26T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "13.00",
+      "costo_unitario": "9437.00",
+      "referencia": "REC-2026-00032"
+    },
+    {
+      "fecha": "2026-04-25T19:26:10Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-25T14:10:43Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-25T14:10:43Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-24T21:43:06Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-24T21:43:06Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-24T19:55:35Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-24T19:55:35Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-23T20:59:39Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-23T15:00:14Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-23T15:00:14Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-22T19:01:41Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-21T17:00:08Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-21T17:00:08Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-21T15:39:30Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-21T15:39:30Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-21T00:50:17Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-21T00:50:17Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-19T00:09:29Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-18T23:49:59Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-17T22:51:19Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-17T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "11.00",
+      "costo_unitario": "4578.00",
+      "referencia": "REC-2026-00031"
+    },
+    {
+      "fecha": "2026-04-17T00:03:22Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-16T16:02:47Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-16T14:59:58Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-16T14:59:58Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-16T14:59:58Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-15T14:08:31Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-15T14:08:31Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-14T13:07:11Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-14T13:07:11Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-14T00:23:37Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-14T00:08:48Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-14T00:08:48Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-14T00:08:48Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-12T13:32:03Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-12T13:32:03Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-12T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "13.00",
+      "costo_unitario": "8874.00",
+      "referencia": "REC-2026-00033"
+    },
+    {
+      "fecha": "2026-04-12T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "13.00",
+      "costo_unitario": "13445.00",
+      "referencia": "REC-2026-00033"
+    },
+    {
+      "fecha": "2026-04-09T21:18:55Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-09T21:18:55Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-09T14:57:11Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-09T14:57:11Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-05T16:06:47Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-04T14:10:26Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-02T15:51:17Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-02T15:51:17Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-02T14:50:03Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-01T21:04:36Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-01T21:04:36Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-04-01T21:04:36Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-30T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "10.00",
+      "costo_unitario": "27483.00",
+      "referencia": "REC-2026-00027"
+    },
+    {
+      "fecha": "2026-03-26T23:58:03Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-26T23:58:03Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-26T22:57:16Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-26T22:57:16Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-23T18:22:03Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-21T23:13:48Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-21T15:04:52Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-21T15:04:52Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-20T20:09:30Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-20T15:30:49Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-20T15:30:49Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-20T15:30:49Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-20T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "8.00",
+      "costo_unitario": "8606.00",
+      "referencia": "REC-2026-00029"
+    },
+    {
+      "fecha": "2026-03-19T23:05:34Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-18T12:46:15Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-18T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "16.00",
+      "costo_unitario": "5137.00",
+      "referencia": "REC-2026-00026"
+    },
+    {
+      "fecha": "2026-03-18T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "18.00",
+      "costo_unitario": "4204.00",
+      "referencia": "REC-2026-00026"
+    },
+    {
+      "fecha": "2026-03-17T12:30:56Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-14T16:15:53Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-12T23:29:02Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-12T18:20:15Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-12T18:20:15Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-12T18:20:15Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-11T15:22:43Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-11T15:22:43Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-11T15:22:43Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-11T12:43:58Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-11T12:43:58Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-10T15:34:50Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-10T15:34:50Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-09T23:31:42Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-09T12:50:12Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-09T12:50:12Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-09T12:50:12Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-08T20:07:28Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-08T19:44:04Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-08T19:44:04Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-05T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "11.00",
+      "costo_unitario": "32416.00",
+      "referencia": "REC-2026-00028"
+    },
+    {
+      "fecha": "2026-03-05T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Prada Women Bag",
+      "producto_id": "070a577c-f9be-4a31-84d6-12a253c4aed6",
+      "cantidad": "3.00",
+      "costo_unitario": "263809.00",
+      "referencia": "REC-2026-00028"
+    },
+    {
+      "fecha": "2026-03-04T17:58:29Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-03T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "14.00",
+      "costo_unitario": "4404.00",
+      "referencia": "REC-2026-00025"
+    },
+    {
+      "fecha": "2026-03-01T21:12:14Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-01T16:20:31Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-03-01T16:20:31Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-26T12:55:54Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-25T21:18:54Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-25T21:18:54Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-25T18:51:01Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-25T18:51:01Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-25T15:27:24Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-25T15:27:24Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-24T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "10.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00024"
+    },
+    {
+      "fecha": "2026-02-23T19:12:27Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-23T19:12:27Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-23T18:46:24Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-23T16:27:16Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-22T15:05:17Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-22T15:05:17Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-16T14:01:20Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-13T16:09:38Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-12T12:56:22Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T22:24:34Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T22:24:34Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T17:45:37Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T14:38:35Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T14:38:35Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T14:38:35Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T13:54:18Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T13:54:18Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-11T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "10.00",
+      "costo_unitario": "4578.00",
+      "referencia": "REC-2026-00022"
+    },
+    {
+      "fecha": "2026-02-11T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "11.00",
+      "costo_unitario": "15061.00",
+      "referencia": "REC-2026-00021"
+    },
+    {
+      "fecha": "2026-02-11T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "16.00",
+      "costo_unitario": "13244.00",
+      "referencia": "REC-2026-00021"
+    },
+    {
+      "fecha": "2026-02-11T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "8.00",
+      "costo_unitario": "23929.00",
+      "referencia": "REC-2026-00021"
+    },
+    {
+      "fecha": "2026-02-11T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "16.00",
+      "costo_unitario": "5137.00",
+      "referencia": "REC-2026-00018"
+    },
+    {
+      "fecha": "2026-02-10T22:16:42Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-10T17:37:23Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-10T17:37:23Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-10T17:37:23Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-10T14:40:29Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-10T13:36:52Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-10T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "6.00",
+      "costo_unitario": "18446.00",
+      "referencia": "REC-2026-00023"
+    },
+    {
+      "fecha": "2026-02-10T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "8.00",
+      "costo_unitario": "61518.00",
+      "referencia": "REC-2026-00023"
+    },
+    {
+      "fecha": "2026-02-09T20:07:58Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-08T19:57:50Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-07T16:32:37Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-06T18:40:03Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-06T18:40:03Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-05T17:08:47Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-05T17:08:47Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T20:44:58Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T20:44:58Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T20:06:02Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T20:06:02Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T17:17:33Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T17:08:44Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-03T16:22:51Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-02-02T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "8.00",
+      "costo_unitario": "38447.00",
+      "referencia": "REC-2026-00017"
+    },
+    {
+      "fecha": "2026-01-31T20:44:03Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-31T20:44:03Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T20:27:36Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T20:27:36Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T14:46:12Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T13:00:00Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T12:54:04Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T12:54:04Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-30T12:54:04Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-28T22:58:39Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-25T23:16:21Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-25T23:16:21Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-25T17:40:32Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-25T17:40:32Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-25T17:40:32Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-23T22:37:39Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-22T13:36:10Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-22T13:36:10Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-21T23:26:02Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-21T15:53:07Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-21T13:42:48Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-21T13:42:48Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-20T19:52:46Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-20T19:52:46Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-20T19:21:51Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-20T18:09:38Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-20T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "12.00",
+      "costo_unitario": "14196.00",
+      "referencia": "REC-2026-00016"
+    },
+    {
+      "fecha": "2026-01-20T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "14.00",
+      "costo_unitario": "13244.00",
+      "referencia": "REC-2026-00016"
+    },
+    {
+      "fecha": "2026-01-19T23:49:08Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-16T17:54:56Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-16T17:54:56Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-16T15:52:45Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-14T23:29:49Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-14T17:18:47Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-14T17:18:47Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-14T17:18:47Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-14T15:33:32Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-14T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "7.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00020"
+    },
+    {
+      "fecha": "2026-01-14T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "10.00",
+      "costo_unitario": "7605.00",
+      "referencia": "REC-2026-00019"
+    },
+    {
+      "fecha": "2026-01-13T23:34:09Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-13T23:34:09Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-13T23:34:09Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-13T15:17:07Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-13T12:06:00Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-13T12:06:00Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-12T18:22:50Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-12T18:22:50Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-12T18:22:50Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-11T21:30:32Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-06T16:12:45Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-02T18:17:23Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-02T15:49:36Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-02T15:49:36Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-02T13:51:41Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-02T12:35:45Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-02T12:22:27Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2026-01-01T19:37:03Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-31T21:03:10Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-30T14:31:55Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-30T14:31:55Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-29T18:20:41Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-29T15:30:01Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-28T14:28:15Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-28T14:28:15Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-28T13:23:07Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-28T13:23:07Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-28T12:50:50Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-26T20:57:39Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-26T20:57:39Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-26T18:03:38Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-26T18:03:38Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-26T12:14:36Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-25T23:36:35Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-25T23:36:35Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-25T23:36:35Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-25T21:10:15Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-25T21:10:15Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-24T12:57:06Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-23T23:21:04Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-23T23:21:04Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-23T13:53:51Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-23T12:36:51Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-23T12:36:51Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-23T12:36:51Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-22T23:25:21Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-22T23:25:21Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-22T17:47:07Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-22T17:47:07Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-21T19:08:13Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-21T14:48:35Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-20T21:47:14Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-20T21:47:14Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-19T16:03:23Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-19T14:45:05Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-19T12:46:09Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-17T22:42:31Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-17T14:16:32Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-16T20:25:09Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-16T19:10:50Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-16T19:10:50Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-16T19:10:50Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-16T12:29:43Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-16T12:29:43Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-15T14:13:32Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-14T23:55:01Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-14T23:55:01Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-14T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "15.00",
+      "costo_unitario": "4404.00",
+      "referencia": "REC-2026-00015"
+    },
+    {
+      "fecha": "2025-12-13T19:46:11Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-12T17:11:58Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-12T13:06:15Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-10T22:47:23Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-10T22:47:23Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-10T21:53:09Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-10T12:59:51Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-10T12:59:51Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-10T12:24:42Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-09T23:38:39Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-09T23:38:39Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-09T23:38:39Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-08T22:13:03Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-08T14:57:57Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-08T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "8.00",
+      "costo_unitario": "18446.00",
+      "referencia": "REC-2026-00014"
+    },
+    {
+      "fecha": "2025-12-08T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "20.00",
+      "costo_unitario": "7748.00",
+      "referencia": "REC-2026-00014"
+    },
+    {
+      "fecha": "2025-12-07T22:58:05Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-07T22:58:05Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-07T15:27:19Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-07T15:27:19Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-06T15:41:49Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-05T17:13:22Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-05T17:13:22Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-05T17:13:22Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-04T23:23:56Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-04T22:30:47Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-04T22:30:47Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-03T17:44:25Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-02T18:22:00Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-02T15:34:29Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-02T15:34:29Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-12-02T15:34:29Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-30T16:21:15Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-28T12:46:40Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-27T22:36:26Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-27T22:36:26Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-27T17:15:14Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-26T13:53:36Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-26T13:53:36Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-25T20:08:06Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-24T18:25:37Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-20T21:59:39Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-18T15:11:01Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-18T15:11:01Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-18T15:02:42Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-17T13:26:44Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-17T13:26:44Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-16T20:07:48Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-16T20:07:48Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-16T20:07:48Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-14T20:35:46Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-14T20:35:46Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-14T15:38:29Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-14T15:38:29Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-13T17:47:27Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-13T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "14.00",
+      "costo_unitario": "7748.00",
+      "referencia": "REC-2026-00013"
+    },
+    {
+      "fecha": "2025-11-13T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "9.00",
+      "costo_unitario": "4578.00",
+      "referencia": "REC-2026-00012"
+    },
+    {
+      "fecha": "2025-11-12T12:40:03Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-11T23:23:50Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-11T20:51:27Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-11T20:51:27Z",
+      "tipo": "SALIDA",
+      "producto": "Heshe Women's Leather Bag",
+      "producto_id": "65409e22-f097-4ba2-9ae9-09683cd88e9e",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-10T21:48:02Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-10T21:48:02Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-08T13:38:48Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-07T21:27:57Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-07T21:27:57Z",
+      "tipo": "SALIDA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-07T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "4.00",
+      "costo_unitario": "23929.00",
+      "referencia": "REC-2026-00011"
+    },
+    {
+      "fecha": "2025-11-07T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "12.00",
+      "costo_unitario": "13445.00",
+      "referencia": "REC-2026-00011"
+    },
+    {
+      "fecha": "2025-11-07T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "15.00",
+      "costo_unitario": "13244.00",
+      "referencia": "REC-2026-00011"
+    },
+    {
+      "fecha": "2025-11-05T23:40:27Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-05T23:40:27Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-02T20:04:09Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-02T17:43:14Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-02T17:43:14Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-02T13:08:32Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T23:45:15Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T23:45:15Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T19:21:10Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T19:21:10Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T19:21:10Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T18:05:53Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T17:12:33Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-11-01T13:01:17Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-31T21:25:34Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-31T21:25:34Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-31T21:25:34Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-30T14:57:23Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-30T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "10.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00010"
+    },
+    {
+      "fecha": "2025-10-29T16:14:08Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-29T16:14:08Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-29T16:14:08Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-28T23:09:49Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-28T21:25:38Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-28T21:25:38Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-28T21:25:38Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-28T19:16:54Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-28T19:16:54Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-25T14:40:06Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-25T14:40:06Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-24T13:24:34Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-24T12:14:37Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-24T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "15.00",
+      "costo_unitario": "7748.00",
+      "referencia": "REC-2026-00009"
+    },
+    {
+      "fecha": "2025-10-24T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "9.00",
+      "costo_unitario": "32416.00",
+      "referencia": "REC-2026-00009"
+    },
+    {
+      "fecha": "2025-10-22T14:31:45Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-21T18:23:25Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-21T18:23:25Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-17T21:12:48Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-16T23:06:15Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-16T23:06:15Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-16T23:06:15Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-16T21:36:15Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-16T21:36:15Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-16T13:43:33Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T20:15:38Z",
+      "tipo": "SALIDA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T20:15:38Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T12:48:01Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T12:48:01Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T12:43:53Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T12:43:53Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-15T12:43:53Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-14T19:17:08Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-14T18:44:13Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-14T18:44:13Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-13T20:23:36Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-13T18:16:24Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-13T16:52:20Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-13T16:52:20Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-10T13:48:53Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-09T13:54:47Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-09T13:54:47Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-08T18:19:30Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-07T16:40:57Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-07T16:40:57Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-06T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "7.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00007"
+    },
+    {
+      "fecha": "2025-10-04T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "18.00",
+      "costo_unitario": "4404.00",
+      "referencia": "REC-2026-00008"
+    },
+    {
+      "fecha": "2025-10-03T18:04:28Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-03T18:04:28Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-03T18:04:28Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-03T15:30:24Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-10-02T21:17:53Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-24T18:29:43Z",
+      "tipo": "SALIDA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-24T18:29:43Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-24T18:29:43Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-19T22:52:13Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-19T16:08:37Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-15T21:08:00Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-15T19:01:04Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-14T12:47:21Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-13T12:06:31Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-13T12:06:31Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-13T12:06:31Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-13T03:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "16.00",
+      "costo_unitario": "13244.00",
+      "referencia": "REC-2026-00006"
+    },
+    {
+      "fecha": "2025-09-10T18:30:01Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-08T18:41:09Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-08T18:41:09Z",
+      "tipo": "SALIDA",
+      "producto": "Eyeshadow Palette with Mirror",
+      "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-07T21:02:22Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-04T19:05:37Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-04T18:05:16Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-04T18:05:16Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-02T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "7.00",
+      "costo_unitario": "5111.00",
+      "referencia": "REC-2026-00004"
+    },
+    {
+      "fecha": "2025-09-01T19:52:03Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-01T19:52:03Z",
+      "tipo": "SALIDA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-01T19:52:03Z",
+      "tipo": "SALIDA",
+      "producto": "Black Sun Glasses",
+      "producto_id": "a8e39b0a-0d24-4ef8-91d6-a63fa19cbd1a",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-09-01T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "11.00",
+      "costo_unitario": "7605.00",
+      "referencia": "REC-2026-00003"
+    },
+    {
+      "fecha": "2025-08-27T23:28:34Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-27T23:28:34Z",
+      "tipo": "SALIDA",
+      "producto": "Chanel Coco Noir Eau De",
+      "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-25T19:43:12Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-25T19:43:12Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-25T19:43:12Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-24T13:24:45Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-22T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Olay Ultra Moisture Shea Butter Body Wash",
+      "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c",
+      "cantidad": "19.00",
+      "costo_unitario": "5137.00",
+      "referencia": "REC-2026-00002"
+    },
+    {
+      "fecha": "2025-08-20T13:42:24Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-18T23:15:48Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-16T19:53:40Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-16T00:55:19Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-14T19:16:35Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-14T19:16:35Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-14T19:16:35Z",
+      "tipo": "SALIDA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-14T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "11.00",
+      "costo_unitario": "4578.00",
+      "referencia": "REC-2026-00001"
+    },
+    {
+      "fecha": "2025-08-14T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "20.00",
+      "costo_unitario": "4540.00",
+      "referencia": "REC-2026-00001"
+    },
+    {
+      "fecha": "2025-08-13T21:31:59Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-13T21:31:59Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-13T21:31:59Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-12T14:04:11Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-12T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "18.00",
+      "costo_unitario": "8874.00",
+      "referencia": "REC-2026-00005"
+    },
+    {
+      "fecha": "2025-08-12T04:00:00Z",
+      "tipo": "ENTRADA",
+      "producto": "Tropical Earring",
+      "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82",
+      "cantidad": "6.00",
+      "costo_unitario": "8606.00",
+      "referencia": "REC-2026-00005"
+    },
+    {
+      "fecha": "2025-08-11T13:28:35Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-11T13:28:35Z",
+      "tipo": "SALIDA",
+      "producto": "Green and Black Glasses",
+      "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-08T20:44:50Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-08T20:44:50Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-08T19:01:53Z",
+      "tipo": "SALIDA",
+      "producto": "Gucci Bloom Eau de",
+      "producto_id": "51333ad9-4bce-40d8-adb2-2fde76830b21",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-08T14:48:22Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-08T14:48:22Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-03T18:32:16Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-03T18:32:16Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-01T00:34:01Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-08-01T00:34:01Z",
+      "tipo": "SALIDA",
+      "producto": "Calvin Klein CK One",
+      "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-31T19:03:29Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-31T19:03:29Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-23T13:39:36Z",
+      "tipo": "SALIDA",
+      "producto": "Powder Canister",
+      "producto_id": "212805e3-741a-4135-9a59-ae7c0b73b0d3",
+      "cantidad": "3",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-23T13:39:36Z",
+      "tipo": "SALIDA",
+      "producto": "Attitude Super Leaves Hand Soap",
+      "producto_id": "e490623d-04f2-44d3-8f34-3ae974788372",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-22T17:45:12Z",
+      "tipo": "SALIDA",
+      "producto": "Party Glasses",
+      "producto_id": "6f9bcf2c-8088-4f7e-b397-72d23263e723",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-22T17:45:12Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-21T19:40:50Z",
+      "tipo": "SALIDA",
+      "producto": "Vaseline Men Body and Face Lotion",
+      "producto_id": "c7738fe4-1bfa-4e67-8766-b7d6acdb8c8b",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-21T15:10:23Z",
+      "tipo": "SALIDA",
+      "producto": "White Faux Leather Backpack",
+      "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-21T15:10:23Z",
+      "tipo": "SALIDA",
+      "producto": "Sunglasses",
+      "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-21T15:10:23Z",
+      "tipo": "SALIDA",
+      "producto": "Green Oval Earring",
+      "producto_id": "07360aa9-fa61-4754-8e71-d34998b0d96c",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-20T14:43:53Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-20T14:43:53Z",
+      "tipo": "SALIDA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-17T23:11:35Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-17T23:11:35Z",
+      "tipo": "SALIDA",
+      "producto": "Green Crystal Earring",
+      "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-16T19:23:59Z",
+      "tipo": "SALIDA",
+      "producto": "Blue Women's Handbag",
+      "producto_id": "6ae62ef5-7b29-4f33-a99a-3b0669dec3c8",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-15T21:41:33Z",
+      "tipo": "SALIDA",
+      "producto": "Dolce Shine Eau de",
+      "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-15T20:46:48Z",
+      "tipo": "SALIDA",
+      "producto": "Women Handbag Black",
+      "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-15T20:46:48Z",
+      "tipo": "SALIDA",
+      "producto": "Red Nail Polish",
+      "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+      "cantidad": "2",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-14T18:03:04Z",
+      "tipo": "SALIDA",
+      "producto": "Red Lipstick",
+      "producto_id": "f5a3a819-3d4e-42de-b5d6-286d4f3d9558",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-14T18:03:04Z",
+      "tipo": "SALIDA",
+      "producto": "Dior J'adore",
+      "producto_id": "1bbb8e48-2971-443a-8a21-2287ca004d64",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-13T23:03:30Z",
+      "tipo": "SALIDA",
+      "producto": "Classic Sun Glasses",
+      "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    },
+    {
+      "fecha": "2025-07-13T17:33:21Z",
+      "tipo": "SALIDA",
+      "producto": "Essence Mascara Lash Princess",
+      "producto_id": "98a8aedc-a1f3-4533-bee5-5877d7146d85",
+      "cantidad": "1",
+      "costo_unitario": null,
+      "referencia": "Venta"
+    }
+  ],
+  "meta": {
+    "total": 624,
+    "page": 1,
+    "page_size": 624,
+    "total_pages": 1
+  }
+}

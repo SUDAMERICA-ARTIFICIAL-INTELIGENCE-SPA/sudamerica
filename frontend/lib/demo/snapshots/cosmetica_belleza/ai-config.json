@@ -1,0 +1,29 @@
+{
+  "id": "c9c3c721-e069-45a5-8469-2b6cec057342",
+  "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+  "system_prompt": "Eres el asistente virtual de Aura Cosmética & Belleza. Ayudas a los clientes con pedidos, catalogo, reservas, horarios y delivery. Eres amable, rapido y conoces el negocio de memoria. Responde en espanol.",
+  "modelo": "openai/gpt-4o-mini",
+  "temperatura": 0.3,
+  "max_tokens": 4096,
+  "voz_id": null,
+  "voz_nombre": null,
+  "umbral_confianza": 0.85,
+  "sub_agentes_activos": {
+    "RAG": true,
+    "COTIZADOR": true,
+    "SEGUIMIENTO": true
+  },
+  "auto_respuesta_whatsapp": true,
+  "outbound_proactivo": false,
+  "outbound_horario_inicio": null,
+  "outbound_horario_fin": null,
+  "outbound_mensaje_template": null,
+  "instrucciones_disponibilidad": null,
+  "knowledge_max_chars": 6000,
+  "session_timeout_minutes": 30,
+  "nombre_agente": null,
+  "personalidad": null,
+  "menu_pdf_url": null,
+  "debounce_seconds": 4,
+  "activo": true
+}

@@ -1,0 +1,37 @@
+{
+  "PENDIENTE": [],
+  "EN_COCINA": [],
+  "LISTO": [
+    {
+      "id": "7e9b9542-d7ca-44c2-a703-e13bbb584e92",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "venta_id": null,
+      "cliente_id": "a6f92154-0877-4a67-8eb2-d5bc0b178ab5",
+      "tipo_entrega": "RETIRO",
+      "numero_mesa": null,
+      "estado": "LISTO",
+      "canal_origen": "WHATSAPP",
+      "notas": null,
+      "prioridad": 0,
+      "tiempo_estimado_min": null,
+      "activo": true,
+      "created_at": "2026-07-12T14:15:29Z",
+      "updated_at": "2026-07-12T14:15:29Z",
+      "entregado_at": null,
+      "cliente_nombre": "Josefa Álvarez",
+      "items": [
+        {
+          "id": "79b37293-0b84-46bb-8624-52514d7d3b9e",
+          "comanda_id": "7e9b9542-d7ca-44c2-a703-e13bbb584e92",
+          "producto_id": "8ab9305c-bd13-4041-ac36-8d3c76bbc96c",
+          "cantidad": 1,
+          "precio_unitario": "8500.00",
+          "modifiers_json": [],
+          "subtotal": "8500.00",
+          "notas": null,
+          "producto_nombre": "Red Nail Polish"
+        }
+      ]
+    }
+  ]
+}

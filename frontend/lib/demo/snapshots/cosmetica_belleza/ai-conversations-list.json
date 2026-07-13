@@ -1,0 +1,190 @@
+{
+  "data": [
+    {
+      "lead_id": "36b203a4-1ed1-4079-889d-52c1a3c831c6",
+      "lead_name": "Sofía Cortés",
+      "session_id": null,
+      "last_message": "¡Hola! 😊 Sí, tenemos Dior J'adore en stock. Vale $85.500 y puedes retirarlo en Providencia o pedir despacho. ¿Te reservo uno?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 8,
+      "last_message_at": "2026-07-12T01:14:00+00:00"
+    },
+    {
+      "lead_id": "c52c4263-572f-464e-a182-757993b3a634",
+      "lead_name": "Pía Castro",
+      "session_id": null,
+      "last_message": "Nuestra línea mate lleva ingredientes hidratantes, así que no reseca como los mate tradicionales. ¿Buscas algún tono en particular?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-07-06T16:24:00+00:00"
+    },
+    {
+      "lead_id": "ca930cad-31f6-49d8-a163-f2aeaf072f71",
+      "lead_name": "Agustina Vega",
+      "session_id": null,
+      "last_message": "Claro, aceptamos transferencia, débito y crédito. Al confirmar el pedido te envío los datos. 🙌",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-07-06T15:44:00+00:00"
+    },
+    {
+      "lead_id": "83add656-ee94-4235-9b64-45dac12a36dc",
+      "lead_name": "Agustina Morales",
+      "session_id": null,
+      "last_message": "Para piel mixta te recomiendo una base de acabado natural mate. Tenemos opciones de larga duración; ¿prefieres cobertura media o alta?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 4,
+      "last_message_at": "2026-07-06T14:34:00+00:00"
+    },
+    {
+      "lead_id": "69470362-d900-4fd6-b411-1a120b57fd61",
+      "lead_name": "Isidora Silva",
+      "session_id": null,
+      "last_message": "El despacho a Ñuñoa demora 24–48 h y tiene un costo de $3.000 (gratis sobre $50.000). ¿Quieres que lo coordine?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-07-02T21:25:00+00:00"
+    },
+    {
+      "lead_id": "5d567674-7f0f-4a91-9745-8bc368662bf6",
+      "lead_name": "Carolina Riquelme",
+      "session_id": null,
+      "last_message": "¡Hola! 😊 Sí, tenemos Dior J'adore en stock. Vale $85.500 y puedes retirarlo en Providencia o pedir despacho. ¿Te reservo uno?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 4,
+      "last_message_at": "2026-07-01T22:09:00+00:00"
+    },
+    {
+      "lead_id": "296c4511-dd41-48cd-9ccb-a02dbcfc3384",
+      "lead_name": "Camila Reyes",
+      "session_id": null,
+      "last_message": "Nuestra línea mate lleva ingredientes hidratantes, así que no reseca como los mate tradicionales. ¿Buscas algún tono en particular?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-06-30T20:25:00+00:00"
+    },
+    {
+      "lead_id": "28663701-36e3-468d-a9d3-b840199e5425",
+      "lead_name": "Francisca Álvarez",
+      "session_id": null,
+      "last_message": "¡Hola! 😊 Sí, tenemos Dior J'adore en stock. Vale $85.500 y puedes retirarlo en Providencia o pedir despacho. ¿Te reservo uno?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 4,
+      "last_message_at": "2026-06-30T17:46:00+00:00"
+    },
+    {
+      "lead_id": "c09346d0-5dc9-4ab3-8329-c43527b302a0",
+      "lead_name": "Macarena Flores",
+      "session_id": null,
+      "last_message": "Esta semana el set de cuidado facial está con 15% de descuento. ¿Te comparto el detalle de lo que incluye?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 4,
+      "last_message_at": "2026-06-28T13:19:00+00:00"
+    },
+    {
+      "lead_id": "115ad69b-d3d4-4134-aaf4-36b246547a77",
+      "lead_name": "Sofía Riquelme",
+      "session_id": null,
+      "last_message": "Claro, aceptamos transferencia, débito y crédito. Al confirmar el pedido te envío los datos. 🙌",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 8,
+      "last_message_at": "2026-06-27T15:37:00+00:00"
+    },
+    {
+      "lead_id": "3c56d66d-21d4-496b-8543-782ab9643345",
+      "lead_name": "Pía Soto",
+      "session_id": null,
+      "last_message": "Nuestra línea mate lleva ingredientes hidratantes, así que no reseca como los mate tradicionales. ¿Buscas algún tono en particular?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-06-25T22:57:00+00:00"
+    },
+    {
+      "lead_id": "ac2acc69-b00a-4b6c-b5a8-57adf7db6096",
+      "lead_name": "Trinidad Rodríguez",
+      "session_id": null,
+      "last_message": "Claro, aceptamos transferencia, débito y crédito. Al confirmar el pedido te envío los datos. 🙌",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 8,
+      "last_message_at": "2026-06-25T14:49:00+00:00"
+    },
+    {
+      "lead_id": "cf5ace46-2038-4b6d-8a55-776dcb15fe8c",
+      "lead_name": "Bárbara Hernández",
+      "session_id": null,
+      "last_message": "El despacho a Ñuñoa demora 24–48 h y tiene un costo de $3.000 (gratis sobre $50.000). ¿Quieres que lo coordine?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 4,
+      "last_message_at": "2026-06-24T16:52:00+00:00"
+    },
+    {
+      "lead_id": "639481e9-edbd-4425-b5e4-beddaa20ea9b",
+      "lead_name": "Magdalena Fuentes",
+      "session_id": null,
+      "last_message": "Esta semana el set de cuidado facial está con 15% de descuento. ¿Te comparto el detalle de lo que incluye?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-06-23T19:53:00+00:00"
+    },
+    {
+      "lead_id": "016fd618-8fce-4846-aa8c-e0929c5f40c0",
+      "lead_name": "Martina Torres",
+      "session_id": null,
+      "last_message": "Nuestra línea mate lleva ingredientes hidratantes, así que no reseca como los mate tradicionales. ¿Buscas algún tono en particular?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-06-22T23:40:00+00:00"
+    },
+    {
+      "lead_id": "4dee7db6-eff8-45cd-b1ab-09b9ad67f428",
+      "lead_name": "Catalina González",
+      "session_id": null,
+      "last_message": "Nuestra línea mate lleva ingredientes hidratantes, así que no reseca como los mate tradicionales. ¿Buscas algún tono en particular?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-06-22T19:39:00+00:00"
+    },
+    {
+      "lead_id": "fc07432c-8216-456a-9852-c1935874d7da",
+      "lead_name": "Maite Rodríguez",
+      "session_id": null,
+      "last_message": "¡Hola! 😊 Sí, tenemos Dior J'adore en stock. Vale $85.500 y puedes retirarlo en Providencia o pedir despacho. ¿Te reservo uno?",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 4,
+      "last_message_at": "2026-06-18T23:50:00+00:00"
+    },
+    {
+      "lead_id": "0000fffd-0bae-44ee-8bb6-c3f70d4f7652",
+      "lead_name": "Sofía Díaz",
+      "session_id": null,
+      "last_message": "Claro, aceptamos transferencia, débito y crédito. Al confirmar el pedido te envío los datos. 🙌",
+      "last_role": "assistant",
+      "last_canal": "WHATSAPP",
+      "message_count": 6,
+      "last_message_at": "2026-06-18T16:06:00+00:00"
+    }
+  ],
+  "meta": {
+    "total": 18,
+    "page": 1,
+    "page_size": 100,
+    "total_pages": 1
+  }
+}

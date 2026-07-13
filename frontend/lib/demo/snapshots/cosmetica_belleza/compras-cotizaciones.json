@@ -1,0 +1,335 @@
+{
+  "data": [
+    {
+      "id": "734ceb37-61a2-448a-8d57-36f1647d97cf",
+      "proveedor_id": "08df6162-64da-4244-8b10-3ce3dd9b451e",
+      "proveedor_nombre": "Esencia Natural Wholesale",
+      "numero": "COT-2026-0008",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-07-13",
+      "validez_dias": 10,
+      "total": "857348.00",
+      "items": [
+        {
+          "cantidad": 19,
+          "descripcion": "Gucci Bloom Eau de",
+          "costo_unitario": 41542
+        },
+        {
+          "cantidad": 5,
+          "descripcion": "Green Oval Earring",
+          "costo_unitario": 13610
+        }
+      ]
+    },
+    {
+      "id": "d3aa549e-bf87-46ca-8f54-88f76f66abb7",
+      "proveedor_id": "4c81e066-37ac-4428-a4aa-6ba0082e5c96",
+      "proveedor_nombre": "Distribuidora Belle Chile SpA",
+      "numero": "COT-2026-0015",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-07-12",
+      "validez_dias": 10,
+      "total": "288711.00",
+      "items": [
+        {
+          "cantidad": 14,
+          "descripcion": "Classic Sun Glasses",
+          "costo_unitario": 13530
+        },
+        {
+          "cantidad": 23,
+          "descripcion": "Vaseline Men Body and Face Lotion",
+          "costo_unitario": 4317
+        }
+      ]
+    },
+    {
+      "id": "b11fe915-1c48-4e0e-bbb6-12f33903342c",
+      "proveedor_id": "55d8755d-6331-4120-9cc4-b8affd245aaf",
+      "proveedor_nombre": "Korea Beauty Import",
+      "numero": "COT-2026-0006",
+      "estado": "RECIBIDA",
+      "fecha": "2026-07-12",
+      "validez_dias": 10,
+      "total": "249920.00",
+      "items": [
+        {
+          "cantidad": 16,
+          "descripcion": "Black Sun Glasses",
+          "costo_unitario": 15620
+        }
+      ]
+    },
+    {
+      "id": "13439ea8-a8fa-4a82-8f8a-5461f65027da",
+      "proveedor_id": "38b0d513-b071-4b35-868c-a6ef934521aa",
+      "proveedor_nombre": "Capilar Pro Chile",
+      "numero": "COT-2026-0011",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-07-10",
+      "validez_dias": 30,
+      "total": "1150762.00",
+      "items": [
+        {
+          "cantidad": 14,
+          "descripcion": "Heshe Women's Leather Bag",
+          "costo_unitario": 68810
+        },
+        {
+          "cantidad": 9,
+          "descripcion": "Powder Canister",
+          "costo_unitario": 8654
+        },
+        {
+          "cantidad": 24,
+          "descripcion": "Essence Mascara Lash Princess",
+          "costo_unitario": 4564
+        }
+      ]
+    },
+    {
+      "id": "aff64cf7-e49c-4ca2-8ee5-5db626acb698",
+      "proveedor_id": "9a08f5b4-43c0-4b4a-bf03-a1132731523c",
+      "proveedor_nombre": "EcoEnvases Chile",
+      "numero": "COT-2026-0003",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-07-04",
+      "validez_dias": 10,
+      "total": "143838.00",
+      "items": [
+        {
+          "cantidad": 18,
+          "descripcion": "Powder Canister",
+          "costo_unitario": 7991
+        }
+      ]
+    },
+    {
+      "id": "fbb4a199-14da-4eca-bc18-8210da73c2a3",
+      "proveedor_id": "40525f80-ba1d-4613-9504-ca00d944e5c2",
+      "proveedor_nombre": "Hair Care Solutions",
+      "numero": "COT-2026-0010",
+      "estado": "RECIBIDA",
+      "fecha": "2026-06-25",
+      "validez_dias": 15,
+      "total": "161020.00",
+      "items": [
+        {
+          "cantidad": 20,
+          "descripcion": "Powder Canister",
+          "costo_unitario": 8051
+        }
+      ]
+    },
+    {
+      "id": "9abcc727-b860-40ca-a4b7-535d77ea3288",
+      "proveedor_id": "08df6162-64da-4244-8b10-3ce3dd9b451e",
+      "proveedor_nombre": "Esencia Natural Wholesale",
+      "numero": "COT-2026-0002",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-06-23",
+      "validez_dias": 10,
+      "total": "530304.00",
+      "items": [
+        {
+          "cantidad": 12,
+          "descripcion": "Sunglasses",
+          "costo_unitario": 9822
+        },
+        {
+          "cantidad": 28,
+          "descripcion": "Green Crystal Earring",
+          "costo_unitario": 14730
+        }
+      ]
+    },
+    {
+      "id": "17db0406-a865-4174-90ff-c9c4b30bac70",
+      "proveedor_id": "b5e45655-4bfd-447b-8259-f73d5b2b6e0a",
+      "proveedor_nombre": "Nature Skin Distribución",
+      "numero": "COT-2026-0014",
+      "estado": "RECHAZADA",
+      "fecha": "2026-06-21",
+      "validez_dias": 15,
+      "total": "473729.00",
+      "items": [
+        {
+          "cantidad": 21,
+          "descripcion": "Essence Mascara Lash Princess",
+          "costo_unitario": 4525
+        },
+        {
+          "cantidad": 22,
+          "descripcion": "Sunglasses",
+          "costo_unitario": 8906
+        },
+        {
+          "cantidad": 18,
+          "descripcion": "Eyeshadow Palette with Mirror",
+          "costo_unitario": 10154
+        }
+      ]
+    },
+    {
+      "id": "2d5ae654-a02f-4862-807a-61f60d343541",
+      "proveedor_id": "4db1219c-c228-42b7-8e7b-21fb3c4324d1",
+      "proveedor_nombre": "Accesorios Beauty Chile",
+      "numero": "COT-2026-0009",
+      "estado": "RECIBIDA",
+      "fecha": "2026-06-20",
+      "validez_dias": 30,
+      "total": "666675.00",
+      "items": [
+        {
+          "cantidad": 20,
+          "descripcion": "Black Sun Glasses",
+          "costo_unitario": 14090
+        },
+        {
+          "cantidad": 25,
+          "descripcion": "Black Sun Glasses",
+          "costo_unitario": 15395
+        }
+      ]
+    },
+    {
+      "id": "1871072d-f00b-4385-b3a5-acb20259386b",
+      "proveedor_id": "7e53dd37-337e-4282-ba91-1cabe0fac958",
+      "proveedor_nombre": "Packaging Bello SpA",
+      "numero": "COT-2026-0007",
+      "estado": "RECIBIDA",
+      "fecha": "2026-06-19",
+      "validez_dias": 10,
+      "total": "407150.00",
+      "items": [
+        {
+          "cantidad": 26,
+          "descripcion": "Sunglasses",
+          "costo_unitario": 8710
+        },
+        {
+          "cantidad": 19,
+          "descripcion": "Sunglasses",
+          "costo_unitario": 9510
+        }
+      ]
+    },
+    {
+      "id": "52eb03f0-9248-4005-9950-8bd4642bc2ca",
+      "proveedor_id": "425d3b94-e2c3-4c8f-a5ed-fca5a84d48c8",
+      "proveedor_nombre": "Perfumes del Pacífico S.A.",
+      "numero": "COT-2026-0004",
+      "estado": "RECIBIDA",
+      "fecha": "2026-06-13",
+      "validez_dias": 10,
+      "total": "1929096.00",
+      "items": [
+        {
+          "cantidad": 9,
+          "descripcion": "Heshe Women's Leather Bag",
+          "costo_unitario": 59072
+        },
+        {
+          "cantidad": 19,
+          "descripcion": "Eyeshadow Palette with Mirror",
+          "costo_unitario": 9688
+        },
+        {
+          "cantidad": 16,
+          "descripcion": "Chanel Coco Noir Eau De",
+          "costo_unitario": 75836
+        }
+      ]
+    },
+    {
+      "id": "ff7f6325-f831-4b5a-aa1d-7daad2575fee",
+      "proveedor_id": "9ca08c95-5c33-4daf-b6d8-967a42d2fe4c",
+      "proveedor_nombre": "Aromas & Esencias Ltda.",
+      "numero": "COT-2026-0001",
+      "estado": "RECHAZADA",
+      "fecha": "2026-06-11",
+      "validez_dias": 15,
+      "total": "1180024.00",
+      "items": [
+        {
+          "cantidad": 29,
+          "descripcion": "Powder Canister",
+          "costo_unitario": 7665
+        },
+        {
+          "cantidad": 7,
+          "descripcion": "Green Crystal Earring",
+          "costo_unitario": 16039
+        },
+        {
+          "cantidad": 29,
+          "descripcion": "Calvin Klein CK One",
+          "costo_unitario": 29154
+        }
+      ]
+    },
+    {
+      "id": "a25fb09a-bce3-4ce1-814e-b8ab5d46f65b",
+      "proveedor_id": "58417ada-47e8-4d25-8d02-dfa85b64a1dc",
+      "proveedor_nombre": "Insumos Estética Total",
+      "numero": "COT-2026-0005",
+      "estado": "RECIBIDA",
+      "fecha": "2026-06-04",
+      "validez_dias": 10,
+      "total": "3744900.00",
+      "items": [
+        {
+          "cantidad": 11,
+          "descripcion": "Prada Women Bag",
+          "costo_unitario": 300800
+        },
+        {
+          "cantidad": 10,
+          "descripcion": "Gucci Bloom Eau de",
+          "costo_unitario": 43610
+        }
+      ]
+    },
+    {
+      "id": "839e4ff7-1ea2-4870-92af-0e063dab01b6",
+      "proveedor_id": "4c81e066-37ac-4428-a4aa-6ba0082e5c96",
+      "proveedor_nombre": "Distribuidora Belle Chile SpA",
+      "numero": "COT-2026-0013",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-05-31",
+      "validez_dias": 10,
+      "total": "659022.00",
+      "items": [
+        {
+          "cantidad": 26,
+          "descripcion": "Blue Women's Handbag",
+          "costo_unitario": 25347
+        }
+      ]
+    },
+    {
+      "id": "08a03791-c9d1-4446-aa11-e610a11944a5",
+      "proveedor_id": "fce5167e-978b-4fd2-8e2a-c8d2ccb3b865",
+      "proveedor_nombre": "Gran Distribuidora Cosmética",
+      "numero": "COT-2026-0012",
+      "estado": "SELECCIONADA",
+      "fecha": "2026-05-23",
+      "validez_dias": 30,
+      "total": "1089570.00",
+      "items": [
+        {
+          "cantidad": 30,
+          "descripcion": "Women Handbag Black",
+          "costo_unitario": 36319
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "total": 15,
+    "page": 1,
+    "page_size": 100,
+    "total_pages": 1
+  }
+}

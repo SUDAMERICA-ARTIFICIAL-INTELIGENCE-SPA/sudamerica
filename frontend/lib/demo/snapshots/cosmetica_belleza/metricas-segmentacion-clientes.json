@@ -1,0 +1,32 @@
+[
+  {
+    "segmento": "OCASIONAL",
+    "cantidad": 35,
+    "total_gastado": 3458200,
+    "avg_frecuencia_dias": 154.6
+  },
+  {
+    "segmento": "INACTIVO",
+    "cantidad": 43,
+    "total_gastado": 3891300,
+    "avg_frecuencia_dias": 64.2
+  },
+  {
+    "segmento": "NUEVO",
+    "cantidad": 32,
+    "total_gastado": 0,
+    "avg_frecuencia_dias": 0
+  },
+  {
+    "segmento": "VIP",
+    "cantidad": 17,
+    "total_gastado": 7666900,
+    "avg_frecuencia_dias": 60.1
+  },
+  {
+    "segmento": "FRECUENTE",
+    "cantidad": 23,
+    "total_gastado": 4491500,
+    "avg_frecuencia_dias": 65.6
+  }
+]

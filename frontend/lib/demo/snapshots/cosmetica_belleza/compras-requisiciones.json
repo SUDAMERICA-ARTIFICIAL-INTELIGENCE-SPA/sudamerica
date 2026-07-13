@@ -1,0 +1,202 @@
+{
+  "data": [
+    {
+      "id": "894af5be-9179-40f1-b1ab-c34c0100fd07",
+      "numero": "REQ-2026-0009",
+      "solicitante": "Antonia Vera",
+      "estado": "RECHAZADA",
+      "prioridad": "ALTA",
+      "fecha": "2026-07-12",
+      "items": [
+        {
+          "cantidad": 38,
+          "descripcion": "Olay Ultra Moisture Shea Butter Body Wash",
+          "producto_id": "1890df75-28a7-4435-9f2e-b3388068794c"
+        }
+      ],
+      "notas": "Reposición por stock bajo (34 u.)"
+    },
+    {
+      "id": "53c9bf73-1c67-461d-89ac-1d3a6424ec84",
+      "numero": "REQ-2026-0004",
+      "solicitante": "Valentina Soto",
+      "estado": "APROBADA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-07-10",
+      "items": [
+        {
+          "cantidad": 14,
+          "descripcion": "Women Handbag Black",
+          "producto_id": "84778939-7e2e-4cbf-a0d3-3327409f0021"
+        }
+      ],
+      "notas": "Reposición por stock bajo (11 u.)"
+    },
+    {
+      "id": "8b82655f-cf82-4bfb-b153-81592682de04",
+      "numero": "REQ-2026-0008",
+      "solicitante": "Josefa Muñoz",
+      "estado": "APROBADA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-07-09",
+      "items": [
+        {
+          "cantidad": 12,
+          "descripcion": "Eyeshadow Palette with Mirror",
+          "producto_id": "220abab2-9c12-4dfe-ad9d-420612e7d395"
+        }
+      ],
+      "notas": "Reposición por stock bajo (34 u.)"
+    },
+    {
+      "id": "db3cbaf2-d33f-497c-9f78-395723c58bc2",
+      "numero": "REQ-2026-0002",
+      "solicitante": "Josefa Muñoz",
+      "estado": "APROBADA",
+      "prioridad": "ALTA",
+      "fecha": "2026-07-06",
+      "items": [
+        {
+          "cantidad": 32,
+          "descripcion": "Tropical Earring",
+          "producto_id": "319b03eb-91ff-4f3f-946a-308332616a82"
+        }
+      ],
+      "notas": "Reposición por stock bajo (1 u.)"
+    },
+    {
+      "id": "c33307c2-1aee-4646-a87d-217fb2a91bfa",
+      "numero": "REQ-2026-0012",
+      "solicitante": "Antonia Vera",
+      "estado": "APROBADA",
+      "prioridad": "BAJA",
+      "fecha": "2026-07-04",
+      "items": [
+        {
+          "cantidad": 10,
+          "descripcion": "Chanel Coco Noir Eau De",
+          "producto_id": "f6dc3cef-4e42-46dc-8c7e-b7a7051bfa6f"
+        }
+      ],
+      "notas": "Reposición por stock bajo (58 u.)"
+    },
+    {
+      "id": "07b5c366-ce19-43f3-8d0e-0dc31989909a",
+      "numero": "REQ-2026-0001",
+      "solicitante": "Josefa Muñoz",
+      "estado": "PENDIENTE",
+      "prioridad": "MEDIA",
+      "fecha": "2026-07-01",
+      "items": [
+        {
+          "cantidad": 10,
+          "descripcion": "Classic Sun Glasses",
+          "producto_id": "a83379cd-2b4b-4117-ada6-6b92cc51406f"
+        }
+      ],
+      "notas": "Reposición por stock bajo (1 u.)"
+    },
+    {
+      "id": "c0baf8f0-8367-42ec-8e06-e6db979987d1",
+      "numero": "REQ-2026-0005",
+      "solicitante": "Valentina Soto",
+      "estado": "APROBADA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-06-26",
+      "items": [
+        {
+          "cantidad": 6,
+          "descripcion": "Green and Black Glasses",
+          "producto_id": "b67675ce-ec24-4502-8279-d65a128b3997"
+        }
+      ],
+      "notas": "Reposición por stock bajo (24 u.)"
+    },
+    {
+      "id": "37b8c516-6525-48e3-aa42-eb4e626fcb48",
+      "numero": "REQ-2026-0006",
+      "solicitante": "Camila Gaete",
+      "estado": "APROBADA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-06-20",
+      "items": [
+        {
+          "cantidad": 8,
+          "descripcion": "Sunglasses",
+          "producto_id": "c9e40d12-dc13-474f-862f-97a3b67483d9"
+        }
+      ],
+      "notas": "Reposición por stock bajo (27 u.)"
+    },
+    {
+      "id": "c735d169-45e5-49fd-9ec8-272c475cae3a",
+      "numero": "REQ-2026-0011",
+      "solicitante": "Josefa Muñoz",
+      "estado": "RECHAZADA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-06-16",
+      "items": [
+        {
+          "cantidad": 39,
+          "descripcion": "Green Crystal Earring",
+          "producto_id": "3a3f0377-9695-4d1d-8016-050f833c17f3"
+        }
+      ],
+      "notas": "Reposición por stock bajo (54 u.)"
+    },
+    {
+      "id": "79faa3a4-c711-4a6a-8456-db5ae75cf7b1",
+      "numero": "REQ-2026-0007",
+      "solicitante": "Valentina Soto",
+      "estado": "CONVERTIDA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-06-14",
+      "items": [
+        {
+          "cantidad": 17,
+          "descripcion": "Calvin Klein CK One",
+          "producto_id": "2c91d39b-3d44-4e93-9f7c-cb080ebd7bcb"
+        }
+      ],
+      "notas": "Reposición por stock bajo (29 u.)"
+    },
+    {
+      "id": "30dd24bf-36a8-4f22-a864-dbaaebf5d442",
+      "numero": "REQ-2026-0003",
+      "solicitante": "Antonia Vera",
+      "estado": "CONVERTIDA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-06-06",
+      "items": [
+        {
+          "cantidad": 37,
+          "descripcion": "Dolce Shine Eau de",
+          "producto_id": "f65dc800-4f91-4d6d-b68a-15f7177c8000"
+        }
+      ],
+      "notas": "Reposición por stock bajo (4 u.)"
+    },
+    {
+      "id": "a9dae4ee-bc32-4cd1-b7ad-95323c04066e",
+      "numero": "REQ-2026-0010",
+      "solicitante": "Antonia Vera",
+      "estado": "APROBADA",
+      "prioridad": "MEDIA",
+      "fecha": "2026-06-03",
+      "items": [
+        {
+          "cantidad": 18,
+          "descripcion": "White Faux Leather Backpack",
+          "producto_id": "05d7d974-46ff-46b9-8928-feb17a6b7e59"
+        }
+      ],
+      "notas": "Reposición por stock bajo (39 u.)"
+    }
+  ],
+  "meta": {
+    "total": 12,
+    "page": 1,
+    "page_size": 100,
+    "total_pages": 1
+  }
+}

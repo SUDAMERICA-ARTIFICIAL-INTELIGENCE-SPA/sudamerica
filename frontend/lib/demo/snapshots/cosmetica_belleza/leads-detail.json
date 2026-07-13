@@ -1,0 +1,28 @@
+{
+  "id": "bbcde3e9-9c2c-4e41-9cc9-3970377a3d62",
+  "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+  "nombre": "Isidora Valenzuela",
+  "email": "isidora.valenzuela@gmail.com",
+  "telefono": "+56963768874",
+  "empresa": null,
+  "sector": null,
+  "canal": "INSTAGRAM",
+  "estado": "EN_PROCESO",
+  "valor_estimado": "120000.00",
+  "notas": null,
+  "asignado_a": "2382db2d-4a2e-4de8-a89e-470981a9de73",
+  "intencion": null,
+  "score": 64,
+  "estado_cliente": "NUEVO",
+  "total_pedidos": 0,
+  "total_gastado": "0.00",
+  "plato_favorito": null,
+  "ultima_visita": null,
+  "frecuencia_dias": null,
+  "tags": [
+    "nuevo"
+  ],
+  "activo": true,
+  "created_at": "2026-07-12T00:47:09.740000Z",
+  "updated_at": "2026-07-12T00:47:09.740000Z"
+}

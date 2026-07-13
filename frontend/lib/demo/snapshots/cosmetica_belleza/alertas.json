@@ -1,0 +1,122 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "5ec5540d-c57d-4161-a50f-f11f35d7e711",
+      "lead_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "STOCK_BAJO",
+      "mensaje": "Stock bajo: Tropical Earring (1 u.). Considera reponer.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "0a39cc8b-8f29-4a1d-90ef-4433e3b58fb9",
+      "lead_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "STOCK_BAJO",
+      "mensaje": "Stock bajo: Classic Sun Glasses (1 u.). Considera reponer.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "89147407-a58d-480a-8291-035cac2c2acf",
+      "lead_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "STOCK_BAJO",
+      "mensaje": "Stock bajo: Women Handbag Black (11 u.). Considera reponer.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "1901b8b7-009d-4464-8f07-c7cedc64ebdb",
+      "lead_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": true,
+      "tipo": "STOCK_BAJO",
+      "mensaje": "Stock bajo: Dolce Shine Eau de (4 u.). Considera reponer.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "4cb5490f-a694-4eaa-b7e4-15d6e5c6b8a0",
+      "lead_id": "36b203a4-1ed1-4079-889d-52c1a3c831c6",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "CLIENTE_INACTIVO",
+      "mensaje": "Sofía Cortés (INACTIVO) no compra hace 333 días. Reactívala con una oferta.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "b10574e7-2479-4685-bac9-2cbc6f2f7aab",
+      "lead_id": "ca930cad-31f6-49d8-a163-f2aeaf072f71",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "CLIENTE_INACTIVO",
+      "mensaje": "Agustina Vega (INACTIVO) no compra hace 196 días. Reactívala con una oferta.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "ccea02bf-a7bc-4371-ae77-a6ae38b46a1c",
+      "lead_id": "ac2acc69-b00a-4b6c-b5a8-57adf7db6096",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "CLIENTE_INACTIVO",
+      "mensaje": "Trinidad Rodríguez (INACTIVO) no compra hace 263 días. Reactívala con una oferta.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "71f0b3b8-5b28-420d-b2c4-8884de28b109",
+      "lead_id": "016fd618-8fce-4846-aa8c-e0929c5f40c0",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "CLIENTE_INACTIVO",
+      "mensaje": "Martina Torres (VIP) no compra hace 108 días. Reactívala con una oferta.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "33c70261-e3a7-45ad-8c98-46d8a522e1ce",
+      "lead_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "META",
+      "mensaje": "Meta mensual al 38% ($557.800 de $1.460.000).",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "id": "18fd1d87-26af-4e18-b466-f80bf64c39ec",
+      "lead_id": "e9372a40-6f75-4b90-8a90-8e3c14db9d62",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "leido": false,
+      "tipo": "OPORTUNIDAD",
+      "mensaje": "Camila Muñoz es tu mejor clienta ($899.500). Ofrécele el programa VIP.",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    }
+  ],
+  "error": null,
+  "meta": {
+    "total": 10,
+    "page": 1,
+    "page_size": 100,
+    "total_pages": 1
+  }
+}

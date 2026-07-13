@@ -1,0 +1,144 @@
+{
+  "success": true,
+  "data": [
+    {
+      "meta_ventas": 1460000,
+      "meta_conversion": 0.285,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-07",
+      "meta_leads": 57,
+      "id": "802b702e-1652-4d9b-a6b5-751546887d61",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 3000000,
+      "meta_conversion": 0.3452,
+      "asesor_id": "998aec41-f210-4f34-9809-427177bde219",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-07",
+      "meta_leads": 20,
+      "id": "b90905b1-800f-48dd-9919-6e9e042b765b",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 3000000,
+      "meta_conversion": 0.2972,
+      "asesor_id": "6069a2b5-e92f-4f94-be15-46c57a9e6366",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-07",
+      "meta_leads": 16,
+      "id": "4021c2c2-69c1-4d75-ab85-2e77e5bb85c3",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 1500000,
+      "meta_conversion": 0.2608,
+      "asesor_id": "96a692ee-f952-4ba7-a700-9b47ab870cd7",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-07",
+      "meta_leads": 20,
+      "id": "8ea0d02c-5976-47e0-9023-dc1f3bad892b",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 2000000,
+      "meta_conversion": 0.329,
+      "asesor_id": "2382db2d-4a2e-4de8-a89e-470981a9de73",
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-07",
+      "meta_leads": 20,
+      "id": "cfbb4d45-c72f-4b46-8aa2-baf8b629f1c2",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 1530000,
+      "meta_conversion": 0.2891,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-06",
+      "meta_leads": 49,
+      "id": "0a1cc1f8-e981-4253-a354-dca7fdeb0c93",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 2430000,
+      "meta_conversion": 0.3267,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-05",
+      "meta_leads": 55,
+      "id": "e7d14aac-da02-48b1-95fa-75edcbfc2c8e",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 1860000,
+      "meta_conversion": 0.3138,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-04",
+      "meta_leads": 48,
+      "id": "c546d150-0958-4a9b-990d-715327d72d63",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 1920000,
+      "meta_conversion": 0.3357,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-03",
+      "meta_leads": 37,
+      "id": "9387b502-c343-4a02-a7cc-3b8bf38cefbe",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 1640000,
+      "meta_conversion": 0.3175,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-02",
+      "meta_leads": 48,
+      "id": "4b20801b-f8de-4210-accc-c504f3a6c40c",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    },
+    {
+      "meta_ventas": 1930000,
+      "meta_conversion": 0.3527,
+      "asesor_id": null,
+      "tenant_id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+      "created_at": "2026-07-13T00:47:09.803225+00:00",
+      "periodo": "2026-01",
+      "meta_leads": 53,
+      "id": "ea0ab6e0-3df1-4412-8be7-3b476783dba2",
+      "activo": true,
+      "updated_at": "2026-07-13T00:47:09.803225+00:00"
+    }
+  ],
+  "error": null,
+  "meta": {
+    "total": 11,
+    "page": 1,
+    "page_size": 20,
+    "total_pages": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "f5b91946-291c-4a2f-8f60-dadeead4c96b",
+  "nombre": "Aura Cosmética & Belleza",
+  "slug": "aura-demo",
+  "plan": "PRO",
+  "max_users": 10,
+  "max_leads_mes": 5000,
+  "stripe_customer_id": null,
+  "stripe_subscription_id": null,
+  "config": {
+    "rubro": "cosmetica_belleza"
+  },
+  "activo": true,
+  "created_at": "2026-07-12T19:10:19.196013Z",
+  "updated_at": "2026-07-12T19:10:19.196013Z"
+}
