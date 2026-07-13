@@ -21,11 +21,14 @@ from app.routes import (
     billing,
     categorias,
     comandas,
+    compras,
     delivery,
     health,
+    inventario,
     leads,
     loyalty,
     menu_import,
+    olab_crud,
     mesa_qr,
     mesas,
     metricas,
@@ -136,6 +139,9 @@ def create_app() -> FastAPI:
     app.include_router(loyalty.router, prefix="/api/v1/core")
     app.include_router(suministros.router, prefix="/api/v1/core")
     app.include_router(subentidades.router, prefix="/api/v1/core")
+    app.include_router(compras.router, prefix="/api/v1/core")
+    app.include_router(inventario.router, prefix="/api/v1/core")
+    app.include_router(olab_crud.router, prefix="/api/v1/core")
 
     # Public routes (no JWT required)
     app.include_router(mesa_qr.router, prefix="/api/v1/public")

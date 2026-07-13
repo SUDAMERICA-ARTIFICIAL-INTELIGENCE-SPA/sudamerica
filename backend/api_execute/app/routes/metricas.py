@@ -22,7 +22,8 @@ from app.schemas.metrica import (
     RevenueDataPoint,
     WeeklyActivityPoint,
 )
-from app.services import ai_conversation_svc, metrica_svc
+from app.schemas.lentes import CobrosResumen, FlujoPunto, ActividadItem, Tesoreria
+from app.services import ai_conversation_svc, lentes_svc, metrica_svc
 
 router = APIRouter(prefix="/metricas", tags=["metricas"])
 
@@ -171,3 +172,37 @@ async def weekly_activity(
     return await ai_conversation_svc.get_weekly_activity(
         db, current_user["tenant_id"]
     )
+
+
+# ── Lentes derivadas de OLA A (B1) ──
+
+@router.get("/cobros", response_model=CobrosResumen)
+async def cobros(current_user: dict = MetricasReader, db: AsyncSession = Depends(get_db)):
+    """Cobros/pagos: cobrado vs pendiente, por medio de pago (fuente: comandas)."""
+    return await lentes_svc.get_cobros(db, current_user["tenant_id"])
+
+
+@router.get("/tesoreria", response_model=Tesoreria)
+async def tesoreria(current_user: dict = MetricasReader, db: AsyncSession = Depends(get_db)):
+    """Posición de tesorería: saldo por medio de pago (pedidos confirmados)."""
+    return await lentes_svc.get_tesoreria(db, current_user["tenant_id"])
+
+
+@router.get("/flujo-caja", response_model=list[FlujoPunto])
+async def flujo_caja(
+    meses: int = Query(12, ge=1, le=24),
+    current_user: dict = MetricasReader,
+    db: AsyncSession = Depends(get_db),
+):
+    """Flujo de caja mensual: ingresos (ventas) − egresos (facturas de proveedor)."""
+    return await lentes_svc.get_flujo_caja(db, current_user["tenant_id"], meses=meses)
+
+
+@router.get("/actividad", response_model=list[ActividadItem])
+async def actividad(
+    limit: int = Query(30, ge=1, le=100),
+    current_user: dict = MetricasReader,
+    db: AsyncSession = Depends(get_db),
+):
+    """Feed de actividad reciente: ventas + leads + conversaciones."""
+    return await lentes_svc.get_actividad(db, current_user["tenant_id"], limit=limit)
