@@ -18,9 +18,6 @@ const DASHBOARD_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "../app/(
 const pageFileFor = (href: string): string =>
   resolve(DASHBOARD_DIR, `.${href}`, "page.tsx");
 
-/** Única excepción: abre el Command Palette, no navega a una ruta. */
-const SIN_PAGINA = new Set(["inicio-accesos"]);
-
 const catsVisibles = (rubroKey: string): string[] =>
   construirSidebarCanonico(getRubroDef(rubroKey)).map((c) => c.id);
 const idsVisibles = (rubroKey: string): Set<string> =>
@@ -29,16 +26,19 @@ const idsVisibles = (rubroKey: string): Set<string> =>
 describe("cero 404 estructural — cada href del SSOT tiene page.tsx", () => {
   const subs = NAV_CANONICO.flatMap((c) => c.subs);
 
-  it.each(subs.filter((s) => !SIN_PAGINA.has(s.id)).map((s) => [s.id, s.href] as const))(
+  it.each(subs.map((s) => [s.id, s.href] as const))(
     "%s (%s) existe en app/(dashboard)",
     (_id, href) => {
       expect(existsSync(pageFileFor(href))).toBe(true);
     },
   );
 
-  it("la única sub sin página es la que abre Cmd+K", () => {
+  // OLA B cerró el último 404 estructural: inicio/accesos-rapidos ahora tiene page.tsx
+  // (la grilla de accesos). El ítem `inicio-accesos` del sidebar además abre Cmd+K,
+  // pero la ruta directa ya no 404ea ⇒ toda sub del SSOT tiene página.
+  it("cada sub del SSOT tiene page.tsx (cero 404 estructural)", () => {
     const sinPagina = subs.filter((s) => !existsSync(pageFileFor(s.href))).map((s) => s.id);
-    expect(sinPagina).toEqual(["inicio-accesos"]);
+    expect(sinPagina).toEqual([]);
   });
 });
 
