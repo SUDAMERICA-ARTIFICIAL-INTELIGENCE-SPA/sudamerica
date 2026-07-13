@@ -230,3 +230,28 @@ renderer** en este WSL2 (mismo crash de libc, sin capturar ni una página). Qued
 
 **Gates Fase 3:** `STATIC_EXPORT=1 npm run build` verde (207 páginas showroom, `out/` 48 MB) ·
 `npm run build` standalone verde (genera `.next/standalone`) · `typecheck` 0 · `test` **809/809**.
+
+## Fase 4 — Deploy a GitHub Pages (CI) — 2026-07-13
+
+**Objetivo:** publicar la vitrina (export estático de Fase 3) en GitHub Pages, con
+build automatizado en CI y sin intervención manual de archivos.
+
+**Workflow:** `.github/workflows/pages.yml`
+- **Trigger:** `push` a `paso7-dashboard-canonico` + `workflow_dispatch` (manual).
+- **Job `build`** (`working-directory: frontend`): `actions/checkout@v4` →
+  `actions/setup-node@v4` (Node 20, cache npm sobre `frontend/package-lock.json`) →
+  `npm ci` → `STATIC_EXPORT=1 npm run build` → `actions/configure-pages@v5` →
+  `actions/upload-pages-artifact@v3` con `path: frontend/out`.
+- **Job `deploy`** (`needs: build`): `actions/deploy-pages@v4` sobre el environment
+  `github-pages`.
+- **Permisos:** `contents: read`, `pages: write`, `id-token: write`.
+- **Concurrency:** grupo `pages`, sin cancelar el deploy en curso.
+
+**Pages source:** GitHub Actions (habilitado vía API `build_type: workflow`).
+
+**URL:** https://sudamerica-artificial-inteligence-spa.github.io/sudamerica/
+(redirige a `/sudamerica/showroom/` → landing del héroe `cosmetica_belleza`).
+
+**Nota sobre el build real:** el workflow activa el modo export **solo** con
+`STATIC_EXPORT=1`; `npm run build` sin esa env sigue produciendo `output: "standalone"`.
+CI no despliega el backend ni degrada el build de producción.
