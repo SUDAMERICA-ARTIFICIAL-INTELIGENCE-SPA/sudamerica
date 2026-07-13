@@ -1,6 +1,7 @@
 "use client";
 
 import { useRubroLabels } from "@/hooks/useRubroLabels";
+import { useWithBase } from "@/lib/demo/showroom-nav";
 import { useSsrColorScheme } from "@/hooks/useSsrColorScheme";
 import { navItemsFlatCanonico } from "@/lib/nav-canonico";
 import { GLASS } from "@/lib/theme-tokens";
@@ -114,10 +115,12 @@ export function CommandPalette() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const router = useRouter();
+  const withBase = useWithBase();
   const inputRef = useRef<HTMLInputElement>(null);
 
   function navigate(href: string) {
-    router.push(href);
+    // Base "" en la app real; "/showroom/<rubro>" dentro de la vitrina.
+    router.push(withBase(href));
     setCommandPaletteOpen(false);
   }
 
