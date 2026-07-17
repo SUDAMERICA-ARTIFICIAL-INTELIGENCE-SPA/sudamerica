@@ -32,6 +32,11 @@ export function useCreateSucursal() {
             | "latitud"
             | "longitud"
             | "config"
+            | "ciudad"
+            | "region"
+            | "pais"
+            | "codigo_postal"
+            | "google_maps_url"
           >
         >,
     ) => api.post<Sucursal>("/sucursales", body),
@@ -71,6 +76,11 @@ export function useUpdateSucursal() {
         | "latitud"
         | "longitud"
         | "config"
+        | "ciudad"
+        | "region"
+        | "pais"
+        | "codigo_postal"
+        | "google_maps_url"
       >
     >) => api.patch<Sucursal>(`/sucursales/${id}`, body),
     onSuccess: () => {

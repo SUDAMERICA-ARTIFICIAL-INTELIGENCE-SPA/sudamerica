@@ -10,6 +10,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 import { type ReactNode, useState } from "react";
 
+// basePath del export (`/sudamerica`) o "" en el build real. Next reescribe los
+// href de <Link>/assets, pero NO estos <link> de HTML crudo → los prefijamos.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -150,8 +154,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <ColorSchemeScript defaultColorScheme="dark" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="icon" href={`${BASE_PATH}/logo.png`} type="image/png" />
+        <link rel="apple-touch-icon" href={`${BASE_PATH}/logo.png`} />
         <title>Sudamérica AI</title>
       </head>
       <body className={inter.variable}>

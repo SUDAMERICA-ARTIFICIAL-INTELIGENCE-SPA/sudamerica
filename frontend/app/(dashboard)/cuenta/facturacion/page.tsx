@@ -16,6 +16,7 @@ import {
   IconUsersGroup,
 } from "@tabler/icons-react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 type PaidPlan = TenantPlan.PLUS | TenantPlan.PRO;
 
@@ -76,7 +77,9 @@ const PLAN_CARDS: Array<{
   },
 ];
 
-export default function BillingPage() {
+// useSearchParams fuerza un bailout a CSR: sin un límite de Suspense, el export
+// estático falla al prerenderizar. El wrapper de abajo lo acota.
+function BillingPageInner() {
   const { data: tenant, isLoading } = useTenant();
   const checkout = useCreateBillingCheckout();
   const searchParams = useSearchParams();
@@ -247,5 +250,19 @@ export default function BillingPage() {
         })}
       </SimpleGrid>
     </Stack>
+  );
+}
+
+export default function BillingPage() {
+  return (
+    <Suspense
+      fallback={
+        <Group justify="center" py="xl">
+          <Loader color="indigo" />
+        </Group>
+      }
+    >
+      <BillingPageInner />
+    </Suspense>
   );
 }

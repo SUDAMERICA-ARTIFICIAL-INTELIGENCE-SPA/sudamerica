@@ -16,6 +16,17 @@ from app.models.modifier import Modifier, ModifierGroup, ProductoModifierGroup
 from app.models.password_reset_token import PasswordResetToken
 from app.models.suministro import Receta, Suministro
 from app.models.menu_import import MenuImport
+from app.models.compras import (
+    Cotizacion,
+    FacturaProveedor,
+    OCItem,
+    OrdenCompra,
+    Proveedor,
+    Recepcion,
+    RecepcionItem,
+    Requisicion,
+)
+from app.models.olab_crud import Campana, DocumentoArchivo, Devolucion, MensajePlantilla
 from shared.models.sucursal import Sucursal
 
 __all__ = [
@@ -41,4 +52,16 @@ __all__ = [
     "Repartidor",
     "Sucursal",
     "Suministro",
+    "Proveedor",
+    "OrdenCompra",
+    "OCItem",
+    "Recepcion",
+    "RecepcionItem",
+    "FacturaProveedor",
+    "Requisicion",
+    "Cotizacion",
+    "Devolucion",
+    "MensajePlantilla",
+    "DocumentoArchivo",
+    "Campana",
 ]

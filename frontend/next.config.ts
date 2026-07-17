@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks", "@tabler/icons-react"],
   },
+  // Expuesto al cliente para prefijar hrefs de HTML crudo (favicon) que Next no
+  // reescribe automáticamente con basePath. Vacío en el build real.
+  env: { NEXT_PUBLIC_BASE_PATH: "" },
 };
 
 export default nextConfig;

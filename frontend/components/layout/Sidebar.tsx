@@ -88,6 +88,8 @@ function getInitials(nombre: string): string {
 
 interface NavItemRowProps {
   sub: NavSubC;
+  /** Href canónico del ítem de navegación. */
+  href: string;
   label: string;
   isActive: boolean;
   isFavorite: boolean;
@@ -95,12 +97,12 @@ interface NavItemRowProps {
 }
 
 /** Fila de ítem: NavLink + botón de fijar, como hermanos (nunca anidar botón dentro de <a>). */
-function NavItemRow({ sub, label, isActive, isFavorite, onToggleFavorite }: NavItemRowProps) {
+function NavItemRow({ sub, href, label, isActive, isFavorite, onToggleFavorite }: NavItemRowProps) {
   return (
     <Group gap={2} wrap="nowrap" align="center" className="sidebar-nav-row">
       <NavLink
         component={Link}
-        href={sub.href}
+        href={href}
         label={label}
         leftSection={<sub.icon size={18} />}
         active={isActive}
@@ -281,7 +283,7 @@ export function Sidebar() {
             <Tooltip label="Copiloto Admin" position="bottom" withArrow>
               <ActionIcon
                 component={Link}
-                href="/sudamerica-ia"
+                href={"/sudamerica-ia"}
                 variant="subtle"
                 color="gray"
                 size="md"
@@ -433,6 +435,7 @@ export function Sidebar() {
                 <NavItemRow
                   key={`fav-${sub.id}`}
                   sub={sub}
+                  href={sub.href}
                   label={label}
                   isActive={isActiveHref(sub.href)}
                   isFavorite
@@ -474,6 +477,7 @@ export function Sidebar() {
                       <NavItemRow
                         key={sub.id}
                         sub={sub}
+                        href={sub.href}
                         label={label}
                         isActive={isActiveHref(sub.href)}
                         isFavorite={favoriteNavIds.includes(sub.id)}
@@ -535,7 +539,7 @@ export function Sidebar() {
               <Menu.Dropdown>
                 <Menu.Item
                   component={Link}
-                  href="/perfil"
+                  href={"/perfil"}
                   leftSection={<IconUser size={14} />}
                   aria-label="Ver mi perfil"
                 >

@@ -26,8 +26,8 @@ function DashboardShell({ children }: { children: ReactNode }) {
   const onboardingRequired = needsTenantOnboarding(tenant);
 
   useEffect(() => {
-    if (!isLoading && onboardingRequired && pathname !== "/onboarding") {
-      router.replace("/onboarding");
+    if (!isLoading && onboardingRequired && pathname !== "/registro") {
+      router.replace("/registro");
     }
   }, [isLoading, onboardingRequired, pathname, router]);
 

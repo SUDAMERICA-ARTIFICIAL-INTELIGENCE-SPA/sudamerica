@@ -1,4 +1,3 @@
-import { getDemoRubro, isDemoActive } from "@/lib/demo/state";
 import type { ApiResponse, PaginatedResponse } from "@/lib/types";
 
 type Service = keyof typeof SERVICE_CONFIG;
@@ -204,7 +203,7 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
         });
       } else {
         if (typeof window !== "undefined") {
-          window.location.href = "/login";
+          window.location.href = "/acceso";
         }
         throw new ApiError(401, "Session expired");
       }
@@ -240,7 +239,7 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
     if (err instanceof TypeError && !skipAuth) {
       const newToken = await refreshAccessToken();
       if (!newToken && typeof window !== "undefined") {
-        window.location.href = "/login";
+        window.location.href = "/acceso";
       }
     }
     throw err;
@@ -250,15 +249,8 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
 }
 
 export const api = {
-  get: <T>(path: string, options?: Omit<FetchOptions, "body">) => {
-    // Showroom DEMO: sin backend → el resolver (code-split) sirve fixtures del
-    // rubro activo. Fuera del route group `(showroom)` isDemoActive() es false y
-    // este branch nunca se toma → la app real hace fetch normal.
-    if (isDemoActive()) {
-      return import("@/lib/demo/resolver").then((m) => m.demoResolve<T>(path, getDemoRubro()));
-    }
-    return apiFetch<T>(path, { ...options, method: "GET" });
-  },
+  get: <T>(path: string, options?: Omit<FetchOptions, "body">) =>
+    apiFetch<T>(path, { ...options, method: "GET" }),
 
   post: <T>(path: string, body?: unknown, options?: Omit<FetchOptions, "body">) =>
     apiFetch<T>(path, { ...options, method: "POST", body }),
