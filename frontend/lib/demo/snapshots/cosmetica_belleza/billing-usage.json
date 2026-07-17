@@ -1,9 +1,0 @@
-{
-  "plan": "PRO",
-  "leads_used": 8,
-  "leads_limit": 5000,
-  "users_used": 4,
-  "users_limit": 10,
-  "subscription_active": false,
-  "grace_until": null
-}

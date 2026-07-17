@@ -111,7 +111,7 @@ function ResetPasswordForm() {
           </Alert>
           <Button
             component={Link}
-            href="/login"
+            href="/acceso"
             fullWidth
             size="md"
             variant="light"
@@ -179,7 +179,7 @@ function ResetPasswordForm() {
       )}
 
       <Text fz={13} c="dimmed" ta="center">
-        <Anchor component={Link} href="/login" fz={13} fw={500}>
+        <Anchor component={Link} href="/acceso" fz={13} fw={500}>
           Volver al login
         </Anchor>
       </Text>

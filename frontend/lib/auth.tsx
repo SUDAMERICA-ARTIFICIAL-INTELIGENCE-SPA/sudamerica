@@ -1,8 +1,6 @@
 "use client";
 
 import { AUTH_TOKENS_UPDATED_EVENT, ApiError, api } from "@/lib/api";
-import { DEMO_TENANT_ID, isDemoActive } from "@/lib/demo/state";
-import type { UserRole } from "@/lib/enums";
 import type { AuthState, AuthTokens, JwtPayload, Usuario } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import {
@@ -83,32 +81,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Hydrate from localStorage on mount
   useEffect(() => {
-    // ── Showroom DEMO: tenant sintético sin backend ni tokens ──────────────
-    // Solo activo dentro del route group `(showroom)` (su layout llama
-    // activateDemo()). No toca localStorage → la auth real queda intacta.
-    if (isDemoActive()) {
-      setState({
-        user: {
-          id: "demo-user",
-          tenant_id: DEMO_TENANT_ID,
-          nombre: "Demo",
-          apellido: "Showroom",
-          email: "demo@sudamerica.ai",
-          role: "ADMIN" as UserRole,
-          sucursal_id: null,
-          email_verified: true,
-          activo: true,
-          created_at: "2026-01-15T10:00:00Z",
-          updated_at: "2026-01-15T10:00:00Z",
-        } satisfies Usuario,
-        tokens: { access_token: "demo", refresh_token: "demo" },
-        tenantId: DEMO_TENANT_ID,
-        sucursalId: null,
-      });
-      setIsLoading(false);
-      return;
-    }
-
     // ── DEV MOCK: bypass auth when backend is offline ──────────────────────
     if (process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_MOCK_AUTH === "true") {
       setState({
@@ -211,7 +183,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       // Restaurant config (carta, IA agent, WhatsApp) is collected in the
       // post-registration onboarding wizard.
-      router.push("/onboarding");
+      router.push("/registro");
     },
     [router],
   );
@@ -221,7 +193,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem("refresh_token");
     emitAuthTokenUpdate();
     setState({ user: null, tokens: null, tenantId: null, sucursalId: null });
-    router.push("/login");
+    router.push("/acceso");
   }, [router]);
 
   const value = useMemo<AuthContextValue>(
@@ -251,7 +223,7 @@ export function RequireAuth({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace("/login");
+      router.replace("/acceso");
     }
   }, [isAuthenticated, isLoading, router]);
 

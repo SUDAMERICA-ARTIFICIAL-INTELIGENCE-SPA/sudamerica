@@ -275,7 +275,7 @@ describe("error handling", () => {
     expect(localStorageMock.setItem).toHaveBeenCalledWith("refresh_token", "new-refresh-token");
   });
 
-  it("redirects to /login when refresh fails", async () => {
+  it("redirects to /acceso when refresh fails", async () => {
     localStorageMock.setItem("access_token", "expired-token");
     localStorageMock.setItem("refresh_token", "invalid-refresh");
 
@@ -294,7 +294,7 @@ describe("error handling", () => {
     });
 
     await expect(api.get("/protected")).rejects.toThrow("Session expired");
-    expect(locationMock.href).toBe("/login");
+    expect(locationMock.href).toBe("/acceso");
     expect(localStorageMock.removeItem).toHaveBeenCalledWith("access_token");
     expect(localStorageMock.removeItem).toHaveBeenCalledWith("refresh_token");
   });

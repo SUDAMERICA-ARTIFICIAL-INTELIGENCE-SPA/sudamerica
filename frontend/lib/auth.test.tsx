@@ -91,7 +91,13 @@ describe("useAuth - initial state", () => {
 
   it("hydrates from localStorage when valid tokens exist", async () => {
     const futureExp = Math.floor(Date.now() / 1000) + 3600;
-    const token = fakeJwt({ sub: "user-1", tenant_id: "tenant-1", role: "ADMIN", exp: futureExp, iat: 0 });
+    const token = fakeJwt({
+      sub: "user-1",
+      tenant_id: "tenant-1",
+      role: "ADMIN",
+      exp: futureExp,
+      iat: 0,
+    });
     store.access_token = token;
     store.refresh_token = "refresh-123";
 
@@ -119,7 +125,13 @@ describe("useAuth - initial state", () => {
 
   it("clears expired tokens from storage", async () => {
     const pastExp = Math.floor(Date.now() / 1000) - 3600;
-    const token = fakeJwt({ sub: "user-1", tenant_id: "tenant-1", role: "ADMIN", exp: pastExp, iat: 0 });
+    const token = fakeJwt({
+      sub: "user-1",
+      tenant_id: "tenant-1",
+      role: "ADMIN",
+      exp: pastExp,
+      iat: 0,
+    });
     store.access_token = token;
     store.refresh_token = "refresh-123";
 
@@ -136,7 +148,13 @@ describe("useAuth - initial state", () => {
 
   it("clears tokens when /auth/me fails", async () => {
     const futureExp = Math.floor(Date.now() / 1000) + 3600;
-    const token = fakeJwt({ sub: "user-1", tenant_id: "tenant-1", role: "ADMIN", exp: futureExp, iat: 0 });
+    const token = fakeJwt({
+      sub: "user-1",
+      tenant_id: "tenant-1",
+      role: "ADMIN",
+      exp: futureExp,
+      iat: 0,
+    });
     store.access_token = token;
     store.refresh_token = "refresh-123";
 
@@ -156,7 +174,13 @@ describe("useAuth - initial state", () => {
 describe("useAuth - login", () => {
   it("stores tokens and fetches user on login", async () => {
     const futureExp = Math.floor(Date.now() / 1000) + 3600;
-    const accessToken = fakeJwt({ sub: "user-1", tenant_id: "tenant-1", role: "ADMIN", exp: futureExp, iat: 0 });
+    const accessToken = fakeJwt({
+      sub: "user-1",
+      tenant_id: "tenant-1",
+      role: "ADMIN",
+      exp: futureExp,
+      iat: 0,
+    });
 
     mockApiPost.mockResolvedValueOnce({
       access_token: accessToken,
@@ -193,9 +217,15 @@ describe("useAuth - login", () => {
 });
 
 describe("useAuth - logout", () => {
-  it("clears tokens and redirects to /login", async () => {
+  it("clears tokens and redirects to /acceso", async () => {
     const futureExp = Math.floor(Date.now() / 1000) + 3600;
-    const token = fakeJwt({ sub: "user-1", tenant_id: "tenant-1", role: "ADMIN", exp: futureExp, iat: 0 });
+    const token = fakeJwt({
+      sub: "user-1",
+      tenant_id: "tenant-1",
+      role: "ADMIN",
+      exp: futureExp,
+      iat: 0,
+    });
     store.access_token = token;
     store.refresh_token = "refresh-123";
 
@@ -223,7 +253,7 @@ describe("useAuth - logout", () => {
     expect(result.current.user).toBeNull();
     expect(localStorageMock.removeItem).toHaveBeenCalledWith("access_token");
     expect(localStorageMock.removeItem).toHaveBeenCalledWith("refresh_token");
-    expect(mockPush).toHaveBeenCalledWith("/login");
+    expect(mockPush).toHaveBeenCalledWith("/acceso");
   });
 });
 

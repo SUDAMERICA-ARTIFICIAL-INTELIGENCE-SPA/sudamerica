@@ -5,7 +5,6 @@ import { SucursalSelector } from "@/components/layout/SucursalSelector";
 import { DEV_RUBRO_OVERRIDE_KEY, useRubroLabels } from "@/hooks/useRubroLabels";
 import { useSmartAlerts } from "@/hooks/useSmartAlerts";
 import { useSsrColorScheme } from "@/hooks/useSsrColorScheme";
-import { useWithBase } from "@/lib/demo/showroom-nav";
 import { useAuth } from "@/lib/auth";
 import { USER_ROLE_COLORS, USER_ROLE_LABELS, type UserRole } from "@/lib/enums";
 import {
@@ -89,7 +88,7 @@ function getInitials(nombre: string): string {
 
 interface NavItemRowProps {
   sub: NavSubC;
-  /** Href final ya con base (showroom) aplicada; por defecto el href canónico. */
+  /** Href canónico del ítem de navegación. */
   href: string;
   label: string;
   isActive: boolean;
@@ -188,8 +187,6 @@ export function Sidebar() {
   const toggleNavGroupCollapsed = useUiStore((s) => s.toggleNavGroupCollapsed);
   const hasHydrated = useUiStore((s) => s.hasHydrated);
   const rubro = useRubroLabels();
-  // Base de navegación: "" en la app real, "/showroom/<rubro>" en la vitrina.
-  const withBase = useWithBase();
   const { toggleColorScheme } = useMantineColorScheme();
   // SSR-safe (ver hooks/useSsrColorScheme): evita el hydration mismatch del
   // icono/label del toggle cuando hay un scheme persistido distinto al default.
@@ -228,10 +225,8 @@ export function Sidebar() {
     : [];
 
   // Rutas canónicas anidadas y únicas ⇒ active-state por prefijo simple, sin dedup.
-  // Se compara contra el href CON base para que el activo funcione dentro del showroom.
   function isActiveHref(href: string): boolean {
-    const full = withBase(href);
-    return pathname === full || pathname.startsWith(`${full}/`);
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
 
   return (
@@ -288,7 +283,7 @@ export function Sidebar() {
             <Tooltip label="Copiloto Admin" position="bottom" withArrow>
               <ActionIcon
                 component={Link}
-                href={withBase("/sudamerica-ia")}
+                href={"/sudamerica-ia"}
                 variant="subtle"
                 color="gray"
                 size="md"
@@ -440,7 +435,7 @@ export function Sidebar() {
                 <NavItemRow
                   key={`fav-${sub.id}`}
                   sub={sub}
-                  href={withBase(sub.href)}
+                  href={sub.href}
                   label={label}
                   isActive={isActiveHref(sub.href)}
                   isFavorite
@@ -482,7 +477,7 @@ export function Sidebar() {
                       <NavItemRow
                         key={sub.id}
                         sub={sub}
-                        href={withBase(sub.href)}
+                        href={sub.href}
                         label={label}
                         isActive={isActiveHref(sub.href)}
                         isFavorite={favoriteNavIds.includes(sub.id)}
@@ -544,7 +539,7 @@ export function Sidebar() {
               <Menu.Dropdown>
                 <Menu.Item
                   component={Link}
-                  href={withBase("/perfil")}
+                  href={"/perfil"}
                   leftSection={<IconUser size={14} />}
                   aria-label="Ver mi perfil"
                 >

@@ -64,9 +64,13 @@ export function useUpdateAgenteConfig() {
       const raw = await api.get<BackendAgenteConfig>("/config", { service: "dialer" });
       const subs = { ...(raw.sub_agentes_activos ?? {}) };
       if (dto.activo !== undefined) subs[tipo] = dto.activo;
-      return api.patch<BackendAgenteConfig>("/config", { sub_agentes_activos: subs }, {
-        service: "dialer",
-      });
+      return api.patch<BackendAgenteConfig>(
+        "/config",
+        { sub_agentes_activos: subs },
+        {
+          service: "dialer",
+        },
+      );
     },
     onSuccess: () => {
       void qc.invalidateQueries({ queryKey: ["agente-configs", { tenantId }] });
@@ -79,7 +83,7 @@ export function useUpdateAgenteConfig() {
     onError: (err: Error) => {
       const isAuthError = err instanceof ApiError && err.status === 401;
       if (isAuthError && typeof window !== "undefined") {
-        window.location.href = "/login";
+        window.location.href = "/acceso";
         return;
       }
       notifications.show({
